@@ -1,0 +1,100 @@
+html{
+	height:100%;
+}
+
+body
+{
+	color: white;
+	font-family: Tahoma, serif;
+	font-size: 10px;
+	background-color: rgb(40, 40, 40);
+}
+
+h1
+{
+	margin: 0px 0px 0px 0px;
+	padding: 5px 0px 5px;
+	width: 100%;
+	color: rgb(190,190,190);
+	font-size: 2em;
+	display: block;
+	text-align:center;
+	font-weight:bold;
+	background-color:rgb(50,50,50);
+}
+
+h2
+{
+	margin: 0px 0px 0px 0px;
+	padding: 5px 0px 5px;
+	width: 100%;
+	color: rgb(190,190,190);
+	font-size: 1.2em;
+	display: block;
+	text-align:center;
+	font-weight:regular;
+	background-color:rgb(50,50,50);
+}
+
+/* This is the 'lens' through which we view the slideshow */
+#slideshow {
+	display:block;
+	position:relative;
+	margin:0px auto;
+	width:640px;
+	height:480px;
+	overflow:hidden;
+	white-space:nowrap;
+	font-size:0;
+}
+
+/* This is the 'filmstrip' that holds all the pictures in the slideshow */
+#carousel {
+	position:relative;
+	width:6400px;
+	left:0;
+}
+
+.navLink {
+	display:block;
+	position:absolute;
+	top:190px;
+	height:100px;
+	width:100px;
+	z-index:5;
+	background:none;
+	opacity:0;
+}
+
+#prev {
+	left:20px;
+}
+
+#next {
+	right:20px;
+}
+
+.borisPic {
+	display:inline;
+	position:relative;
+	width:640px;
+	height:480px;
+	left:0px;
+	z-index:1;
+}
+
+a{
+	text-decoration:none;
+	color: rgb(190,190,190);
+}
+
+a:hover {
+	text-decoration:underline;
+	color: rgb(255,255,255);
+}
+
+a:visited {
+	text-decoration:none;
+	color: rgb(190,190,190);
+}
+

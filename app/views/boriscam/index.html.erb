@@ -1,5 +1,17 @@
 <h1>BorisCam</h1>
-<%= form_tag({action: :upload}, multipart: true) do %>
-     <%= file_field_tag 'picture' %>
-     <%= submit_tag("Upload")%>
-<% end %>
+	<div><h2 id="stopstart">Click to STOP slideshow</h2></div>
+	<div id="slideshow">
+		<div id="carousel">
+
+	     <%
+	     i = 0
+          while i < 20 do
+               i += 1 %>
+
+     	     <%= image_tag("boris_" + ("00" + (i.to_s)).last(3) + ".jpg")%>
+
+     	<% end %>
+		</div>
+		<a href="#" class="navLink" id="prev"><%= image_tag("prev.png") %></a>
+		<a href="#" class="navLink next" id="next"><%= image_tag("next.png") %></a>
+	</div>
