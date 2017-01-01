@@ -1,7 +1,5 @@
 require 'fileutils'
 
-protect_from_forgery
-
 class BoriscamController < ActionController::Base
   protect_from_forgery with: :exception
 
