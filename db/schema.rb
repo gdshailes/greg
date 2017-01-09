@@ -13,8 +13,11 @@
 ActiveRecord::Schema.define(version: 20170101210016) do
 
   create_table "images", force: :cascade do |t|
-    t.integer "number"
-    t.binary  "image"
+    t.string   "filename"
+    t.binary   "filedata"
+    t.string   "filetype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

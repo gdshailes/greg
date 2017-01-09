@@ -1,33 +1,12 @@
-<!DOCTYPE html>
-<html lang="en-gb">
-<head>
-	<title>BorisCam</title>
-	<meta name="author" content="Greg Shailes">
-	<meta name="description" content="Boris Cam">
-	<meta charset="utf-8">
-	<meta name=viewport content='width=650'>
-	<script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script>var pics = 20;</script>
-	<script src="script/borisCam.js"></script>
-</head>
-<body>
+
 <h1>BorisCam</h1>
 	<div><h2 id="stopstart">Click to STOP slideshow</h2></div>
 	<div id="slideshow">
 		<div id="carousel">
-
-	     <%
-	     i = 0
-          while i < 20 do
-               i += 1 %>
-
-     	     <%= image_tag("boris_" + ("00" + (i.to_s)).last(3) + ".jpg")%>
-
-     	<% end %>
+			<% @images.each do |image| %>
+				<%= ('<img src="data:image/jpg;base64,%s">' % Base64.encode64(image.filedata)).html_safe %>
+			<% end %>
 		</div>
 		<a href="#" class="navLink" id="prev"><%= image_tag("prev.png") %></a>
 		<a href="#" class="navLink next" id="next"><%= image_tag("next.png") %></a>
 	</div>
-</body>
-</html>

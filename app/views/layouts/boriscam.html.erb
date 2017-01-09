@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-gb" height="100%">
 <head>
-	<title>BorisCam</title>
+	<title>Boris Cam</title>
   <%= csrf_meta_tags %>
-	<script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
-	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <meta name="viewport" content="width=650">
+	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script>var pics = 20;</script>
 	<%= javascript_include_tag 'borisCam' %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'boriscam', media: 'all', 'data-turbolinks-track': 'reload' %>
 </head>
 <body>
     <%= yield %>
