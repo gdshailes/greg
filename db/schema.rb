@@ -10,12 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170101210016) do
+ActiveRecord::Schema.define(version: 20170117170722) do
 
   create_table "images", force: :cascade do |t|
     t.string   "filename"
     t.binary   "filedata"
     t.string   "filetype"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ride_log_bikes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ride_log_images", force: :cascade do |t|
+    t.string   "title"
+    t.binary   "image"
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["imageable_type", "imageable_id"], name: "index_ride_log_images_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "ride_log_rides", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
