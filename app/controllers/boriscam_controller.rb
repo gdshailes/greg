@@ -2,30 +2,25 @@ require 'fileutils'
 
 class BoriscamController < ActionController::Base
 
+  # Written By : GDS
+  # Date       : 15/11/2016
+
   def index
-
-    # Written By : GDS
-    # Date       : 15/11/2016
-
-
     # Get latest 20 photos, in reverse chronological order.
     @images = Image.order(created_at: :desc).limit(20)
-
   end
 
+
   def upload
-
-    @image = Image.new
-    @image.uploaded_file params['datafile']
-
-##    if @image.filetype != "image/jpeg"
-##      render nothing: true, status: 415 # Unsupported media type
-##    else
-      @image.save
+    img = Image.new
+    img.uploaded_file params['datafile']
+    if img.filetype != "image/jpeg"
+      head :unsupported_media_type
+    else
+      img.save
       Image.order('created_at desc').offset(20).destroy_all
-      render nothing: true, status: 200 # okay
-##    end
-
+      head :ok
+    end
   end
 
 end
