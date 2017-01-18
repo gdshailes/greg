@@ -1,3 +1,4 @@
+<h1>New Bike</h1>
 <%= form_for :ride_log_bike, :url => {:controller => "ride_log_bike", :action => "create"} do |f| %>
 
   Name: <%= f.text_field :name %>
@@ -5,3 +6,4 @@
 
   <%= f.submit %>
 <% end %>
+<%= link_to 'Cancel', action: :index %>

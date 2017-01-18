@@ -1,7 +1,7 @@
-<h1>Show Bike</h1>
-
+<h1>Bike Details</h1>
 Bike: <%= @bike.name %>
 Details: <%= @bike.details %>
 
 <%= link_to 'Edit', edit_ride_log_bike_path %>
 <%= link_to 'Delete', @bike, method: :delete, data: { confirm: 'Are you sure you want to delete this bicycle?'} %>
+<%= link_to 'Back', action: :index %>

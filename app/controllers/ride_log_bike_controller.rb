@@ -4,7 +4,7 @@ class RideLogBikeController < ActionController::Base
   def index
     # Render Bikes home page - show all bikes
     @bikes = RideLogBike.all
-    end
+  end
 
   def new
     # Render 'New bike' form - if logged in
