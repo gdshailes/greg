@@ -7,5 +7,4 @@ Rails.application.routes.draw do
     post 'boriscam/upload', to: 'boriscam#upload'
 
     resources :ride_log_bike
-
 end

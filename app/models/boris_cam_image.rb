@@ -1,4 +1,4 @@
-class Image < ActiveRecord::Base
+class BorisCamImage < ActiveRecord::Base
 
   def uploaded_file(incoming_file)
     self.filename = incoming_file.original_filename

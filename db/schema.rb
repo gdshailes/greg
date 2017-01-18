@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117170722) do
+ActiveRecord::Schema.define(version: 20170118104500) do
 
-  create_table "images", force: :cascade do |t|
+  create_table "boris_cam_images", force: :cascade do |t|
     t.string   "filename"
     t.binary   "filedata"
     t.string   "filetype"
