@@ -12,3 +12,5 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( borisCam.js )
 Rails.application.config.assets.precompile += %w( boriscam.css )
+
+Rails.application.config.assets.precompile += %w( jquery_ujs.js )

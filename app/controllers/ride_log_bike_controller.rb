@@ -15,6 +15,7 @@ class RideLogBikeController < ActionController::Base
     p = params[:ride_log_bike]
     bike = RideLogBike.new(name: p[:name], details: p[:details])
     bike.save
+    redirect_to action: 'index'
   end
 
   def show
@@ -32,13 +33,19 @@ class RideLogBikeController < ActionController::Base
     @bike = RideLogBike.find(params[:id])
     if @bike.update_attributes(bike_params)
       # Handle a successful update.
-      render 'show'
+      redirect_to action: 'index'
     else
       render 'edit'
     end  end
 
   def destroy
     # Remove a bike - if logged in
+    @bike = RideLogBike.find(params[:id])
+    if @bike.destroy!
+      redirect_to action: 'index'
+    else
+      render 'edit'
+    end
   end
 
   private
