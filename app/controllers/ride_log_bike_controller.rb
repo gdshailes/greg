@@ -43,6 +43,8 @@ class RideLogBikeController < ActionController::Base
     @bike = RideLogBike.find(params[:id])
     if @bike.destroy!
       redirect_to action: 'index'
+      binding.pry
+      flash[:error] = 'Deleted!'
     else
       render 'edit'
     end
