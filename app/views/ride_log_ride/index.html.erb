@@ -1,0 +1,12 @@
+<h1>Rides</h1>
+<ul>
+  <% @rides.each do |r| %>
+    <li>
+    <%= link_to r.name, r %>
+    </li>
+  <% end %>
+  <li>
+  <%= link_to 'Add Ride', new_ride_log_ride_url %><br>
+  <%= link_to 'Back', ride_log_path %>
+  </li>
+</ul>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170118104500) do
+ActiveRecord::Schema.define(version: 20170117170722) do
 
   create_table "boris_cam_images", force: :cascade do |t|
     t.string   "filename"
@@ -21,15 +21,17 @@ ActiveRecord::Schema.define(version: 20170118104500) do
   end
 
   create_table "ride_log_bikes", force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",       default: "New Bike"
     t.string   "details"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "current",    default: true
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   create_table "ride_log_images", force: :cascade do |t|
     t.string   "title"
     t.binary   "image"
+    t.binary   "thumbnail"
     t.string   "imageable_type"
     t.integer  "imageable_id"
     t.datetime "created_at",     null: false
@@ -38,10 +40,12 @@ ActiveRecord::Schema.define(version: 20170118104500) do
   end
 
   create_table "ride_log_rides", force: :cascade do |t|
-    t.string   "name"
+    t.integer  "ride_log_bike_id"
+    t.string   "name",             default: "New Ride"
     t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.index ["ride_log_bike_id"], name: "index_ride_log_rides_on_ride_log_bike_id"
   end
 
 end

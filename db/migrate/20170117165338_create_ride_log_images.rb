@@ -3,6 +3,7 @@ class CreateRideLogImages < ActiveRecord::Migration[5.0]
     create_table :ride_log_images do |t|
       t.string :title
       t.binary :image
+      t.binary :thumbnail
       t.references :imageable, polymorphic: true
 
       t.timestamps

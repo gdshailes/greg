@@ -1,11 +1,12 @@
 <h1>Bikes</h1>
 <ul>
-<% @bikes.each do |b| %>
+  <% @bikes.each do |b| %>
+    <li>
+    <%= link_to b.name, b %>
+    </li>
+  <% end %>
   <li>
-  <%= link_to b.name, b %>
-  </li>
-<% end %>
-  <li>
-  <%= link_to 'New Bike', new_ride_log_bike_url %>
+  <%= link_to 'New Bike', new_ride_log_bike_url %><br>
+  <%= link_to 'Back', ride_log_path %>
   </li>
 </ul>
