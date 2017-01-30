@@ -13,7 +13,6 @@ class RideLogRideController < ActionController::Base
   end
 
   def create
-    binding.pry
     p = params[:ride_log_ride]
     ride = RideLogRide.new(name: p[:name], date: p[:date])
     ride.ride_log_bike_id = p[:bike_id]
