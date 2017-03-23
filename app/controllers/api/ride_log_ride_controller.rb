@@ -5,8 +5,11 @@ class Api::RideLogRideController < ActionController::Base
   respond_to :json
 
   def index
-    binding.pry
     json_response(RideLogRide.all)
+  end
+
+  def create
+    json_response("new ride")
   end
 
 end

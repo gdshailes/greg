@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
     get '/api/ping', to: 'api/ping#index'
     get '/api/ride_log_ride', to: 'api/ride_log_ride#index'
+    get '/api/ride_log_ride/create', to: 'api/ride_log_ride#create'
 end
