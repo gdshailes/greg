@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
     resources :ride_log_bike
     resources :ride_log_ride
+
+    get '/api/ping', to: 'api/ping#index'
+    get '/api/ride_log_ride', to: 'api/ride_log_ride#index'
 end
