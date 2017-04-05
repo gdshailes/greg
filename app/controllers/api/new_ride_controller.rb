@@ -4,6 +4,9 @@ class Api::NewRideController < ActionController::Base
   respond_to :json
 
   def new_ride
+    binding.pry
+    bike = RideLogBike.new(name:'New Ride!')
+    bike.save!
     json_response("new ride")
   end
 
