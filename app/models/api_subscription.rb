@@ -1,0 +1,2 @@
+class ApiSubscription < ApplicationRecord
+end

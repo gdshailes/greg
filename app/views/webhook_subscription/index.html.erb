@@ -1,0 +1,9 @@
+<h1>Webhook Subscriptions</h1>
+<ul>
+  <% @subs.each do |r| %>
+    <li>
+      <%= r.target_url %>
+    </li>
+  <% end %>
+  <%= link_to 'Back', ride_log_path %>
+</ul>
