@@ -4,6 +4,7 @@ class Api::PingController < ActionController::Base
   before_filter :restrict_api_access
 
   def index
+    Rails.logger.info(request.env)
     head :ok
   end
 
