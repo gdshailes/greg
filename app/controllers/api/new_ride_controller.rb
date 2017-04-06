@@ -3,6 +3,10 @@ class Api::NewRideController < ActionController::Base
   include JsonResponse
   respond_to :json
 
+  def index
+    head :ok
+  end
+
   def new_ride
     binding.pry
     bike = RideLogBike.new(name:'New Ride!')

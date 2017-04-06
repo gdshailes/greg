@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     get 'ride_log', to: 'ride_log#index'
 
+    get 'api/new_ride', to: 'api/new_ride#new_ride'
     post 'api/new_ride', to: 'api/new_ride#new_ride'
 
     resources :ride_log_bike
