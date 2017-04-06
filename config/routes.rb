@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     get '/api/ride_log_ride', to: 'api/ride_log_ride#index'
     get '/api/ride_log_ride/create', to: 'api/ride_log_ride#create'
 
+    get '/subscriptions', to: 'webhook_subscription#index'
+
     get '/api/hook', to: 'webhook_subscription#index'
     post '/api/hook', to: 'api/hook#subscribe'
     delete '/api/hook', to: 'api/hook#unsubscribe'
