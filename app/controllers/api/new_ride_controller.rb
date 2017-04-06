@@ -4,7 +4,6 @@ class Api::NewRideController < ActionController::Base
   respond_to :json
 
   def index
-    head :ok
   end
 
   def new_ride
