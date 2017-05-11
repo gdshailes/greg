@@ -4,17 +4,17 @@
     <title>Greg</title>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
-    <%= stylesheet_link_tag    'ride_log_ride', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'ride_log', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'jquery_ujs' %>
+    <script>
+      $(function() {
+        var blockScroller = $("#main-wrap").blockScroll({fadeBlocks:false});
+      });
+    </script>
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-    <div>
-      <%= content_tag :span, msg, :id => "flash_#{name}" %>
-    </div>
-    <% end %>
     <%= yield %>
   </body>
 </html>
