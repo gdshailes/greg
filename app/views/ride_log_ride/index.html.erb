@@ -1,12 +1,14 @@
-<h1>Rides</h1>
-<ul>
-  <% @rides.each do |r| %>
-    <li>
-    <%= link_to r.name, r %>
-    </li>
+<div id="main-wrap">
+
+  <% @rides.each do |ride| %>
+    <div>
+      <h1>Ride Details</h1>
+      Ride: <%= ride.name %><br>
+      Date: <%= ride.date %><br>
+      Bike: <%= link_to ride.bike.name, ride.bike %><br>
+      <br>
+      <%= link_to 'Delete', ride, method: :delete, data: { confirm: 'Are you sure you want to delete this ride?'} %> |
+      <%= link_to 'Back', action: :index %>
+    </div>
   <% end %>
-  <li>
-  <%= link_to 'Add Ride', new_ride_log_ride_url %><br>
-  <%= link_to 'Back', ride_log_path %>
-  </li>
-</ul>
+</div>
