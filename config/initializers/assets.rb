@@ -14,5 +14,6 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( ride_log.js )
 Rails.application.config.assets.precompile += %w( ride_log.css )
-
-Rails.application.config.assets.precompile += %w( jquery_ujs.js )
+Rails.application.config.assets.precompile += %w( .css )
+Rails.application.config.assets.precompile += %w( borisCam.js )
+Rails.application.config.assets.precompile += %w( boriscam.css )
