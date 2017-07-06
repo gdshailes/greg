@@ -1,4 +1,4 @@
-f// Place all the styles related to the Greg controller here.
+// Place all the styles related to the Greg controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body
@@ -34,6 +34,7 @@ a {
 	color:rgb(190,190,190);
 	text-decoration:none;
 	display:block;
+	transition: background-color 0.75s;
 }
 
 a:visited {
@@ -43,10 +44,12 @@ a:hover {
 	color:white;
 	background-color:rgb(60,0,0);
 	text-decoration: none;
+	transition: background-color 0.75s;
 }
 a:not(:hover) {
 	color:rgb(190,190,190);
 	text-decoration: none;
+	transition: background-color 0.75s;
 }
 
 button {
