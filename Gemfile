@@ -30,7 +30,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'responders'
-
 gem 'httparty'
 
 group :development, :test do
