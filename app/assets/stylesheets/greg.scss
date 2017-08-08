@@ -8,13 +8,6 @@ body
 	font-size: 14px;
 	text-align: center;
 }
-@media all and (max-width:500px)
-{
-	body
-	{
-		font-size: 20px;
-	}
-}
 
 h1
 {
@@ -90,28 +83,46 @@ button:not(:hover) {
 .googleSearch {
 	width: 88%; height: 2em;color: white; background-color: rgb(90,90,90); border: none; font-size: 1.2em; padding: 0; margin: 0;
 }
+
 div.QuickLinks {
 	display:inline-block;
 	margin:0px auto;
 }
+
 div.QuickLinksPanel {
 	margin: 0.5em;
 	padding: 0;
 	border: 0;
 	float: left;
 	background-color: rgb(70, 70, 80);
-	min-width:250px;
+	min-width:280px;
 }
+
 ul {
 	list-style: none; margin: 0px; padding: 0px;
 }
-ul.subPane {
-	padding-right: 1em; float: left;
-}
+
 li {
 	margin: 0; padding: 0; display: block;
 }
 div.LineBreak{
 	height:8px;
 	background-color: rgb(65,65,75)
+}
+
+@media screen and (max-width:620px)
+{
+	body
+	{
+		font-size: 24px;
+	}
+
+	div.QuickLinks {
+		width:80%;
+	}
+
+	div.QuickLinksPanel {
+		float:none;
+		width:100%;
+	}
 }
