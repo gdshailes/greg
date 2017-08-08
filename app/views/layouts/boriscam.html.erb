@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en-gb" height="100%">
-<head>
-	<title>Boris Cam</title>
-  <%= csrf_meta_tags %>
-  <%= favicon_link_tag 'favicon.ico' %>
-  <meta name="viewport" content="width=650">
-	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<script>var pics = 20;</script>
-  <%= stylesheet_link_tag    'boriscam', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'borisCam': 'reload' %>
-</head>
-<body>
-    <%= yield %>
-</body>
+  <head>
+  	<title>Boris Cam</title>
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <meta name="viewport" content="width=650">
+  	<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+  	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <%= stylesheet_link_tag 'boriscam', media: 'all', 'data-turbolinks-track': 'reload' %>
+  	<script>var pics = 20;</script>
+    <%= javascript_include_tag 'application', 'borisCam': 'reload' %>
+  </head>
+  <body>
+      <%= yield %>
+  </body>
 </html>

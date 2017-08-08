@@ -10,7 +10,6 @@ class BoriscamController < ActionController::Base
     @images = BorisCamImage.order(created_at: :desc).limit(20)
   end
 
-
   def upload
     img = BorisCamImage.new
     img.uploaded_file params['datafile']
