@@ -76,11 +76,11 @@ h2
 }
 
 .borisPic {
-	display:inline;
+	display:inline-block;
+	text-align:center;
 	position:relative;
 	width:640px;
 	height:480px;
-	left:0px;
 	z-index:1;
 }
 
