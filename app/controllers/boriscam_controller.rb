@@ -18,7 +18,7 @@ class BoriscamController < ActionController::Base
     else
       img.save
       BorisCamImage.order('created_at desc').offset(20).destroy_all
-      render :index
+      head :ok
     end
   end
 
