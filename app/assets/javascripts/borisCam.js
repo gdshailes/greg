@@ -4,7 +4,7 @@ $('document').ready(function(){
 	var stopped = false;
 	var update = setInterval(nextPic, 3000);
 
-	$('h1').text('BorisCam - ' + i + ' of ' + pics);
+	$('#caption').text('BorisCam - ' + i + ' of ' + pics);
 
 	$('#carousel').css({width:'' + (pics * 640)});
 
@@ -82,7 +82,7 @@ $('document').ready(function(){
 		{
 			$('#carousel').animate(move, 500);
 		}
-		$('h1').text('BorisCam - ' + i + ' of ' + pics);
+		$('#caption').text('BorisCam - ' + i + ' of ' + pics);
 	}
 
 	function stopStart()
