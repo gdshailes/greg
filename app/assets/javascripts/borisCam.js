@@ -29,7 +29,7 @@ $('document').ready(function(){
 
 	$('#slideshow').mouseenter(function(){
 		$('.navLink').stop()
-		$('.navLink').animate({opacity:0.25}, 500);
+		$('.navLink').animate({opacity:0.5}, 500);
 	})
 
 	$('#slideshow').mouseleave(function(){
@@ -39,12 +39,12 @@ $('document').ready(function(){
 
 	$('.navLink').mouseenter(function(){
 		$(this).stop();
-		$(this).animate({opacity:0.75}, 500);
+		$(this).animate({opacity:0.9}, 500);
 	})
 
 	$('.navLink').mouseleave(function(){
 		$(this).stop();
-		$(this).animate({opacity:0.25}, 250);
+		$(this).animate({opacity:0.5}, 250);
 	})
 
 	$('#prev').click(function(e){
