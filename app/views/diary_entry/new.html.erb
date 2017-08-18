@@ -1,0 +1,8 @@
+<%= simple_form_for(@entry, url: diary_entry_index_path, method: :post) do |f| %>
+
+  <%= f.input :title, label: 'Title' %>
+  <%= f.input :body, label: 'Body' %>
+  <%= f.button :submit, 'Save' %>
+  <%= link_to 'Cancel', diary_entry_index_path %>
+
+<% end %>

@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     resources :ride_log_bike
     resources :ride_log_ride
 
-    get '/subscriptions', to: 'webhook_subscription#index'
+    resources :diary_entry
 
 end
