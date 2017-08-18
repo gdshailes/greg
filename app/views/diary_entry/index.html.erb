@@ -1,10 +1,12 @@
-<ul>
-  <% if @entries.any? %>
-    <% @entries.each do |entry| %>
-      <li><%= link_to entry.title, edit_diary_entry_path(entry.id) %></li>
+<div id="diary-index">
+  <ul>
+    <% if @entries.any? %>
+      <% @entries.each do |entry| %>
+        <li><%= link_to entry.title, edit_diary_entry_path(entry.id) %></li>
+      <% end %>
+    <% else %>
+      <li>No entries yet</li>
     <% end %>
-  <% else %>
-    <li>No entries yet</li>
-  <% end %>
-  <li><%= link_to 'new one', new_diary_entry_path %></li>
-</ul>
+    <li><%= link_to 'new one', new_diary_entry_path %></li>
+  </ul>
+</div>
