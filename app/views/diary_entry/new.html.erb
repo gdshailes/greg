@@ -1,8 +1,7 @@
-<%= simple_form_for(@entry, url: diary_entry_index_path, method: :post) do |f| %>
-
-  <%= f.input :title, label: 'Title' %>
-  <%= f.input :body, label: 'Body' %>
-  <%= f.button :submit, 'Save' %>
-  <%= link_to 'Cancel', diary_entry_index_path %>
-
+<%= simple_form_for(@entry, url: diary_entry_index_path, method: :post) do |p| %>
+  <%= render partial: 'form', locals: {f: p}  %>
+  <div class='buttons'>
+    <%= p.button :submit, 'Save New Entry', class: 'command-button' %>
+    <%= link_to 'Cancel', diary_entry_index_path, class: 'command-button' %>
+  </div>
 <% end %>

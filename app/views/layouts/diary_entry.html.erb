@@ -9,12 +9,20 @@
     <meta name="viewport" content="width=500">
     <%= stylesheet_link_tag 'diary_entry', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'diary_entry', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag :application %>
     <script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
   </head>
 
-  <body style='text-align: center'>
-    <main>
-      <%= yield %>
-    </main>
+  <body>
+    <aside>
+      <nav class='menu'>
+        <%= render partial: 'menu' %>
+      </nav>
+    </aside>
+    <div class='page'>
+      <main>
+        <%= yield %>
+      </main>
+    </div>
   </body>
 </html>

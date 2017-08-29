@@ -1,0 +1,8 @@
+<ul class='menu'>
+  <li class='new'><%= link_to 'Add Entry', new_diary_entry_path %></li>
+  <% if @entries.any? %>
+    <% @entries.each do |entry| %>
+      <li><%= link_to entry.entry_date, edit_diary_entry_path(entry.id) %></li>
+    <% end %>
+  <% end %>
+</ul>

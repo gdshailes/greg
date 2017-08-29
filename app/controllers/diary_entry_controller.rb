@@ -1,7 +1,9 @@
 class DiaryEntryController < ActionController::Base
+  prepend_before_action :get_diary_entries
+
+  include GetDiaryEntriesConcern
 
   def index
-    @entries = DiaryEntry.all.order(created_at: :desc)
   end
 
   def new

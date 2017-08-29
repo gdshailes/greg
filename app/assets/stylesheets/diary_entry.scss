@@ -1,146 +1,131 @@
 // Place all the styles related to the Greg controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-body
-{
-  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
-  background-color: rgb(40, 40, 50);
-  font-size: 14px;
-  text-align: center;
-  color: white;
-}
+// You can use Sass (SCSS) here:  http: //sass-lang.com/
 
-main
-{
-  text-align: center;
-}
+$width: 250px;
+$body_margin: 2em;
+$background: #F5F3EE;
+$menu_background: #74AFAD;
+$menu_highlight: #558C89;
+$menu_new: #7D1935;
+$button_background: #8c836b;
+$button_color: white;
+$warning_button_background: #7D1935;
+$warning_button_color: white;
 
-div#diary-index
-{
-  max-width:50%;
-  display: inline-block;
-}
-
-
-
-h1
-{
-  margin: 0px 0px 0px 0px;
-  padding: 5px 0px 5px;
-  width: 100%;
-  color: rgb(190,190,200);
-  font-size: 1em;
-  display: inline-block;
-  font-weight:bold;
-  background-color:rgb(50,50,60);
-  border-top: 2px solid rgb(70,70,80);
-  border-bottom: 2px solid rgb(30,30,40);
-}
-
-a {
-  padding:7px 0 6px 0;
-  color:rgb(150,150,160);
-  text-decoration:none;
-  display:block;
-  font-size: 14px;
-  transition: background-color 0.75s, font-size 0.75s;
-  border-bottom: 1px solid rgb(50, 50, 60);
-  border-top: 1px solid rgb(90, 90, 100);
-  height:25px;
-}
-
-a:visited {
-  color:rgb(190,190,200);
-}
-a:hover {
-  color:white;
-  background-color:rgb(60,0,0);
-  font-size: 20px;
-  text-decoration: none;
-  transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
-}
-a:not(:hover) {
-  color:rgb(150,150,160);
-  text-decoration: none;
-  transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
-}
-
-button {
-  background-color: rgb(90,90,100);
-  border-width: 0;
-  width: 10%;
-  height: 2em;
-  color: black;
-  text-decoration: none;
-  float: right;
-  display: inline;
-  font-size:1em;
-}
-
-button:visited {
-  color: rgb(190,190,200);
-}
-
-button:hover {
-  background-color:rgb(60,0,0);
-  color: white;
-  text-decoration: none;
-  animation-name:fadeIn;
-  animation-duration:0.5s;
-}
-
-button:not(:hover) {
-  background-color:rgb(90,90,100);
-  color: white;
-  text-decoration: none;
-  animation-name:fadeOut;
-  animation-duration:0.5s;
-}
-
-.googleSearch {
-  width: 88%; height: 2em;color: white; background-color: rgb(90,90,90); border: none; font-size: 1.2em; padding: 0; margin: 0;
-}
-
-div.QuickLinks {
-  display:inline-block;
-  margin:0px auto;
-}
-
-div.QuickLinksPanel {
-  margin: 0.5em;
+body{
+  margin: 0;
   padding: 0;
-  border: 0;
-  float: left;
-  background-color: rgb(70, 70, 80);
-  min-width:280px;
+  color: black;
+  background-color: $background;
+  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
-ul {
-  list-style: none; margin: 0px; padding: 0px;
-}
-
-li {
-  margin: 0; padding: 0; display: block;
-}
-
-div.LineBreak{
-  height:8px;
-  background-color: rgb(65,65,75)
-}
-
-@media screen and (max-width:620px)
-{
-  body
-  {
-    font-size: 24px;
+nav.menu {
+  background-color: $menu_background;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: $width;
+  & ul {
+    list-style: none;
+    display: block;
+    padding: 0;
+    margin: 0;
   }
-
-  div.QuickLinks {
-    width:80%;
+  & li {
+    display: block;
+    &.new {
+      background-color: $menu_new;
+      & a:hover {
+        background-color: black;
+        color: white;
+      }
+    }
   }
+  & a {
+    margin: 0;
+    padding: 0.5em;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    height: 25px;
+    transition: background-color 0.75s;
+    color: white;
+    &:visited {
+      color: white;
+    }
+    &:hover {
+      background-color: $menu_highlight;
+    }
+  }
+}
 
-  div.QuickLinksPanel {
-    float:none;
-    width:100%;
+div.page {
+  width: 100%;
+  padding-left: $width;
+  box-sizing: border-box;
+}
+
+main {
+  margin: 25px;
+  & h1 {
+    font-size: 20px;
+  }
+  & div.buttons {
+    text-align: right;
+    width: 100%;
+    & .command-button {
+      font-size: 16px;
+      background-color: $button_background;
+      opacity: 0.8;
+      color: $button_color;
+      display: inline-block;
+      text-decoration: none;
+      padding: 12px;
+      margin-left: 0px;
+      text-align: center;
+      line-height: 15px;
+      min-width: 100px;
+      vertical-align: middle;
+      border: none;
+      border-radius:6px;
+      transition: opacity 0.5s, border 0.5s;
+      border: 1px solid $background;
+
+      &:hover {
+        opacity: 1;
+        border: 1px solid black;
+      }
+    }
+    & .warning {
+      background-color: $warning_button_background;
+    }
+  }
+}
+
+div.input {
+  & label {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    padding:18px 0 0 0;
+  }
+  & input {
+    height: 1.8em;
+    font-size: 18px;
+    border: none;
+    width: 100%;
+  }
+  & textarea {
+    height: 300px;
+    width: 100%;
+    resize: none;
+    border: none;
+    font-size: 18px;
   }
 }
