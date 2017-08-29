@@ -90,6 +90,7 @@ nav.menu {
   }
   & li {
     display: block;
+    border-bottom: 1px solid $menu_selected_background;
     &.new {
       background-color: $menu_new;
       & a:hover {
