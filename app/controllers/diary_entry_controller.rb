@@ -4,6 +4,7 @@ class DiaryEntryController < ActionController::Base
   include GetDiaryEntriesConcern
 
   def index
+    @latest = DiaryEntry.order(created_at: :desc).first
   end
 
   def new

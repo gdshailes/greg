@@ -1,7 +1,11 @@
 class DiaryEntry < ApplicationRecord
 
   def entry_date
-    created_at.strftime("#{created_at.day.ordinalize} %B %Y")
+    if persisted?
+      created_at.strftime("#{created_at.day.ordinalize} %B %Y")
+    else
+      'New Entry'
+    end
   end
 
 end
