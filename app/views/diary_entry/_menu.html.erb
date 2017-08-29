@@ -3,7 +3,10 @@
   <% if @entries.any? %>
     <% @entries.each do |entry| %>
       <li class="<%= 'selected' if @entry == entry %>">
-        <%= link_to entry.entry_date, edit_diary_entry_path(entry.id) %>
+        <a href="<%= edit_diary_entry_path(entry.id) %>">
+          <%= entry.title %><br>
+          <span><%= entry.entry_date %></span>
+        </a>
       </li>
     <% end %>
   <% end %>
