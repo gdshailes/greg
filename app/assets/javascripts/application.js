@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+
+//= require_self
+//= require_tree ./modules
+//= require core
+window.GregHome = {};

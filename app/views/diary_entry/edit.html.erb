@@ -1,8 +1,8 @@
 <%= simple_form_for(@entry, url: diary_entry_path(@entry), method: :patch) do |p| %>
   <%= render partial: 'form', locals: {f: p}  %>
   <div class='buttons'>
-    <%= p.button :submit, 'Save Changes', class: 'command-button' %>
-    <%= link_to 'Cancel', diary_entry_index_path, class: 'command-button' %>
     <%= link_to 'Delete', @entry, method: :delete, data: {confirm: 'really?'}, class: 'warning command-button' %>
+    <%= link_to 'Cancel', diary_entry_index_path, class: 'command-button' %>
+    <%= p.button :submit, 'Save Changes', class: 'command-button' %>
   </div>
 <% end %>

@@ -1,0 +1,3 @@
+jQuery ->
+
+  new GregHome.DiaryEntry()
