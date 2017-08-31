@@ -42,6 +42,7 @@ body{
   color: white;
   height: 0px;
   transition: height 0.5s;
+  overflow: hidden;
   & .show-menu {
     display: inline-block;
     height: 30px;
@@ -73,7 +74,26 @@ aside {
   ::-webkit-scrollbar {
     width: 0px
   }
+
+  div.new-entry-menu-item {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $width;
+    font-weight: bold;
+    background-color: $menu_new;
+    & a:hover {
+      background-color: black;
+      color: white;
+    }
+    @media (max-width:$break_width) {
+      left: -$width;
+    }
+    transition: left 0.5s;
+  }
+
   nav.menu {
+    padding-top: 30px;
     background-color: $menu_background;
     overflow-y: scroll;
     overflow-x: none;
@@ -86,6 +106,7 @@ aside {
 
     @media (max-width:$break_width) {
       margin-left: -$width;
+      padding-top: 0px;
       top: 30px;
     }
     width: $width;
@@ -106,16 +127,6 @@ aside {
     & li {
       display: block;
       border-bottom: 1px solid $menu_selected_background;
-      &.new {
-        background-color: $menu_new;
-        & a:hover {
-          background-color: black;
-          color: white;
-        }
-        @media (max-width:$break_width) {
-          display:none;
-        }
-      }
       &.selected {
         background-color: $menu_selected_background;
       }

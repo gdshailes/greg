@@ -1,5 +1,7 @@
+<div class='new-entry-menu-item'>
+  <%= link_to 'Add Entry', new_diary_entry_path %>
+</div>
 <ul class='menu'>
-    <li class='new'><%= link_to 'Add Entry', new_diary_entry_path %></li>
   <% if @entries.any? %>
     <% @entries.each do |entry| %>
       <li class="<%= 'selected' if @entry == entry %>">

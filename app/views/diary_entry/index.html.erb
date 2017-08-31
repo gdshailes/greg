@@ -4,4 +4,7 @@
   <h1>Last Entry - <%= @latest.entry_date %></h1>
   <h2><%= @latest.title %></h2>
   <p><%= sanitize(@latest.formatted_body, tags: %w(p)) %></p>
+  <div class='buttons'>
+    <%= link_to("Edit", edit_diary_entry_path(@latest), class: 'command-button') %>
+  </div>
 <% end %>
