@@ -3,5 +3,5 @@
 <% else %>
   <h1>Last Entry - <%= @latest.entry_date %></h1>
   <h2><%= @latest.title %></h2>
-  <p><%= @latest.body %></p>
+  <p><%= sanitize(@latest.formatted_body, tags: %w(p)) %></p>
 <% end %>

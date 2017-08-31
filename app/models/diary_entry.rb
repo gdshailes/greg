@@ -8,4 +8,15 @@ class DiaryEntry < ApplicationRecord
     end
   end
 
+  def formatted_body
+    text = ''
+    self.body.split("\n").collect.each do | para |
+      if para != ''
+        para = para.gsub('\r', '')
+        para = "<p>#{para}</p>"
+        text += para
+      end
+    end
+    text
+  end
 end
