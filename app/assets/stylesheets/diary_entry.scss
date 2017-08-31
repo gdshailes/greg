@@ -31,18 +31,24 @@ body{
 
 .mobile-header {
   @media (max-width:$break_width) {
-    display: block;
+    height: 30px;
   }
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   background-color: $menu-highlight;
   color: white;
-  display: none;
-  height:30px;
+  height: 0px;
+  transition: height 0.5s;
   & .show-menu {
     display: inline-block;
+    height: 30px;
   }
   & .command-button {
     background-color: $menu-highlight;
-    border:none;
+    border: none;
     border-radius: 0;
     transition: background-color 0.5s;
     height: 100%;
@@ -51,7 +57,7 @@ body{
     opacity: 1;
     min-width: 10px;
     &:hover {
-      border:none;
+      border: none;
       background-color: $menu-new;
     }
     vertical-align: middle;
@@ -106,6 +112,9 @@ aside {
           background-color: black;
           color: white;
         }
+        @media (max-width:$break_width) {
+          display:none;
+        }
       }
       &.selected {
         background-color: $menu_selected_background;
@@ -136,10 +145,11 @@ div.page {
   width: 100%;
   @media (max-width: $break_width) {
     padding-left: 0;
+    padding-top: 30px;
   }
   padding-left: $width;
   box-sizing: border-box;
-  transition: padding-left 0.5s;
+  transition: padding-left 0.5s, padding-top 0.5s;
 }
 
 main {
@@ -152,7 +162,6 @@ main {
     width: 100%;
   }
 }
-
 
 .command-button {
   font-size: 16px;
@@ -176,6 +185,7 @@ main {
     border: 1px solid black;
   }
 }
+
 .warning {
   float: left;
   background-color: $warning_button_background;

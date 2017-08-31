@@ -1,7 +1,7 @@
 <%= simple_form_for(@entry, url: diary_entry_index_path, method: :post) do |p| %>
   <%= render partial: 'form', locals: {f: p}  %>
   <div class='buttons'>
-    <%= p.button :submit, 'Save New Entry', class: 'command-button' %>
     <%= link_to 'Cancel', diary_entry_index_path, class: 'command-button' %>
+    <%= p.button :submit, 'Save New Entry', class: 'command-button' %>
   </div>
 <% end %>

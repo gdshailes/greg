@@ -1,9 +1,9 @@
 <ul class='menu'>
-  <li class='new'><%= link_to 'Add Entry', new_diary_entry_path %></li>
+    <li class='new'><%= link_to 'Add Entry', new_diary_entry_path %></li>
   <% if @entries.any? %>
     <% @entries.each do |entry| %>
       <li class="<%= 'selected' if @entry == entry %>">
-        <a href="<%= edit_diary_entry_path(entry.id) %>">
+        <a href="<%= diary_entry_path(entry) %>">
           <%= entry.title %><br>
           <span><%= entry.entry_date %></span>
         </a>

@@ -11,6 +11,10 @@ class DiaryEntryController < ActionController::Base
     @entry = DiaryEntry.new(created_at: Time.current)
   end
 
+  def show
+    @entry = DiaryEntry.find(params[:id])
+  end
+
   def create
     @entry = DiaryEntry.new(diary_entry_params)
     if @entry.valid?
