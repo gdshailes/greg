@@ -1,8 +1,7 @@
 class DiaryEntryController < ActionController::Base
 
-  before_filter :authenticate_user!
-
-  prepend_before_action :get_diary_entries
+  before_action :authenticate_user!
+  before_action :get_diary_entries
 
   include GetDiaryEntriesConcern
 
