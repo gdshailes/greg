@@ -1,7 +1,7 @@
 module GetDiaryEntriesConcern
 
   def get_diary_entries
-    @entries = DiaryEntry.all.order(created_at: :desc)
+    @entries = current_user.diary_entries.all.order(created_at: :desc)
   end
 
 end

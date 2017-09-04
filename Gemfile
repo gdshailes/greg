@@ -34,6 +34,7 @@ gem 'httparty'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'rails-html-sanitizer'
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

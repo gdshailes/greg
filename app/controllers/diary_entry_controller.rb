@@ -1,22 +1,25 @@
 class DiaryEntryController < ActionController::Base
+
+  before_filter :authenticate_user!
+
   prepend_before_action :get_diary_entries
 
   include GetDiaryEntriesConcern
 
   def index
-    @latest = DiaryEntry.order(created_at: :desc).first
+    @latest = current_user.diary_entries.order(created_at: :desc).first
   end
 
   def new
-    @entry = DiaryEntry.new(created_at: Time.current)
+    @entry = DiaryEntry.new(created_at: Time.current, user_id: current_user.id)
   end
 
   def show
-    @entry = DiaryEntry.find(params[:id])
+    @entry = current_user.diary_entries.find(params[:id])
   end
 
   def create
-    @entry = DiaryEntry.new(diary_entry_params)
+    @entry = current_user.diary_entries.new(diary_entry_params)
     if @entry.valid?
       @entry.save
       redirect_to action: :index
@@ -26,11 +29,11 @@ class DiaryEntryController < ActionController::Base
   end
 
   def edit
-    @entry = DiaryEntry.find(params[:id])
+    @entry = current_user.diary_entries.find(params[:id])
   end
 
   def update
-    @entry = DiaryEntry.find(params[:id])
+    @entry = current_user.diary_entries.find(params[:id])
     @entry.update(diary_entry_params)
     if @entry.valid?
       @entry.save
@@ -41,7 +44,7 @@ class DiaryEntryController < ActionController::Base
   end
 
   def destroy
-    @entry = DiaryEntry.find(params[:id])
+    @entry = current_user.diary_entries.find(params[:id])
     @entry.destroy!
     redirect_to action: :index
   end
