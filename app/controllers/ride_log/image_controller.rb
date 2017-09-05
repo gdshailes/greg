@@ -1,4 +1,4 @@
-class RideLogImageController < ActionController::Base
+class RideLog::ImageController < ActionController::Base
   protect_from_forgery with: :exception
 
   def index

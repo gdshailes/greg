@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   get 'ride_log', to: 'ride_log#index'
 
-  resources :ride_log_bike
-  resources :ride_log_ride
+  namespace :ride_log do
+    resources :bike
+    resources :ride
+  end
 
   resources :diary_entry
 
