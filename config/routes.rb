@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root to: "greghome#index"
   get 'greghome', to: 'greghome#greghome'
   get 'boriscam', to: 'boriscam#index'
-  # post 'boriscam/upload', to: 'boriscam#upload'
+  post 'boriscam/upload', to: 'boriscam#upload'
 
   get 'ride_log', to: 'ride_log#index'
 
