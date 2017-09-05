@@ -230,12 +230,41 @@ div.footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  height:20px;
+  height:30px;
   background-color: $menu_selected_background;
+  color: white;
   margin-left: $width;
   transition: margin-left 0.5s;
-  padding: 15px;
+  padding: 0px;
+  font-size: 12px;
+  vertical-align: middle;
   @media (max-width: $break_width) {
     margin-left: 0;
+  }
+  &_text {
+    height: 20px;
+    padding: 7px 15px;
+    display: inline-block;
+  }
+  &_links {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: $menu_background;
+    height: 30px;
+    & a {
+      display: block;
+      height: 20px;
+      padding: 7px 15px;
+      text-decoration: none;
+      transition: background-color 0.75s;
+      color: white;
+      &:visited {
+        color: white;
+      }
+      &:hover {
+        background-color: $menu_new;
+      }
+    }
   }
 }
