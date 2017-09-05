@@ -2,7 +2,7 @@
 
 <h2>Latest Ride</h2>
 <p>
-  <% if @latest_ride.nil %>
+  <% if @latest_ride.nil? %>
     No rides have been recorded yet.
   <% else %>
     <%= @latest_ride.name %> on <%= @latest_ride.date.strftime("#{@latest_ride.date.day.ordinalize} %B %Y") %>
