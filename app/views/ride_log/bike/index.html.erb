@@ -1,8 +1,8 @@
 <h1>Bikes</h1>
 <ul>
-  <% @bikes.each do |b| %>
+  <% @bikes.each do |bike| %>
     <li>
-    <%= link_to b.name, b %>
+    <%= link_to bike.name, bike %>
     </li>
   <% end %>
   <li>

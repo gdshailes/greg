@@ -36,7 +36,8 @@ class RideLog::BikeController < ActionController::Base
       redirect_to action: :index
     else
       render 'edit'
-    end  end
+    end
+  end
 
   def destroy
     # Remove a bike - if logged in
