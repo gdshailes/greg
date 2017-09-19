@@ -1,4 +1,4 @@
-class Finances::AccountsController < Finances::BaseController
+class Finances::AccountsController < ActionController::Base
 
   before_action :set_finances_account, only: [:show, :edit, :update, :destroy]
 
