@@ -1,0 +1,259 @@
+
+$width: 250px;
+$body_margin: 2em;
+$break_width: 700px;
+
+@import "font-awesome";
+
+body{
+  margin: 0;
+  padding: 0;
+  color: black;
+  background-color: $background;
+  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-width: 300px;
+}
+
+.mobile-header {
+  @media (max-width:$break_width) {
+    height: 30px;
+  }
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $menu-highlight;
+  color: white;
+  height: 0px;
+  transition: height 0.5s;
+  overflow: hidden;
+  & .show-menu {
+    display: inline-block;
+    height: 30px;
+  }
+  & .command-button {
+    background-color: $menu-highlight;
+    border: none;
+    border-radius: 0;
+    transition: background-color 0.5s;
+    height: 100%;
+    padding: 0 15px;
+    margin: 0;
+    opacity: 1;
+    min-width: 10px;
+    &:hover {
+      border: none;
+      background-color: $menu-new;
+    }
+    vertical-align: middle;
+    line-height: 30px
+  }
+}
+
+.displayed {
+  display: block;
+}
+
+aside {
+  ::-webkit-scrollbar {
+    width: 0px
+  }
+
+  div.new-entry-menu-item {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $width;
+    font-weight: bold;
+    background-color: $menu_new;
+    & a:hover {
+      background-color: black;
+      color: white;
+    }
+    @media (max-width:$break_width) {
+      left: -$width;
+    }
+    transition: left 0.5s;
+  }
+
+  nav.menu {
+    padding-top: 30px;
+    background-color: $menu_background;
+    overflow-y: scroll;
+    overflow-x: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity:1;
+    transition: margin-left 0.5s, opacity 0.5s;
+    z-index:1;
+
+    @media (max-width:$break_width) {
+      margin-left: -$width;
+      padding-top: 0px;
+      top: 30px;
+      opacity:0.9;
+    }
+    width: $width;
+    &.show {
+      margin-left: 0;
+    }
+    & ul {
+      list-style: none;
+      display: block;
+      padding: 0;
+      margin: 0;
+      ::-webkit-scrollbar {
+        width: 0px
+      }
+
+    }
+    & li {
+      display: block;
+      border-bottom: 1px solid $menu_selected_background;
+      &.selected {
+        background-color: $menu_selected_background;
+      }
+    }
+    & a {
+      margin: 0;
+      padding: 0.5em;
+      text-decoration: none;
+      display: block;
+      font-size: 14px;
+      transition: background-color 0.75s;
+      color: white;
+      &:visited {
+        color: white;
+      }
+      &:hover {
+        background-color: $menu_highlight;
+      }
+      & span {
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+div.page {
+  width: 100%;
+  @media (max-width: $break_width) {
+    padding-left: 0;
+    padding-top: 30px;
+  }
+  padding-left: $width;
+  padding-bottom: 45px;
+  box-sizing: border-box;
+  transition: padding-left 0.5s, padding-top 0.5s;
+}
+
+main {
+  margin: 25px;
+  & h1 {
+    font-size: 20px;
+  }
+  & div.buttons {
+    text-align: right;
+    width: 100%;
+  }
+}
+
+.command-button {
+  font-size: 16px;
+  background-color: $button_background;
+  opacity: 0.8;
+  color: $button_color;
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  margin-left: 0px;
+  text-align: center;
+  line-height: 15px;
+  min-width: 100px;
+  vertical-align: middle;
+  border: none;
+  border-radius: 6px;
+  transition: opacity 0.5s, border 0.5s, background-color 0.5s;
+  border: 1px solid $background;
+  &:hover {
+    opacity: 1;
+    border: 1px solid black;
+  }
+}
+
+.warning {
+  float: left;
+  background-color: $warning_button_background;
+}
+
+div.input {
+  & label {
+    display: block;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 18px 0 0 0;
+  }
+  & input {
+    height: 1.8em;
+    font-size: 18px;
+    border: none;
+    width: 100%;
+  }
+  & textarea {
+    height: 300px;
+    width: 100%;
+    resize: none;
+    border: none;
+    font-size: 18px;
+  }
+}
+
+div.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height:30px;
+  background-color: $menu_selected_background;
+  color: white;
+  margin-left: $width;
+  transition: margin-left 0.5s;
+  padding: 0px;
+  font-size: 12px;
+  vertical-align: middle;
+  @media (max-width: $break_width) {
+    margin-left: 0;
+  }
+  &_text {
+    height: 20px;
+    padding: 7px 15px;
+    display: inline-block;
+  }
+  &_links {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    background-color: $menu_background;
+    height: 30px;
+    & a {
+      display: block;
+      height: 20px;
+      padding: 7px 15px;
+      text-decoration: none;
+      transition: background-color 0.75s;
+      color: white;
+      &:visited {
+        color: white;
+      }
+      &:hover {
+        background-color: $menu_new;
+      }
+    }
+  }
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904133707) do
+ActiveRecord::Schema.define(version: 20170919083740) do
 
   create_table "api_subscriptions", force: :cascade do |t|
     t.string   "target_url"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 20170904133707) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "children", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "parent_id"
+    t.datetime "deleted_at"
+    t.index ["parent_id"], name: "index_children_on_parent_id"
+  end
+
   create_table "diary_entries", force: :cascade do |t|
     t.string   "title"
     t.text     "body"
@@ -34,6 +41,21 @@ ActiveRecord::Schema.define(version: 20170904133707) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.index ["user_id"], name: "index_diary_entries_on_user_id"
+  end
+
+  create_table "finances_accounts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "opening_balance_cents",    default: 0,     null: false
+    t.string   "opening_balance_currency", default: "USD", null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.index ["user_id"], name: "index_finances_accounts_on_user_id"
+  end
+
+  create_table "parents", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "deleted_at"
   end
 
   create_table "ride_log_bikes", force: :cascade do |t|
@@ -62,6 +84,23 @@ ActiveRecord::Schema.define(version: 20170904133707) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.index ["ride_log_bike_id"], name: "index_ride_log_rides_on_ride_log_bike_id"
+  end
+
+  create_table "test_children", force: :cascade do |t|
+    t.integer  "test_parent_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_test_children_on_deleted_at"
+    t.index ["test_parent_id"], name: "index_test_children_on_test_parent_id"
+  end
+
+  create_table "test_parents", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_test_parents_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|

@@ -35,6 +35,8 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'rails-html-sanitizer'
 gem 'devise'
+gem 'money-rails'
+gem 'paranoia', '~> 2.2.0.pre'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

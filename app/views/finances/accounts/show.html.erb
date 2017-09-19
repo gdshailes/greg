@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @finances_account.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @finances_account.name %>
+</p>
+
+<p>
+  <strong>Opening balance:</strong>
+  <%= @finances_account.opening_balance %>
+</p>
+
+<%= link_to 'Edit', edit_finances_account_path(@finances_account) %> |
+<%= link_to 'Back', finances_accounts_path %>

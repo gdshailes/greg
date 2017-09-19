@@ -1,0 +1,2 @@
+module Finances::AccountsHelper
+end
