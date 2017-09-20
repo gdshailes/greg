@@ -15,8 +15,6 @@ h1 {
   font-weight: bold;
   color: $h1_ink;
   background-color: $h1_paper;
-  border-top: 2px solid $h1_shine;
-  border-bottom: 2px solid $h1_shadow;
 }
 
 a {
@@ -26,8 +24,7 @@ a {
   display: block;
   font-size: 14px;
   transition: background-color 0.75s, font-size 0.75s;
-  border-bottom: 1px solid $link_shadow;
-  border-top: 1px solid $link_shine;
+  border-bottom: 1px solid $background;
   height: 25px;
 }
 
@@ -49,10 +46,8 @@ a:not(:hover) {
 
 button {
   background-color: $link_paper;
-  border-top: 1px solid $link_shine;
-  border-bottom: 1px solid $link_shadow;
-  border-left: none;
-  border-right: none;
+  border: none;
+  outline: none;
   width: 100px;
   height: 35px;
   color: $link_ink;
@@ -95,18 +90,15 @@ div.googleSearch {
 }
 
 input.googleSearch {
-  height: 33px;
-  color: $link_highlight-ink;
-  background-color: $link_shine;
+  height: 35px;
+  color: $text-box-ink;
+  background-color: $text_box_paper;
   border: none;
   display: block;
   width:100%;
   font-size: 14px;
   padding: 0;
   margin: 0;
-  background-color: $link_shine;
-  border-top: 1px solid $link_ink;
-  border-bottom: 1px solid $link_paper;
   outline: none;
   text-indent: 10px;
 }
@@ -138,8 +130,8 @@ li {
 }
 
 div.LineBreak {
-  height: 8px;
-  background-color: $spacer;
+  height: 7px;
+  background-color: $background;
 }
 
 @media screen and (max-width:620px) {
