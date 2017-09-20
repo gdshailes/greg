@@ -1,0 +1,162 @@
+
+body {
+  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
+  background-color: $background;
+  font-size: 14px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0px 0px 0px 0px;
+  padding: 5px 0px 5px;
+  width: 100%;
+  font-size: 1em;
+  display: inline-block;
+  font-weight: bold;
+  color: $h1_ink;
+  background-color: $h1_paper;
+  border-top: 2px solid $h1_shine;
+  border-bottom: 2px solid $h1_shadow;
+}
+
+a {
+  padding: 7px 0 6px 0;
+  color: $link_ink;
+  text-decoration: none;
+  display: block;
+  font-size: 14px;
+  transition: background-color 0.75s, font-size 0.75s;
+  border-bottom: 1px solid $link_shadow;
+  border-top: 1px solid $link_shine;
+  height: 25px;
+}
+
+a:visited {
+  color: $link_ink;
+}
+a:hover {
+  color: $link_highlight_ink;
+  background-color: $link_highlight_paper;
+  font-size: 20px;
+  text-decoration: none;
+  transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
+}
+a:not(:hover) {
+  color: $link_ink;
+  text-decoration: none;
+  transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
+}
+
+button {
+  background-color: $link_paper;
+  border-top: 1px solid $link_shine;
+  border-bottom: 1px solid $link_shadow;
+  border-left: none;
+  border-right: none;
+  width: 100px;
+  height: 35px;
+  color: $link_ink;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
+  display: inline;
+  float: right;
+}
+
+button:visited {
+  color: $link_ink;
+}
+
+button:hover {
+  background-color: $link_highlight_paper;
+  color: $link_highlight_ink;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+button:not(:hover) {
+  background-color: $link_paper;
+  color: $link_ink;
+  text-decoration: none;
+  animation-name: fadeOut;
+  animation-duration: 0.5s;
+}
+
+div.googleSearchBar {
+  width: 100%;
+  margin-right: 0;
+  padding: 0;
+  background-color: red;
+}
+
+div.googleSearch {
+  margin-right: 100px;
+  width: auto;
+}
+
+input.googleSearch {
+  height: 33px;
+  color: $link_highlight-ink;
+  background-color: $link_shine;
+  border: none;
+  display: block;
+  width:100%;
+  font-size: 14px;
+  padding: 0;
+  margin: 0;
+  background-color: $link_shine;
+  border-top: 1px solid $link_ink;
+  border-bottom: 1px solid $link_paper;
+  outline: none;
+  text-indent: 10px;
+}
+
+div.QuickLinks {
+  display: inline-block;
+  margin: 0px auto;
+}
+
+div.QuickLinksPanel {
+  margin: 0.5em;
+  padding: 0;
+  border: 0;
+  float: left;
+  background-color: $link_paper;
+  min-width: 280px;
+}
+
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+div.LineBreak {
+  height: 8px;
+  background-color: $spacer;
+}
+
+@media screen and (max-width:620px) {
+  body {
+    font-size: 24px;
+  }
+
+  a {
+    font-size: 18px;
+  }
+
+  div.QuickLinks {
+    width: 80%;
+  }
+
+  div.QuickLinksPanel {
+    float: none;
+    width: 100%;
+  }
+}
