@@ -4,7 +4,7 @@ html {
   background: -o-linear-gradient($background_1, $background_2);
   background: -moz-linear-gradient($background_1, $background_2);
   background: linear-gradient($background_1, $background_2);
-  height: 100%;
+  min-height: 100%;
 }
 
 body {
