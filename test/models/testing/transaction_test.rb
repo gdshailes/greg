@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RideLogImageTest < ActiveSupport::TestCase
+class Testing::TransactionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

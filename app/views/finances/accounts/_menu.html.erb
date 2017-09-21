@@ -1,0 +1,30 @@
+<div class='new-entry-menu-item'>
+  <% if @account && @account.persisted? %>
+    <%= link_to 'Add Transaction', new_finances_account_transaction_path(@account) %>
+  <% else %>
+    <%= link_to 'Add Account', new_finances_account_path %>
+  <% end %>
+</div>
+<ul class='menu'>
+
+  <% if @account && @account.persisted? %>
+    <li>
+      <%= link_to 'Edit Account', edit_finances_account_path(@account) %>
+    </li>
+    <li>
+      <%= link_to 'Bills' %>
+    </li>
+  <% end %>
+
+  <% if @accounts.any? %>
+    <% @accounts.each do |account| %>
+      <li class="<%= 'selected' if @account == account %>">
+        <a href="<%= finances_account_path(account) %>">
+          <%= account.name %><br>
+          <span><%= account.balance %></span>
+        </a>
+      </li>
+    <% end %>
+  <% end %>
+
+</ul>

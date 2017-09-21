@@ -1,31 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Finances Accounts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Opening balance</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @finances_accounts.each do |finances_account| %>
-      <tr>
-        <td><%= finances_account.user_id %></td>
-        <td><%= finances_account.name %></td>
-        <td><%= finances_account.opening_balance %></td>
-        <td><%= link_to 'Show', finances_account %></td>
-        <td><%= link_to 'Edit', edit_finances_account_path(finances_account) %></td>
-        <td><%= link_to 'Destroy', finances_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Finances Account', new_finances_account_path %>
+<p>Primary Account
+<% if @primary_account %>
+  <strong><%= @primary_account.name %></strong></p>
+<% else %>
+  </p>
+  <p>You need to set one of your accounts as the Primary account for its overview to appear here.</p>
+<% end %>

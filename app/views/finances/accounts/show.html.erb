@@ -1,19 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @finances_account.user_id %>
-</p>
+<h1>
+  <%= @account.name %>
+</h1>
 
-<p>
-  <strong>Name:</strong>
-  <%= @finances_account.name %>
-</p>
-
-<p>
-  <strong>Opening balance:</strong>
-  <%= @finances_account.opening_balance %>
-</p>
-
-<%= link_to 'Edit', edit_finances_account_path(@finances_account) %> |
-<%= link_to 'Back', finances_accounts_path %>
+<ul>
+<% @transactions.each do |transaction| %>
+  <li>
+    <%= transaction.description %> | <%= link_to 'Edit', edit_finances_account_transaction_path(@account, transaction) %><br>
+  </li>
+<% end %>
+</ul>

@@ -4,6 +4,7 @@ $body_margin: 2em;
 $break_width: 700px;
 
 @import "font-awesome";
+@import "animations";
 
 body{
   margin: 0;
@@ -257,3 +258,9 @@ div.footer {
     }
   }
 }
+
+p#notice {
+  animation: fade-away 0.5s linear 3s forwards;
+}
+
+

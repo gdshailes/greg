@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919083740) do
+ActiveRecord::Schema.define(version: 20170920135515) do
 
   create_table "api_subscriptions", force: :cascade do |t|
     t.string   "target_url"
@@ -46,11 +46,23 @@ ActiveRecord::Schema.define(version: 20170919083740) do
   create_table "finances_accounts", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.integer  "opening_balance_cents",    default: 0,     null: false
-    t.string   "opening_balance_currency", default: "USD", null: false
+    t.integer  "opening_balance_pence",    default: 0,     null: false
+    t.string   "opening_balance_currency", default: "GBP", null: false
+    t.boolean  "primary",                                  null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.index ["user_id"], name: "index_finances_accounts_on_user_id"
+  end
+
+  create_table "finances_transactions", force: :cascade do |t|
+    t.integer  "account_id"
+    t.string   "description"
+    t.integer  "amount_pence",    default: 0,     null: false
+    t.string   "amount_currency", default: "GBP", null: false
+    t.boolean  "reconciled"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["account_id"], name: "index_finances_transactions_on_account_id"
   end
 
   create_table "parents", force: :cascade do |t|

@@ -1,48 +1,60 @@
 class Finances::AccountsController < ActionController::Base
 
-  before_action :set_finances_account, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_account, only: [:show, :edit, :update, :destroy]
+  before_action :set_accounts
 
   respond_to :html
 
   def index
-    @finances_accounts = Finances::Account.all
-    respond_with(@finances_accounts)
+    if @accounts.primary.any?
+      redirect_to finances_account_path(@accounts.primary.first)
+    end
   end
 
   def show
-    respond_with(@finances_account)
+    @transactions = @account.transactions
+    respond_with(@account)
   end
 
   def new
-    @finances_account = Finances::Account.new
-    respond_with(@finances_account)
+    @account = Finances::Account.new(user: current_user, name: "New Account")
+    @account.primary = @primary_account ? false : true
+    respond_with(@account)
   end
 
   def edit
   end
 
   def create
-    @finances_account = Finances::Account.new(finances_account_params)
-    @finances_account.save
-    respond_with(@finances_account)
+    @account = Finances::Account.new(account_params)
+    @account.user_id = current_user.id
+    @account.save
+    respond_with(@account)
   end
 
   def update
-    @finances_account.update(finances_account_params)
-    respond_with(@finances_account)
+    @account.update(account_params)
+    respond_with(@account)
   end
 
   def destroy
-    @finances_account.destroy
-    respond_with(@finances_account)
+    @account.destroy
+    respond_with(@account)
   end
 
   private
-    def set_finances_account
-      @finances_account = Finances::Account.find(params[:id])
-    end
 
-    def finances_account_params
-      params.require(:finances_account).permit(:user_id, :name, :opening_balance)
-    end
+  def set_accounts
+    @accounts = Finances::Account.for_user(current_user.id)
+  end
+
+  def set_account
+    @account = Finances::Account.find(params[:id])
+  end
+
+  def account_params
+    params.require(:finances_account).permit(:user_id, :name, :opening_balance, :primary)
+  end
+
 end
