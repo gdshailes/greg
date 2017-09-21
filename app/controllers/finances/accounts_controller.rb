@@ -1,10 +1,4 @@
-class Finances::AccountsController < ActionController::Base
-
-  before_action :authenticate_user!
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
-  before_action :set_accounts
-
-  respond_to :html
+class Finances::AccountsController < Finances::BaseController
 
   def index
     if @accounts.primary.any?
@@ -29,6 +23,7 @@ class Finances::AccountsController < ActionController::Base
   def create
     @account = Finances::Account.new(account_params)
     @account.user_id = current_user.id
+    @account.reconciled_balance_pence = 0
     @account.save
     respond_with(@account)
   end
@@ -44,14 +39,6 @@ class Finances::AccountsController < ActionController::Base
   end
 
   private
-
-  def set_accounts
-    @accounts = Finances::Account.for_user(current_user.id)
-  end
-
-  def set_account
-    @account = Finances::Account.find(params[:id])
-  end
 
   def account_params
     params.require(:finances_account).permit(:user_id, :name, :opening_balance, :primary)

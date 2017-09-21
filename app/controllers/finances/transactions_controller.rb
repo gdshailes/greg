@@ -1,7 +1,5 @@
-class Finances::TransactionsController < ApplicationController
+class Finances::TransactionsController < Finances::BaseController
 
-  before_action :authenticate_user!
-  before_action :set_account
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
   before_action :set_transactions
 
@@ -43,10 +41,6 @@ class Finances::TransactionsController < ApplicationController
   end
 
   private
-
-  def set_account
-    @account = Finances::Account.for_user(current_user).find(params[:account_id])
-  end
 
   def set_transactions
     @transactions = @account.transactions

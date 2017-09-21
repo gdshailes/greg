@@ -1,4 +1,7 @@
-<h1>New Transaction</h1>
+<h1>
+  <span><%= @account.name %></span>
+  New Transaction
+</h1>
 
 <%= simple_form_for [@account, @transaction], url: finances_account_transactions_path(@account) do |f| %>
   <%= render partial: 'form', finances_transaction: @transaction, locals: {f: f} %>

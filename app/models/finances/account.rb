@@ -7,9 +7,14 @@ class Finances::Account < ApplicationRecord
   scope :primary, -> { where(primary: true) }
 
   monetize :opening_balance_pence, as: "opening_balance"
+  monetize :reconciled_balance_pence, as: "reconciled_balance"
+  monetize :balance_pence, as: "balance"
 
-  def balance
-    3.14
+  def balance_pence
+    transaction_sum = transactions.for_account(id).unreconciled.sum(:amount_pence)
+    opening = (opening_balance_pence || 0)
+    reconciled = (reconciled_balance_pence) || 0
+    opening + reconciled + transaction_sum
   end
 
 end

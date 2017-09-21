@@ -1,0 +1,10 @@
+<li class="<%= 'selected' if @account == account %>">
+  <a href="<%= finances_account_path(account) %>">
+    <%= account.name %>
+    <% if account.primary %>
+      *
+    <% end %>
+    <br>
+    <span><%= account.balance %></span>
+  </a>
+</li>

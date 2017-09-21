@@ -1,13 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <h1>
-  <%= @account.name %>
+  <span><%= @account.name %></span>
+  Transactions
 </h1>
 
-<ul>
-<% @transactions.each do |transaction| %>
-  <li>
-    <%= transaction.description %> | <%= link_to 'Edit', edit_finances_account_transaction_path(@account, transaction) %><br>
-  </li>
-<% end %>
-</ul>
+<div class='transactions-table'>
+  <div class='table-header-row'>
+    <span class="table-cell">Description</span>
+    <span class="table-cell-amount">Amount</span>
+    <span class="table-cell-amount">Balance</span>
+  </div>
+  <% @rt = (@account.reconciled_balance || 0) + (@account.opening_balance || 0) %>
+  <% @transactions.each do |transaction| %>
+    <% @rt += transaction.amount %>
+    <%= link_to edit_finances_account_transaction_path(@account, transaction), style: "display: table-row" do %>
+      <span class="table-cell"><%= transaction.description %></span>
+      <span class="table-cell-amount"><%= transaction.amount %></span>
+      <span class="table-cell-amount"><%= @rt %></span>
+    <% end %>
+  <% end %>
+</table>

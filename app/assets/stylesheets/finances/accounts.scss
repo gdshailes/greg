@@ -1,3 +1,46 @@
+@import 'finances/colours';
+
 // Place all the styles related to the Finances::Accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.transactions-table {
+  display: table;
+  a {
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.5s, color 0.5s;
+  }
+  a:visited {
+    color: black;
+  }
+  a:hover {
+    background-color: $menu_background;
+    color: white;
+  }
+}
+
+div.table-row {
+  display: table-row;
+}
+
+div.table-header-row {
+  @extend div.table-row;
+  font-weight: bold;
+  & span {
+    display: table-cell;
+    border-bottom: 1px solid black;
+  }
+}
+
+span.table-cell {
+  display: table-cell;
+  padding: 0 15px;
+}
+
+span.table-cell-amount {
+  @extend span.table-cell;
+  text-align: right;
+  &:before {
+    content: "£";
+  }
+}
