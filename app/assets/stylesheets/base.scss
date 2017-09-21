@@ -27,8 +27,8 @@ body{
   top: 0;
   left: 0;
   width: 100%;
-  background-color: $menu-highlight;
-  color: white;
+  background-color: $header_background;
+  color: $header_color;
   height: 0px;
   transition: height 0.5s;
   overflow: hidden;
@@ -37,7 +37,7 @@ body{
     height: 30px;
   }
   & .command-button {
-    background-color: $menu-highlight;
+    background-color: $menu-background;
     border: none;
     border-radius: 0;
     transition: background-color 0.5s;
@@ -48,7 +48,7 @@ body{
     min-width: 10px;
     &:hover {
       border: none;
-      background-color: $menu-new;
+      background-color: $menu-highlight;
     }
     vertical-align: middle;
     line-height: 30px
@@ -221,8 +221,8 @@ div.footer {
   bottom: 0;
   width: 100%;
   height:30px;
-  background-color: $menu_selected_background;
-  color: white;
+  background-color: $footer_background;
+  color: $footer_color;
   margin-left: $width;
   transition: margin-left 0.5s;
   padding: 0px;
@@ -244,6 +244,7 @@ div.footer {
     height: 30px;
     & a {
       display: block;
+      float: left;
       height: 20px;
       padding: 7px 15px;
       text-decoration: none;
@@ -253,7 +254,7 @@ div.footer {
         color: white;
       }
       &:hover {
-        background-color: $menu_new;
+        background-color: $menu_highlight;
       }
     }
   }
