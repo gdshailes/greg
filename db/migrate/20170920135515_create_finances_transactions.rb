@@ -3,7 +3,7 @@ class CreateFinancesTransactions < ActiveRecord::Migration[5.0]
     create_table :finances_transactions do |t|
       t.belongs_to :account, index: true
       t.string :description
-      t.money :amount
+      t.monetize :amount
       t.boolean :reconciled
       t.timestamps null: false
     end

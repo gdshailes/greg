@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170921111612) do
 
-  create_table "api_subscriptions", force: :cascade do |t|
-    t.string   "target_url"
-    t.string   "event"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "boris_cam_images", force: :cascade do |t|
     t.string   "filename"
     t.binary   "filedata"
