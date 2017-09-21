@@ -1,2 +1,16 @@
 @import 'finances/colours';
-@import 'base.scss'
+@import 'base.scss';
+
+div.form-inputs {
+  display: table;
+
+  .form-input {
+    display: table-row;
+
+    .span {
+      display: table-cell;
+    }
+  }
+
+}
+

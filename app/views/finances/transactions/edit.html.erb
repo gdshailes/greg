@@ -3,6 +3,6 @@
   Edit Transaction
 </h1>
 
-<%= simple_form_for [@account, @transaction], url: finances_account_transaction_path(@account, @transaction) do |f| %>
+<%= simple_form_for @transaction_form, url: finances_account_transaction_path(@account, @transaction_form.transaction), method: :patch do |f| %>
   <%= render partial: 'form', finances_transaction: @transaction, locals: {f: f} %>
 <% end %>

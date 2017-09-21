@@ -1,11 +1,12 @@
 <%= f.error_notification %>
 
 <div class="form-inputs">
+  <%= f.input :amount, autofocus: true %>
   <%= f.input :description %>
-  <%= f.input :amount %>
-  <%= f.input :reconciled %>
+  <%= f.input :deposit, as: :boolean %>
+  <%= f.input :reconciled, as: :boolean %>
 </div>
 
 <div class="form-actions">
-  <%= f.button :submit %>
+  <%= f.button :submit, 'Save Transaction' %>
 </div>

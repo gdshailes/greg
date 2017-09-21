@@ -1,7 +1,6 @@
 class Finances::TransactionsController < Finances::BaseController
 
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-  before_action :set_transactions
 
   respond_to :html
 
@@ -13,23 +12,23 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
   def new
-    @transaction = Finances::Transaction.new(account: @account, description: "New Transaction")
-    respond_with(@transaction)
+    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(description: "New Transaction"))
   end
 
   def edit
+    @transaction_form = Finances::EditTransactionForm.new(@transaction)
   end
 
   def create
-    @transaction = Finances::Transaction.new(transaction_params)
-    @transaction.account_id = @account.id
-    if @transaction.save
+    @transaction_form = Finances::EditTransactionForm.new(@account.transactions.build)
+    if @transaction_form.submit(transaction_form_params)
       redirect_to finances_account_path @account
     end
   end
 
   def update
-    if @transaction.update(transaction_params)
+    @transaction_form = Finances::EditTransactionForm.new(@transaction)
+    if @transaction_form.submit(transaction_form_params)
       redirect_to finances_account_path @account
     end
   end
@@ -42,16 +41,12 @@ class Finances::TransactionsController < Finances::BaseController
 
   private
 
-  def set_transactions
-    @transactions = @account.transactions
-  end
-
   def set_transaction
     @transaction = @account.transactions.find(params[:id])
   end
 
-  def transaction_params
-    params.require(:finances_transaction).permit(:finances_account_id, :description, :amount, :reconciled)
+  def transaction_form_params
+    params.require(:finances_edit_transaction_form).permit(:finances_account_id, :description, :deposit, :amount, :reconciled)
   end
 
 end

@@ -20,27 +20,27 @@ div.transactions-table {
   }
 
   a {
-  display: table-row;
-  text-decoration: none;
-  color: black;
-  transition: background-color 0.5s, color 0.5s;
-  &:visited {
+    display: table-row;
+    text-decoration: none;
     color: black;
-  }
-  &:hover {
-    background-color: $menu_background;
-    color: white;
-  }
-  & span {
-    display: table-cell;
-    padding: 0 15px;
-    &.amount {
-      text-align: right;
-      &:before {
-        content: "£";
+    transition: background-color 0.5s, color 0.5s;
+    &:visited {
+      color: black;
+    }
+    &:hover {
+      background-color: $menu_background;
+      color: white;
+    }
+    & span {
+      display: table-cell;
+      padding: 0 15px;
+      &.amount {
+        text-align: right;
+        &:before {
+          content: "£";
+        }
       }
     }
   }
 }
 
-}
