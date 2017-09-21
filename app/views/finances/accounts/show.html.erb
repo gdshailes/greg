@@ -7,17 +7,17 @@
 
 <div class='transactions-table'>
   <div class='table-header-row'>
-    <span class="table-cell">Description</span>
-    <span class="table-cell-amount">Amount</span>
-    <span class="table-cell-amount">Balance</span>
+    <span>Description</span>
+    <span class="amount">Amount</span>
+    <span class="amount">Balance</span>
   </div>
   <% @rt = (@account.reconciled_balance || 0) + (@account.opening_balance || 0) %>
   <% @transactions.each do |transaction| %>
     <% @rt += transaction.amount %>
-    <%= link_to edit_finances_account_transaction_path(@account, transaction), style: "display: table-row" do %>
-      <span class="table-cell"><%= transaction.description %></span>
-      <span class="table-cell-amount"><%= transaction.amount %></span>
-      <span class="table-cell-amount"><%= @rt %></span>
+    <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "table-row" do %>
+      <span><%= transaction.description %></span>
+      <span class="amount"><%= transaction.amount %></span>
+      <span class="amount"><%= @rt %></span>
     <% end %>
   <% end %>
 </table>
