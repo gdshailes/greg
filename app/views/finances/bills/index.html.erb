@@ -18,7 +18,11 @@
   <% @bills.each do |bill| %>
     <%= link_to edit_finances_account_bill_path(@account.id, bill.id), class: "table-row" do %>
       <span><%= bill.description %></span>
-      <span><%= bill.amount %></span>
+      <% if bill.amount > 0 %>
+        <span class="amount deposit"><%= bill.amount %></span>
+      <% else %>
+        <span class="amount"><%= bill.amount * -1 %></span>
+      <% end %>
       <span><%= bill.frequency %></span>
       <span><%= bill.interval %></span>
       <span><%= bill.next_due_at %></span>

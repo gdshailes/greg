@@ -7,11 +7,7 @@ class Finances::TransactionsController < Finances::BaseController
   def index
   end
 
-  def show
-    respond_with(@transaction)
-  end
-
-  def new
+   def new
     @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(description: "New Transaction"))
   end
 
@@ -35,7 +31,7 @@ class Finances::TransactionsController < Finances::BaseController
 
   def destroy
     if @transaction.destroy
-      respond_with(@transaction)
+      redirect_to finances_account_path(@account)
     end
   end
 
@@ -46,7 +42,7 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
   def transaction_form_params
-    params.require(:finances_edit_transaction_form).permit(:finances_account_id, :description, :deposit, :amount, :reconciled)
+    params.require(:finances_edit_transaction_form).permit(:description, :deposit, :amount, :reconciled)
   end
 
 end

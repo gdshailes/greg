@@ -1,5 +1,7 @@
 class Finances::AccountsController < Finances::BaseController
 
+  include Finances::AccountsHelper
+
   def index
     if @accounts.primary.any?
       redirect_to finances_account_path(@accounts.primary.first)
@@ -8,6 +10,7 @@ class Finances::AccountsController < Finances::BaseController
 
   def show
     @transactions = @account.transactions
+    @upcoming_bills = upcoming_bills(@account)
     respond_with(@account)
   end
 

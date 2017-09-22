@@ -3,7 +3,7 @@ class DiaryEntryController < ActionController::Base
   before_action :authenticate_user!
   before_action :get_diary_entries
 
-  include GetDiaryEntriesConcern
+  include DiaryEntriesHelper
 
   def index
     @latest = current_user.diary_entries.order(created_at: :desc).first

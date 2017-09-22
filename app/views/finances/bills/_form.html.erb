@@ -2,10 +2,11 @@
 
 <div class="form-inputs">
   <%= f.input :description %>
-  <%= f.input :amount %>
-  <%= f.input :next_due_at %>
-  <%= f.input :interval %>
-  <%= f.input :frequency %>
+  <%= f.input :amount, as: :decimal, autofocus: true   %>
+  <%= f.input :deposit, as: :boolean %>
+  <%= f.input :next_due_at, as: :date %>
+  <%= f.input :interval, as: :integer %>
+  <%= f.input :frequency, collection: ['Days', 'Weeks', 'Months'], include_blank: false %>
 </div>
 
 <div class="form-actions">

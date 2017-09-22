@@ -7,14 +7,17 @@
 
 <div class='transactions-table'>
   <div class='table-header-row'>
+    <span>Date</span>
     <span>Description</span>
     <span class="amount">Amount</span>
     <span class="amount">Balance</span>
   </div>
   <% @rt = (@account.reconciled_balance || 0) + (@account.opening_balance || 0) %>
+
   <% @transactions.each do |transaction| %>
     <% @rt += transaction.amount %>
     <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "table-row" do %>
+      <span><%= transaction.created_at %></span>
       <span><%= transaction.description %></span>
       <% if transaction.amount > 0 %>
         <span class="amount deposit"><%= transaction.amount %></span>
@@ -24,4 +27,19 @@
       <span class="amount"><%= @rt %></span>
     <% end %>
   <% end %>
+
+  <% @upcoming_bills.each do |bill| %>
+    <% @rt += bill.amount %>
+    <%= link_to '#', class: "table-row upcoming-bill" do %>
+      <span><%= bill.created_at %></span>
+      <span><%= bill.description %></span>
+      <% if bill.amount > 0 %>
+        <span class="amount deposit"><%= bill.amount %></span>
+      <% else %>
+        <span class="amount"><%= bill.amount * -1 %></span>
+      <% end %>
+      <span class="amount"><%= @rt %></span>
+    <% end %>
+  <% end %>
+
 </table>

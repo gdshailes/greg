@@ -9,38 +9,40 @@ class Finances::BillsController < Finances::BaseController
     respond_with(@bills)
   end
 
-
   def new
-    @bill = Finances::Bill.new(description: 'New Bill')
-    respond_with(@bill)
+    @bill_form = Finances::EditBillForm.new(Finances::Bill.new(description: 'New Bill'))
   end
 
   def edit
+    @bill_form = Finances::EditBillForm.new(@bill)
   end
 
   def create
-    @bill = Finances::Bill.new(bill_params)
-    @bill.account_id = @account.id
-    @bill.save
-    redirect_to finances_account_bills_path(@account)
+    @bill_form = Finances::EditBillForm.new(@account.bills.build)
+    if @bill_form.submit(bill_form_params)
+      redirect_to finances_account_bills_path @account
+    end
   end
 
   def update
-    @bill.update(bill_params)
-    redirect_to finances_account_bills_path(@account)
+    @bill_form = Finances::EditBillForm.new(@bill)
+    if @bill_form.submit(bill_form_params)
+      redirect_to finances_account_bills_path @account
+    end
   end
 
   def destroy
-    @bill.destroy
-    redirect_to finances_account_bills_path(@account)
+    if @bill.destroy
+      redirect_to finances_account_bills_path(@account)
+    end
   end
 
   private
     def set_bill
-      @bill = Finances::Bill.find(params[:id])
+      @bill = @account.bills.find(params[:id])
     end
 
-    def bill_params
-      params.require(:finances_bill).permit(:description, :amount, :frequency, :interval, :next_due_at)
+    def bill_form_params
+      params.require(:finances_edit_bill_form).permit(:description, :deposit, :amount, :frequency, :interval, :next_due_at)
     end
 end

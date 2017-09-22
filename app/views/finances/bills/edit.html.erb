@@ -3,7 +3,7 @@
   Edit Bill
 </h1>
 
-<%= simple_form_for @bill, url: finances_account_bill_path(@account, @bill), method: :patch do |f| %>
+<%= simple_form_for @bill_form, url: finances_account_bill_path(@account, @bill), method: :patch do |f| %>
   <%= render partial: 'form', bill: @bill, locals: {f: f} %>
   <%= link_to 'Destroy', url: finances_account_bill_path(@account, @bill), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

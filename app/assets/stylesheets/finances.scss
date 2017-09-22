@@ -55,5 +55,8 @@ div.transactions-table {
         font-weight: bold;
       }
     }
+    &.upcoming-bill {
+      opacity: 0.3
+    }
   }
 }
