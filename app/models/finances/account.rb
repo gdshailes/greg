@@ -2,6 +2,7 @@ class Finances::Account < ApplicationRecord
 
   belongs_to :user
   has_many :transactions
+  has_many :bills
 
   scope :for_user, -> (user_id) { where(user_id: user_id) }
   scope :primary, -> { where(primary: true) }

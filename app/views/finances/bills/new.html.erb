@@ -1,0 +1,8 @@
+<h1>
+  <span><%= @account.name %></span>
+  Add Bill
+</h1>
+
+<%= simple_form_for @bill, url: finances_account_bills_path(@account, @bill), method: :post do |f| %>
+  <%= render partial: 'form', finances_bill: @finances_bill, locals: {f: f} %>
+<% end %>

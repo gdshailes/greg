@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921111612) do
+ActiveRecord::Schema.define(version: 20170922080934) do
 
   create_table "boris_cam_images", force: :cascade do |t|
     t.string   "filename"
@@ -40,6 +40,19 @@ ActiveRecord::Schema.define(version: 20170921111612) do
     t.integer  "reconciled_balance_pence"
     t.string   "reconciled_balance_currency", default: "GBP", null: false
     t.index ["user_id"], name: "index_finances_accounts_on_user_id"
+  end
+
+  create_table "finances_bills", force: :cascade do |t|
+    t.integer  "account_id"
+    t.string   "description",                     null: false
+    t.integer  "amount_pence",    default: 0,     null: false
+    t.string   "amount_currency", default: "GBP", null: false
+    t.string   "frequency",                       null: false
+    t.integer  "interval",                        null: false
+    t.date     "next_due_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.index ["account_id"], name: "index_finances_bills_on_account_id"
   end
 
   create_table "finances_transactions", force: :cascade do |t|

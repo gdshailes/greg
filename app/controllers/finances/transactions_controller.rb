@@ -1,6 +1,6 @@
 class Finances::TransactionsController < Finances::BaseController
 
-  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :set_transaction, only: [:edit, :update, :destroy]
 
   respond_to :html
 

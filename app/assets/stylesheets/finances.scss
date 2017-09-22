@@ -14,3 +14,46 @@ div.form-inputs {
 
 }
 
+div.transactions-table {
+  display: table;
+
+  div.table-header-row {
+    display: table-row;
+    font-weight: bold;
+    & span {
+      display: table-cell;
+      border-bottom: 1px solid black;
+      padding: 0 15px;
+      &.amount {
+        text-align: right;
+      }
+    }
+  }
+
+  a {
+    display: table-row;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.5s, color 0.5s;
+    &:visited {
+      color: black;
+    }
+    &:hover {
+      background-color: $menu_background;
+      color: white;
+    }
+    & span {
+      display: table-cell;
+      padding: 0 15px;
+      &.amount {
+        text-align: right;
+        &:before {
+          content: "£";
+        }
+      }
+      &.deposit {
+        font-weight: bold;
+      }
+    }
+  }
+}

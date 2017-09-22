@@ -13,10 +13,8 @@ class Finances::BaseController < ActionController::Base
   end
 
   def set_account
-
     account_id = params[:account_id] || params[:id]
     @account = Finances::Account.find(account_id) if account_id
-
   end
 
 end

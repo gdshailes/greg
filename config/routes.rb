@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :finances do
     resources :accounts do
       resources :transactions
+      resources :bills
     end
   end
 

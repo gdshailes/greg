@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <span><%= @account.name %></span>
+  Bills
+</h1>
+
+<div class='transactions-table'>
+
+  <div class='table-header-row'>
+    <span>Description</span>
+    <span>Amount</span>
+    <span>Frequency</span>
+    <span>Interval</span>
+    <span>Next Due</span>
+  </div>
+
+  <% @bills.each do |bill| %>
+    <%= link_to edit_finances_account_bill_path(@account.id, bill.id), class: "table-row" do %>
+      <span><%= bill.description %></span>
+      <span><%= bill.amount %></span>
+      <span><%= bill.frequency %></span>
+      <span><%= bill.interval %></span>
+      <span><%= bill.next_due_at %></span>
+    <% end %>
+  <% end %>
+</div>
+<%= link_to 'New Bill', new_finances_account_bill_path(@account.id), class: "command-button" %>
