@@ -16,47 +16,46 @@ div.form-inputs {
 
 div.transactions-table {
   display: table;
+}
 
-  div.table-header-row {
-    display: table-row;
-    font-weight: bold;
-    & span {
-      display: table-cell;
-      border-bottom: 1px solid black;
-      padding: 0 15px;
-      &.amount {
-        text-align: right;
-      }
-    }
-  }
+div.table-row-header {
+  display: table-row;
+  border-bottom: 1px solid black;
+  font-weight: bold;
+}
 
-  a {
-    display: table-row;
-    text-decoration: none;
+a.table-row {
+  display: table-row;
+  padding: 0 15px;
+  text-decoration: none;
+  border: none;
+  color: black;
+  transition: background-color 0.5s, color 0.5s;
+  &:visited {
     color: black;
-    transition: background-color 0.5s, color 0.5s;
-    &:visited {
-      color: black;
-    }
-    &:hover {
-      background-color: $menu_background;
-      color: white;
-    }
-    & span {
-      display: table-cell;
-      padding: 0 15px;
-      &.amount {
-        text-align: right;
-        &:before {
-          content: "£";
-        }
-      }
-      &.deposit {
-        font-weight: bold;
-      }
-    }
-    &.upcoming-bill {
-      opacity: 0.3
-    }
+  }
+  &:hover {
+    background-color: $menu_background;
+    color: white;
+  }
+  &.upcoming-bill {
+    font-style: italic;
+    opacity: 0.5;
   }
 }
+
+span.table-cell {
+  display: table-cell;
+  padding: 0 15px;
+  &.header {
+    border-bottom: 1px solid black;
+  }
+  &.amount {
+    text-align: right;
+    &:before { content: '£' }
+  }
+  &.deposit {
+    font-weight: bold;
+  }
+}
+

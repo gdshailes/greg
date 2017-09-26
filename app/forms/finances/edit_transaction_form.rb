@@ -1,9 +1,9 @@
 class Finances::EditTransactionForm
   include ActiveModel::Model
 
-  attr_accessor :description, :amount, :reconciled
+  attr_accessor :description, :amount, :reconciled, :transaction_date
 
-  delegate :description, :reconciled, to: :transaction
+  delegate :description, :reconciled, :transaction_date, to: :transaction
 
   def initialize(transaction)
     @transaction = transaction
@@ -35,7 +35,7 @@ class Finances::EditTransactionForm
   private
 
   def transaction_params
-    @params.permit(:finances_account_id, :description, :amount, :reconciled)
+    @params.permit(:transaction_date, :finances_account_id, :description, :amount, :reconciled)
   end
 
 end

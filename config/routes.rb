@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   namespace :finances do
     resources :accounts do
       resources :transactions
-      resources :bills
+      resources :bills do
+        patch 'record_payment', to: 'bills#record_payment'
+      end
     end
   end
 

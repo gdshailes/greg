@@ -4,5 +4,5 @@
 </h1>
 
 <%= simple_form_for @transaction_form, url: finances_account_transactions_path(@account, @transaction_form.transaction), method: :post do |f| %>
-  <%= render partial: 'form', finances_transaction: @transaction, locals: {f: f} %>
+  <%= render partial: 'finances/transactions/form', finances_transaction: @transaction, locals: {f: f} %>
 <% end %>

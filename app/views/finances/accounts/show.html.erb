@@ -6,39 +6,32 @@
 </h1>
 
 <div class='transactions-table'>
-  <div class='table-header-row'>
-    <span>Date</span>
-    <span>Description</span>
-    <span class="amount">Amount</span>
-    <span class="amount">Balance</span>
+  <div class='table-row-header'>
+    <span class="table-cell header">Date</span>
+    <span class="table-cell header">Description</span>
+    <span class="table-cell header">Amount</span>
+    <span class="table-cell header">Balance</span>
   </div>
+
   <% @rt = (@account.reconciled_balance || 0) + (@account.opening_balance || 0) %>
 
   <% @transactions.each do |transaction| %>
     <% @rt += transaction.amount %>
-    <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "table-row" do %>
-      <span><%= transaction.created_at %></span>
-      <span><%= transaction.description %></span>
-      <% if transaction.amount > 0 %>
-        <span class="amount deposit"><%= transaction.amount %></span>
-      <% else %>
-        <span class="amount"><%= transaction.amount * -1 %></span>
-      <% end %>
-      <span class="amount"><%= @rt %></span>
+    <%= link_to edit_finances_account_transaction_path(@account, transaction), class:  'table-row' do %>
+      <span class="table-cell"><%= transaction.transaction_date.strftime('%d/%m/%Y') %></span>
+      <span class="table-cell"><%= transaction.description %></span>
+      <span class="table-cell amount <%= 'deposit' if transaction.amount > 0 %>"><%= transaction.amount.abs %></span>
+      <span class="table-cell amount"><%= @rt %></span>
     <% end %>
   <% end %>
 
   <% @upcoming_bills.each do |bill| %>
-    <% @rt += bill.amount %>
-    <%= link_to '#', class: "table-row upcoming-bill" do %>
-      <span><%= bill.created_at %></span>
-      <span><%= bill.description %></span>
-      <% if bill.amount > 0 %>
-        <span class="amount deposit"><%= bill.amount %></span>
-      <% else %>
-        <span class="amount"><%= bill.amount * -1 %></span>
-      <% end %>
-      <span class="amount"><%= @rt %></span>
+    <% @rt += bill[:transaction].amount %>
+    <%= link_to finances_account_bill_record_payment_path(@account, bill[:bill_id]), class: 'table-row upcoming-bill', method: :patch do %>
+      <span class="table-cell"><%= bill[:transaction].transaction_date.strftime('%d/%m/%Y') %></span>
+      <span class="table-cell"><%= bill[:transaction].description %></span>
+      <span class="table-cell amount <%= 'deposit' if bill[:transaction].amount > 0 %>"><%= bill[:transaction].amount.abs %></span>
+      <span class="table-cell amount"><%= @rt %></span>
     <% end %>
   <% end %>
 

@@ -7,7 +7,8 @@
 
 <div class='transactions-table'>
 
-  <div class='table-header-row'>
+  <div class='table-row_header'>
+    <span></span>
     <span>Description</span>
     <span>Amount</span>
     <span>Frequency</span>
@@ -16,7 +17,10 @@
   </div>
 
   <% @bills.each do |bill| %>
-    <%= link_to edit_finances_account_bill_path(@account.id, bill.id), class: "table-row" do %>
+    <div class='table-row'>
+      <%= link_to edit_finances_account_bill_path(@account.id, bill.id) do %>
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <% end %>
       <span><%= bill.description %></span>
       <% if bill.amount > 0 %>
         <span class="amount deposit"><%= bill.amount %></span>
@@ -25,8 +29,8 @@
       <% end %>
       <span><%= bill.frequency %></span>
       <span><%= bill.interval %></span>
-      <span><%= bill.next_due_at %></span>
-    <% end %>
+      <span><%= bill.next_due_at.strftime('%d/%m/%Y') %></span>
+    </div>
   <% end %>
 </div>
 <%= link_to 'New Bill', new_finances_account_bill_path(@account.id), class: "command-button" %>

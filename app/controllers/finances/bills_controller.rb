@@ -1,6 +1,6 @@
 class Finances::BillsController < Finances::BaseController
 
-  before_action :set_bill, only: [:edit, :update, :destroy]
+  before_action :set_bill, only: [:edit, :update, :destroy, :record_payment]
 
   respond_to :html
 
@@ -10,7 +10,7 @@ class Finances::BillsController < Finances::BaseController
   end
 
   def new
-    @bill_form = Finances::EditBillForm.new(Finances::Bill.new(description: 'New Bill'))
+    @bill_form = Finances::EditBillForm.new(Finances::Bill.new(description: 'New Bill', interval: 1, frequency: 'Months'))
   end
 
   def edit
@@ -37,9 +37,14 @@ class Finances::BillsController < Finances::BaseController
     end
   end
 
+  def record_payment
+    @transaction_form = Finances::EditTransactionForm.new(@bill.create_payment_transaction!)
+    render :template => 'finances/transactions/new'
+  end
+
   private
     def set_bill
-      @bill = @account.bills.find(params[:id])
+      @bill = @account.bills.find(params[:bill_id] || params[:id])
     end
 
     def bill_form_params
