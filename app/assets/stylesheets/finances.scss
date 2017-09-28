@@ -33,28 +33,108 @@ a {
 
 form.simple_form {
   padding: 1em;
-
-  & input.boolean {
-    display: inline;
-    width: auto;
-    vertical-align: middle;
-    }
-  & label.boolean {
-    display: inline;
-    vertical-align: middle;
-  }
-
-  & select {
-    border: none;
-    border-radius: 0px;
+  & input.string, input.numeric {
+    background-color: $background;
+    border: 1px solid $rule_color;
+    padding: 0 12px;
+    box-sizing: border-box;
     font-size: 18px;
+    font-family: $base_font;
   }
-
   & div.form-actions {
     padding-top: 18px;
     text-align: right;
   }
 }
+
+
+.field-wrapper {
+
+  margin-top: 18px;
+
+  .input-type--select {
+    position: relative;
+    max-width: 200px;
+    select {
+      height: 44px;
+      padding: 0 48px 0 8px;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-color: $background;
+      border: 1px solid $rule_color;
+      border-radius: 0;
+      width: 100%;
+      font-size: 18px;
+    }
+
+    &:after {
+      position: absolute;
+      top: 50%;
+      right: 8px;
+      transform: translateY(-50%);
+      font-family: 'FontAwesome';
+      font-size: 24px !important;
+      content: "\f13a";
+      color: $rule_color;
+      pointer-events: none;
+    }
+    &.inline { display: inline-block; }
+  }
+
+  &__input {
+    .input-type--checkbox {
+      margin-top: 18px;
+      display: inline-block;
+      input {
+        position: absolute;
+        top: 32px;
+        bottom: 16px;
+        left: 16px;
+        opacity: 0;
+        z-index: -1;
+      }
+      label {
+        display: inline-block;
+        min-width: 180px;
+        border: 1px solid $rule_color;
+        position: relative;
+        padding: 8px 8px 8px 42px;
+        line-height: 1.5em;
+        font-size: 18px;
+        &:after {
+          position: absolute;
+          top: 9px;
+          left: 10px;
+          font-family: 'FontAwesome';
+          font-size: 24px !important;
+          content: "\f10c";
+          opacity: 1;
+          color: $rule_color;
+          transition: opacity 0.5s
+        }
+      }
+      .checkbox {
+        margin-right: 12px;
+      }
+      input:checked + label {
+        opacity: 1; border-color: $rule_color !important;
+        transition: opacity 0.5s
+      }
+      input:checked + label:after {
+        content: "\f111";
+        opacity: 1;
+        transition: opacity 0.5s
+      }
+      input:focus + label {
+        outline: -webkit-focus-ring-color auto 5px;
+        outline-offset: -2px;
+      }
+    }
+  }
+}
+
 
 div.transactions-table {
   display: table;
