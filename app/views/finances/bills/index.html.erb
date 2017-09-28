@@ -1,36 +1,40 @@
 <p id="notice"><%= notice %></p>
 
 <h1>
-  <span><%= @account.name %></span>
-  Bills
+  <span><%= @account.name %></span>Bills
 </h1>
 
-<div class='transactions-table'>
+<% if @bills.any? %>
+  <div class='transactions-table'>
 
-  <div class='table-row_header'>
-    <span></span>
-    <span>Description</span>
-    <span>Amount</span>
-    <span>Frequency</span>
-    <span>Interval</span>
-    <span>Next Due</span>
-  </div>
-
-  <% @bills.each do |bill| %>
-    <div class='table-row'>
-      <%= link_to edit_finances_account_bill_path(@account.id, bill.id) do %>
-        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-      <% end %>
-      <span><%= bill.description %></span>
-      <% if bill.amount > 0 %>
-        <span class="amount deposit"><%= bill.amount %></span>
-      <% else %>
-        <span class="amount"><%= bill.amount * -1 %></span>
-      <% end %>
-      <span><%= bill.frequency %></span>
-      <span><%= bill.interval %></span>
-      <span><%= bill.next_due_at.strftime('%d/%m/%Y') %></span>
+    <div class='table-row_header'>
+      <span></span>
+      <span>Description</span>
+      <span>Amount</span>
+      <span>Frequency</span>
+      <span>Interval</span>
+      <span>Next Due</span>
     </div>
-  <% end %>
-</div>
+
+    <% @bills.each do |bill| %>
+      <div class='table-row'>
+        <%= link_to edit_finances_account_bill_path(@account.id, bill.id) do %>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        <% end %>
+        <span><%= bill.description %></span>
+        <% if bill.amount > 0 %>
+          <span class="amount deposit"><%= bill.amount %></span>
+        <% else %>
+          <span class="amount"><%= bill.amount * -1 %></span>
+        <% end %>
+        <span><%= bill.frequency %></span>
+        <span><%= bill.interval %></span>
+        <span><%= bill.next_due_at.strftime('%d/%m/%Y') %></span>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>You have not yet set up any bills for this account.</p>
+<% end %>
+
 <%= link_to 'New Bill', new_finances_account_bill_path(@account.id), class: "command-button" %>

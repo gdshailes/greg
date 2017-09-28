@@ -6,25 +6,20 @@
   <% end %>
 </div>
 <ul class='menu'>
-
-  <% if @account && @account.persisted? %>
-    <%= render partial: 'finances/accounts/menu_item', locals: {account: @account} %>
-    <li>
-      <%= link_to "Edit #{@account.name}", edit_finances_account_path(@account) %>
-    </li>
-    <li>
-      <%= link_to "Bills for #{@account.name}", finances_account_bills_path(@account) %>
-    </li>
-  <% end %>
-
   <% if @accounts.any? %>
     <% @accounts.each do |account| %>
-      <% unless account == @account %>
-        <%= render partial: 'finances/accounts/menu_item', locals: {account: account} %>
+      <%= render partial: 'finances/accounts/menu_item', locals: {account: account} %>
+      <% if account == @account %>
+        <li>
+          <%= link_to "Edit #{@account.name}", edit_finances_account_path(@account), class: "menu-sub" %>
+        </li>
+        <li>
+          <%= link_to "Bills for #{@account.name}", finances_account_bills_path(@account), class: "menu-sub" %>
+        </li>
       <% end %>
     <% end %>
   <% end %>
   <li>
-    <%= link_to 'Add Account...', new_finances_account_path %>
+    <%= link_to 'Add Account...', new_finances_account_path, class: "menu-sub" %>
   </li>
 </ul>

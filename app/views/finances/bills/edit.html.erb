@@ -1,9 +1,8 @@
 <h1>
-  <span><%= @account.name %></span>
-  Edit Bill
+  <span><%= @account.name %></span>Edit Bill
 </h1>
 
 <%= simple_form_for @bill_form, url: finances_account_bill_path(@account, @bill), method: :patch do |f| %>
   <%= render partial: 'form', bill: @bill, locals: {f: f} %>
-  <%= link_to 'Destroy', url: finances_account_bill_path(@account, @bill), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Delete', finances_account_bill_path(@account, @bill), method: :delete, data: { confirm: 'Are you sure?' }, class: 'warning command-button' %>
 <% end %>

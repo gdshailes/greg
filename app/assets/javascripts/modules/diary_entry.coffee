@@ -15,7 +15,7 @@ class GregHome.DiaryEntry
   menu_toggle: ->
     if @$menu.hasClass 'show'
       @$menu.removeClass 'show'
-      @$button.children('i').removeClass('fa-times').addClass('fa-bars')
+      @$button.children('i').removeClass('fa-arrow-left').addClass('fa-arrow-right')
     else
       @$menu.addClass 'show'
-      @$button.children('i').removeClass('fa-bars').addClass('fa-times')
+      @$button.children('i').removeClass('fa-arrow-right').addClass('fa-arrow-left')

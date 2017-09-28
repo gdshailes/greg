@@ -1,7 +1,6 @@
 <h1>
-  <span><%= @account.name %></span>
-  Edit Details
+  <span><%= @account.name %></span>Edit Details
 </h1>
 
 <%= render 'form', finances_account: @account %>
-
+<%= link_to 'Delete', @account, method: :delete, data: { confirm: 'Are you sure?' }, class: 'warning command-button' %>

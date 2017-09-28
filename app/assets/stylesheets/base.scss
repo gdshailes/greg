@@ -20,7 +20,7 @@ body{
 
 .mobile-header {
   @media (max-width:$break_width) {
-    height: 30px;
+    height: 50px;
   }
   display: block;
   position: fixed;
@@ -34,7 +34,7 @@ body{
   overflow: hidden;
   & .show-menu {
     display: inline-block;
-    height: 30px;
+    height: 50px;
   }
   & .command-button {
     background-color: $button_background;
@@ -52,7 +52,7 @@ body{
       background-color: $menu-highlight;
     }
     vertical-align: middle;
-    line-height: 30px
+    line-height: 50px
   }
 }
 
@@ -62,7 +62,7 @@ body{
 
 aside {
   ::-webkit-scrollbar {
-    width: 0px
+    width: 0px;
   }
 
   div.new-entry-menu-item {
@@ -98,7 +98,7 @@ aside {
     @media (max-width:$break_width) {
       margin-left: -$width;
       padding-top: 0px;
-      top: 30px;
+      top: 50px;
       opacity:0.9;
     }
     width: $width;
@@ -138,6 +138,15 @@ aside {
       }
       & span {
         font-size: 10px;
+        &.amount:before {
+          content: '£';
+        }
+      }
+      &.menu-sub:before {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        font-family: FontAwesome;
+        content: "\f105";
       }
     }
   }
@@ -161,6 +170,9 @@ main {
     font-size: 20px;
     & span {
       font-weight: normal;
+      border-right: 1px solid black;
+      padding-right: 0.5em;
+      margin-right: 0.5em;
     }
   }
   & div.buttons {
