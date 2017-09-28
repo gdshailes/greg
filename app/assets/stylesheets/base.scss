@@ -4,6 +4,7 @@ $body_margin: 2em;
 $break_width: 700px;
 $mobile_header_height: 50px;
 $footer_height: 30px;
+$base_font: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
 
 @import "font-awesome";
 @import "animations";
@@ -13,7 +14,7 @@ body{
   padding: 0;
   color: $body-color;
   background-color: $background;
-  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
+  font-family: $base_font;
   position: absolute;
   width: 100%;
   height: 100%;
