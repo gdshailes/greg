@@ -2,6 +2,8 @@
 $width: 250px;
 $body_margin: 2em;
 $break_width: 700px;
+$mobile_header_height: 50px;
+$footer_height: 30px;
 
 @import "font-awesome";
 @import "animations";
@@ -9,7 +11,7 @@ $break_width: 700px;
 body{
   margin: 0;
   padding: 0;
-  color: black;
+  color: $body-color;
   background-color: $background;
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   position: absolute;
@@ -18,9 +20,13 @@ body{
   min-width: 300px;
 }
 
+.right-align {
+  text-align: right;
+}
+
 .mobile-header {
   @media (max-width:$break_width) {
-    height: 50px;
+    height: $mobile_header_height;
   }
   display: block;
   position: fixed;
@@ -34,7 +40,7 @@ body{
   overflow: hidden;
   & .show-menu {
     display: inline-block;
-    height: 50px;
+    height: $mobile_header_height;
   }
   & .command-button {
     background-color: $button_background;
@@ -70,6 +76,7 @@ aside {
     top: 0;
     left: 0;
     width: $width;
+    height: 33px;
     font-weight: bold;
     background-color: $menu_new;
     & a:hover {
@@ -83,7 +90,7 @@ aside {
   }
 
   nav.menu {
-    padding-top: 30px;
+    padding-top: 33px;
     background-color: $menu_background;
     overflow-y: scroll;
     overflow-x: none;
@@ -98,7 +105,7 @@ aside {
     @media (max-width:$break_width) {
       margin-left: -$width;
       padding-top: 0px;
-      top: 50px;
+      top: $mobile_header_height;
       opacity:0.9;
     }
     width: $width;
@@ -156,7 +163,7 @@ div.page {
   width: 100%;
   @media (max-width: $break_width) {
     padding-left: 0;
-    padding-top: 30px;
+    padding-top: $mobile_header_height;
   }
   padding-left: $width;
   padding-bottom: 45px;
@@ -170,7 +177,7 @@ main {
     font-size: 20px;
     & span {
       font-weight: normal;
-      border-right: 1px solid black;
+      border-right: 1px solid $rule-color;
       padding-right: 0.5em;
       margin-right: 0.5em;
     }
@@ -199,6 +206,9 @@ main {
   transition: opacity 0.5s;
   &:hover {
     opacity: 1;
+  }
+  &:visited {
+    color: $button_color;
   }
 }
 
@@ -234,7 +244,7 @@ div.footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  height:30px;
+  height:$footer_height;
   background-color: $footer_background;
   color: $footer_color;
   margin-left: $width;
@@ -255,7 +265,7 @@ div.footer {
     right: 0;
     bottom: 0;
     background-color: $menu_background;
-    height: 30px;
+    height: $footer_height;
     & a {
       display: block;
       float: left;

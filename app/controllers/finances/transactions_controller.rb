@@ -8,7 +8,7 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
    def new
-    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(description: "New Transaction"))
+    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(description: "New Transaction", transaction_date: Date.current))
   end
 
   def edit
@@ -30,6 +30,7 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
   def destroy
+    @account.update_attributes!(reconciled_balance: @transaction.amount * -1) if @transaction.reconciled
     if @transaction.destroy
       redirect_to finances_account_path(@account)
     end

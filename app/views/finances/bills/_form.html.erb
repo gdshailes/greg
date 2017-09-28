@@ -1,14 +1,17 @@
 <%= f.error_notification %>
 
 <div class="form-inputs">
-  <%= f.input :description %>
-  <%= f.input :amount, as: :decimal, autofocus: true   %>
+  <%= f.input :description, autofocus: true %>
+  <%= f.input :amount, as: :decimal %>
   <%= f.input :deposit, as: :boolean %>
-  <%= f.input :next_due_at, as: :date %>
+  <%= f.input :next_due_at, as: :datepicker %>
   <%= f.input :interval, as: :integer %>
   <%= f.input :frequency, collection: ['Days', 'Weeks', 'Months'], include_blank: false %>
 </div>
 
 <div class="form-actions">
-  <%= f.button :submit, 'Save Changes' %>
+  <% if @bill %>
+    <%= link_to 'Delete Bill', finances_account_bill_path(@account, @bill), method: :delete, data: { confirm: 'Are you sure?' }, class: 'command-button' %>
+  <% end %>
+  <%= f.button :submit, 'Save Bill', class: "command-button" %>
 </div>

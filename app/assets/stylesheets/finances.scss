@@ -1,26 +1,70 @@
 @import 'finances/colours';
 @import 'base.scss';
 
-div.form-inputs {
-  display: table;
 
-  .form-input {
-    display: table-row;
-
-    .span {
-      display: table-cell;
+a {
+  text-decoration: none;
+  color: $link_color;
+  transition: color 0.5s, background-color 0.5s;
+  &.ticked-checkbox {
+    padding: 0 0.5em;
+    &:before {
+      font-family: FontAwesome;
+      content: '\f046';
+      padding-right: 0.5em;
     }
   }
+  &.unticked-checkbox {
+    padding: 0 0.5em;
+    &:before {
+      font-family: FontAwesome;
+      content: '\f096';
+      padding-right: 0.5em;
+    }
+  }
+  &:visited {
+    color: $link_color;
+  }
+  &:hover {
+    color: $link_highlight_color;
+    background-color: $link_highlight_background;
+  }
+}
 
+form.simple_form {
+  padding: 1em;
+
+  & input.boolean {
+    display: inline;
+    width: auto;
+    vertical-align: middle;
+    }
+  & label.boolean {
+    display: inline;
+    vertical-align: middle;
+  }
+
+  & select {
+    border: none;
+    border-radius: 0px;
+    font-size: 18px;
+  }
+
+  & div.form-actions {
+    padding-top: 18px;
+    text-align: right;
+  }
 }
 
 div.transactions-table {
   display: table;
+  border-bottom: 1px solid $rule_color;
+  margin-bottom: 1em;
 }
 
 div.table-row-header {
   display: table-row;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid $rule_color;
   font-weight: bold;
 }
 
@@ -29,10 +73,10 @@ a.table-row {
   padding: 0 15px;
   text-decoration: none;
   border: none;
-  color: black;
+  color: $body_color;
   transition: background-color 0.5s, color 0.5s;
   &:visited {
-    color: black;
+    color: $body_color;
   }
   &:hover {
     background-color: $menu_background;
@@ -42,17 +86,26 @@ a.table-row {
     font-style: italic;
     opacity: 0.5;
   }
+  &.reconciled {
+    &:after {
+      font-family: FontAwesome;
+      content: "\f00c"
+    }
+  }
 }
 
 span.table-cell {
   display: table-cell;
   padding: 0 15px;
   &.header {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $rule_color;
   }
   &.amount {
     text-align: right;
-    &:before { content: '£' }
+    &:before {
+      content: '£';
+      color: $menu_background;
+    }
   }
   &.deposit {
     font-weight: bold;

@@ -6,6 +6,7 @@
 
 <% if @transactions.any? || @upcoming_bills.any? %>
   <div class='transactions-table'>
+
     <div class='table-row-header'>
       <span class="table-cell header">Date</span>
       <span class="table-cell header">Description</span>
@@ -13,25 +14,23 @@
       <span class="table-cell header">Balance</span>
     </div>
 
-    <% @rt = (@account.reconciled_balance || 0) + (@account.opening_balance || 0) %>
-
     <% @transactions.each do |transaction| %>
-      <% @rt += transaction.amount %>
-      <%= link_to edit_finances_account_transaction_path(@account, transaction), class:  'table-row' do %>
+      <% @balance += transaction.amount %>
+      <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "table-row#{transaction.reconciled ? ' reconciled' : ''}" do %>
         <span class="table-cell"><%= transaction.transaction_date.strftime('%d/%m/%Y') %></span>
         <span class="table-cell"><%= transaction.description %></span>
-        <span class="table-cell amount <%= 'deposit' if transaction.amount > 0 %>"><%= transaction.amount.abs %></span>
-        <span class="table-cell amount"><%= @rt %></span>
+        <span class="table-cell amount<%= ' deposit' if transaction.amount > 0 %>"><%= transaction.amount.abs %></span>
+        <span class="table-cell amount"><%= @balance %></span>
       <% end %>
     <% end %>
 
     <% @upcoming_bills.each do |bill| %>
-      <% @rt += bill[:transaction].amount %>
+      <% @balance += bill[:transaction].amount %>
       <%= link_to finances_account_bill_record_payment_path(@account, bill[:bill_id]), class: 'table-row upcoming-bill', method: :patch do %>
         <span class="table-cell"><%= bill[:transaction].transaction_date.strftime('%d/%m/%Y') %></span>
         <span class="table-cell"><%= bill[:transaction].description %></span>
         <span class="table-cell amount <%= 'deposit' if bill[:transaction].amount > 0 %>"><%= bill[:transaction].amount.abs %></span>
-        <span class="table-cell amount"><%= @rt %></span>
+        <span class="table-cell amount"><%= @balance %></span>
       <% end %>
     <% end %>
 
@@ -39,3 +38,11 @@
 <% else %>
   <p>There are currently no transactions to show for this account.</p>
 <% end %>
+
+<p>
+  <% if @include_reconciled %>
+    <%= link_to 'Show Reconciled', @account, class: "ticked-checkbox" %>
+  <% else %>
+    <%= link_to 'Show Reconciled', finances_account_path(@account) + "?full=1", class: "unticked-checkbox" %>
+  <% end %>
+</p>

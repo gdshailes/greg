@@ -8,6 +8,9 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, 'Save Changes' %>
+    <% unless @account.new_record? %>
+      <%= link_to 'Delete Account', @account, method: :delete, data: { confirm: 'Are you sure?' }, class: 'command-button' %>
+    <% end %>
+    <%= f.button :submit, 'Save Account', class: "command-button" %>
   </div>
 <% end %>
