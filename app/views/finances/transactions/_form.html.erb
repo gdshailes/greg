@@ -4,8 +4,8 @@
   <%= f.input :transaction_date, as: :datepicker, autofocus: true %>
   <%= f.input :amount, as: :decimal %>
   <%= f.input :description %>
-  <%= f.input :deposit, as: :boolean %>
-  <%= f.input :reconciled, as: :boolean %>
+  <%= f.input :deposit, as: :boolean, wrapper: :input_checkbox %>
+  <%= f.input :reconciled, as: :boolean, wrapper: :input_checkbox %>
 </div>
 
 <div class="form-actions">

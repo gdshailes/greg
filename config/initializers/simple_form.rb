@@ -52,6 +52,49 @@ SimpleForm.setup do |config|
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
 
+  config.wrappers :input_checkbox, tag: 'div', class: 'field-wrapper', error_class: 'error', hint_class: 'hint' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.wrapper tag: 'div', class: 'field-wrapper__input' do |ba|
+      ba.wrapper tag: 'div', class: 'input-type--checkbox' do |bax|
+        bax.use :input
+        bax.use :label
+      end
+    end
+    b.wrapper tag: 'div', class: 'field-wrapper__error' do |ba|
+      ba.wrapper tag: 'p' do |bax|
+        bax.use :error
+      end
+    end
+    b.wrapper tag: 'div', class: 'field-wrapper__hint' do |ba|
+      ba.wrapper tag: 'p' do |bax|
+        bax.use :hint
+      end
+    end
+  end
+
+  config.wrappers :input_select, tag: 'div', class: 'field-wrapper', error_class: 'error', hint_class: 'hint' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.use :label
+    b.wrapper tag: 'div', class: 'field-wrapper__input' do |ba|
+      ba.wrapper tag: 'div', class: 'input-type--select' do |bax|
+        bax.use :input
+      end
+    end
+    b.wrapper tag: 'div', class: 'field-wrapper__error' do |ba|
+      ba.wrapper tag: 'p' do |bax|
+        bax.use :error
+      end
+    end
+    b.wrapper tag: 'div', class: 'field-wrapper__hint' do |ba|
+      ba.wrapper tag: 'p' do |bax|
+        bax.use :hint
+      end
+    end
+  end
+
+
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
 
