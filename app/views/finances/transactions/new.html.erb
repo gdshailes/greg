@@ -1,5 +1,5 @@
 <h1>
-  <span><%= @account.name %></span> New Transaction
+  <span><%= @account.name %></span>New Transaction
 </h1>
 
 <%= simple_form_for @transaction_form, url: finances_account_transactions_path(@account, @transaction_form.transaction), method: :post do |f| %>
