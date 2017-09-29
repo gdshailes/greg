@@ -6,6 +6,8 @@ class Finances::BaseController < ActionController::Base
 
   respond_to :html
 
+  layout "finances"
+
   private
 
   def set_accounts
