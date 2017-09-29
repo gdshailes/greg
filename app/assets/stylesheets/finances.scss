@@ -1,4 +1,4 @@
-@import 'finances/colours';
+ @import 'finances/colours';
 @import 'base.scss';
 
 
@@ -12,6 +12,7 @@ a {
       font-family: FontAwesome;
       content: '\f046';
       padding-right: 0.5em;
+      color: $rule_color;
     }
   }
   &.unticked-checkbox {
@@ -20,6 +21,7 @@ a {
       font-family: FontAwesome;
       content: '\f096';
       padding-right: 0.5em;
+      color: $rule_color;
     }
   }
   &:visited {

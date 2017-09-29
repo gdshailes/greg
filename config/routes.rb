@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :bills do
         patch 'record_payment', to: 'bills#record_payment'
       end
+      resource :transfer, only: [:new, :create]
     end
   end
 

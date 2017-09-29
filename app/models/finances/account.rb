@@ -4,7 +4,7 @@ class Finances::Account < ApplicationRecord
   has_many :transactions, dependent: :destroy
   has_many :bills, dependent: :destroy
 
-  scope :for_user, -> (user_id) { where(user_id: user_id) }
+  scope :for_user, -> (user) { where(user: user) }
   scope :primary, -> { where(primary: true) }
 
   monetize :opening_balance_pence, as: "opening_balance"

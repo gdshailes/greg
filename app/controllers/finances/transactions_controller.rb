@@ -19,6 +19,8 @@ class Finances::TransactionsController < Finances::BaseController
     @transaction_form = Finances::EditTransactionForm.new(@account.transactions.build)
     if @transaction_form.submit(transaction_form_params)
       redirect_to finances_account_path @account
+    else
+      render 'finances/transactions/new'
     end
   end
 
@@ -26,6 +28,8 @@ class Finances::TransactionsController < Finances::BaseController
     @transaction_form = Finances::EditTransactionForm.new(@transaction)
     if @transaction_form.submit(transaction_form_params)
       redirect_to finances_account_path @account
+    else
+      render 'finances/transactions/edit'
     end
   end
 

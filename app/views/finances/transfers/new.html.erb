@@ -1,0 +1,6 @@
+<h1>
+  <span><%= @account.name %></span>Transfer To Another Account
+</h1>
+<%= simple_form_for @create_transfer_form, url: finances_account_transfer_path(@account), method: :post do |f| %>
+  <%= render partial: 'finances/transfers/form', finances_transfer: @transfer, locals: {f: f} %>
+<% end %>
