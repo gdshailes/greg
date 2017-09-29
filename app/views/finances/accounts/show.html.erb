@@ -14,6 +14,15 @@
       <span class="table-cell header">Balance</span>
     </div>
 
+    <% unless @include_reconciled %>
+      <div style="display: table-row">
+        <span class="table-cell"></span>
+        <span class="table-cell">Reconciled Total</span>
+        <span class="table-cell"></span>
+        <span class="table-cell amount"><%= @account.reconciled_balance + @account.opening_balance%></span>
+      </div>
+    <% end %>
+
     <% @transactions.each do |transaction| %>
       <% @balance += transaction.amount %>
       <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "table-row#{transaction.reconciled ? ' reconciled' : ''}" do %>

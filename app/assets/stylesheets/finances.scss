@@ -1,4 +1,4 @@
- @import 'finances/colours';
+@import 'finances/colours';
 @import 'base.scss';
 
 
@@ -144,14 +144,18 @@ div.transactions-table {
   margin-bottom: 1em;
 }
 
-div.table-row-header {
+.table-row {
   display: table-row;
+}
+
+div.table-row-header {
+  @extend .table-row;
   border-bottom: 1px solid $rule_color;
   font-weight: bold;
 }
 
 a.table-row {
-  display: table-row;
+  @extend .table-row;
   padding: 0 15px;
   text-decoration: none;
   border: none;
