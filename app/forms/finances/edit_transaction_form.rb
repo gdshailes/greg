@@ -3,7 +3,7 @@ class Finances::EditTransactionForm
 
   attr_accessor :description, :amount, :reconciled, :transaction_date
 
-  delegate :description, :reconciled, :transaction_date, to: :transaction
+  delegate :description, :reconciled, :transaction_date, :errors, to: :transaction
 
   def initialize(transaction)
     @transaction = transaction
@@ -16,8 +16,12 @@ class Finances::EditTransactionForm
 
     @transaction.assign_attributes(transaction_params)
     @transaction.amount *= -1 unless supporting_params[:deposit] == "1"
-    if @transaction.valid? && transaction.account.update_attributes(reconciled_balance: (transaction.account.reconciled_balance || 0) + rd)
+    if @transaction.valid?
+      @transaction.account.update_attributes!(reconciled_balance: (@transaction.account.reconciled_balance || 0) + rd)
       @transaction.save!
+      true
+    else
+      false
     end
   end
 

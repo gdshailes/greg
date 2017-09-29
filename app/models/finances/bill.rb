@@ -6,6 +6,11 @@ class Finances::Bill < ApplicationRecord
 
   monetize :amount_pence, as: "amount"
 
+  validates :next_due_at, presence: true
+  validates :description, presence: true
+  validates_numericality_of :amount, :greater_than => 0
+
+
   def increment_next_due_at
     case frequency
     when 'Months'

@@ -9,7 +9,7 @@ class Finances::BaseController < ActionController::Base
   private
 
   def set_accounts
-    @accounts = Finances::Account.for_user(current_user.id)
+    @accounts = Finances::Account.for_user(current_user)
   end
 
   def set_account

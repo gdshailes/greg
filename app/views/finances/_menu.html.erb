@@ -10,6 +10,11 @@
     <% @accounts.each do |account| %>
       <%= render partial: 'finances/accounts/menu_item', locals: {account: account} %>
       <% if account == @account %>
+        <% if @accounts.count > 1 %>
+          <li>
+            <%= link_to "Transfer from #{@account.name}", new_finances_account_transfer_path(@account), class: "menu-sub" %>
+          </li>
+          <% end %>
         <li>
           <%= link_to "Edit #{@account.name}", edit_finances_account_path(@account), class: "menu-sub" %>
         </li>

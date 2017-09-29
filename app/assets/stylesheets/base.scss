@@ -150,11 +150,14 @@ aside {
           content: '£';
         }
       }
-      &.menu-sub:before {
-        padding-left: 0.5em;
-        padding-right: 0.5em;
-        font-family: FontAwesome;
-        content: "\f105";
+      &.menu-sub{
+        background-color: $footer_background;
+        &:before {
+          padding-left: 0.5em;
+          padding-right: 0.5em;
+          font-family: FontAwesome;
+          content: "\f105";
+        }
       }
     }
   }
