@@ -8,7 +8,7 @@ class Finances::Bill < ApplicationRecord
 
   validates :next_due_at, presence: true
   validates :description, presence: true
-  validates_numericality_of :amount, :greater_than => 0
+  validates_numericality_of :amount
 
 
   def increment_next_due_at
