@@ -12,7 +12,7 @@ class Finances::EditBillForm
   def submit(params)
     @params = params
     @bill.update_attributes(bill_params)
-    unless params[:deposit] == '1'
+    unless supporting_params[:deposit] == '1'
       @bill.amount = @bill.amount * -1
     end
     if @bill.valid?
@@ -36,6 +36,10 @@ class Finances::EditBillForm
 
   def bill_params
     @params.permit(:description, :amount, :frequency, :interval, :next_due_at)
+  end
+
+  def supporting_params
+    @params.permit(:deposit)
   end
 
 end
