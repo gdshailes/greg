@@ -178,6 +178,12 @@ a.table-row {
       content: "\f00c"
     }
   }
+  &:nth-child(even) {
+    background-color: darken($background, 6%);
+    &:hover {
+      background-color: $menu_background;
+    }
+  }
 }
 
 span.table-cell {
