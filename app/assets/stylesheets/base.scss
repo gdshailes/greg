@@ -104,14 +104,15 @@ aside {
     z-index:1;
 
     @media (max-width:$break_width) {
-      margin-left: -$width;
+      margin-left: -$width + 15px;
       padding-top: 0px;
       top: $mobile_header_height;
-      opacity:0.9;
+      opacity:0.4;
     }
     width: $width;
     &.show {
       margin-left: 0;
+      opacity:0.9;
     }
     & ul {
       list-style: none;
