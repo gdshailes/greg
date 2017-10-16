@@ -38,7 +38,7 @@ class Finances::BillsController < Finances::BaseController
   end
 
   def record_payment
-    @transaction_form = Finances::EditTransactionForm.new(@bill.create_payment_transaction!)
+    @transaction_form = Finances::EditTransactionForm.new(@bill.create_payment_transaction)
     render :template => 'finances/transactions/new'
   end
 

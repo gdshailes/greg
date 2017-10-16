@@ -33,12 +33,6 @@ class Finances::Bill < ApplicationRecord
     tx
   end
 
-  def create_payment_transaction!
-    tx = payment_transaction
-    increment_next_due_at!
-    tx
-  end
-
   private
 
     def payment_transaction
@@ -48,6 +42,7 @@ class Finances::Bill < ApplicationRecord
         amount_pence: amount_pence,
         reconciled: false,
         transaction_date: next_due_at,
+        bill_id: self.id
       )
     end
 

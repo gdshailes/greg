@@ -1,9 +1,9 @@
 class Finances::EditTransactionForm
   include ActiveModel::Model
 
-  attr_accessor :description, :amount, :reconciled, :transaction_date
+  attr_accessor :description, :amount, :reconciled, :transaction_date, :bill_id
 
-  delegate :description, :reconciled, :transaction_date, :errors, to: :transaction
+  delegate :description, :reconciled, :transaction_date, :bill_id, :errors, to: :transaction
 
   def initialize(transaction)
     @transaction = transaction
@@ -19,6 +19,9 @@ class Finances::EditTransactionForm
     if @transaction.valid?
       @transaction.account.update_attributes!(reconciled_balance: (@transaction.account.reconciled_balance || 0) + rd)
       @transaction.save!
+      if @transaction.bill_id
+        Finances::Bill.find(@transaction.bill_id).increment_next_due_at!
+      end
       true
     else
       false
@@ -61,7 +64,7 @@ class Finances::EditTransactionForm
     end
 
     def transaction_params
-      @params.permit(:transaction_date, :finances_account_id, :description, :amount, :reconciled)
+      @params.permit(:transaction_date, :finances_account_id, :description, :amount, :reconciled, :bill_id)
     end
 
     def supporting_params

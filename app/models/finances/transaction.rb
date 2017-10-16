@@ -12,4 +12,10 @@
   validates :description, presence: true
   validates_numericality_of :amount
 
+  attr_reader :bill_id
+
+  def bill_id=(bill_id)
+    @bill_id = bill_id.to_i
+  end
+
 end

@@ -47,7 +47,7 @@ class Finances::TransactionsController < Finances::BaseController
     end
 
     def transaction_form_params
-      params.require(:finances_edit_transaction_form).permit(:transaction_date, :description, :deposit, :amount, :reconciled)
+      params.require(:finances_edit_transaction_form).permit(:transaction_date, :description, :deposit, :amount, :reconciled, :bill_id)
     end
 
 end
