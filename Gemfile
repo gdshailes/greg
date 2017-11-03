@@ -34,7 +34,7 @@ gem 'httparty'
 gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'rails-html-sanitizer'
-gem 'devise'
+gem 'devise', '~> 4.2'
 gem 'money-rails'
 gem 'paranoia', '~> 2.2.0.pre'
 
@@ -57,8 +57,18 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'faker', '~> 1.4.3'
+  gem 'poltergeist'
+  gem 'rails-controller-testing'
   gem 'rspec-activemodel-mocks', '~> 1.0', '>= 1.0.3'
   gem 'rspec-rails', '~> 3.5', '>= 3.5.1'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'shoulda-matchers', '2.8.0'
+  gem 'webmock'
+  gem 'capybara-screenshot'
 end
 
 group :production do

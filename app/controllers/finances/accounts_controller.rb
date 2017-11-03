@@ -38,6 +38,7 @@ class Finances::AccountsController < Finances::BaseController
   end
 
   def update
+    # new_reconciled_balance = @account.reconciled_balance + (account_params[:opening_balance].to_money - @account.opening_balance)
     @account.update(account_params)
     respond_with(@account)
   end
@@ -54,7 +55,7 @@ class Finances::AccountsController < Finances::BaseController
     end
 
     def account_params
-      params.require(:finances_account).permit(:user_id, :name, :opening_balance, :primary)
+      params.require(:finances_account).permit(:user_id, :name, :opening_balance, :reconciled_balance, :primary)
     end
 
 end

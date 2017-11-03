@@ -25,4 +25,6 @@ Rails.application.routes.draw do
 
   resources :diary_entry
 
+  get 'test', to: 'test#index'
+
 end
