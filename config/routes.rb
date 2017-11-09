@@ -23,8 +23,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :diary_entry
+  get 'ratrace', to: 'ratrace#index'
 
-  get 'test', to: 'test#index'
+  resources :diary_entry
 
 end
