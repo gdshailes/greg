@@ -7,10 +7,10 @@ class GregHome.Ratrace
     @update = setInterval(@update_countdown, 1000)
 
   update_countdown: ->
-    dateNow = new Date()
-    dateRace = new Date(2018,9,8,7,30,0)
+    dateNow = Math.floor((new Date()).getTime() / 1000)
+    dateRace = Math.floor((new Date(2018,8,10,7,30,0)).getTime() / 1000)
 
-    seconds = Math.floor(dateRace - dateNow) / 1000
+    seconds = dateRace - dateNow
 
     weeks = Math.floor(seconds / 604800) # seconds in a week
     seconds = seconds - (weeks * 604800)
