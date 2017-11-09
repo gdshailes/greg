@@ -9,9 +9,10 @@
     <meta name="viewport" content="width=500">
     <%= stylesheet_link_tag 'greghome', media: 'all', 'data-turbolinks-track': 'reload' %>
 		<script src="http://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <%= javascript_include_tag :application %>
   </head>
 
-	<body style='text-align: center' onload='document.getElementById("q").focus();'>
+	<body style='text-align: center'>
     <%= yield %>
   </body>
 </html>
