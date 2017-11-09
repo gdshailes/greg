@@ -8,7 +8,7 @@ class GregHome.Ratrace
 
   update_countdown: ->
     dateNow = new Date()
-    dateRace = new Date(2018,9,7,7,30,0)
+    dateRace = new Date(2018,9,8,7,30,0)
 
     seconds = Math.floor(dateRace - dateNow) / 1000
 

@@ -163,3 +163,14 @@ div.LineBreak {
     width: 100%;
   }
 }
+
+div.countdown {
+  text-align: center;
+  font-size: 14px;
+  color: silver;
+}
+
+span.seconds, span.minutes, span.hours, span.days, span.weeks {
+  color: white;
+  font-weight: bold;
+}
