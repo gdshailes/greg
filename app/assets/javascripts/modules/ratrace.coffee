@@ -1,7 +1,25 @@
 class GregHome.Ratrace
   constructor: ->
+    @$intro = $('div.intro')
+    @$intro_title = $('div.intro h1')
+    @init()
+
+  init: ->
+    if @$intro_title.length > 0
+      @listen()
+
     @update_countdown()
     @start_timer()
+
+  listen: ->
+    @$intro_title.on 'click', (e) =>
+      @intro_toggle()
+
+  intro_toggle: ->
+    if @$intro.hasClass 'collapsed'
+      @$intro.removeClass 'collapsed'
+    else
+      @$intro.addClass 'collapsed'
 
   start_timer: ->
     @update = setInterval(@update_countdown, 1000)

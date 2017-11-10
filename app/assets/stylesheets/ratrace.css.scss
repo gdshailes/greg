@@ -1,3 +1,10 @@
+
+$dark:    #444444;
+$darker:  #222222;
+$darkest: #000000;
+$light:   #666666;
+$opacity: 0.8;
+
 body {
   margin: 0;
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
@@ -17,6 +24,8 @@ body {
   padding: 0;
   margin: 20px 0 0 0;
   display: inline-block;
+  width: 600px;
+  min-width: 600px;
 }
 
 .timer_element {
@@ -28,26 +37,72 @@ body {
 }
 
 .timer_digit {
-  background-color: black;
+  background-color: $darker;
   font-size: 5em;
   font-weight: bold;
   color: white;
-  opacity: 0.5;
+  opacity: $opacity;
   line-height: 1;
   border-radius: 6px;
 }
 
 .timer_desc {
-  background-color: black;
+  background-color: $dark;
   margin-top: 5px;
   font-size: 1.5em;
   color: white;
-  opacity: 0.3;
+  opacity: $opacity;
   border-radius: 6px;
 }
 
+.intro {
+  text-align: left;
+  margin: 150px 5px 5px 5px;
+  padding: 10px 40px;
+  background-color: $darker;
+  opacity: $opacity;
+  color: white;
+  border-radius: 12px;
+  font-size: 18px;
+}
+
+.collapsed p
+{
+  display: none;
+}
+
+.intro h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.intro h1:after {
+  display: block;
+  content: '(Click to hide)';
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.collapsed h1:after {
+  display: block;
+  content: 'Click to find out!';
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.intro a {
+  font-weight: bold;
+}
+.intro a:visited {
+  color: white;
+}
+.intro a:hover {
+  color: white;
+}
+
 .feed {
-  margin-top: 130px;
   text-align: left;
 }
 
@@ -58,9 +113,9 @@ body {
 .feed_title {
   margin: 5px 5px 0 5px;
   padding: 10px;
-  border-radius: 6px 6px 0 0;
-  background-color: black;
-  opacity: 0.7;
+  border-radius: 12px 12px 0 0;
+  background-color: $darkest;
+  opacity: $opacity;
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -75,16 +130,16 @@ body {
 .feed_body {
   margin: 0 5px 5px 5px;
   padding: 10px;
-  border-radius: 0 0 6px 6px;
-  background-color: black;
-  opacity: 0.5;
+  border-radius: 0 0 12px 12px;
+  background-color: $darker;
+  opacity: $opacity;
   color: white;
 }
 
 .feed_comment {
   margin: 10px 0 0 30%;
   padding: 5px 25px;
-  background-color: rgb(80,80,80);
+  background-color: $light;
   border-radius: 12px;
 }
 
