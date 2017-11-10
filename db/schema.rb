@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926142840) do
+ActiveRecord::Schema.define(version: 20171110151430) do
 
   create_table "boris_cam_images", force: :cascade do |t|
     t.string   "filename"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 20170926142840) do
     t.string   "filetype"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "comment_by"
+    t.string   "comment"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "diary_entries", force: :cascade do |t|
@@ -65,6 +74,25 @@ ActiveRecord::Schema.define(version: 20170926142840) do
     t.datetime "updated_at",                       null: false
     t.date     "transaction_date"
     t.index ["account_id"], name: "index_finances_transactions_on_account_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "image"
+    t.string   "imageable_type"
+    t.integer  "imageable_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "original_filename"
+    t.string   "content_type"
+  end
+
+  create_table "ratrace_posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_ratrace_posts_on_user_id"
   end
 
   create_table "ride_log_bikes", force: :cascade do |t|

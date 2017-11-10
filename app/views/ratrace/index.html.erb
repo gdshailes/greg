@@ -41,47 +41,19 @@
 
   <div class='feed'>
 
-    <div class='feed_entry'>
-      <div class='feed_title'>
-        CTC Run - Mere
-        <div class='feed_date'>
-          Sunday 5th November
+    <% @posts.each do |post| %>
+      <div class='feed_entry'>
+        <div class='feed_title'>
+          <%= post.title %>
+          <div class='feed_date'>
+            <%= post.pretty_created_at %>
+          </div>
         </div>
       </div>
       <div class='feed_body'>
-        We rode to Mere on Sunday, it was lush.
-        <div class='feed_comment'>
-          <div class='feed_comment_name'>
-            Greg Shailes
-          </div>
-          I took my sporty bike and it got very muddy
-        </div>
-        <div class='feed_comment'>
-          <div class='feed_comment_name'>
-            Hannah Richards
-          </div>
-          I gave up!
-        </div>
+        <%= post.body %>
       </div>
-    </div>
-
-    <div class='feed_entry'>
-      <div class='feed_title'>
-        Cycling Adventure
-        <div class='feed_date'>
-          Saturday 4th November
-        </div>
-      </div>
-      <div class='feed_body'>
-        Greg fetched Hannah from Midford this afternoon
-        <div class='feed_comment'>
-          <div class='feed_comment_name'>
-            Greg Shailes
-          </div>
-          I took my green bike
-        </div>
-      </div>
-    </div>
+    <% end %>
 
   </div>
 

@@ -24,6 +24,13 @@ Rails.application.routes.draw do
   end
 
   get 'ratrace', to: 'ratrace#index'
+  namespace :ratrace do
+    resources :posts do
+      resources :comments do
+
+      end
+    end
+  end
 
   resources :diary_entry
 
