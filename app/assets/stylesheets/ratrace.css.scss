@@ -1,69 +1,82 @@
 
-$dark:    #444444;
-$darker:  #222222;
-$darkest: #000000;
-$light:   #666666;
+$dark:    #445546;
+$darker:  #223327;
+$darkest: #001105;
+$light:   #667777;
+$background_1: #b7bdbb;
+$background_2: #7f752c;
 $opacity: 0.8;
 
 body {
   margin: 0;
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   width: 100%;
-  height: 100%;
-  background-color: black;
+  height: 100vh;
   background-image: image-url("ratrace-background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: 1800px;
-  background-color: gray;
+  background-color: $background_1;
   text-align: center;
+  font-size:18px;
+  @media (max-width:641px) {
+    background-image: none;
+    background: -webkit-linear-gradient($background_1, $background_2);
+    background: -o-linear-gradient($background_1, $background_2);
+    background: -moz-linear-gradient($background_1, $background_2);
+    background: linear-gradient($background_1, $background_2);
+    font-size: 25px;
+  }
 }
 
 .frame {
   padding: 0;
   margin: 20px 0 0 0;
   display: inline-block;
-  width: 600px;
-  min-width: 600px;
+  width: 640px;
 }
+
 
 .timer_element {
   padding: 5px;
   margin: 0;
-  width: 110px;
+  width: 118px;
   height: 120px;
   float: left;
 }
 
 .timer_digit {
   background-color: $darker;
-  font-size: 5em;
+  font-size: 4em;
   font-weight: bold;
   color: white;
   opacity: $opacity;
   line-height: 1;
-  border-radius: 6px;
+  border-radius: 10px 10px 0 0;
+  padding: 10px 0;
 }
 
 .timer_desc {
   background-color: $dark;
-  margin-top: 5px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: white;
   opacity: $opacity;
-  border-radius: 6px;
+  border-radius: 0 0 10px 10px;
 }
 
 .intro {
   text-align: left;
   margin: 150px 5px 5px 5px;
+  @media (max-width:641px) {
+    margin-top: 180px;
+  }
   padding: 10px 40px;
   background-color: $darker;
   opacity: $opacity;
   color: white;
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 1em;
 }
 
 .collapsed p
@@ -72,7 +85,7 @@ body {
 }
 
 .intro h1 {
-  font-size: 24px;
+  font-size: 1.2em;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
@@ -81,14 +94,14 @@ body {
 .intro h1:after {
   display: block;
   content: '(Click to hide)';
-  font-size: 14px;
+  font-size: 0.7em;
   font-weight: normal;
 }
 
 .collapsed h1:after {
   display: block;
   content: 'Click to find out!';
-  font-size: 14px;
+  font-size: 0.7em;
   font-weight: normal;
 }
 
@@ -116,13 +129,13 @@ body {
   border-radius: 12px 12px 0 0;
   background-color: $darkest;
   opacity: $opacity;
-  font-size: 18px;
+  font-size: 1.1em;
   font-weight: bold;
   color: white;
 }
 
 .feed_date {
-  font-size: 12px;
+  font-size: 0.6em;
   font-weight: regular;
   color: silver;
 }
