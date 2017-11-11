@@ -56,7 +56,7 @@ class PopulateNameInUsers < ActiveRecord::Migration[5.0]
       when 'jo.shailes@hotmail.comjo'
         'jo.shailes@hotmail.com'
       else
-        ''
+        'jo.shailes@hotmail.com'
       end
     end
 
