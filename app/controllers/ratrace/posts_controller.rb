@@ -2,6 +2,7 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   before_action :authenticate_user!
   before_action :set_posts, only: :index
+  before_action :set_post, only: [:edit, :update]
 
   def index
     respond_with(@post)
@@ -17,6 +18,7 @@ class Ratrace::PostsController < Ratrace::BaseController
   end
 
   def edit
+
   end
 
   def create
@@ -28,7 +30,7 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   def update
     @post.update(post_params)
-    respond_with(@post)
+    redirect_to ratrace_posts_url
   end
 
   def destroy
@@ -40,6 +42,10 @@ class Ratrace::PostsController < Ratrace::BaseController
 
     def set_posts
       @posts = Ratrace::Post.all
+    end
+
+    def set_post
+      @post = Ratrace::Post.find(params[:id])
     end
 
     def post_params
