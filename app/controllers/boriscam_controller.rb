@@ -1,6 +1,6 @@
 require 'fileutils'
 
-class BoriscamController < ActionController::Base
+class BoriscamController < ApplicationController
 
   # Written By : GDS
   # Date       : 15/11/2016

@@ -1,4 +1,4 @@
-class RideLogController < ActionController::Base
+class RideLogController < ApplicationController
 
   def index
     @latest_ride = RideLog::Ride.order(date: :desc).first

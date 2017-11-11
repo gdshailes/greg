@@ -1,4 +1,4 @@
-class Ratrace::BaseController < ActionController::Base
+class Ratrace::BaseController < ApplicationController
 
   respond_to :html
 

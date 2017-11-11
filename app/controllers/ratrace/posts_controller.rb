@@ -1,6 +1,7 @@
 class Ratrace::PostsController < Ratrace::BaseController
 
-  before_action :authenticate_user!
+  before_action :authenticate_admin!
+
   before_action :set_posts, only: :index
   before_action :set_post, only: [:edit, :update]
 

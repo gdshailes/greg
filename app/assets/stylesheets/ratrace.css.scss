@@ -65,9 +65,36 @@ body {
   border-radius: 0 0 10px 10px;
 }
 
+.admin_tools {
+  text-align: center;
+  margin: 10px;
+  padding: 3px;
+  background-color: $dark;
+  opacity: 1;
+  border-radius: 12px;
+  font-size: 0.8em;
+  color: white;
+  min-width: 600px;
+}
+
+.admin_tools a, a:visited {
+  color: white;
+  text-decoration: none;
+  padding: 0 12px;
+  background-color: $darker;
+  border-radius: 6px;
+}
+
+.admin_tools a:hover {
+  background-color: $darkest;
+}
+
 .intro {
-  text-align: left;
   margin: 150px 5px 5px 5px;
+}
+
+.intro, .edit_posts_list li a {
+  text-align: left;
   @media (max-width:641px) {
     margin-top: 180px;
   }
@@ -168,4 +195,25 @@ body {
 
 .feed_comment:after {
   content: ' \201C';
+}
+
+.edit_posts_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.edit_posts_list li{
+  margin: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 10px;
+  display: block;
+}
+
+.edit_posts_list a, a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+.edit_posts_list a:hover {
+  opacity: 1;
 }

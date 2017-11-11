@@ -1,4 +1,4 @@
-class DiaryEntryController < ActionController::Base
+class DiaryEntryController < ApplicationController
 
   before_action :authenticate_user!
   before_action :get_diary_entries

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  get 'users/index', to: 'users#index'
+
   root to: "greghome#index"
   get 'greghome', to: 'greghome#greghome'
   get 'boriscam', to: 'boriscam#index'

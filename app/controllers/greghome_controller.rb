@@ -1,12 +1,10 @@
-class GreghomeController < ActionController::Base
+class GreghomeController < ApplicationController
   protect_from_forgery with: :exception
 
-  # Written By : GDS
-  # Date       : 24/10/2016
+  before_action :authenticate_admin!, only: :greghome
 
   def index
 
   end
-
 
 end

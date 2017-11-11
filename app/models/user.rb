@@ -8,4 +8,8 @@ class User < ApplicationRecord
     DiaryEntry.where(user_id: self.id)
   end
 
+  def is_admin?
+    email == 'greg.shailes@gmail.com' || email == 'jo.shailes@hotmail.co.uk'
+  end
+
 end

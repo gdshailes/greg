@@ -12,8 +12,6 @@ RSpec.describe Finances::AccountsController, :type => :controller do
 
         patch :update, params: { id: account.id, opening_balance: 100.00 }
 
-        binding.pry
-
       end
 
     end
