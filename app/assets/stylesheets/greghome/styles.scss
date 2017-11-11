@@ -11,6 +11,8 @@ body {
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   font-size: 14px;
   text-align: center;
+  padding: 0;
+  margin: 0;
 }
 
 .countdown {
@@ -173,4 +175,16 @@ div.countdown {
 span.seconds, span.minutes, span.hours, span.days, span.weeks {
   color: white;
   font-weight: bold;
+}
+
+div.denied {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-image: image-url("go-away-now.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }

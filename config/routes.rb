@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root to: "greghome#index"
   get 'greghome', to: 'greghome#greghome'
+  get 'greghome/denied', to: 'greghome#denied'
   get 'boriscam', to: 'boriscam#index'
   post 'boriscam/upload', to: 'boriscam#upload'
 

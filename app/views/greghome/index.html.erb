@@ -15,6 +15,14 @@
       <li><a href="diary_entry">Diary</a></li>
       <li><a href="finances/accounts">Finances</a></li>
       <li><a href="ratrace">Rat Race</a></li>
+      <div class="LineBreak"> </div>
+      <% if current_user %>
+        <h1>Signed in as <%= current_user.first_name %></h1>
+        <li><%= link_to 'Sign Out', destroy_user_session_path, method: 'DELETE' %></li>
+      <% else %>
+        <h1>Not signed in</h1>
+        <li><a href="users/sign_in">Sign In</a></li>
+      <% end %>
 		</ul>
 	</div>
 </div>

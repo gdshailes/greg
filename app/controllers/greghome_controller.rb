@@ -7,4 +7,8 @@ class GreghomeController < ApplicationController
 
   end
 
+  def denied
+
+  end
+
 end

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin!
     unless is_admin?
-      redirect_to 'http://www.google.com'
+      redirect_to greghome_denied_path
     end
   end
 
