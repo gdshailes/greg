@@ -57,7 +57,7 @@
         </div>
       </div>
       <div class='feed_body'>
-        <%= post.body %>
+        <%= sanitize(post.formatted_body, tags: %w(p)) %>
       </div>
     <% end %>
 
