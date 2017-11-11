@@ -23,6 +23,8 @@ class PopulateNameInUsers < ActiveRecord::Migration[5.0]
         'Jo'
       when 'jo.shailes@hotmail.com/jo'
         'Jo'
+      when 'jo.shailes@hotmail.comjo'
+        'Jo'
       else
         email
       end
@@ -36,6 +38,8 @@ class PopulateNameInUsers < ActiveRecord::Migration[5.0]
         'Shailes'
       when 'jo.shailes@hotmail.com/jo'
         'Shailes'
+      when 'jo.shailes@hotmail.comjo'
+        'Shailes'
       else
         ''
       end
@@ -48,6 +52,8 @@ class PopulateNameInUsers < ActiveRecord::Migration[5.0]
       when 'jo.shailes@hotmail.com'
         email
       when 'jo.shailes@hotmail.com/jo'
+        'jo.shailes@hotmail.com'
+      when 'jo.shailes@hotmail.comjo'
         'jo.shailes@hotmail.com'
       else
         ''
