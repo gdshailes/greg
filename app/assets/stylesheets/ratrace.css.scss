@@ -12,6 +12,10 @@ body {
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   width: 100%;
   height: 100vh;
+  background: -webkit-linear-gradient($background_1, $background_2);
+  background: -o-linear-gradient($background_1, $background_2);
+  background: -moz-linear-gradient($background_1, $background_2);
+  background: linear-gradient($background_1, $background_2);
   background-image: image-url("ratrace-background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -21,11 +25,7 @@ body {
   text-align: center;
   font-size:18px;
   @media (max-width:641px) {
-    background-image: none;
-    background: -webkit-linear-gradient($background_1, $background_2);
-    background: -o-linear-gradient($background_1, $background_2);
-    background: -moz-linear-gradient($background_1, $background_2);
-    background: linear-gradient($background_1, $background_2);
+    background-image: image-url("ratrace-background-mobile.jpg");
     font-size: 25px;
   }
 }
