@@ -29,7 +29,7 @@ class Ratrace::PostsController < Ratrace::BaseController
 
     unless params[:ratrace_post][:image].blank?
       img = Image.new
-      img.uploaded_file params[:ratrace_post][:image]
+      img.uploaded_file params[:ratrace_post][:image], 1000, 3000
       if img.filetype != "image/jpeg"
         head :unsupported_media_type
       else
