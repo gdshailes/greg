@@ -12,7 +12,7 @@
   <% @posts.each do | post |%>
     <li>
       <%= link_to edit_ratrace_post_path(post.id) do %>
-        <strong><%= post.title %></strong>, by <%= post.user.first_name %> on <%= post.pretty_created_at %>
+        <strong><%= post.title %></strong> - <%= post.user.first_name %>, <%= post.short_created_at %>
       <% end %>
     </li>
   <% end %>

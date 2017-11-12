@@ -10,6 +10,10 @@ class Ratrace::Post < ApplicationRecord
     created_at.strftime("#{created_at.day.ordinalize} %B %Y")
   end
 
+  def short_created_at
+    created_at.strftime("%e/%m/%Y")
+  end
+
   def formatted_body
     text = ''
     self.body.split("\n").collect.each do | para |
