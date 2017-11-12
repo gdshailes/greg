@@ -5,6 +5,7 @@
 <%= form_for :ratrace_post, :url => ratrace_posts_path do |f| %>
   Title: <%= f.text_field :title %><br>
   Body: <%= f.text_area :body %><br>
+  Image: <%= f.file_field :image %>
   <%= f.submit %><br>
 <% end %>
 

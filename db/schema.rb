@@ -77,13 +77,13 @@ ActiveRecord::Schema.define(version: 20171111175908) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string   "image"
     t.string   "imageable_type"
     t.integer  "imageable_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.string   "original_filename"
-    t.string   "content_type"
+    t.string   "filename"
+    t.binary   "filedata"
+    t.string   "filetype"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "ratrace_posts", force: :cascade do |t|

@@ -53,7 +53,7 @@
   </div>
 
   <div class='feed'>
-
+    <% alternate = false %>
     <% @posts.each do |post| %>
       <div class='feed_entry'>
         <div class='feed_title'>
@@ -62,12 +62,21 @@
             <%= post.pretty_created_at %> by <%= post.user.first_name %>
           </div>
         </div>
-      </div>
-      <div class='feed_body'>
-        <%= sanitize(post.formatted_body, tags: %w(p)) %>
+        <div class='feed_body'>
+          <% if post.image %>
+            <% if alternate %>
+              <div class='feed_image alternate'>
+            <% else %>
+              <div class='feed_image'>
+            <% end %>
+              <%= ('<img src="data:image/jpg;base64,%s">' % Base64.encode64(post.image.filedata)).html_safe %>
+            </div>
+          <% end %>
+          <%= sanitize(post.formatted_body, tags: %w(p)) %>
+          <% alternate = !alternate %>
+        </div>
       </div>
     <% end %>
-
   </div>
 
 </div>

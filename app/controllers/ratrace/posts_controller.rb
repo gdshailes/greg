@@ -23,10 +23,27 @@ class Ratrace::PostsController < Ratrace::BaseController
   end
 
   def create
+
+    binding.pry
+
     @post = Ratrace::Post.new(post_params)
     @post.user_id = current_user.id
-    @post.save
-    redirect_to ratrace_posts_url
+
+    unless params[:ratrace_post][:image].blank?
+      img = Image.new
+      img.uploaded_file params[:ratrace_post][:image]
+      if img.filetype != "image/jpeg"
+        head :unsupported_media_type
+      else
+        img.save!
+        @post.images << img
+      end
+    end
+
+    if @post.save!
+      redirect_to ratrace_url
+    end
+
   end
 
   def update

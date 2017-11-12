@@ -5,7 +5,7 @@ $dark:    rgba(0, 26, 26, 0.4);
 $light:   rgba(255,255,255,0.3);
 $background_1: #b7bdbb;
 $background_2: #7f752c;
-$opacity: 0.8;
+$opacity: 1;
 
 body {
   margin: 0;
@@ -182,6 +182,25 @@ body {
 
 .feed_body p {
   margin: 0 0 12px 0;
+}
+
+.feed_image {
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.feed_image img {
+  max-width:500px;
+  box-shadow: 10px 10px 10px black;
+  -ms-transform: rotate(3deg); /* IE 9 */
+  -webkit-transform: rotate(3deg); /* Safari */
+  transform: rotate(3deg);
+}
+
+.alternate img {
+  -ms-transform: rotate(-4deg); /* IE 9 */
+  -webkit-transform: rotate(-4deg); /* Safari */
+  transform: rotate(-4deg);
 }
 
 .feed_comment {

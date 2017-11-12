@@ -1,7 +1,8 @@
 class Ratrace::Post < ApplicationRecord
 
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :images, as: :imageable, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
   scope :for_user, -> (user) { where(user: user) }
@@ -24,6 +25,10 @@ class Ratrace::Post < ApplicationRecord
       end
     end
     text
+  end
+
+  def image
+    images.first
   end
 
 end
