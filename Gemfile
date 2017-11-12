@@ -37,6 +37,7 @@ gem 'rails-html-sanitizer'
 gem 'devise', '~> 4.2'
 gem 'money-rails'
 gem 'paranoia', '~> 2.2.0.pre'
+gem 'mini_magick'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

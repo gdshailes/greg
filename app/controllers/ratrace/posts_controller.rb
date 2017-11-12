@@ -24,8 +24,6 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   def create
 
-    binding.pry
-
     @post = Ratrace::Post.new(post_params)
     @post.user_id = current_user.id
 
