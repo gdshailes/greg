@@ -106,7 +106,7 @@ body {
   font-size: 1em;
 }
 
-.collapsed p
+.collapsed p, .collapsed img
 {
   display: none;
 }
@@ -148,6 +148,10 @@ body {
 
 .feed_entry {
   margin-top: 10px;
+}
+
+.feed_image {
+  text-align: center;
 }
 
 .feed_title {
