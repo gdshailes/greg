@@ -1,8 +1,17 @@
-<h1>Edit Post</h1>
-<%= form_for @post do |f| %>
-  Title: <%= f.text_field :title  %><br>
-  Body: <%= f.text_area :body %><br>
-  <%= f.submit %><br>
-<% end %>
-<%= link_to 'Cancel', ratrace_posts_url %>
-<%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?'} %> |
+<div class='panel left-align'>
+  <%= form_for @post do |f| %>
+
+    <div class='edit-post-label'>Title</div>
+    <div class='edit-post-input'><%= f.text_field :title  %></div>
+
+    <div class='edit-post-label'>Body</div>
+    <div class='edit-post-input'><%= f.text_area :body %></div>
+
+    <div class='edit-post-actions'>
+      <%= link_to 'Cancel', ratrace_posts_url %>
+      <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?'} %>
+      <%= f.submit "Save" %>
+    </div>
+
+  <% end %>
+</div>

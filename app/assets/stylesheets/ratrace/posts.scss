@@ -1,3 +1,45 @@
+.edit_post {
+
+}
+
+.edit-post-label {
+  font-size: 0.8em;
+  font-weight: normal;
+}
+
+.edit-post-input input {
+  width: 100%;
+}
+
+.edit-post-input textarea {
+  width:100%;
+  height: 200px;
+}
+
+.edit-post-actions {
+  text-align: right;
+}
+
+.edit-post-actions label, .edit-post-actions input, .edit-post-actions a {
+  background: $darkest;
+  padding: 15px;
+  margin-right: 10px;
+  font-size: 1em;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: normal;
+}
+
+.edit-post-actions a, .edit-post-actions a:hover, .edit-post-actions a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.edit-post-actions span {
+  display: none;
+}
+
 .edit_posts_list {
   list-style: none;
   margin: 0;

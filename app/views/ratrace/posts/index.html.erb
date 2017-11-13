@@ -2,12 +2,24 @@
   Hello, <%= current_user.first_name %>. <a href='/ratrace'>Go back</a>
 </div>
 
-<%= form_for :ratrace_post, :url => ratrace_posts_path do |f| %>
-  Title: <%= f.text_field :title %><br>
-  Body: <%= f.text_area :body %><br>
-  Image: <%= f.file_field :image %>
-  <%= f.submit %><br>
-<% end %>
+<div class='panel left-align'>
+  <%= form_for :ratrace_post, :url => ratrace_posts_path do |f| %>
+
+    <div class='edit-post-label'>Title</div>
+    <div class='edit-post-input'><%= f.text_field :title %></div>
+
+    <div class='edit-post-label'>Body:</div>
+    <div class='edit-post-input'><%= f.text_area :body %></div>
+
+    <div class='edit-post-actions'>
+      <label>Upload a file
+        <span><%= f.file_field :image %></span>
+      </label>
+      <%= f.submit "Save" %></div>
+    </div>
+
+  <% end %>
+</div>
 
 <ul class='edit_posts_list'>
   <% @posts.each do | post |%>
