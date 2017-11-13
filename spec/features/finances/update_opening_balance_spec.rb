@@ -4,7 +4,7 @@ RSpec.describe Finances::AccountsController, :type => :controller do
 
   context 'test' do
 
-    let(:account) { create(:finances_account, opening_balance_pence: 15000, reconciled_balance_pence: 0) }
+    let(:account) { FactoryGirl.create(:finances_account, opening_balance_pence: 15000, reconciled_balance_pence: 0) }
 
     describe 'POST update' do
 
