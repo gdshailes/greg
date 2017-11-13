@@ -9,6 +9,10 @@
 
 <div class='frame countdown'>
 
+  <div>
+    Time until race start:
+  </div>
+
   <div class='timer_element'>
     <div class="timer_digit weeks">0</div>
     <div class="timer_desc">Weeks</div>
@@ -34,11 +38,14 @@
     <div class="timer_desc">Seconds</div>
   </div>
 
+</div>
+
+<div class='frame'>
   <div class='intro collapsed'>
 
     <h1>What's this all about then?</h1>
 
-    <div class='feed_image'>
+    <div class="center">
       <%= image_tag 'C2C_20182.png' %>
     </div>
 
@@ -64,16 +71,12 @@
         </div>
         <div class='feed_body'>
           <% if post.image %>
-            <% if alternate %>
-              <div class='feed_image alternate'>
-            <% else %>
-              <div class='feed_image'>
-            <% end %>
+            <div class='feed_image <%= "alternate" if alternate %>'>
               <%= ('<img src="data:image/jpg;base64,%s">' % Base64.encode64(post.image.filedata)).html_safe %>
             </div>
+            <% alternate = !alternate %>
           <% end %>
           <%= sanitize(post.formatted_body, tags: %w(p)) %>
-          <% alternate = !alternate %>
         </div>
       </div>
     <% end %>

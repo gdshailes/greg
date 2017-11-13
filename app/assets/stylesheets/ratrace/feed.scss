@@ -1,0 +1,80 @@
+.feed {
+  text-align: left;
+}
+
+.feed_entry {
+  margin-top: 10px;
+}
+
+.feed_title {
+  margin: 5px 5px 0 5px;
+  padding: 10px;
+  border-radius: 12px 12px 0 0;
+  background-color: $darkest;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white;
+}
+
+.feed_date {
+  font-size: 0.6em;
+  font-weight: regular;
+  color: silver;
+}
+
+.feed_body {
+  margin: 0 5px 5px 5px;
+  padding: 10px;
+  border-radius: 0 0 12px 12px;
+  background-color: $darker;
+  color: white;
+}
+
+.feed_body p {
+  margin: 0 0 12px 0;
+}
+
+.feed_image {
+  text-align: center;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.feed_image img {
+  max-width:500px;
+  -webkit-box-shadow: 0px 0px 26px 5px rgba(0,0,0,0.7);
+  -moz-box-shadow: 0px 0px 26px 5px rgba(0,0,0,0.7);
+  box-shadow: 0px 0px 26px 5px rgba(0,0,0,0.7);
+  -ms-transform: rotate(3deg); /* IE 9 */
+  -webkit-transform: rotate(3deg); /* Safari */
+  transform: rotate(3deg);
+  border-radius: 12px;
+}
+
+.alternate img {
+  -ms-transform: rotate(-4deg); /* IE 9 */
+  -webkit-transform: rotate(-4deg); /* Safari */
+  transform: rotate(-4deg);
+}
+
+.feed_comment {
+  margin: 10px 0 0 30%;
+  padding: 5px 25px;
+  background-color: $light;
+  border-radius: 12px;
+}
+
+.feed_comment_name {
+  font-weight: bold;
+  display: inline;
+}
+
+.feed_comment_name:after {
+  font-weight: normal;
+  content: ' \201C';
+}
+
+.feed_comment:after {
+  content: ' \201C';
+}
+
