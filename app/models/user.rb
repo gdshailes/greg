@@ -9,7 +9,15 @@ class User < ApplicationRecord
   end
 
   def is_admin?
-    email == 'greg.shailes@gmail.com' || email == 'jo.shailes@hotmail.co.uk'
+    is_greg? || is_jo?
+  end
+
+  def is_greg?
+    email == 'greg.shailes@gmail.com'
+  end
+
+  def is_jo?
+    email == 'jo.shailes@hotmail.co.uk'
   end
 
 end
