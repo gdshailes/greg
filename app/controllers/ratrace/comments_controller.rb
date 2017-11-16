@@ -12,6 +12,7 @@ class Ratrace::CommentsController < Ratrace::BaseController
       comment.comment = params[:ratrace_post_comment][:comment]
       comment.save!
     end
+    redirect_to ratrace_path
   end
 
   def destroy
