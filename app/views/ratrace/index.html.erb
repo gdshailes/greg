@@ -13,10 +13,6 @@
 
 <div class='frame countdown'>
 
-  <div>
-    Time until race start:
-  </div>
-
   <div class='timer_element'>
     <div class="timer_digit weeks">0</div>
     <div class="timer_desc">Weeks</div>
@@ -42,16 +38,12 @@
     <div class="timer_desc">Seconds</div>
   </div>
 
-</div>
+  <div class="center intro">
+    <div><a href="http://ratrace.com/coasttocoast/" target="_blank"><%= image_tag 'C2C_20182-black-background.png' %></a></div>
+    <h1>Read all about it...</h1>
+  </div>
 
-<div class='frame'>
-  <div class='intro collapsed'>
-
-    <h1>What's this all about then?</h1>
-
-    <div class="center">
-      <%= image_tag 'C2C_20182-black-background.png' %>
-    </div>
+  <div class='intro-para collapsed'>
 
     <p>In September 2018, we will be taking part in the Rat Race 'Coast to Coast' challenge, a two-day, 105-mile cycling, kayaking and running journey across the Scottish highlands.</p>
 
@@ -62,6 +54,10 @@
     <p>Check out our <a href="https://www.justgiving.com/fundraising/greg-jo-shailes">Just Giving page</a> if you'd like to sponsor us!</p>
 
   </div>
+
+</div>
+
+<div class='frame'>
 
   <div class='feed'>
     <% alternate = false %>

@@ -34,9 +34,14 @@ main {
   width: 640px;
 }
 .countdown {
-  background: $dark;
+  background: $darker;
   border-radius: 12px;
   color: white;
+}
+
+.countdown p {
+  padding: 0px 20px;
+  text-align: left;
 }
 
 .center {
@@ -81,11 +86,7 @@ main {
   background-color: $darkest;
 }
 
-.intro {
-  margin: 5px;
-}
-
-.intro, .edit_posts_list li a {
+.edit_posts_list li a {
   text-align: left;
   padding: 10px 40px;
   background-color: $darker;
@@ -99,33 +100,14 @@ main {
   display: none;
 }
 
-.intro h1 {
-  font-size: 1.2em;
+.frame h1 {
+  font-size: 1em;
   font-weight: bold;
   text-align: center;
   cursor: pointer;
+  background: $darker;
+  border-radius: 6px;
+  padding: 5px 20px;
+  display: inline-block;
 }
 
-.intro h1:after {
-  display: block;
-  content: '(Click to hide)';
-  font-size: 0.7em;
-  font-weight: normal;
-}
-
-.collapsed h1:after {
-  display: block;
-  content: 'Click to find out!';
-  font-size: 0.7em;
-  font-weight: normal;
-}
-
-.intro a {
-  font-weight: bold;
-}
-.intro a:visited {
-  color: white;
-}
-.intro a:hover {
-  color: white;
-}
