@@ -3,7 +3,7 @@
     Hello, <%= current_user.first_name %>.
     <% if @is_admin %>
       <%= link_to 'Add/Edit Post', ratrace_posts_path %>
-      <%= link_to 'Home', root_path %>
+      <%= link_to 'Home', greghome_path %>
     <% end %>
     <%= link_to 'Sign Out', destroy_user_session_path, method: 'DELETE' %>
   <% else %>
