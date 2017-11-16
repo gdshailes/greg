@@ -6,15 +6,12 @@ class Ratrace::CommentsController < Ratrace::BaseController
   before_action :set_comment, only: [:update, :destroy]
 
   def create
-    binding.pry
-
     unless params[:ratrace_post_comment][:comment].blank?
       comment = @post.comments.build
       comment.user = current_user
       comment.comment = params[:ratrace_post_comment][:comment]
       comment.save!
     end
-
   end
 
   def destroy
