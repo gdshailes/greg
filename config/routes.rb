@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'users/index', to: 'users#index'
 
-  root to: "greghome#index"
+  root to: "ratrace#index"
   get 'greghome', to: 'greghome#greghome'
   get 'greghome/denied', to: 'greghome#denied'
   get 'greghome/s382', to: 'greghome#s382'
