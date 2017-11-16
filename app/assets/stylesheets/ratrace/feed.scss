@@ -65,16 +65,19 @@
 }
 
 .feed_comment_name {
-  font-weight: bold;
   display: inline;
+  opacity: 0.8;
 }
 
-.feed_comment_name:after {
-  font-weight: normal;
-  content: ' \201C';
+.feed_comment_when {
+  font-size:0.8em;
+  opacity: 0.5
 }
 
-.feed_comment:after {
-  content: ' \201C';
+.feed_add_comment {
+  text-align: right;
+  margin: 10px 0 0 30%;
+  padding: 5px 25px;
+  background-color: $dark;
+  border-radius: 12px;
 }
-
