@@ -57,7 +57,7 @@ a:not(:hover) {
   transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
 }
 
-button {
+button, .googleButton {
   background-color: $link_paper;
   border: none;
   outline: none;
@@ -69,6 +69,7 @@ button {
   transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
   display: inline;
   float: right;
+  border-radius: 0;
 }
 
 button:visited {
@@ -114,6 +115,7 @@ input.googleSearch {
   margin: 0;
   outline: none;
   text-indent: 10px;
+  border-radius: 0;
 }
 
 div.QuickLinks {
