@@ -1,6 +1,6 @@
 <div class='admin_tools'>
   <% if current_user %>
-    Hello, <%= current_user.first_name %>.
+    <span>Hello, <%= current_user.display_name %></span>
     <% if @is_admin %>
       <%= link_to 'Add/Edit Post', ratrace_posts_path %>
       <%= link_to 'Home', greghome_path %>

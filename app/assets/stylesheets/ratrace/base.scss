@@ -19,6 +19,7 @@ body {
     background-image: image-url("ratrace-background-mobile.jpg");
     font-size: 25px;
   }
+  transition: font-size 0.5s;
 }
 
 main {
@@ -72,6 +73,15 @@ main {
   font-size: 0.8em;
   color: white;
   min-width: 600px;
+  @media (max-width:641px) {
+    font-size: 1.2em;
+  }
+}
+
+.admin_tools span {
+  @media (max-width:641px) {
+    display: none;
+  }
 }
 
 .admin_tools a, a:visited {
@@ -116,6 +126,15 @@ main {
 
 .intro-links {
   padding: 12px;
+}
+
+.intro-links a {
+  @media (max-width:641px) {
+    width: 550px;
+    background: $dark;
+    margin: 3px;
+    font-weight: normal;
+  }
 }
 
 .frame a:visited {
