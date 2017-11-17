@@ -54,9 +54,9 @@
 
     <p>We're hoping to raise money for Macmillan Cancer Care. We were both so grateful for the support Macmillan nurses gave us through Greg's illness last year and want to be able to help Macmillan help more people through difficult times.</p>
 
-    <p>Have a look at the <strong>Rat Race web site</strong> to see what the event's all about. It's going to be a massive challenge for us. Neither of us are runners, and the chances of us co-ordinating ourselves together to propel a kayak in a straight line are pretty minimal. We're going to have to do a lot of training over the next ten months to get ourselves fit enough to complete the event. Keep an eye on this page for updates on how we're getting along!</p>
+    <p>Have a look at the <%= link_to "Rat Race web site", "http://ratrace.com/coasttocoast/", target: :blank %> to see what the event's all about. It's going to be a massive challenge for us. Neither of us are runners, and the chances of us co-ordinating ourselves together to propel a kayak in a straight line are pretty minimal. We're going to have to do a lot of training over the next ten months to get ourselves fit enough to complete the event. Keep an eye on this page for updates on how we're getting along!</p>
 
-    <p>Check out our <strong>Just Giving</strong> page if you'd like to sponsor us!</p>
+    <p>Check out our <%= link_to "Just Giving page", "https://www.justgiving.com/fundraising/greg-jo-shailes", target: :blank %> if you'd like to sponsor us!</p>
 
   </div>
 
@@ -85,9 +85,7 @@
           <% post.comments.each do |comment| %>
             <div class='feed_comment'>
               &ldquo;<%= comment.comment %>&rdquo; <span class='feed_comment_when'><%= comment.user.first_name || comment.user.email %>, <%= comment.when %></span>
-              <% if comment.user == current_user %>
-                <%= link_to 'delete', ratrace_post_comment_path(post, comment), method: :delete, data: {confirm: 'Delete your comment?'} %>
-              <% end %>
+                <%= link_to '', ratrace_post_comment_path(post, comment), method: :delete, class: 'delete_comment', data: {confirm: 'Delete your comment?'} %>
             </div>
           <% end %>
           <% if @current_user %>

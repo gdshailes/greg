@@ -1,3 +1,5 @@
+@import "font-awesome";
+
 .feed {
   text-align: left;
 }
@@ -77,7 +79,27 @@
 .feed_add_comment {
   text-align: right;
   margin: 10px 0 0 30%;
-  padding: 5px 25px;
   background-color: $dark;
   border-radius: 12px;
+}
+
+a.delete_comment {
+  background: none;
+  font-weight: normal;
+  padding: 5px;
+  margin: 0;
+  transition: color 0.5s;
+  display: block;
+  vertical-align: top;
+  float: right;
+}
+
+a.delete_comment:hover {
+  background: none;
+  color: black;
+}
+
+a.delete_comment:before {
+  font-family: FontAwesome;
+  content: '\f00d';
 }
