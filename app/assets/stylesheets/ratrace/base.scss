@@ -100,7 +100,7 @@ main {
   display: none;
 }
 
-.frame h1 {
+.frame a {
   font-size: 1em;
   font-weight: bold;
   text-align: center;
@@ -109,5 +109,19 @@ main {
   border-radius: 6px;
   padding: 5px 20px;
   display: inline-block;
+  text-decoration: none;
+  color: white;
+  transition: background-color 0.5s;
 }
 
+.intro-links {
+  padding: 12px;
+}
+
+.frame a:visited {
+  color: white;
+}
+
+.frame a:hover {
+  background-color: $light;
+}

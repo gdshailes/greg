@@ -1,7 +1,7 @@
 class GregHome.Ratrace
   constructor: ->
     @$intro = $('div.intro-para')
-    @$intro_title = $('div.intro h1')
+    @$intro_title = $('div.intro a.expander')
     @init()
 
   init: ->
