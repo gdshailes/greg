@@ -83,9 +83,13 @@
           <% end %>
           <%= sanitize(post.formatted_body, tags: %w(p)) %>
           <% post.comments.each do |comment| %>
+            <% comment_decorator = ::CommentDecorator.new(comment) %>
             <div class='feed_comment'>
-              &ldquo;<%= comment.comment %>&rdquo; <span class='feed_comment_when'><%= comment.user.first_name || comment.user.email %>, <%= comment.when %></span>
-                <%= link_to '', ratrace_post_comment_path(post, comment), method: :delete, class: 'delete_comment', data: {confirm: 'Delete your comment?'} %>
+              &ldquo;<%= comment.comment %>&rdquo;
+              <span class='feed_comment_when'>
+                <%= comment_decorator.commenter_name %>, <%= comment_decorator.humanized_recency %>
+              </span>
+              <%= link_to('', ratrace_post_comment_path(post, comment), method: :delete, class: 'delete_comment', data: {confirm: 'Delete your comment?'}) if @current_user == comment.user %>
             </div>
           <% end %>
           <% if @current_user %>
