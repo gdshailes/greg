@@ -52,6 +52,7 @@ class Ratrace::PostsController < Ratrace::BaseController
 
     @graph = Koala::Facebook::API.new(access_token)
     @graph.put_wall_post("I've just written a new update on our RatRace training progress, titled '#{@post.title}'. You can read and comment on it now at " + ratrace_posts_url)
+    redirect_to ratrace_url
 
   end
 
