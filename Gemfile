@@ -39,6 +39,7 @@ gem 'money-rails'
 gem 'paranoia', '~> 2.2.0.pre'
 gem 'mini_magick'
 gem 'omniauth-facebook'
+gem 'koala'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
