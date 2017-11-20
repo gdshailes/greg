@@ -15,7 +15,7 @@ Devise.setup do |config|
   config.mailer_sender = 'admin@greg.com'
 
   # Omniauth - facebook params
-  config.omniauth :facebook, "544834402575069", "7870918b18eee1324c1e8d5f97b78f6c", callback_url: "https://shailes.herokuapp.com/users/auth/facebook/callback/"
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], callback_url: ENV['FACEBOOK_LOGIN_CALLBACK_URL']
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

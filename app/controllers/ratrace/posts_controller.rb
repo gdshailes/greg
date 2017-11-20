@@ -1,5 +1,8 @@
 class Ratrace::PostsController < Ratrace::BaseController
 
+  require 'koala'
+
+
   before_action :authenticate_admin!
 
   before_action :set_posts, only: :index
@@ -38,7 +41,9 @@ class Ratrace::PostsController < Ratrace::BaseController
       end
     end
 
+
     if @post.save!
+      # redirect_to Facebook.fb_permissions_url
       redirect_to ratrace_url
     end
 
