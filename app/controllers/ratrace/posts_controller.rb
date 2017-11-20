@@ -6,7 +6,7 @@ class Ratrace::PostsController < Ratrace::BaseController
   before_action :authenticate_admin!
 
   before_action :set_posts, only: :index
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy, :post_to_facebook]
 
   def index
     respond_with(@post)
@@ -41,11 +41,18 @@ class Ratrace::PostsController < Ratrace::BaseController
       end
     end
 
-
     if @post.save!
-      # redirect_to Facebook.fb_permissions_url
-      redirect_to ratrace_url
+      redirect_to Facebook.new(post_to_fb_url).fb_permissions_url
     end
+
+  end
+
+  def post_to_facebook
+    access_token = Facebook.new(post_to_fb_url).oauth.get_access_token(params[:code])
+
+    @graph = Koala::Facebook::API.new(access_token)
+    redirect_to ratrace_url
+    # @graph.put_wall_post("I've just written a new update on our RatRace training progress, titled '#{@post.title}'. You can read and comment on it now at " + ratrace_posts_url)
 
   end
 
@@ -66,11 +73,15 @@ class Ratrace::PostsController < Ratrace::BaseController
     end
 
     def set_post
-      @post = Ratrace::Post.find(params[:id])
+      @post = Ratrace::Post.find(params[:post_id] || params[:id])
     end
 
     def post_params
       params.require(:ratrace_post).permit(:user_id, :title, :body)
+    end
+
+    def post_to_fb_url
+      ratrace_post_post_to_facebook_url(@post)
     end
 
 end
