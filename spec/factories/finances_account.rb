@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
     factory :finances_account, class: "Finances::Account" do
-
+      association :user
       primary false
       opening_balance_pence Faker::Number
       reconciled_balance_pence Faker::Number
