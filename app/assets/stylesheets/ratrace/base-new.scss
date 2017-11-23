@@ -15,11 +15,10 @@ body {
   background-size: 1800px;
   background-color: $background_1;
   font-size:18px;
-  @media (max-width:641px) {
+  @media (max-width:$break_width) {
     background-image: image-url("ratrace-background-mobile.jpg");
     font-size: 25px;
   }
-  transition: font-size 0.5s;
 }
 
 .center {
@@ -53,9 +52,15 @@ div.panel {
 
 div.header {
   text-align: right;
+  @media (max-width:$break_width) {
+    text-align: center;
+  }
   & span {
     float: left;
     font-weight: bold;
+    @media (max-width:$break_width) {
+      display: none;
+    }
   }
 }
 
@@ -94,6 +99,13 @@ div.header ul, div.intro ul {
   }
 }
 
+div.intro ul li a {
+  @media (max-width:$break_width) {
+    display: block;
+    margin-bottom: 6px;
+  }
+}
+
 div.countdown {
   text-align: center;
 }
@@ -111,11 +123,19 @@ div.timer-element {
     font-size: 1em;
     padding-bottom: 6px;
     border-radius: 0 0 12px 12px;
+    @media (max-width:$break_width) {
+      font-size: 0.7em;
+    }
     &.digit {
       display: block;
       background-color: $dark;
       font-size: 2.6em;
       border-radius: 12px 12px 0 0;
+      line-height: 1em;
+      padding-top: 8px;
+      @media (max-width:$break_width) {
+        font-size: 1.9em;
+      }
     }
   }
 }
@@ -214,10 +234,10 @@ div.comment {
   & input {
     border: none;
     font-size: 1em;
-    padding: 6px 20px;
+    padding: 6px 6px;
     background-color: $lighter;
     color: black;
-    width: 72%;
+    width: 80%;
     border-radius: 6px;
   }
   & .tick-btn {
