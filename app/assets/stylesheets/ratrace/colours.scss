@@ -1,7 +1,18 @@
-
-$darker:  rgba(0, 26, 26, 0.5);
-$darkest: rgba(0, 26, 26, 0.7);
-$dark:    rgba(0, 26, 26, 0.3);
+$lighter: rgba(255,255,255,0.4);
 $light:   rgba(255,255,255,0.2);
+$dark:    rgba(0, 26, 26, 0.5);
+$darker:  rgba(0, 26, 26, 0.7);
+$darkest: rgba(0, 26, 26, 0.9);
+
 $background_1: #b7bdbb;
 $background_2: #7f752c;
+
+/*
+$button_shadow: 0px 0px 15px 5px rgba(0,0,0,0.5);
+$comment_shadow: 0px 0px 8px 5px rgba(0,0,0,0.3);
+$image_shadow: 0px 0px 15px 5px rgba(0,0,0,0.5);
+*/
+
+$button_shadow: 0px 0px 15px 5px rgba(0,0,0,0.5);;
+$comment_shadow: none;
+$image_shadow: none;
