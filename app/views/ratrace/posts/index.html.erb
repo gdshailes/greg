@@ -1,32 +1,31 @@
-<div class='admin_tools'>
-  Hello, <%= current_user.first_name %>. <a href='/ratrace'>Go back</a>
+<div class='panel header'>
+  <span>Hello, <%= current_user.display_name %>!</span>
+  <ul>
+    <li>
+      <a href='/ratrace'>Go back</a>
+    </li>
+  </ul>
 </div>
 
-<div class='panel left-align'>
+<h1 class='panel-header'>Create a New Post</h1>
+<div class='panel-body edit-post'>
   <%= form_for :ratrace_post, :url => ratrace_posts_path do |f| %>
-
-    <div class='edit-post-label'>Title</div>
-    <div class='edit-post-input'><%= f.text_field :title %></div>
-
-    <div class='edit-post-label'>Body:</div>
-    <div class='edit-post-input'><%= f.text_area :body %></div>
-
-    <div class='edit-post-actions'>
+    <%= f.text_field :title, placeholder: 'Title', class: 'input' %>
+    <%= f.text_area :body, placeholder: 'Enter your article here', class: 'input' %>
+    <div class='actions'>
       <label>Upload a JPG Image
         <span><%= f.file_field :image %></span>
       </label>
-      <%= f.submit "Save" %></div>
+      <%= f.submit "Save" %>
     </div>
-
   <% end %>
 </div>
 
-<ul class='edit_posts_list'>
+<h1 class='panel-header'>Edit an Existing Post</h1>
+<div class='panel-body center '>
   <% @posts.each do | post |%>
-    <li>
-      <%= link_to edit_ratrace_post_path(post.id) do %>
-        <strong><%= post.title %></strong> - <%= post.user.first_name %>, <%= post.short_created_at %>
-      <% end %>
-    </li>
+    <%= link_to edit_ratrace_post_path(post.id), class: 'button' do %>
+      <strong><%= post.title %></strong> - <%= post.user.first_name %>, <%= post.short_created_at %>
+    <% end %>
   <% end %>
-</ul>
+</div>

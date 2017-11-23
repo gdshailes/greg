@@ -1,0 +1,266 @@
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
+  background: -webkit-linear-gradient($background_1, $background_2);
+  background: -o-linear-gradient($background_1, $background_2);
+  background: -moz-linear-gradient($background_1, $background_2);
+  background: linear-gradient($background_1, $background_2);
+  background-image: image-url("ratrace-background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 1800px;
+  background-color: $background_1;
+  font-size:18px;
+  @media (max-width:641px) {
+    background-image: image-url("ratrace-background-mobile.jpg");
+    font-size: 25px;
+  }
+  transition: font-size 0.5s;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+div {
+  display: block;
+  position: relative;
+}
+
+div.page {
+  width: 600px;
+  background: none;
+  padding: 0;
+  margin: 0;
+  color: white;
+  margin: 0 auto;
+}
+
+div.panel {
+  padding: 12px;
+  background-color: $dark;
+  margin: 12px 0;
+  border-radius: 12px;
+}
+
+div.header {
+  text-align: right;
+  & span {
+    float: left;
+    font-weight: bold;
+  }
+}
+
+div.intro img {
+  display: block;
+  margin: auto;
+}
+
+div.collapsed p, div.collapsed img {
+  display: none;
+}
+
+div.header li a, div.intro li a {
+  padding: 6px 12px;
+  background-color: $dark;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  text-decoration: none;
+}
+
+div.header ul, div.intro ul {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  & li {
+    display: inline;
+    & a {
+      color: white;
+      &:hover {
+        background-color: $light;
+        -webkit-box-shadow: $button_shadow;
+        -moz-box-shadow: $button_shadow;
+        box-shadow: $button_shadow;
+      }
+    }
+  }
+}
+
+div.countdown {
+  text-align: center;
+}
+
+div.timer-element {
+  display: inline-block;
+  text-align: center;
+  width: 15%;
+  background: none;
+  padding: 0 6px;
+  border-radius: 6px;
+  & span {
+    display: block;
+    background-color: $light;
+    font-size: 1em;
+    padding-bottom: 6px;
+    border-radius: 0 0 12px 12px;
+    &.digit {
+      display: block;
+      background-color: $dark;
+      font-size: 2.6em;
+      border-radius: 12px 12px 0 0;
+    }
+  }
+}
+
+div.intro a.expander {
+  cursor: pointer;
+}
+
+div.intro p a {
+  color: white;
+  text-decoration: none;
+  background-color: $light;
+  border-radius: 6px;
+  padding: 3px 6px;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: $darker;
+    -webkit-box-shadow: $button_shadow;
+    -moz-box-shadow: $button_shadow;
+    box-shadow: $button_shadow;
+ }
+}
+
+h1.panel-header {
+  padding: 12px 12px 0 12px;
+  margin: 0;
+  background-color: $darker;
+  margin: 12px 0 0 0;
+  border-radius: 12px 12px 0 0;
+  font-size: 1.2em;
+}
+
+h2.panel-sub-header {
+  padding: 0px 12px 12px 12px;
+  margin: 0;
+  background-color: $darker;
+  font-size: 0.7em;
+  font-weight: normal;
+  color: silver;
+}
+
+div.panel-body {
+  background-color: $dark;
+  border-radius: 0 0 12px 12px;
+  margin: 0;
+  padding: 12px;
+  & img {
+    max-width:500px;
+    -webkit-box-shadow: $image_shadow;
+    -moz-box-shadow: $image_shadow;
+    box-shadow: $image_shadow;
+    -ms-transform: rotate(2deg);
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+    border-radius: 12px;
+    display: block;
+    margin: auto;
+    &.alternate {
+      -ms-transform: rotate(-2deg);
+      -webkit-transform: rotate(-2deg);
+      transform: rotate(-2deg);
+    }
+  }
+}
+
+div.comment {
+  -webkit-box-shadow: $comment_shadow;
+  -moz-box-shadow: $comment_shadow;
+  box-shadow: $comment_shadow;
+  background-color: $light;
+  width: 70%;
+  margin-left: 25%;
+  color: white;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 12px;
+  & a {
+    background-color: black;
+    color: white;
+    float: right;
+    margin: 0 0 6px 6px;
+    background: none;
+    font-weight: normal;
+    transition: background-color 0.5s;
+    text-decoration: none;
+    padding: 0 6px;
+    border-radius: 6px;
+    &:hover {
+      background-color: $dark;
+    }
+  }
+  & span {
+    font-style: italic;
+    color: $lighter;
+  }
+  & input {
+    border: none;
+    font-size: 1em;
+    padding: 6px 20px;
+    background-color: $lighter;
+    color: black;
+    width: 72%;
+    border-radius: 6px;
+  }
+  & .tick-btn {
+    width: 15%;
+    float:right;
+    border-radius: 6px;
+    background-color: $dark;
+    color: white;
+    transition: background-color 0.2s;
+    &:hover {
+      background-color: $light;
+      -webkit-box-shadow: $button_shadow;
+      -moz-box-shadow: $button_shadow;
+      box-shadow: $button_shadow;
+    }
+  }
+}
+
+div.panel-body a.button {
+  display: block;
+  color: white;
+  text-decoration: none;
+  background-color: $dark;
+  border-radius: 6px;
+  margin: 6px;
+  &:hover {
+    background-color: $light;
+  }
+}
+
+div.panel-body.edit-post input[type='text'], div.panel-body.edit-post textarea {
+  width:100%;
+  background-color: $lighter;
+  border: none;
+  color: white;
+  font-size: 1em;
+  margin-bottom: 12px;
+  padding: 12px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  color: black;
+}
+
+div.panel-body textarea {
+  height: 180px;
+}
