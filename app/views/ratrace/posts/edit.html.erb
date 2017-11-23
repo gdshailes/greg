@@ -1,17 +1,21 @@
-<div class='panel left-align'>
+<div class='panel header'>
+  <span>Hello, <%= current_user.display_name %>!</span>
+  <ul>
+    <li>
+      <%= link_to 'Go Back', ratrace_posts_url %>
+    </li>
+  </ul>
+</div>
+
+<h1 class='panel-header'>Edit Post</h1>
+<div class='panel-body edit-post'>
   <%= form_for @post do |f| %>
-
-    <div class='edit-post-label'>Title</div>
-    <div class='edit-post-input'><%= f.text_field :title  %></div>
-
-    <div class='edit-post-label'>Body</div>
-    <div class='edit-post-input'><%= f.text_area :body %></div>
-
-    <div class='edit-post-actions'>
+    <%= f.text_field :title, class: 'input' %>
+    <%= f.text_area :body, class: 'input' %>
+    <div class='actions'>
+      <%= link_to 'Delete Post', @post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?'} , class: 'lefty' %>
       <%= link_to 'Cancel', ratrace_posts_url %>
-      <%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?'} %>
       <%= f.submit "Save" %>
     </div>
-
   <% end %>
 </div>

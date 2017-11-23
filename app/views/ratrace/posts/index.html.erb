@@ -13,9 +13,7 @@
     <%= f.text_field :title, placeholder: 'Title', class: 'input' %>
     <%= f.text_area :body, placeholder: 'Enter your article here', class: 'input' %>
     <div class='actions'>
-      <label>Upload a JPG Image
-        <span><%= f.file_field :image %></span>
-      </label>
+      <label class='lefty'>Upload a JPG Image<span><%= f.file_field :image %></span></label>
       <%= f.submit "Save" %>
     </div>
   <% end %>
@@ -25,7 +23,7 @@
 <div class='panel-body center '>
   <% @posts.each do | post |%>
     <%= link_to edit_ratrace_post_path(post.id), class: 'button' do %>
-      <strong><%= post.title %></strong> - <%= post.user.first_name %>, <%= post.short_created_at %>
+      <strong><%= post.title %></strong> by <%= post.user.first_name %>, <%= post.short_created_at %>
     <% end %>
   <% end %>
 </div>

@@ -1,8 +1,9 @@
 body {
+  padding: 0;
   margin: 0;
-  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   width: 100%;
   height: 100vh;
+  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   background: -webkit-linear-gradient($background_1, $background_2);
   background: -o-linear-gradient($background_1, $background_2);
   background: -moz-linear-gradient($background_1, $background_2);
@@ -13,140 +14,326 @@ body {
   background-position: center;
   background-size: 1800px;
   background-color: $background_1;
-  text-align: center;
   font-size:18px;
-  @media (max-width:641px) {
+  @media (max-width:$break_width) {
     background-image: image-url("ratrace-background-mobile.jpg");
     font-size: 25px;
   }
-  transition: font-size 0.5s;
 }
 
-main {
-  width: 640px;
-  margin: auto;
-  padding: 0;
-}
-
-.frame {
-  padding: 0;
-  margin: 10px 0 0 0;
-  display: inline-block;
-  width: 640px;
-}
-.countdown {
-  background: $darker;
-  border-radius: 12px;
-  color: white;
-}
-
-.countdown p {
-  padding: 0px 20px;
-  text-align: left;
+input, textarea {
+  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
+  font-size: 18px;
+  font-weight: normal;
+  @media (max-width:$break_width) {
+    font-size: 25px;
+  }
 }
 
 .center {
   text-align: center;
 }
 
-.left-align {
-  text-align: left;
+.right {
+  text-align: right;
 }
 
-.panel {
-  background-color: $darkest;
-  margin: 0px 5px 10px 5px;
-  padding: 20px;
-  border-radius: 12px;
-  color: white;
-  font-weight:  bold;
-  font-size: 1.2em;
+div {
+  display: block;
+  position: relative;
 }
 
-.admin_tools {
-  text-align: center;
-  margin-top: 10px;
-  padding: 3px;
-  background-color: $dark;
-  opacity: 1;
-  border-radius: 12px;
-  font-size: 0.8em;
-  color: white;
+div.page {
   min-width: 600px;
-  @media (max-width:641px) {
-    font-size: 1.2em;
+  background: none;
+  padding: 12px 60px;
+  @media (max-width:$break_width) {
+    padding: 6px 6px;
   }
-}
-
-.admin_tools span {
-  @media (max-width:641px) {
-    display: none;
-  }
-}
-
-.admin_tools a, a:visited {
+  margin: 0;
   color: white;
-  text-decoration: none;
-  padding: 0 12px;
-  background-color: $darker;
-  border-radius: 6px;
+  margin: 0 auto;
 }
 
-.admin_tools a:hover {
-  background-color: $darkest;
-}
-
-.edit_posts_list li a {
-  text-align: left;
-  padding: 10px 40px;
-  background-color: $darker;
-  color: white;
+div.panel {
+  padding: 12px;
+  background-color: $dark;
+  margin: 12px 0;
   border-radius: 12px;
-  font-size: 1em;
 }
 
-.collapsed p, .collapsed img
-{
+div.header {
+  text-align: right;
+  @media (max-width:$break_width) {
+    text-align: center;
+  }
+  & span {
+    float: left;
+    font-weight: bold;
+    @media (max-width:$break_width) {
+      display: none;
+    }
+  }
+}
+
+div.intro img {
+  display: block;
+  margin: auto;
+}
+
+div.collapsed p, div.collapsed img {
   display: none;
 }
 
-.frame a {
-  font-size: 1em;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-  background: $darker;
+div.header li a, div.intro li a {
+  padding: 6px 12px;
+  background-color: $dark;
   border-radius: 6px;
-  padding: 5px 20px;
-  display: inline-block;
+  transition: $background_transition;
   text-decoration: none;
-  color: white;
-  transition: background-color 0.5s;
 }
 
-div.intro ul {
-  text-align: center;
-  margin: auto;
+div.header ul, div.intro ul {
   display: block;
-}
-
-.intro-links {
-  padding: 12px;
-}
-
-.intro-links a {
-  @media (max-width:641px) {
-    width: 550px;
-    background: $dark;
-    margin: 3px;
-    font-weight: normal;
+  margin: 0 auto;
+  padding: 0;
+  & li {
+    display: inline;
+    & a {
+      color: white;
+      &:hover {
+        background-color: $light;
+        -webkit-box-shadow: $button_shadow;
+        -moz-box-shadow: $button_shadow;
+        box-shadow: $button_shadow;
+      }
+    }
   }
 }
 
-.frame a:visited {
-  color: white;
+div.intro ul li a {
+  @media (max-width:$break_width) {
+    display: block;
+    margin-bottom: 6px;
+  }
 }
 
-.frame a:hover {
+div.countdown {
+  text-align: center;
+}
+
+div.timer-element {
+  display: inline-block;
+  text-align: center;
+  width: 15%;
+  background: none;
+  padding: 0 6px;
+  border-radius: 6px;
+  & span {
+    display: block;
+    background-color: $light;
+    font-size: 1em;
+    padding-bottom: 6px;
+    border-radius: 0 0 12px 12px;
+    @media (max-width:$break_width) {
+      font-size: 0.7em;
+    }
+    &.digit {
+      display: block;
+      background-color: $dark;
+      font-size: 2.6em;
+      border-radius: 12px 12px 0 0;
+      line-height: 1em;
+      padding-top: 8px;
+      @media (max-width:$break_width) {
+        font-size: 1.9em;
+      }
+    }
+  }
+}
+
+div.intro a.expander {
+  cursor: pointer;
+}
+
+div.intro p a {
+  color: white;
+  text-decoration: none;
   background-color: $light;
+  border-radius: 6px;
+  padding: 3px 6px;
+  transition: $background_transition;
+  &:hover {
+    background-color: $darker;
+    -webkit-box-shadow: $button_shadow;
+    -moz-box-shadow: $button_shadow;
+    box-shadow: $button_shadow;
+ }
+}
+
+h1.panel-header {
+  padding: 12px 12px 0 12px;
+  margin: 0;
+  background-color: $darker;
+  margin: 12px 0 0 0;
+  border-radius: 12px 12px 0 0;
+  font-size: 1.2em;
+}
+
+h2.panel-sub-header {
+  padding: 0px 12px 12px 12px;
+  margin: 0;
+  background-color: $darker;
+  font-size: 0.7em;
+  font-weight: normal;
+  color: silver;
+}
+
+div.panel-body {
+  background-color: $dark;
+  border-radius: 0 0 12px 12px;
+  margin: 0;
+  padding: 12px;
+  & img {
+    max-width:500px;
+    -webkit-box-shadow: $image_shadow;
+    -moz-box-shadow: $image_shadow;
+    box-shadow: $image_shadow;
+    -ms-transform: rotate(2deg);
+    -webkit-transform: rotate(2deg);
+    transform: rotate(2deg);
+    border-radius: 12px;
+    display: block;
+    margin: auto;
+    &.alternate {
+      -ms-transform: rotate(-2deg);
+      -webkit-transform: rotate(-2deg);
+      transform: rotate(-2deg);
+    }
+  }
+  & a.button {
+    display: block;
+    color: white;
+    text-decoration: none;
+    background-color: $dark;
+    border-radius: 6px;
+    margin: 6px;
+    transition:$background_transition;
+    &:hover {
+      background-color: $light;
+    }
+  }
+
+  &.edit-post input[type='text'], &.edit-post textarea {
+    width:100%;
+    background-color: $lighter;
+    border: none;
+    color: white;
+    font-size: 1em;
+    margin-bottom: 12px;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: black;
+  }
+
+  & textarea {
+    height: 180px;
+  }
+
+  & div.actions {
+    box-sizing: border-box;
+    text-align: right;
+    & input, & label, & a {
+      display: inline;
+      color: white;
+      text-decoration: none;
+      background-color: $dark;
+      border-radius: 6px;
+      padding: 6px 18px;
+      transition: $background_transition;
+      border: none;
+      &:hover {
+        background-color: $light;
+        box-shadow: $button_shadow;
+      }
+    }
+    & input[type="file"] {
+      display: none;
+    }
+    & .lefty {
+      float: left;
+    }
+  }
+}
+
+div.comment {
+  -webkit-box-shadow: $comment_shadow;
+  -moz-box-shadow: $comment_shadow;
+  box-shadow: $comment_shadow;
+  background-color: $light;
+  width: 70%;
+  margin-left: 25%;
+  color: white;
+  border-radius: 6px;
+  padding: 6px;
+  margin-bottom: 12px;
+  & a {
+    background-color: black;
+    color: white;
+    float: right;
+    margin: 0 0 6px 6px;
+    background: none;
+    font-weight: normal;
+    transition: $background_transition;
+    text-decoration: none;
+    padding: 0 6px;
+    border-radius: 6px;
+    &:hover {
+      background-color: $dark;
+    }
+  }
+  & span {
+    font-style: italic;
+    color: $lighter;
+  }
+  & input {
+    border: none;
+    font-size: 1em;
+    padding: 6px 6px;
+    background-color: $lighter;
+    color: black;
+    width: 80%;
+    border-radius: 6px;
+  }
+  & a, .tick-btn {
+    border-radius: 6px;
+    background-color: $dark;
+    color: white;
+    transition: $background_transition;
+    &:hover {
+      background-color: $light;
+      -webkit-box-shadow: $button_shadow;
+      -moz-box-shadow: $button_shadow;
+      box-shadow: $button_shadow;
+    }
+  }
+  & .tick-btn {
+    width: 15%;
+    float:right;
+  }
+  &.add a {
+    float: none;
+    border-radius: 6px;
+    color: white;
+    transition: $background_transition;
+    display: block;
+    padding: 6px;
+    margin: 0;
+    &:hover {
+      -webkit-box-shadow: $button_shadow;
+      -moz-box-shadow: $button_shadow;
+      box-shadow: $button_shadow;
+    }
+  }
 }
