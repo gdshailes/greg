@@ -240,15 +240,31 @@ div.comment {
     width: 80%;
     border-radius: 6px;
   }
-  & .tick-btn {
-    width: 15%;
-    float:right;
+  & a, .tick-btn {
     border-radius: 6px;
     background-color: $dark;
     color: white;
     transition: background-color 0.2s;
     &:hover {
       background-color: $light;
+      -webkit-box-shadow: $button_shadow;
+      -moz-box-shadow: $button_shadow;
+      box-shadow: $button_shadow;
+    }
+  }
+  & .tick-btn {
+    width: 15%;
+    float:right;
+  }
+  &.add a {
+    float: none;
+    border-radius: 6px;
+    color: white;
+    transition: background-color 0.2s;
+    display: block;
+    padding: 6px;
+    margin: 0;
+    &:hover {
       -webkit-box-shadow: $button_shadow;
       -moz-box-shadow: $button_shadow;
       box-shadow: $button_shadow;

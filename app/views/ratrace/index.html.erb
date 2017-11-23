@@ -86,17 +86,15 @@
         <span><%= comment_decorator.commenter_name %>, <%= comment_decorator.humanized_recency %></span>
       </div>
     <% end %>
-    <% if @current_user %>
-      <div class='comment'>
+    <div class='comment add'>
+      <% if @current_user %>
         <%= form_for :ratrace_post_comment, :url => ratrace_post_comments_path(post) do |f| %>
           <%= f.text_field :comment, placeholder: (post.comments.any? ? 'Add your comment' : 'Be the first to comment!'), class: 'comment_box' %>
           <%= f.submit 'OK', class: 'tick-btn' %>
         <% end %>
-      </div>
-    <% else %>
-      <div class="login_to_comment">
-        <%= link_to "Log in with Facebook", user_facebook_omniauth_authorize_path %> to comment
-      </div>
-    <% end %>
+      <% else %>
+        <%= link_to "Log in with Facebook to comment", user_facebook_omniauth_authorize_path %>
+      <% end %>
+    </div>
   </div>
 <% end %>
