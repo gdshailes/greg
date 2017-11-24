@@ -8,7 +8,7 @@ body {
   background: -o-linear-gradient($background_1, $background_2);
   background: -moz-linear-gradient($background_1, $background_2);
   background: linear-gradient($background_1, $background_2);
-  background-image: image-url("ratrace-background.jpg");
+  background-image: url("/ratrace-background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -16,7 +16,7 @@ body {
   background-color: $background_1;
   font-size:18px;
   @media (max-width:$break_width) {
-    background-image: image-url("ratrace-background-mobile.jpg");
+    background-image: image-url("ratrace-background-mobile-1.jpg");
     font-size: 25px;
   }
 }
