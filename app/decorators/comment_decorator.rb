@@ -20,7 +20,7 @@ class ::CommentDecorator
     when created_at > 1.hour.ago
       "within the last hour"
     when created_at > 3.hours.ago
-      "ywo or three hours ago"
+      "two or three hours ago"
     when created_at > Time.current.beginning_of_day
       "earlier today"
     when created_at > (Time.current - 1.day).beginning_of_day
