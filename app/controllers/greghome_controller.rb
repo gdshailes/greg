@@ -3,12 +3,16 @@ class GreghomeController < ApplicationController
 
   before_action :authenticate_admin!, only: :greghome
 
-  def index
+  def index; end
 
-  end
+  def denied; end
 
-  def denied
-
+  def root
+    if is_admin?
+      render :index
+    else
+      redirect_to ratrace_url
+    end
   end
 
 end

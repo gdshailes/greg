@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
+  root to: "greghome#root"
+
   get 'users/index', to: 'users#index'
-  root to: "ratrace#index"
   get 'greghome', to: 'greghome#greghome'
   get 'greghome/denied', to: 'greghome#denied'
   get 'greghome/s382', to: 'greghome#s382'
