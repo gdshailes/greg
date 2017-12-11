@@ -11,6 +11,7 @@ class Ratrace::CommentsController < Ratrace::BaseController
       comment.user = current_user
       comment.comment = params[:ratrace_post_comment][:comment]
       comment.save!
+      RatraceMailer.send_new_comment(comment: comment)
     end
     redirect_to ratrace_path
   end
