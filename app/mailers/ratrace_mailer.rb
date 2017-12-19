@@ -27,11 +27,11 @@ class RatraceMailer < ApplicationMailer
   def self.send_new_comment(comment:)
     mails = []
     mail = new_comment(comment: comment)
-    mail.deliver_now unless mail.nil?
+    # mail.deliver_now unless mail.nil?
     comment.commentable.comments.reject{|c| c.user_id == comment.user_id}.pluck(:user_id).uniq.each do |user_id|
       if User.exists?(user_id)
         mail = also_commented(to: User.find(user_id).email, comment: comment)
-        mail.deliver_now
+        # mail.deliver_now
         mails << mail
       end
     end
