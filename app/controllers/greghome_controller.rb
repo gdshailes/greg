@@ -9,10 +9,13 @@ class GreghomeController < ApplicationController
 
   def root
     if is_admin?
-      render :index
+      render (is_greg? ? :greghome : :index)
     else
       redirect_to ratrace_url
     end
+  end
+
+  def greghome
   end
 
 end
