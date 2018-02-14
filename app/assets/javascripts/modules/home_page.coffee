@@ -11,5 +11,11 @@ class GregHome.HomePage
 
   listen: ->
     @$submit.on 'click', (event) =>
-      @$google.focus()
-      @$google.select()
+      @focus_on_search()
+
+    $('a').on 'click', (event) =>
+      @focus_on_search()
+
+  focus_on_search: ->
+    @$google.focus()
+    @$google.select()
