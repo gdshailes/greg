@@ -44,22 +44,23 @@ a {
   transition: background-color 0.75s, font-size 0.75s;
   height: 25px;
   background-color: $link_paper;
-}
+  &:visited {
+    color: $link_ink;
+  }
+  &:hover, &:focus {
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
+  }
+  &:hover {
+    color: $link_highlight_ink;
+    background-color: $link_highlight_paper;
+  }
+  &:focus {
+    outline: none;
+    background-color: darken($link_paper, 15%);
+  }
 
-a:visited {
-  color: $link_ink;
-}
-a:hover {
-  color: $link_highlight_ink;
-  background-color: $link_highlight_paper;
-  font-size: 20px;
-  text-decoration: none;
-  transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
-}
-a:not(:hover) {
-  color: $link_ink;
-  text-decoration: none;
-  transition: background-color 0.75s, font-size 0.25s, font-color 0.25s;
 }
 
 button, .googleButton {
