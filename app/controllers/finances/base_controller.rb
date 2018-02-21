@@ -11,7 +11,7 @@ class Finances::BaseController < ApplicationController
   private
 
   def set_accounts
-    @accounts = Finances::Account.for_user(current_user)
+    @accounts = Finances::Account.for_user(current_user).order(primary: :desc, name: :asc)
   end
 
   def set_account
