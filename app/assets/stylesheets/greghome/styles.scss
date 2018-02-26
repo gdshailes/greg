@@ -59,7 +59,7 @@ a {
   &:focus {
     outline: none;
     color: $link_highlight_ink;
-    background-color: lighten($link_highlight, 15%);
+    background-color: lighten($link_highlight_paper, 15%);
   }
 
 }
