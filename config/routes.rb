@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'users/index', to: 'users#index'
   get 'greghome', to: 'greghome#greghome'
+  get 'greghome/index', to: 'greghome#index'
   get 'greghome/denied', to: 'greghome#denied'
   get 'greghome/s382', to: 'greghome#s382'
   get 'boriscam', to: 'boriscam#index'
