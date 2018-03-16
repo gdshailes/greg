@@ -281,7 +281,6 @@ div.comment {
   & a {
     background-color: black;
     color: white;
-    float: right;
     margin: 0 0 6px 6px;
     background: none;
     font-weight: normal;
@@ -323,13 +322,9 @@ div.comment {
     float:right;
   }
   &.add a {
-    float: none;
     border-radius: 6px;
     color: white;
     transition: $background_transition;
-    display: block;
-    padding: 6px;
-    margin: 0;
     &:hover {
       -webkit-box-shadow: $button_shadow;
       -moz-box-shadow: $button_shadow;

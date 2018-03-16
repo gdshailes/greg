@@ -96,7 +96,9 @@
           <%= f.submit 'OK', class: 'tick-btn' %>
         <% end %>
       <% else %>
-        <%= link_to "Log in with Facebook to comment", user_facebook_omniauth_authorize_path %>
+        Log in with your <%= link_to "Facebook", user_facebook_omniauth_authorize_path %>
+        or <%= link_to "Google", user_google_omniauth_authorize_path %>
+        account to add a comment!
       <% end %>
     </div>
   </div>
