@@ -14,7 +14,7 @@ class RideLog::BikeController < ApplicationController
     # Create a new bike - if logged in
     p = params[:ride_log_bike]
     bike = RideLog::Bike.new(name: p[:name], details: p[:details])
-    bike.save
+    bike.save!
     redirect_to action: :index
   end
 

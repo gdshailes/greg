@@ -16,7 +16,7 @@ class BoriscamController < ApplicationController
     if img.filetype != "image/jpeg"
       head :unsupported_media_type
     else
-      img.save
+      img.save!
       BorisCamImage.order('created_at desc').offset(20).destroy_all
       head :ok
     end

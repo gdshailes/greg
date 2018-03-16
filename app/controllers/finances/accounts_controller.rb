@@ -33,7 +33,7 @@ class Finances::AccountsController < Finances::BaseController
     @account = Finances::Account.new(account_params)
     @account.user_id = current_user.id
     @account.reconciled_balance_pence = 0
-    @account.save
+    @account.save!
     respond_with(@account)
   end
 

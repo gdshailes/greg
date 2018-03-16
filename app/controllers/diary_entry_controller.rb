@@ -19,8 +19,7 @@ class DiaryEntryController < ApplicationController
 
   def create
     @entry = current_user.diary_entries.new(diary_entry_params)
-    if @entry.valid?
-      @entry.save
+    if @entry.valid? and @entry.save
       redirect_to action: :index
     else
       redirect_to 'create'
@@ -34,8 +33,7 @@ class DiaryEntryController < ApplicationController
   def update
     @entry = current_user.diary_entries.find(params[:id])
     @entry.update(diary_entry_params)
-    if @entry.valid?
-      @entry.save
+    if @entry.valid? and @entry.save
       redirect_to action: :index
     else
       redirect_to 'edit'

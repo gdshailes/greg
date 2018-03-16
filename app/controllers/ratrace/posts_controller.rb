@@ -40,7 +40,7 @@ class Ratrace::PostsController < Ratrace::BaseController
       end
     end
 
-    if @post.save!
+    if @post.save
       redirect_to Facebook.new(post_to_fb_url).fb_permissions_url
     end
 

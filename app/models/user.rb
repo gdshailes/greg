@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, :omniauth_providers => [:facebook, :google]
 
   def diary_entries
     DiaryEntry.where(user_id: self.id)
@@ -28,6 +28,9 @@ class User < ApplicationRecord
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+      if data = session["devise.google_data"] && session["devise.google_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end

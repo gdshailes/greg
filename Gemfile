@@ -39,6 +39,7 @@ gem 'money-rails'
 gem 'paranoia', '~> 2.2.0.pre'
 gem 'mini_magick'
 gem 'omniauth-facebook'
+gem 'omniauth_openid_connect'
 gem 'koala'
 
 group :development, :test do
