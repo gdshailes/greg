@@ -4,16 +4,8 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   before_action :authenticate_admin!
 
-  before_action :set_posts, only: :index
+  before_action :set_posts, only: [:index, :get_next]
   before_action :set_post, only: [:edit, :update, :destroy, :post_to_facebook]
-
-  def index
-    respond_with(@post)
-  end
-
-  def show
-    respond_with(@post)
-  end
 
   def new
     @post = Ratrace::Post.new(user: current_user)
@@ -55,6 +47,10 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   end
 
+  def get_next
+    render :get_next, layout: false
+  end
+
   def update
     @post.update(post_params)
     redirect_to ratrace_posts_url
@@ -68,7 +64,11 @@ class Ratrace::PostsController < Ratrace::BaseController
   private
 
     def set_posts
-      @posts = Ratrace::Post.all
+      if params[:post_id]
+        @posts = Ratrace::Post.where('id < ?', params[:post_id]).limit(4)
+      else
+        @posts = Ratrace::Post.all.limit(4)
+      end
     end
 
     def set_post

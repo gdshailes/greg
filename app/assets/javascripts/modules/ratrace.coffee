@@ -2,6 +2,9 @@ class GregHome.Ratrace
   constructor: ->
     @$intro = $('div.intro')
     @$intro_title = $('a.expander')
+    @latest_post_id = $('input[name=post_id]').get(-1).value
+    @loading_more = false
+
     @init()
 
   init: ->
@@ -15,11 +18,37 @@ class GregHome.Ratrace
     @$intro_title.on 'click', (e) =>
       @intro_toggle()
 
+    $(window).on 'scroll', (e) =>
+      @scroll_handler()
+
+    $(document).ajaxComplete (e) =>
+      @loading_more = false
+      console.log 'ajaxComplete'
+
   intro_toggle: ->
     if @$intro.hasClass 'collapsed'
       @$intro.removeClass 'collapsed'
     else
       @$intro.addClass 'collapsed'
+
+  scroll_handler: ->
+    if @loading_more == false
+      if $(window).scrollTop() + $(window).height() > $(document).height() - 10
+        @loading_more = true
+        @load_next_post()
+
+
+  load_next_post: ->
+    $.ajax(
+      url: '/ratrace/posts/' + @latest_post_id + '/get_next'
+    ).done( (posts) =>
+      $('#posts').append(posts)
+      @latest_post_id = $('input[name=post_id]').get(-1).value
+      @loading_more = false
+    );
+
+
+
 
   start_timer: ->
     @update = setInterval(@update_countdown, 1000)
