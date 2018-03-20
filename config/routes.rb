@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   get 'greghome/index', to: 'greghome#index'
   get 'greghome/denied', to: 'greghome#denied'
   get 'greghome/s382', to: 'greghome#s382'
-  get 'boriscam', to: 'boriscam#index'
-  post 'boriscam/upload', to: 'boriscam#upload'
+  get 'privacy', to: 'privacy#index'
 
   get 'ride_log', to: 'ride_log#index'
   namespace :ride_log do
