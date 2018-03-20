@@ -2,22 +2,28 @@ class GregHome.Ratrace
   constructor: ->
     @$intro = $('div.intro')
     @$intro_title = $('a.expander')
-    @latest_post_id = $('input[name=post_id]').get(-1).value
+    @$latest_post_id = $('input[name=post_id]')
     @loading_more = false
 
     @init()
 
   init: ->
     if @$intro_title.length > 0
-      @listen()
+      @listen_intro()
+
+    if @$latest_post_id.length > 0
+      @latest_post_id = @$latest_post_id.get(-1).value
+      @loading_more = false
+      @listen_more_posts()
 
     @update_countdown()
     @start_timer()
 
-  listen: ->
+  listen_intro: ->
     @$intro_title.on 'click', (e) =>
       @intro_toggle()
 
+  listen_more_posts: ->
     $(window).on 'scroll', (e) =>
       @scroll_handler()
 
@@ -37,7 +43,6 @@ class GregHome.Ratrace
         @loading_more = true
         @load_next_post()
 
-
   load_next_post: ->
     $.ajax(
       url: '/ratrace/posts/' + @latest_post_id + '/get_next'
@@ -46,9 +51,6 @@ class GregHome.Ratrace
       @latest_post_id = $('input[name=post_id]').get(-1).value
       @loading_more = false
     );
-
-
-
 
   start_timer: ->
     @update = setInterval(@update_countdown, 1000)
