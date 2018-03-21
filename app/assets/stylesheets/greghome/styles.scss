@@ -1,6 +1,5 @@
 html {
   background-color: $background_1;
-  min-height: 100%;
 }
 
 body {
@@ -9,6 +8,13 @@ body {
   text-align: left;
   padding: 0;
   margin: 0;
+  height: 100vh;
+  background-image: asset-url('greghome-background.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 1800px;
+  min-height: 100%;
 }
 
 .countdown {
