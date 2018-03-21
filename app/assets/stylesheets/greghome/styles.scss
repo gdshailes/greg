@@ -109,7 +109,7 @@ input.googleSearch {
 
 input.googleSearch::placeholder {
   color: transparent;
-
+  text-shadow: 0 0 0 $link-ink;
 }
 
 div.QuickLinks {
