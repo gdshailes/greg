@@ -1,7 +1,7 @@
 class GregHome.HomePage
   constructor: ->
     @$google = $('.googleSearch')
-    @$submit = $('.GoogleButton')
+    @$form = $('form#f')
     @init()
 
   init: ->
@@ -10,7 +10,9 @@ class GregHome.HomePage
       @listen()
 
   listen: ->
-    @$submit.on 'click', (event) =>
+    @$form.on 'submit', (event) =>
+      event.preventDefault()
+      event.currentTarget.submit()
       @focus_on_search()
 
     $('a').on 'click', (event) =>
@@ -18,4 +20,4 @@ class GregHome.HomePage
 
   focus_on_search: ->
     @$google.focus()
-    @$google.select()
+    @$google.val('')
