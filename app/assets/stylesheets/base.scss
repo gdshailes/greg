@@ -19,6 +19,10 @@ body{
   width: 100%;
   height: 100%;
   min-width: 300px;
+  font-size: 14px;
+  @media (max-width:$break_width) {
+    font-size: 1.5em;
+  }
 }
 
 .right-align {
@@ -136,7 +140,6 @@ aside {
       padding: 0.5em;
       text-decoration: none;
       display: block;
-      font-size: 14px;
       transition: background-color 0.75s;
       color: white;
       &:visited {
@@ -146,7 +149,7 @@ aside {
         background-color: $menu_highlight;
       }
       & span {
-        font-size: 10px;
+        font-size: 0.8em;
         &.amount:before {
           content: '£';
         }
@@ -182,7 +185,7 @@ main {
     margin: 25px 0px;
   }
   & h1 {
-    font-size: 20px;
+    font-size: 1.2em;
     @media (max-width:$break_width) {
       margin-left: 15px;
     }
@@ -201,7 +204,7 @@ main {
 }
 
 .command-button {
-  font-size: 16px;
+  font-size: 1.2em;
   background-color: $button_background;
   opacity: 0.8;
   color: $button_color;
@@ -230,15 +233,14 @@ main {
 }
 
 div.input {
+  font-size: 1.2em;
   & label {
     display: block;
     font-weight: bold;
-    font-size: 18px;
     padding: 18px 0 0 0;
   }
   & input {
     height: 1.8em;
-    font-size: 18px;
     border: none;
     width: 100%;
   }
@@ -247,7 +249,6 @@ div.input {
     width: 100%;
     resize: none;
     border: none;
-    font-size: 18px;
   }
 }
 
@@ -262,7 +263,7 @@ div.footer {
   margin-left: $width;
   transition: margin-left 0.5s;
   padding: 0px;
-  font-size: 12px;
+  font-size: 0.9em;
   vertical-align: middle;
   @media (max-width: $break_width) {
     margin-left: 0;
