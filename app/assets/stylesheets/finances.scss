@@ -40,7 +40,6 @@ form.simple_form {
     border: 1px solid $rule_color;
     padding: 0 12px;
     box-sizing: border-box;
-    font-size: 18px;
     font-family: $base_font;
   }
   & div.form-actions {
@@ -68,7 +67,6 @@ form.simple_form {
       border: 1px solid $rule_color;
       border-radius: 0;
       width: 100%;
-      font-size: 18px;
     }
 
     &:after {
@@ -104,7 +102,6 @@ form.simple_form {
         position: relative;
         padding: 8px 8px 8px 42px;
         line-height: 1.5em;
-        font-size: 18px;
         &:after {
           position: absolute;
           top: 9px;
