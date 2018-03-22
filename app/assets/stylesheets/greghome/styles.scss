@@ -148,12 +148,8 @@ div.LineBreak {
 }
 
 @media screen and (max-width:620px) {
-  body {
-    font-size: 24px;
-  }
-
-  a {
-    font-size: 18px;
+  body, a {
+    font-size: 36px;
   }
 
   div.QuickLinks {
