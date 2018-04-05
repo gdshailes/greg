@@ -19,7 +19,12 @@ Rails.application.routes.draw do
 
   namespace :finances do
     resources :accounts do
-      resources :transactions
+      resources :transactions do
+        collection do
+          get 'export', format: [:csv]
+        end
+      end
+
       resources :bills do
         patch 'record_payment', to: 'bills#record_payment'
       end
