@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'comma', '~> 4.0', '>= 4.0.1'
 gem 'responders'
 gem 'httparty'
 gem 'simple_form'

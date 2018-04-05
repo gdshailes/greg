@@ -18,4 +18,13 @@
     @bill_id = bill_id.to_i
   end
 
+  comma do
+    account 'Account' do |account|
+      account.name.to_s
+    end
+    transaction_date 'Date'
+    description 'Description'
+    amount 'Amount'
+  end
+
 end

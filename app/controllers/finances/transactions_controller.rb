@@ -40,6 +40,10 @@ class Finances::TransactionsController < Finances::BaseController
     end
   end
 
+  def export
+    render csv: @account.transactions.order(:transaction_date)
+  end
+
   private
 
     def set_transaction
