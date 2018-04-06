@@ -5,7 +5,7 @@ class Finances::BillsController < Finances::BaseController
   respond_to :html
 
   def index
-    @bills = @account.bills.order(:name)
+    @bills = @account.bills.order(:description)
     respond_with(@bills)
   end
 
