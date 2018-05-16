@@ -1,8 +1,0 @@
-<h1>Edit Ride</h1>
-<%= form_for @ride do |f| %>
-  Name: <%= f.text_field :name  %><br>
-  Date: <%= f.date_field :date %><br>
-  Bike: <%= f.collection_select :bike, @bikes, :id, :name %><br>
-  <%= f.submit %><br>
-<% end %>
-<%= link_to 'Cancel', @bike %>

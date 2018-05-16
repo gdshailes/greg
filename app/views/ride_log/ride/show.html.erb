@@ -1,8 +1,0 @@
-<h1>Ride Details</h1>
-Ride: <%= @ride.name %><br>
-Date: <%= @ride.date %><br>
-Bike: <%= link_to @ride.bike.name, @ride.bike %><br>
-<br>
-<%= link_to 'Edit', edit_ride_log_ride_path %> |
-<%= link_to 'Delete', @ride, method: :delete, data: { confirm: 'Are you sure you want to delete this ride?'} %> |
-<%= link_to 'Back', action: :index %>

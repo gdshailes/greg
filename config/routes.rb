@@ -11,12 +11,6 @@ Rails.application.routes.draw do
   get 'greghome/s382', to: 'greghome#s382'
   get 'privacy', to: 'privacy#index'
 
-  get 'ride_log', to: 'ride_log#index'
-  namespace :ride_log do
-    resources :bike
-    resources :ride
-  end
-
   namespace :finances do
     resources :accounts do
       resources :transactions do
