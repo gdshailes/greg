@@ -41,11 +41,9 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   def post_to_facebook
     access_token = Facebook.new(post_to_fb_url).oauth.get_access_token(params[:code])
-
     @graph = Koala::Facebook::API.new(access_token)
     @graph.put_wall_post("There's a new update on our RatRace training progress! It's titled '#{@post.title}', and you can read and comment on it now at " + ratrace_url)
     redirect_to ratrace_posts_url
-
   end
 
   def get_next
