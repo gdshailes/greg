@@ -75,7 +75,7 @@ class Ratrace::PostsController < Ratrace::BaseController
   end
 
   def set_latest_post
-    @post = Ratrace::Post.order(:updated_at).last
+    @post = Ratrace::Post.first
   end
 
   def post_params
