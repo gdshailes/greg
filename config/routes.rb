@@ -28,8 +28,8 @@ Rails.application.routes.draw do
 
   get 'ratrace', to: 'ratrace#index'
   namespace :ratrace do
+    get 'post_to_facebook', to: 'posts#post_to_facebook'
     resources :posts do
-      get 'post_to_facebook', to: 'posts#post_to_facebook'
       get 'get_next', to: 'posts#get_next'
       resources :comments do
       end

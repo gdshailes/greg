@@ -39,10 +39,16 @@ class Ratrace::PostsController < Ratrace::BaseController
   end
 
   def post_to_facebook
+
+    # get_access_token will either:
+    # 1. Return the existing access token (if user is already logged in using facebook), or;
+    # 2. Redirect the user to a Facebook login page. Once they've logged in, they'll be redirected to 'post_to_facebook_url'.
+    #    'post_to_facebook_url' must exactly match the 'Valid oauth redirect URLs' set up in the facebook app.
+    #     So - it should be static, or it can include the post_id only if it's correctly formatted in the Facebook-approved 'state' parameter.
     access_token = Facebook.new(post_to_fb_url).oauth.get_access_token(params[:code])
     @graph = Koala::Facebook::API.new(access_token)
-    @graph.put_wall_post("I've just written a new update on our RatRace training progress, titled '#{@post.title}'. You can read and comment on it now at " + ratrace_url)
-    redirect_to ratrace_url
+    @graph.put_wall_post("There's a new update on our RatRace training progress! It's titled '#{@post.title}', and you can read and comment on it now at " + ratrace_url)
+    redirect_to ratrace_posts_url
   end
 
   def get_next
@@ -61,25 +67,24 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   private
 
-    def set_posts
-      if params[:post_id]
-        @posts = Ratrace::Post.where('id < ?', params[:post_id]).limit(4)
-      else
-        @posts = Ratrace::Post.all.limit(4)
-      end
+  def set_posts
+    if params[:post_id]
+      @posts = Ratrace::Post.where('id < ?', params[:post_id]).limit(4)
+    else
+      @posts = Ratrace::Post.all.limit(4)
     end
+  end
 
-    def set_post
-      @post = Ratrace::Post.find(params[:post_id] || params[:id])
-    end
+  def set_post
+    @post = Ratrace::Post.find(params[:post_id] || params[:id] || params[:state])
+  end
 
-    def post_params
-      params.require(:ratrace_post).permit(:user_id, :title, :body)
-    end
+  def post_params
+    params.require(:ratrace_post).permit(:user_id, :title, :body)
+  end
 
-    def post_to_fb_url
-      # ratrace_post_post_to_facebook_url(@post)
-      ratrace_posts_url
-    end
+  def post_to_fb_url
+    "#{ratrace_post_to_facebook_url}?state=#{@post.id}"
+  end
 
 end
