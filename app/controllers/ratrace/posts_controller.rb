@@ -5,7 +5,8 @@ class Ratrace::PostsController < Ratrace::BaseController
   before_action :authenticate_admin!
 
   before_action :set_posts, only: [:index, :get_next]
-  before_action :set_post, only: [:edit, :update, :destroy, :post_to_facebook]
+  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_latest_post, only: [:post_to_facebook]
 
   def new
     @post = Ratrace::Post.new(user: current_user)
@@ -42,8 +43,8 @@ class Ratrace::PostsController < Ratrace::BaseController
     access_token = Facebook.new(post_to_fb_url).oauth.get_access_token(params[:code])
 
     @graph = Koala::Facebook::API.new(access_token)
-    @graph.put_wall_post("I've just written a new update on our RatRace training progress, titled '#{@post.title}'. You can read and comment on it now at " + ratrace_url)
-    redirect_to ratrace_url
+    @graph.put_wall_post("There's a new update on our RatRace training progress! It's titled '#{@post.title}', and you can read and comment on it now at " + ratrace_url)
+    redirect_to ratrace_posts_url
 
   end
 
@@ -63,24 +64,28 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   private
 
-    def set_posts
-      if params[:post_id]
-        @posts = Ratrace::Post.where('id < ?', params[:post_id]).limit(4)
-      else
-        @posts = Ratrace::Post.all.limit(4)
-      end
+  def set_posts
+    if params[:post_id]
+      @posts = Ratrace::Post.where('id < ?', params[:post_id]).limit(4)
+    else
+      @posts = Ratrace::Post.all.limit(4)
     end
+  end
 
-    def set_post
-      @post = Ratrace::Post.find(params[:post_id] || params[:id])
-    end
+  def set_post
+    @post = Ratrace::Post.find(params[:post_id] || params[:id])
+  end
 
-    def post_params
-      params.require(:ratrace_post).permit(:user_id, :title, :body)
-    end
+  def set_latest_post
+    @post = Ratrace::Post.order(:updated_at).last
+  end
 
-    def post_to_fb_url
-      ratrace_post_post_to_facebook_url(@post)
-    end
+  def post_params
+    params.require(:ratrace_post).permit(:user_id, :title, :body)
+  end
+
+  def post_to_fb_url
+    ratrace_post_to_facebook_url
+  end
 
 end
