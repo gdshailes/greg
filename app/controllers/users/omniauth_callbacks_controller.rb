@@ -21,7 +21,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       @user = existing_user
     end
     sign_in_and_redirect @user, :event => :authentication
-    set_flash_message(:notice, :success, :kind => provider) if is_navigational_format?
+    # set_flash_message(:notice, :success, :kind => provider) if is_navigational_format?
   end
 
 end

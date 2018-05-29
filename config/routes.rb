@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :decision, only: [:new]
   resources :diary_entry
 
 end
