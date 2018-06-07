@@ -140,7 +140,7 @@ li {
   text-align: left;
 }
 
-@media screen and (max-width:620px) {
+@media screen and (max-device-width:620px) {
   body, a {
     font-size: 36px;
   }

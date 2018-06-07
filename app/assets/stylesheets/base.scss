@@ -20,7 +20,7 @@ body{
   height: 100%;
   min-width: 300px;
   font-size: 14px;
-  @media (max-width:$break_width) {
+  @media (max-device-width:$break_width) {
     font-size: 1.5em;
   }
 }
@@ -30,7 +30,7 @@ body{
 }
 
 .mobile-header {
-  @media (max-width:$break_width) {
+  @media (max-device-width:$break_width) {
     height: $mobile_header_height;
   }
   display: block;
@@ -88,7 +88,7 @@ aside {
       background-color: black;
       color: white;
     }
-    @media (max-width:$break_width) {
+    @media (max-device-width:$break_width) {
       left: -$width;
     }
     transition: left 0.5s;
@@ -107,7 +107,7 @@ aside {
     transition: margin-left 0.5s, opacity 0.5s;
     z-index:1;
 
-    @media (max-width:$break_width) {
+    @media (max-device-width:$break_width) {
       margin-left: -$width;
       padding-top: 0px;
       top: $mobile_header_height;
@@ -169,7 +169,7 @@ aside {
 
 div.page {
   width: 100%;
-  @media (max-width: $break_width) {
+  @media (max-device-width: $break_width) {
     padding-left: 0;
     padding-top: $mobile_header_height;
   }
@@ -181,12 +181,12 @@ div.page {
 
 main {
   margin: 25px;
-  @media (max-width:$break_width) {
+  @media (max-device-width:$break_width) {
     margin: 25px 0px;
   }
   & h1 {
     font-size: 1.2em;
-    @media (max-width:$break_width) {
+    @media (max-device-width:$break_width) {
       margin-left: 15px;
     }
     & span {
@@ -265,7 +265,7 @@ div.footer {
   padding: 0px;
   font-size: 0.9em;
   vertical-align: middle;
-  @media (max-width: $break_width) {
+  @media (max-device-width: $break_width) {
     margin-left: 0;
   }
   &_text {
