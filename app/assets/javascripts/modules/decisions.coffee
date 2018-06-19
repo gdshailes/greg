@@ -53,6 +53,7 @@ class GregHome.Decision
   show_result: (result) ->
     @$decision.text(result)
     @$result.removeClass('hidden')
+    @$knockout.addClass('hidden')
     @$make_decision.addClass('hidden')
 
   show_knockout_choice: ->
