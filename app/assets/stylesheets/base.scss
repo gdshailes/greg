@@ -71,6 +71,10 @@ body{
   display: block;
 }
 
+.hidden {
+  display: none;
+}
+
 aside {
   ::-webkit-scrollbar {
     width: 0px;

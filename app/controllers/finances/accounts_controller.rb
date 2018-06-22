@@ -17,6 +17,7 @@ class Finances::AccountsController < Finances::BaseController
       @balance += (@account.reconciled_balance || 0)
       @transactions = @transactions.unreconciled
     end
+    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(description: "New Transaction", transaction_date: Date.current))
     respond_with(@account)
   end
 

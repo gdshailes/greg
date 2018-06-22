@@ -48,6 +48,17 @@
   <p>There are currently no transactions to show for this account.</p>
 <% end %>
 
+<input type='button' id='new-transaction-button' value='New Transaction'>
+
+<div id='new-transaction-form' class='modal hidden'>
+  <div class='modal--background'></div>
+  <div class='modal--form'>
+    <%= simple_form_for @transaction_form, url: finances_account_transactions_path(@account, @transaction_form.transaction), method: :post do |f| %>
+      <%= render partial: 'finances/transactions/form', finances_transaction: @transaction, locals: {f: f} %>
+    <% end %>
+  </div>
+</div>
+
 <p>
   <% if @include_reconciled %>
     <%= link_to 'Show Reconciled', @account, class: "ticked-checkbox" %>

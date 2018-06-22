@@ -7,7 +7,7 @@ class Finances::TransactionsController < Finances::BaseController
   def index
   end
 
-   def new
+  def new
     @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(description: "New Transaction", transaction_date: Date.current))
   end
 
