@@ -48,23 +48,12 @@
   <p>There are currently no transactions to show for this account.</p>
 <% end %>
 
-<div id='new-transaction-form' class='modal hidden'>
-  <div class='modal--background'>
-  </div>
-  <div class='modal--form'>
-    <%= simple_form_for @transaction_form, url: finances_account_transactions_path(@account, @transaction_form.transaction), method: :post do |f| %>
-      <%= render partial: 'finances/transactions/form', finances_transaction: @transaction, locals: {f: f} %>
-    <% end %>
-  </div>
-</div>
-
-<div id='edit-transaction-form' class='modal hidden'>
-  <div class='modal--background'>
-  </div>
-  <div class='modal--form'>
-
-  </div>
-</div>
+<%= render 'partials/modal', form_id: 'new-transaction-form' do %>
+  <%= simple_form_for @transaction_form, url: finances_account_transactions_path(@account, @transaction_form.transaction), method: :post do |f| %>
+    <%= render partial: 'finances/transactions/form', finances_transaction: @transaction, locals: {f: f} %>
+  <% end %>
+<% end %>
+<%= render 'partials/modal', form_id: 'edit-transaction-form', form_content: nil %>
 
 <p>
   <% if @include_reconciled %>
