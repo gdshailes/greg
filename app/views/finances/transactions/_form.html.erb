@@ -13,7 +13,7 @@
 
 <div class="form-actions">
   <% if @transaction %>
-    <%= link_to 'Delete Transaction', finances_account_transaction_path(@account, @transaction), method: :delete, data: { confirm: 'Are you sure?' }, class: 'command-button' %>
+    <%= link_to 'Delete', finances_account_transaction_path(@account, @transaction), method: :delete, data: { confirm: 'Are you sure?' }, class: 'command-button' %>
   <% end %>
   <%= f.button :submit, 'Save', class: "command-button" %>
 </div>
