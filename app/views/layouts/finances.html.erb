@@ -13,8 +13,12 @@
 
   <body>
     <div class='mobile-header'>
-      <a href='#' class='show-menu command-button'><i class="fa fa-arrow-right"></i></a><% if @account && @account.persisted? %><%= link_to 'Add Transaction', new_finances_account_transaction_path(@account), class: 'command-button' %><% else %><%= link_to 'Add Account', new_finances_account_path, class: 'command-button' %>
-      <% end %>
+      <a href='#' class='show-menu command-button'><i class="fa fa-arrow-right"></i></a><%=
+      if @account && @account.persisted?
+        link_to 'Add Transaction', new_finances_account_transaction_path(@account), class: 'command-button new-transaction-link'
+      else
+        link_to 'Add Account', new_finances_account_path, class: 'command-button'
+      end -%>
     </div>
     <aside class='main-menu'>
       <nav class='menu'>

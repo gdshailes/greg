@@ -1,6 +1,6 @@
 <div class='new-entry-menu-item'>
   <% if @account && @account.persisted? %>
-    <%= link_to 'Add Transaction', new_finances_account_transaction_path(@account) %>
+    <%= link_to 'Add Transaction', new_finances_account_transaction_path(@account), class: 'new-transaction-link' %>
   <% else %>
     <%= link_to 'Add Account', new_finances_account_path %>
   <% end %>

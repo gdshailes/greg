@@ -1,9 +1,8 @@
-class GregHome.DiaryEntry
+class GregHome.Finances
   constructor: ->
     @$modal_dialogue = $('div.modal')
-    @$close_modal_button = $('input#close-modal-button')
     @$modal_background = $('div.modal--background')
-    @$new_transaction_button = $('div.new-entry-menu-item')
+    @$new_transaction_link = $('a.new-transaction-link')
     @$new_transaction_form = $('div#new-transaction-form')
     @$edit_transaction_link = $('a.edit-transaction-link')
     @$edit_transaction_form = $('div#edit-transaction-form')
@@ -11,11 +10,11 @@ class GregHome.DiaryEntry
     @init()
 
   init: ->
-    if @$new_transaction_button.length > 0
+    if @$new_transaction_link.length > 0
       @listen()
 
   listen: ->
-    @$new_transaction_button.on 'click', (e) =>
+    @$new_transaction_link.on 'click', (e) =>
       e.preventDefault()
       @show_new_transaction_form()
 
