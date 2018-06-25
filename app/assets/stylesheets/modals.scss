@@ -19,6 +19,9 @@ div.modal {
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 240px;
+    @media (max-device-width:$break_width) {
+      min-width: 90%;
+    }
     opacity: 1;
     &:before {
       width: 100%;
