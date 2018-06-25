@@ -1,8 +1,8 @@
 <div class='new-entry-menu-item'>
   <% if @account && @account.persisted? %>
-    <%= link_to 'Add Transaction', new_finances_account_transaction_path(@account), class: 'new-transaction-link' %>
+    <%= link_to 'Add Transaction', new_finances_account_transaction_path(@account), class: 'modal--link' %>
   <% else %>
-    <%= link_to 'Add Account', new_finances_account_path %>
+    <%= link_to 'Add Account', new_finances_account_path, class: 'modal--link' %>
   <% end %>
 </div>
 <ul class='menu'>
@@ -12,19 +12,19 @@
       <% if account == @account %>
         <% if @accounts.count > 1 %>
           <li>
-            <%= link_to "Transfer from #{@account.name}", new_finances_account_transfer_path(@account), class: "menu-sub" %>
+            <%= link_to "Transfer from #{@account.name}", new_finances_account_transfer_path(@account), class: 'menu-sub modal--link' %>
           </li>
           <% end %>
         <li>
-          <%= link_to "Edit #{@account.name}", edit_finances_account_path(@account), class: "menu-sub" %>
+          <%= link_to "Edit #{@account.name}", edit_finances_account_path(@account), class: 'menu-sub modal--link' %>
         </li>
         <li>
-          <%= link_to "Bills for #{@account.name}", finances_account_bills_path(@account), class: "menu-sub" %>
+          <%= link_to "Bills for #{@account.name}", finances_account_bills_path(@account), class: 'menu-sub' %>
         </li>
       <% end %>
     <% end %>
   <% end %>
   <li>
-    <%= link_to 'Add Account...', new_finances_account_path, class: "menu-sub" %>
+    <%= link_to 'Add Account...', new_finances_account_path, class: 'menu-sub modal--link' %>
   </li>
 </ul>

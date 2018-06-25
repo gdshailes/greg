@@ -25,7 +25,7 @@
 
     <% @transactions.each do |transaction| %>
       <% @balance += transaction.amount %>
-      <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "edit-transaction-link table-row#{transaction.reconciled ? ' reconciled' : ''}" do %>
+      <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "modal--link table-row#{transaction.reconciled ? ' reconciled' : ''}" do %>
         <span class="table-cell"><%= transaction.transaction_date.strftime('%d/%m/%Y') %></span>
         <span class="table-cell"><%= transaction.description %></span>
         <span class="table-cell amount<%= ' deposit' if transaction.amount > 0 %>"><%= transaction.amount.abs %></span>
@@ -35,7 +35,7 @@
 
     <% @upcoming_bills.each do |bill| %>
       <% @balance += bill[:transaction].amount %>
-      <%= link_to finances_account_bill_record_payment_path(@account, bill[:bill_id]), class: 'paid-bill-link table-row upcoming-bill' do %>
+      <%= link_to finances_account_bill_record_payment_path(@account, bill[:bill_id]), class: 'modal--link table-row upcoming-bill' do %>
         <span class="table-cell"><%= bill[:transaction].transaction_date.strftime('%d/%m/%Y') %></span>
         <span class="table-cell"><%= bill[:transaction].description %></span>
         <span class="table-cell amount <%= 'deposit' if bill[:transaction].amount > 0 %>"><%= bill[:transaction].amount.abs %></span>
@@ -47,13 +47,6 @@
 <% else %>
   <p>There are currently no transactions to show for this account.</p>
 <% end %>
-
-<%= render 'partials/modal', form_id: 'new-transaction-form' do %>
-  <%= simple_form_for @transaction_form, url: finances_account_transactions_path(@account, @transaction_form.transaction), method: :post do |f| %>
-    <%= render partial: 'finances/transactions/form', finances_transaction: @transaction, locals: {f: f} %>
-  <% end %>
-<% end %>
-<%= render 'partials/modal', form_id: 'edit-transaction-form', form_content: nil %>
 
 <p>
   <% if @include_reconciled %>

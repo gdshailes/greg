@@ -15,7 +15,7 @@
     </div>
 
     <% @bills.each do |bill| %>
-      <%= link_to edit_finances_account_bill_path(@account.id, bill.id), class: "table-row" do %>
+      <%= link_to edit_finances_account_bill_path(@account.id, bill.id), class: "table-row modal--link" do %>
         <span class="table-cell"><%= bill.description %></span>
         <span class="table-cell amount <%= "deposit" if bill.amount > 0 %>"><%= bill.amount.abs %></span>
         <span class="table-cell"><%= bill.frequency %></span>
@@ -28,4 +28,4 @@
   <p>You have not yet set up any bills for this account.</p>
 <% end %>
 
-<%= link_to 'New Bill', new_finances_account_bill_path(@account.id), class: "command-button" %>
+<%= link_to 'New Bill', new_finances_account_bill_path(@account.id), class: "command-button modal--link" %>
