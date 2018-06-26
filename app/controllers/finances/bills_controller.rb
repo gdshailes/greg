@@ -10,7 +10,7 @@ class Finances::BillsController < Finances::BaseController
   end
 
   def new
-    @bill_form = Finances::EditBillForm.new(Finances::Bill.new(description: 'New Bill', interval: 1, frequency: 'Months', next_due_at: Date.current))
+    @bill_form = Finances::EditBillForm.new(Finances::Bill.new(interval: 1, frequency: 'Months', next_due_at: Date.current))
   end
 
   def edit

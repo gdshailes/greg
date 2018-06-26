@@ -1,6 +1,11 @@
 @import 'finances/colours';
 @import 'base.scss';
 
+input, textarea, select, button {
+  font-family: $base_font;
+  font-size: 1em;
+}
+
 a {
   text-decoration: none;
   color: $link_color;
@@ -34,12 +39,12 @@ a {
 
 form.simple_form {
   padding: 1em;
+
   & input.string, input.numeric {
     background-color: $background;
     border: 1px solid $rule_color;
     padding: 0 12px;
     box-sizing: border-box;
-    font-family: $base_font;
   }
   & div.form-actions {
     padding-top: 18px;
@@ -138,16 +143,80 @@ div.transactions-table {
   display: table;
   border-bottom: 1px solid $rule_color;
   margin-bottom: 1em;
+  @media (max-device-width:$break_width) {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 .table-row {
   display: table-row;
+  @media (max-device-width:$break_width) {
+    display: block;
+    height: 100px;
+    position: relative;
+
+  }
+  span {
+    display: table-cell;
+    padding: 0 15px;
+    &.amount, &.balance {
+      text-align: right;
+      &:before {
+        content: '£';
+        color: $menu_background;
+      }
+    }
+    &.deposit {
+      font-weight: bold;
+    }
+    @media (max-device-width:$break_width) {
+      margin: 0;
+      padding: 0;
+      position: absolute;
+      &.date {
+        width: 70%;
+        height: 30px;
+        top: 10px;
+        left: 0;
+        font-size: 0.8em;
+      }
+      &.balance {
+        width: 30%;
+        height: 30px;
+        top: 10px;
+        right: 0;
+        font-size: 0.8em;
+      }
+      &.description {
+        width: 70%;
+        height: 50px;
+        bottom: 0;
+        left: 0;
+        font-weight: bold;
+        overflow: hidden;
+      }
+      &.amount {
+        width: 30%;
+        height: 50px;
+        bottom: 0;
+        right: 0;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 div.table-row-header {
   @extend .table-row;
-  border-bottom: 1px solid $rule_color;
   font-weight: bold;
+  span {
+    border-bottom: 1px solid $rule_color;
+  }
+  @media (max-device-width:$break_width) {
+    display: none;
+  }
 }
 
 a.table-row {
@@ -174,29 +243,20 @@ a.table-row {
       content: "\f00c"
     }
   }
+  @media (max-device-width:$break_width) {
+    border-top: 1px solid $menu_background;
+  }
   &:nth-child(odd) {
-    background-color: darken($background, 6%);
+    @media (min-device-width:$break_width) {
+      background-color: darken($background, 6%);
+    }
     &:hover {
       background-color: $menu_background;
     }
   }
-}
-
-span.table-cell {
-  display: table-cell;
-  padding: 0 15px;
-  &.header {
-    border-bottom: 1px solid $rule_color;
-  }
-  &.amount {
-    text-align: right;
-    &:before {
-      content: '£';
-      color: $menu_background;
-    }
-  }
-  &.deposit {
-    font-weight: bold;
+  @media (max-device-width:$break_width) {
+    margin: 0;
+    padding: 0;
   }
 }
 

@@ -17,12 +17,12 @@ class Finances::AccountsController < Finances::BaseController
       @balance += (@account.reconciled_balance || 0)
       @transactions = @transactions.unreconciled
     end
-    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(description: "New Transaction", transaction_date: Date.current))
+    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(transaction_date: Date.current))
     respond_with(@account)
   end
 
   def new
-    @account = Finances::Account.new(user: current_user, name: "New Account")
+    @account = Finances::Account.new(user: current_user)
     @account.primary = @primary_account ? false : true
     respond_with(@account)
   end

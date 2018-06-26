@@ -7,20 +7,20 @@
 <% if @bills.any? %>
   <div class='transactions-table'>
     <div class='table-row-header'>
-      <span class="table-cell header">Description</span>
-      <span class="table-cell header">Amount</span>
-      <span class="table-cell header">Frequency</span>
-      <span class="table-cell header">Interval</span>
-      <span class="table-cell header">Next Due</span>
+      <span>Description</span>
+      <span>Amount</span>
+      <span>Frequency</span>
+      <span>Interval</span>
+      <span>Next Due</span>
     </div>
 
     <% @bills.each do |bill| %>
       <%= link_to edit_finances_account_bill_path(@account.id, bill.id), class: "table-row modal--link" do %>
-        <span class="table-cell"><%= bill.description %></span>
-        <span class="table-cell amount <%= "deposit" if bill.amount > 0 %>"><%= bill.amount.abs %></span>
-        <span class="table-cell"><%= bill.frequency %></span>
-        <span class="table-cell"><%= bill.interval %></span>
-        <span class="table-cell"><%= bill.next_due_at.strftime('%d/%m/%Y') %></span>
+        <span><%= bill.description %></span>
+        <span class="amount <%= "deposit" if bill.amount > 0 %>"><%= bill.amount.abs %></span>
+        <span><%= bill.frequency %></span>
+        <span><%= bill.interval %></span>
+        <span><%= bill.next_due_at.strftime('%d/%m/%Y') %></span>
       <% end %>
     <% end %>
   </div>

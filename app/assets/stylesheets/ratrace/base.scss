@@ -236,9 +236,6 @@ div.panel-body {
     box-sizing: border-box;
     border-radius: 6px;
     color: black;
-    @media (max-device-width:$break_width) {
-      font-size: 1.2em;
-    }
   }
 
   & textarea {
