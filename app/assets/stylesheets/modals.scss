@@ -13,6 +13,9 @@ div.modal {
   }
 
   &--form {
+
+    h1 { display: none; }
+
     position: absolute;
     background-color: $background;
     box-shadow: 0px 8px 32px rgba(0,0,0,0.5);
@@ -21,15 +24,27 @@ div.modal {
     transform: translate(-50%, -50%);
     min-width: 240px;
     @media (max-device-width:$break_width) {
-      // min-width: 90%;
+      width: 90%;
     }
     opacity: 1;
     &:before {
       width: 100%;
       display: block;
-      height: 12px;
+      height: 6px;
       background-color: $menu_background;
       content: ' '
+    }
+  }
+  &--close {
+    position: absolute;
+    display: block;
+    top: 6px;
+    right: 6px;
+    height: 18px;
+    font-size: 15px;
+    @media (max-device-width:$break_width) {
+      height: 36px;
+      font-size: 30px;
     }
   }
 }
