@@ -1,3 +1,5 @@
+@GregHome ||= {};
+
 class GregHome.Ratrace
   constructor: ->
     @$intro = $('div.intro')

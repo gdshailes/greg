@@ -10,7 +10,7 @@
     <%= javascript_include_tag 'jquery_ujs' %>
   </head>
 
-  <body>
+  <body class='<%= params[:controller] %>'>
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>

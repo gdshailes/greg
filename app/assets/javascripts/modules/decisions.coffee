@@ -1,3 +1,5 @@
+@GregHome ||= {};
+
 class GregHome.Decision
   constructor: ->
     @$options_list    = $('#options_list')

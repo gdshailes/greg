@@ -1,3 +1,5 @@
+@GregHome ||= {};
+
 class GregHome.HomePage
   constructor: ->
     @$google = $('.googleSearch')

@@ -1,3 +1,5 @@
+@GregHome ||= {};
+
 class GregHome.DiaryEntry
   constructor: ->
     @$button = $('.show-menu')
