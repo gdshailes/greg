@@ -10,7 +10,7 @@
     <%= javascript_include_tag :application %>
   </head>
 
-  <body>
+  <body class='<%= params[:controller] %>'>
     <div class='mobile-header'>
       <a href='#' class='show-menu command-button'><i class="fa fa-bars"></i></a><%= link_to 'Add Entry', new_diary_entry_path, class: 'command-button' %>
     </div>

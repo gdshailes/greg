@@ -1,12 +1,8 @@
 require 'fileutils'
 
-class BoriscamController < ApplicationController
+class BoriscamsController < ApplicationController
 
-  # Written By : GDS
-  # Date       : 15/11/2016
-
-  def index
-    # Get latest 20 photos, in reverse chronological order.
+  def show
     @images = BorisCamImage.order(created_at: :desc).limit(20)
   end
 

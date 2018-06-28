@@ -1,4 +1,6 @@
-class GregHome.Modals
+@GregHome ||= {}
+
+class GregHome.Finances
   constructor: ->
     @$modal_link = $('a.modal--link')
     @$modal_background = $('div.modal--background')

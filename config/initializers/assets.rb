@@ -12,15 +12,11 @@ Rails.application.config.assets.version = '1.0'
 
 
 
-Rails.application.config.assets.precompile += %w( ride_log.js )
-Rails.application.config.assets.precompile += %w( ride_log.css )
 Rails.application.config.assets.precompile += %w( .css )
-Rails.application.config.assets.precompile += %w( boriscam.js )
 Rails.application.config.assets.precompile += %w( boriscam.css )
 Rails.application.config.assets.precompile += %w( jquery_ujs.js )
 Rails.application.config.assets.precompile += %w( greghome.css )
 Rails.application.config.assets.precompile += %w( diary_entry.css )
-Rails.application.config.assets.precompile += %w( diary_entry.js )
 Rails.application.config.assets.precompile += %w( devise.css )
 Rails.application.config.assets.precompile += %w( finances.css )
 Rails.application.config.assets.precompile += %w( finances/accounts.css )

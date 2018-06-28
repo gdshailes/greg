@@ -1,3 +1,5 @@
+@GregHome ||= {}
+
 class GregHome.Decision
   constructor: ->
     @$options_list    = $('#options_list')
@@ -12,10 +14,8 @@ class GregHome.Decision
     @$decision        = $('#decision')
     @$make_decision   = $('#make_decision')
     @options          = null
-    @init()
 
-  init: ->
-      @listen()
+    @listen()
 
   listen: ->
     @$add_option.on 'click', (event) =>
