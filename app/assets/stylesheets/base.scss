@@ -1,15 +1,25 @@
 
-$width: 250px;
+$width: 30%;
 $body_margin: 2em;
 $break_width: 700px;
-$mobile_header_height: 60px;
-$footer_height: 30px;
-$mobile_footer_height: 50px;
+$mobile_header_height: 3em;
+$footer_height: 2em;
 $base_font: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
+
 @import "font-awesome";
 @import "animations";
 
-body{
+html {
+  font-size: 100%;
+  @media (min-width:1200px) {
+    font-size: 200%;
+  }
+  @media (max-width:$break_width) {
+    font-size: 125%;
+  }
+}
+
+body {
   margin: 0;
   padding: 0;
   color: $body-color;
@@ -19,10 +29,6 @@ body{
   width: 100%;
   height: 100%;
   min-width: 300px;
-  font-size: 14px;
-  @media (max-device-width:$break_width) {
-    font-size: 2em;
-  }
 }
 
 .right-align {
@@ -30,7 +36,7 @@ body{
 }
 
 .mobile-header {
-  @media (max-device-width:$break_width) {
+  @media (max-width:$break_width) {
     height: $mobile_header_height;
   }
   display: block;
@@ -85,7 +91,7 @@ aside {
     top: 0;
     left: 0;
     width: $width;
-    @media (mix-device-width:$break_width) {
+    @media (mix-width:$break_width) {
       width: 100%;
     }
     height: 33px;
@@ -95,7 +101,7 @@ aside {
       background-color: black;
       color: white;
     }
-    @media (max-device-width:$break_width) {
+    @media (max-width:$break_width) {
       left: -100%;
     }
     transition: left 0.5s;
@@ -114,7 +120,7 @@ aside {
     transition: margin-left 0.5s, opacity 0.5s;
     z-index:1;
     width: $width;
-    @media (max-device-width:$break_width) {
+    @media (max-width:$break_width) {
       margin-left: -100%;
       padding-top: 0px;
       top: $mobile_header_height;
@@ -176,7 +182,7 @@ aside {
 
 div.page {
   width: 100%;
-  @media (max-device-width: $break_width) {
+  @media (max-width: $break_width) {
     padding-left: 0;
     padding-top: $mobile_header_height;
   }
@@ -188,12 +194,12 @@ div.page {
 
 main {
   margin: 25px;
-  @media (max-device-width:$break_width) {
+  @media (max-width:$break_width) {
     // margin: 25px 0px;
   }
   & h1 {
     font-size: 1.2em;
-    @media (max-device-width:$break_width) {
+    @media (max-width:$break_width) {
       // margin-left: 15px;
     }
     & span {
@@ -263,9 +269,6 @@ div.footer {
   bottom: 0;
   width: 100%;
   height: $footer_height;
-  @media (max-device-width: $break_width) {
-    height: $mobile_footer_height;
-  }
   background-color: $footer_background;
   color: $footer_color;
   margin-left: $width;
@@ -273,7 +276,7 @@ div.footer {
   padding: 0px;
   font-size: 0.9em;
   vertical-align: middle;
-  @media (max-device-width: $break_width) {
+  @media (max-width: $break_width) {
     margin-left: 0;
     font-size: 0.6em;
   }
@@ -281,7 +284,7 @@ div.footer {
     height: 20px;
     padding: 7px 15px;
     display: inline-block;
-    @media (min-device-width: $break_width) {
+    @media (min-width: $break_width) {
       &:before {
         content: 'Signed in as '
       }
@@ -293,9 +296,6 @@ div.footer {
     bottom: 0;
     background-color: $menu_background;
     height: $footer_height;
-    @media (max-device-width: $break_width) {
-      height: $mobile_footer_height;
-    }
     & a {
       display: block;
       float: left;
