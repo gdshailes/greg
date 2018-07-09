@@ -31,4 +31,8 @@ class Ratrace::Post < ApplicationRecord
     images.first
   end
 
+  def post_to_facebook
+    return new_record?
+  end
+
 end

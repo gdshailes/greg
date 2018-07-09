@@ -4,21 +4,12 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   before_action :authenticate_admin!
 
+  before_action :set_new_post, only: [:index]
   before_action :set_posts, only: [:index, :get_next]
   before_action :set_post, only: [:edit, :update, :destroy]
   before_action :set_latest_post, only: [:post_to_facebook]
 
-  def new
-    @post = Ratrace::Post.new(user: current_user)
-    respond_with(@post)
-  end
-
-  def edit
-
-  end
-
   def create
-
     @post = Ratrace::Post.new(post_params)
     @post.user_id = current_user.id
 
@@ -33,10 +24,9 @@ class Ratrace::PostsController < Ratrace::BaseController
       end
     end
 
-    if @post.save
+    if @post.save && params[:post_to_facebook] == '1'
       redirect_to Facebook.new(post_to_fb_url).fb_permissions_url
     end
-
   end
 
   def post_to_facebook
@@ -61,6 +51,11 @@ class Ratrace::PostsController < Ratrace::BaseController
   end
 
   private
+
+
+  def set_new_post
+    @post = Ratrace::Post.new(user: current_user)
+  end
 
   def set_posts
     if params[:post_id]

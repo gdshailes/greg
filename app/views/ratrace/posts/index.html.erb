@@ -9,11 +9,16 @@
 
 <h1 class='panel-header'>Create a New Post</h1>
 <div class='panel-body edit-post'>
-  <%= form_for :ratrace_post, :url => ratrace_posts_path do |f| %>
+  <%= form_for @post, :url => ratrace_posts_path do |f| %>
     <%= f.text_field :title, placeholder: 'Title', class: 'input' %>
     <%= f.text_area :body, placeholder: 'Enter your article here', class: 'input' %>
+
     <div class='actions'>
       <label class='lefty'>Upload a JPG Image<span><%= f.file_field :image %></span></label>
+      <%= f.label :post_to_facebook, class: 'lefty' do %>
+        <%= f.check_box :post_to_facebook, value: 'Y', class: 'input' %>
+        Post update to Facebook
+      <% end %>
       <%= f.submit "Save" %>
     </div>
   <% end %>

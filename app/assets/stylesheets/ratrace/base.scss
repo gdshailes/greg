@@ -14,7 +14,7 @@ body {
   background-position: center;
   background-size: 1800px;
   background-color: $background_1;
-  font-size:18px;
+  font-size: 18px;
   @media (max-device-width:$break_width) {
     background-image: url("/ratrace-mobile-background.jpg");
     font-size: 2em;
@@ -24,6 +24,10 @@ body {
 input, textarea {
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   font-weight: normal;
+  font-size: 18px;
+  @media (max-device-width:$break_width) {
+    font-size: 2em;
+  }
 }
 
 .center {
@@ -245,7 +249,7 @@ div.panel-body {
   & div.actions {
     box-sizing: border-box;
     text-align: right;
-    & input, & label, & a {
+    & input, label, a {
       display: inline;
       color: white;
       text-decoration: none;
@@ -264,6 +268,7 @@ div.panel-body {
     }
     & .lefty {
       float: left;
+      margin-right: 12px;
     }
   }
 }
