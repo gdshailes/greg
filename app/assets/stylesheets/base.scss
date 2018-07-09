@@ -69,7 +69,7 @@ body {
       background-color: $menu-highlight;
     }
     vertical-align: middle;
-    line-height: 50px
+    line-height: 60px
   }
 }
 
@@ -86,29 +86,8 @@ aside {
     width: 0px;
   }
 
-  div.new-entry-menu-item {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: $width;
-    @media (mix-width:$break_width) {
-      width: 100%;
-    }
-    height: 33px;
-    font-weight: bold;
-    background-color: $menu_new;
-    & a:hover {
-      background-color: black;
-      color: white;
-    }
-    @media (max-width:$break_width) {
-      left: -100%;
-    }
-    transition: left 0.5s;
-  }
-
   nav.menu {
-    padding-top: 33px;
+    padding-top: 38px;
     background-color: $menu_background;
     overflow-y: scroll;
     overflow-x: none;
@@ -175,8 +154,30 @@ aside {
           font-family: FontAwesome;
           content: "\f105";
         }
+        &:hover{
+          background-color: $menu_selected_background;
+        }
       }
     }
+  }
+  div.new-entry-menu-item {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: $width;
+    @media (mix-width:$break_width) {
+      width: 100%;
+    }
+    height: 38px;
+    font-weight: bold;
+    background-color: $menu_new;
+    a:hover {
+      background-color: $menu_background;
+    }
+    @media (max-width:$break_width) {
+      left: -100%;
+    }
+    transition: left 0.5s;
   }
 }
 
