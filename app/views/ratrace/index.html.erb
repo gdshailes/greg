@@ -1,4 +1,4 @@
-<div class='panel header'>
+<div class='header'>
   <% if current_user %>
     <span>Hello, <%= current_user.display_name %>!</span>
     <ul>
@@ -11,8 +11,9 @@
   <% else %>
     <span>You're not signed in.</span>
     <ul>
-      <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
-      <li><%= link_to "Sign in with Google", user_google_omniauth_authorize_path %></li>
+      <li>Sign in with:</li>
+      <li><%= link_to "Facebook", user_facebook_omniauth_authorize_path %></li>
+      <li><%= link_to "Google", user_google_omniauth_authorize_path %></li>
     </ul>
   <% end %>
 </div>
