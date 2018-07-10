@@ -2,7 +2,7 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   require 'koala'
 
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, except: :get_next
 
   before_action :set_new_post, only: [:index]
   before_action :set_posts, only: [:index, :get_next]
