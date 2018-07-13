@@ -141,6 +141,16 @@ li {
   padding: 5px 0;
   display: block;
   text-align: left;
+  color: $link_ink;
+
+  input {
+    width: 100%;
+    font-size: 1em;
+    &[type=submit] {
+      font-size:3em;
+    }
+  }
+
 }
 
 @media screen and (max-device-width:620px) {
