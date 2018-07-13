@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
 
   resource :decision, only: [:new]
+  resource :verify_the_pie, only: [:new]
   resource :boriscam, only: [:show]
   post 'boriscams/upload', to: 'boriscams#upload'
   resources :diary_entry
