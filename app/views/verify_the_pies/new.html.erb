@@ -4,13 +4,54 @@
 
 <div id='welcome'>
   <h1>Verify the Pie or Not</h1>
+  <p>You have the enviable position of being quality control at a pie factory.
+    Unfortunately the pie machine is faulty and makes the occasional bad pie.
+    Each pie has two fillings. If you spot a pie with all food fillings then click 'Zero'.
+    Click 'One' if half the pie is bad, and click 'Two' if both fillings are bad.
+    You are also subject to an audit so your statistics are being recorded.
+  </p>
   <div id='start'>Start</div>
 </div>
 
-<div id='start' class='hidden'>
-  <h1>Pie game</h1>
+<div id='get-ready' class='hidden'>
+  Get Ready!
 </div>
 
-<div id='results' class='hidden'>
+<div id='play' class='hidden'>
+  <h1>Pie game</h1>
+  <div id='pies'>
+    <span id='ingredient_1'></span> AND <span id='ingredient_2'></span> PIE
+  </div>
+
+  <div class='game-button' data-pie-quality-guess='0'>Zero</div>
+  <div class='game-button' data-pie-quality-guess='1'>One</div>
+  <div class='game-button' data-pie-quality-guess='2'>Two</div>
+
   <h1>Results!</h1>
+  <table>
+    <tr>
+      <td>Time</td>
+      <td><div id='results-time'></div></td>
+    </tr>
+    <tr>
+      <td>Pies</td>
+      <td><div id='results-pies'></div></td>
+    </tr>
+    <tr>
+      <td>Best</td>
+      <td><div id='results-best'></div></td>
+    </tr>
+    <tr>
+      <td>Fails</td>
+      <td><div id='results-fails'></div></td>
+    </tr>
+    <tr>
+      <td>Mean</td>
+      <td><div id='results-mean'></div></td>
+    </tr>
+  Right:
+  <div id='right'></div>
+  Wrong:
+  <div id='wrong'></div>
+  <div id='stop'>Bored now, I quit</div>
 </div>
