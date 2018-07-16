@@ -49,10 +49,10 @@ class GregHome.VerifyThePies
       @$game_buttons.removeClass('enabled')
       $el = $(e.currentTarget)
       @pie_quality = @ingredient_1[0] + @ingredient_2[0]
+      time = @get_current_time() - @baked_at
       if $el.data('pie-quality-guess') == @pie_quality
         @right = @right + 1
         @$border.addClass('green')
-        time = @get_current_time() - @baked_at
 
         if @best_time == 0
           @best_time = time
@@ -63,7 +63,7 @@ class GregHome.VerifyThePies
       else
         @wrong = @wrong + 1
         @$border.addClass('red')
-      @update_score()
+      @update_score(time)
 
       _this = @
       @update = setTimeout(->
@@ -100,10 +100,9 @@ class GregHome.VerifyThePies
     @$new_best.addClass('hidden')
     @bake_pie()
 
-  update_score: ->
+  update_score: (time) ->
     total_time = @get_current_time() - @start_time
-
-    @$results_time.html(parseFloat(total_time).toFixed(2))
+    @$results_time.html(parseFloat(time).toFixed(2))
     @$results_best.html(parseFloat(@best_time).toFixed(2))
     @$results_pies.html(@right)
     @$results_tries.html(@right + @wrong)
