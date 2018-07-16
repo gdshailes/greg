@@ -101,11 +101,11 @@ class GregHome.VerifyThePies
     clearTimeout(@update)
     @$border.removeClass('red')
     @$border.removeClass('green')
+    @$game_buttons.addClass('enabled')
 
     if @wrong >= 3
       @end_shift()
     else
-      @$game_buttons.addClass('enabled')
       @$new_best.addClass('hidden')
       @bake_pie()
 
