@@ -2,6 +2,10 @@
 
 class GregHome.VerifyThePies
   constructor: ->
+    @init()
+    @listen()
+
+  init: ->
     @$border = $('body')
     @$paper = $('div#paper')
     @$welcome = $('div#welcome')
@@ -10,16 +14,15 @@ class GregHome.VerifyThePies
     @$play = $('div#play')
     @$new_best = $('div#new-best')
     @$game_buttons = $('div#game-buttons')
-    @ingredients = @get_ingredients()
     @$ingredient_1 = $('span#ingredient_1')
     @$ingredient_2 = $('span#ingredient_2')
     @$results_time = $('div#results-time')
     @$results_pies = $('div#results-pies')
+    @$results_tries = $('div#results-tries')
     @$results_best = $('div#results-best')
     @$results_fails = $('div#results-fails')
     @$results_mean = $('div#results-mean')
-
-    @listen()
+    @get_ingredients()
 
   restart: ->
     @$border.removeClass('yellow')
@@ -85,6 +88,7 @@ class GregHome.VerifyThePies
     @$results_time.html('')
     @$results_best.html('')
     @$results_pies.html('')
+    @$results_tries.html('')
     @$results_fails.html('')
     @$results_mean.html('')
 
@@ -98,12 +102,15 @@ class GregHome.VerifyThePies
 
   update_score: ->
     total_time = @get_current_time() - @start_time
-    @$results_time.html(total_time)
-    @$results_best.html(@best_time)
-    @$results_pies.html(@right + @wrong)
+
+    @$results_time.html(parseFloat(total_time).toFixed(2))
+    @$results_best.html(parseFloat(@best_time).toFixed(2))
+    @$results_pies.html(@right)
+    @$results_tries.html(@right + @wrong)
     @$results_fails.html(@wrong)
+
     if @right > 0
-      @$results_mean.html(total_time / @right)
+      @$results_mean.html(parseFloat(total_time / @right).toFixed(6))
     else
       @$results_mean.html('')
 
@@ -124,53 +131,6 @@ class GregHome.VerifyThePies
     @ingredients[index]
 
   get_ingredients: ->
-    [
-      [1, "STEAK"],
-      [1, "KIDNEY"],
-      [1, "BROCOLLI"],
-      [1, "BEEF"],
-      [1, "CHICKEN"],
-      [1, "MUSHROOM"],
-      [1, "CHEESE"],
-      [1, "ONION"],
-      [1, "TOMATO"],
-      [1, "PULLED PORK"],
-      [1, "LAMB"],
-      [1, "SWEETCORN"],
-      [1, "PIGEON"],
-      [1, "VENISON"],
-      [1, "POTATO"],
-      [1, "CARROT"],
-      [1, "SWEETCORN"],
-      [1, "LEEK"],
-      [1, "'MEAT'"],
-      [1, "EGG"],
-      [1, "MINCE"],
-      [1, "BACON"],
-      [1, "CURRY"],
-      [1, "CHICKEN TIKKA"],
-      [1, "RABBIT"],
-      [1, "MACKEREL"],
-      [1, "TURKEY"],
-      [1, "HAM"],
-
-      [0, "TOENAIL"],
-      [0, "CARDBOARD"],
-      [0, "TYRE"],
-      [0, "RAT POISON"],
-      [0, "GLASS"],
-      [0, "VOMIT"],
-      [0, "NOVICHOK"],
-      [0, "CEMENT"],
-      [0, "PETROL"],
-      [0, "COFFEE MUG"],
-      [0, "MOTORCYCLIST"],
-      [0, "DISAPPOINTMENT"],
-      [0, "LIBRARY BOOK"],
-      [0, "FIRE"],
-      [0, "BILE"],
-      [0, "PLASTIC"],
-      [0, "LAVA"],
-      [0, "GUNPOWDER"]
-
-    ]
+    _this = @
+    $.ajax(url: "/verify_the_pie/ingredients.json").done (ingredients) ->
+      _this.ingredients = ingredients

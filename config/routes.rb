@@ -38,6 +38,7 @@ Rails.application.routes.draw do
 
   resource :decision, only: [:new]
   resource :verify_the_pie, only: [:new]
+  get 'verify_the_pie/ingredients', to: 'verify_the_pies#ingredients'
   resource :boriscam, only: [:show]
   post 'boriscams/upload', to: 'boriscams#upload'
   resources :diary_entry
