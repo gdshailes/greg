@@ -31,29 +31,39 @@
     <table id='results'>
       <tr>
         <td>Time:</td>
-        <td><div id='results-time'></div></td>
+        <td><div id='score-time'></div></td>
       </tr>
       <tr>
         <td>Pies:</td>
-        <td><div id='results-pies'></div></td>
+        <td><div id='score-pies'></div></td>
       </tr>
       <tr>
         <td>Best:</td>
-        <td><div id='results-best'></div></td>
+        <td><div id='score-best'></div></td>
       </tr>
       <tr>
         <td>Fails:</td>
-        <td><div id='results-fails'></div></td>
+        <td><div id='score-fails'></div></td>
       </tr>
       <tr>
         <td>Tries:</td>
-        <td><div id='results-tries'></div></td>
+        <td><div id='score-tries'></div></td>
       </tr>
       <tr>
         <td>Mean:</td>
-        <td><div id='results-mean'></div></td>
+        <td><div id='score-mean'></div></td>
       </tr>
     </table>
     <div id='stop' class='button'>I QUIT</div>
+
   </div>
+
+  <div id='results' class='hidden'>
+    <div>You <span id='results-end-reason'></span> after <span id='results-total-time'></span> seconds.</div>
+    <div>You correctly identified <span id='results-right'></span> pies.</div>
+    <div>Your quickest identification took <span id='results-best-time'></span> seconds.</div>
+    <div>Your average identification took <span id='results-mean'></span> seconds.</div>
+    <div id='retry' class='button'>Shit.</div>
+  </div>
+
 </div>

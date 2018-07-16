@@ -16,12 +16,13 @@ class GregHome.VerifyThePies
     @$game_buttons = $('div#game-buttons')
     @$ingredient_1 = $('span#ingredient_1')
     @$ingredient_2 = $('span#ingredient_2')
-    @$results_time = $('div#results-time')
-    @$results_pies = $('div#results-pies')
-    @$results_tries = $('div#results-tries')
-    @$results_best = $('div#results-best')
-    @$results_fails = $('div#results-fails')
-    @$results_mean = $('div#results-mean')
+    @$score_time = $('div#score-time')
+    @$score_pies = $('div#score-pies')
+    @$score_tries = $('div#score-tries')
+    @$score_best = $('div#score-best')
+    @$score_fails = $('div#score-fails')
+    @$score_mean = $('div#score-mean')
+    @$results = $('div#results')
     @get_ingredients()
 
   restart: ->
@@ -31,6 +32,7 @@ class GregHome.VerifyThePies
     @$paper.removeClass('yellow')
     @$welcome.removeClass('hidden')
     @$play.addClass('hidden')
+    @$results.addClass('hidden')
     @init_score()
 
   listen: ->
@@ -71,6 +73,9 @@ class GregHome.VerifyThePies
       , 1250)
 
     $('body').on 'click', 'div#stop', (e) =>
+      @end_shift()
+
+    $('body').on 'click', 'div#retry', (e) =>
       @restart()
 
   start_shift: ->
@@ -85,33 +90,41 @@ class GregHome.VerifyThePies
     @right = 0
     @best_time = 0
 
-    @$results_time.html('')
-    @$results_best.html('')
-    @$results_pies.html('')
-    @$results_tries.html('')
-    @$results_fails.html('')
-    @$results_mean.html('')
+    @$score_time.html('')
+    @$score_best.html('')
+    @$score_pies.html('')
+    @$score_tries.html('')
+    @$score_fails.html('')
+    @$score_mean.html('')
 
   next_pie: ->
     clearTimeout(@update)
     @$border.removeClass('red')
     @$border.removeClass('green')
-    @$game_buttons.addClass('enabled')
-    @$new_best.addClass('hidden')
-    @bake_pie()
+
+    if @wrong >= 3
+      @end_shift()
+    else
+      @$game_buttons.addClass('enabled')
+      @$new_best.addClass('hidden')
+      @bake_pie()
 
   update_score: (time) ->
-    total_time = @get_current_time() - @start_time
-    @$results_time.html(parseFloat(time).toFixed(2))
-    @$results_best.html(parseFloat(@best_time).toFixed(2))
-    @$results_pies.html(@right)
-    @$results_tries.html(@right + @wrong)
-    @$results_fails.html(@wrong)
+    @$score_time.html(parseFloat(time).toFixed(2))
+    @$score_best.html(parseFloat(@best_time).toFixed(2))
+    @$score_pies.html(@right)
+    @$score_tries.html(@right + @wrong)
+    @$score_fails.html(@wrong)
+    @$score_mean.html(@mean_time())
 
+  mean_time: ->
     if @right > 0
-      @$results_mean.html(parseFloat(total_time / @right).toFixed(6))
+      parseFloat(@total_time() / @right).toFixed(6)
     else
-      @$results_mean.html('')
+      ''
+
+  total_time: ->
+    @get_current_time() - @start_time
 
   bake_pie: ->
     @ingredient_1 = @get_random_ingredient()
@@ -121,6 +134,18 @@ class GregHome.VerifyThePies
     @$ingredient_2.html(@ingredient_2[1])
 
     @baked_at = @get_current_time()
+
+  end_shift: ->
+    @$play.addClass('hidden')
+    @$results.removeClass('hidden')
+    if @wrong >= 3
+      $('span#results-end-reason').html('were fired')
+    else
+      $('span#results-end-reason').html('quit')
+    $('span#results-total-time').html(parseFloat(@total_time()).toFixed(2))
+    $('span#results-right').html(@right)
+    $('span#results-best-time').html(parseFloat(@best_time).toFixed(2))
+    $('span#results-mean').html(@mean_time())
 
   get_current_time: ->
     (new Date()).getTime() / 1000
