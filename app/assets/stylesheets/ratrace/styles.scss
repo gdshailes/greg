@@ -15,17 +15,17 @@ body {
   background-size: 1800px;
   background-color: $background_1;
   font-size: 18px;
-  @media (max-width:$break_width) {
+  @media (max-width: $break_width) {
     background-image: url("/ratrace-mobile-background.jpg");
-    font-size: 2em;
+    font-size: 1.4em;
   }
 }
 
 input, textarea {
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   font-weight: normal;
-  font-size: 18px;
-  @media (max-width:$break_width) {
+  font-size: 1em;
+  @media (max-width: $break_width) {
     font-size: 1.4em;
   }
 }
@@ -47,7 +47,7 @@ div.page {
   min-width: 600px;
   background: none;
   padding: 12px 60px;
-  @media (max-width:$break_width) {
+  @media (max-width: $break_width) {
     padding: 6px 6px;
   }
   margin: 0;
@@ -76,7 +76,7 @@ div.header {
   text-align: right;
   span {
     float: left;
-    @media (max-width:$break_width) {
+    @media (max-width: $break_width) {
       display: none;
     }
   }
@@ -121,7 +121,7 @@ div.intro ul li a {
     -moz-box-shadow: $button_shadow;
     box-shadow: $button_shadow;
   }
-  @media (max-width:$break_width) {
+  @media (max-width: $break_width) {
     display: block;
     margin-bottom: 6px;
   }
@@ -154,7 +154,7 @@ div.timer-element {
     font-size: 1em;
     padding-bottom: 6px;
     border-radius: 0 0 12px 12px;
-    @media (max-width:$break_width) {
+    @media (max-width: $break_width) {
       font-size: 0.7em;
     }
     &.digit {
@@ -164,7 +164,7 @@ div.timer-element {
       border-radius: 12px 12px 0 0;
       line-height: 1em;
       padding-top: 8px;
-      @media (max-width:$break_width) {
+      @media (max-width: $break_width) {
         font-size: 1.9em;
       }
     }
@@ -197,7 +197,7 @@ h1.panel-header {
   margin: 12px 0 0 0;
   border-radius: 12px 12px 0 0;
   font-size: 1.2em;
-  @media (max-width:$break_width) {
+  @media (max-width: $break_width) {
     font-size: 1.6em;
   }
 }
@@ -207,7 +207,7 @@ h2.panel-sub-header {
   margin: 0;
   background-color: $darker;
   font-size: 0.7em;
-  @media (max-width:$break_width) {
+  @media (max-width: $break_width) {
     font-size: 1.2em;
   }
   font-weight: normal;
@@ -288,7 +288,7 @@ div.panel-body {
     & .lefty {
       float: left;
       margin-right: 12px;
-      @media (max-width:$break_width) {
+      @media (max-width: $break_width) {
         display: block;
         float: none;
         text-align: left;
@@ -334,7 +334,7 @@ div.comment {
     color: black;
     width: 80%;
     border-radius: 6px;
-    @media (max-width:$break_width) {
+    @media (max-width: $break_width) {
       font-size: 1.4em;
     }
   }
