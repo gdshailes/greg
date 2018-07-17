@@ -1,3 +1,7 @@
+html {
+  font-size: 100%;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -7,6 +11,10 @@ body {
   font-size: 21px;
   background-color: black;
   background-image: asset-url('greghome-background.jpg');
+  @media screen and (max-width: 620px) {
+    background-image: none;
+    background-color: $background_1;
+  }
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -19,8 +27,8 @@ body {
 }
 
 h1 {
-  margin: 0px 0px 0px 0px;
-  padding: 5px 0px 5px;
+  margin: 0;
+  padding: 5px 0 5px;
   width: 100%;
   font-size: 1em;
   display: inline-block;
@@ -79,7 +87,7 @@ div.valigner {
 }
 
 div.valigner div.QuickLinksPanel {
-  float: left;
+  vertical-align: top;
 }
 
 div.googleSearch {
@@ -89,6 +97,12 @@ div.googleSearch {
 div.center {
   text-align: center;
   width: 100%;
+}
+
+div.googleSearch {
+  @media screen and (max-width: 620px) {
+    display: none;
+  }
 }
 
 input.googleSearch {
@@ -103,18 +117,17 @@ input.googleSearch {
   padding: 0;
   margin: 0;
   outline: none;
-  text-indent: 0px;
+  text-indent: 0;
   text-align: center;
-}
-
-input.googleSearch::placeholder {
-  color: transparent;
-  text-shadow: 0 0 0 $link-ink;
+  &::placeholder {
+    color: transparent;
+    text-shadow: 0 0 0 $link-ink;
+  }
 }
 
 div.QuickLinks {
   display: inline-block;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
 div.QuickLinksPanel {
@@ -153,18 +166,9 @@ li {
 
 }
 
-@media screen and (max-device-width:620px) {
-  body, a {
-    font-size: 36px;
-  }
-
-  div.QuickLinks {
-    width: 80%;
-  }
-
+@media screen and (max-width: 620px) {
   div.QuickLinksPanel {
-    float: none;
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -203,7 +207,7 @@ div.denied-footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  height:50px;
+  height: 50px;
   background-color: black;
   color: silver;
   font-size: 0.8em;
