@@ -23,7 +23,7 @@ div.modal {
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 240px;
-    @media (max-device-width:$break_width) {
+    @media (max-width: $break_width) {
       width: 90%;
     }
     opacity: 1;
@@ -42,7 +42,7 @@ div.modal {
     right: 6px;
     height: 18px;
     font-size: 15px;
-    @media (max-device-width:$break_width) {
+    @media (max-width: $break_width) {
       height: 36px;
       font-size: 30px;
     }

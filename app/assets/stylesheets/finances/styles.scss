@@ -140,7 +140,7 @@ div.transactions-table {
   display: table;
   border-bottom: 1px solid $rule_color;
   margin-bottom: 1em;
-  @media (max-device-width:$break_width) {
+  @media (max-width: $break_width) {
     display: block;
     margin: 0;
     padding: 0;
@@ -149,7 +149,7 @@ div.transactions-table {
 
 .table-row {
   display: table-row;
-  @media (max-device-width:$break_width) {
+  @media (max-width: $break_width) {
     display: block;
     height: 100px;
     position: relative;
@@ -168,7 +168,7 @@ div.transactions-table {
     &.deposit {
       font-weight: bold;
     }
-    @media (max-device-width:$break_width) {
+    @media (max-width: $break_width) {
       margin: 0;
       padding: 0;
       position: absolute;
@@ -211,7 +211,7 @@ div.table-row-header {
   span {
     border-bottom: 1px solid $rule_color;
   }
-  @media (max-device-width:$break_width) {
+  @media (max-width: $break_width) {
     display: none;
   }
 }
@@ -240,18 +240,18 @@ a.table-row {
       content: "\f00c"
     }
   }
-  @media (max-device-width:$break_width) {
+  @media (max-width: $break_width) {
     border-top: 1px solid $menu_background;
   }
   &:nth-child(odd) {
-    @media (min-device-width:$break_width) {
+    @media (min-width: $break_width) {
       background-color: darken($background, 6%);
     }
     &:hover {
       background-color: $menu_background;
     }
   }
-  @media (max-device-width:$break_width) {
+  @media (max-width: $break_width) {
     margin: 0;
     padding: 0;
   }

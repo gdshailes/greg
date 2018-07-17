@@ -11,12 +11,6 @@ $base_font: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
 
 html {
   font-size: 100%;
-  @media (min-width:1200px) {
-    font-size: 200%;
-  }
-  @media (max-width:$break_width) {
-    font-size: 125%;
-  }
 }
 
 body {
@@ -36,7 +30,7 @@ body {
 }
 
 .mobile-header {
-  @media (max-width:$break_width) {
+  @media (max-width: $break_width) {
     height: $mobile_header_height;
   }
   display: block;
@@ -195,14 +189,8 @@ div.page {
 
 main {
   margin: 25px;
-  @media (max-width:$break_width) {
-    // margin: 25px 0px;
-  }
   & h1 {
     font-size: 1.2em;
-    @media (max-width:$break_width) {
-      // margin-left: 15px;
-    }
     & span {
       font-weight: normal;
       border-right: 1px solid $rule-color;
@@ -279,7 +267,6 @@ div.footer {
   vertical-align: middle;
   @media (max-width: $break_width) {
     margin-left: 0;
-    font-size: 0.6em;
   }
   &-text {
     height: 20px;

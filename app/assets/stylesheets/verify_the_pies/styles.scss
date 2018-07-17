@@ -3,6 +3,7 @@ html {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-size: 100%;
 }
 
 body {
@@ -11,6 +12,7 @@ body {
   padding: 0;
   height: 80%;
   background-color: black;
+  font-size: 21px;
 }
 
 div {
@@ -25,7 +27,6 @@ div {
   &#paper {
     height: 100%;
     font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
-    font-size: 21px;
     color: silver;
     text-align: center;
   }
