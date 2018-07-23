@@ -17,3 +17,4 @@
 //= require_tree ./modules
 //= require core
 
+//= require md_simple_editor

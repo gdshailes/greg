@@ -3,7 +3,7 @@ $width: 30%;
 $body_margin: 2em;
 $break_width: 700px;
 $mobile_header_height: 3em;
-$footer_height: 2em;
+$footer_height: 2.3em;
 $base_font: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
 
 @import "font-awesome";
@@ -199,6 +199,7 @@ main {
     }
   }
   & div.buttons {
+    padding-top: 1em;
     text-align: right;
     width: 100%;
   }
@@ -211,15 +212,17 @@ main {
   color: $button_color;
   display: inline-block;
   text-decoration: none;
-  padding: 12px;
+  padding: 0.6em 1.2em;
   margin-left: 0px;
   text-align: center;
-  line-height: 15px;
-  min-width: 100px;
+  line-height: 1em;
   vertical-align: middle;
   border: none;
-  border-radius: 6px;
+  border-radius: 0.4em;
   transition: opacity 0.5s;
+  font-size: 1em;
+  font-weight: normal;
+  font-family: $base_font;
   &:hover {
     opacity: 1;
   }
@@ -244,6 +247,27 @@ div.input {
     border: none;
     width: 100%;
   }
+  & textarea {
+    height: 300px;
+    width: 100%;
+    resize: none;
+    border: none;
+  }
+}
+
+div#md-editor {
+  padding-top: 0em;
+  line-height: 0.2em;
+  div.btn-toolbar {
+    div.btn-group {
+      display: inline;
+      margin-right: 0.8em;
+      .pull-right {
+        margin-right: none;
+      }
+    }
+  }
+
   & textarea {
     height: 300px;
     width: 100%;
@@ -305,5 +329,3 @@ div.footer {
 p#notice {
   animation: fade-away 0.5s linear 3s forwards;
 }
-
-
