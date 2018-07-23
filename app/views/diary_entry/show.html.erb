@@ -1,6 +1,6 @@
 <h1><%= @entry.entry_date %></h1>
 <h2><%= @entry.title %></h2>
-<p><%= sanitize(@entry.formatted_body, tags: %w(p)) %></p>
+<p><%= markdown(@entry.body) %></p>
 <div class='buttons'>
   <%= link_to("Edit", edit_diary_entry_path(@entry), class: 'command-button') %>
 </div>
