@@ -1,0 +1,18 @@
+::-webkit-scrollbar {
+  margin: 0 8px;
+}
+
+pre {
+  padding: 1em 1.5em;
+  margin: 0 2em;
+  background:  lighten($background, 30%);
+  border-radius: 6px;
+  border: 2px solid;
+  border-color: lighten($header_background, 20%);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+  color: gray;
+  overflow-x: scroll;
+  ::-webkit-scrollbar {
+    margin: 0 8px;
+  }
+}
