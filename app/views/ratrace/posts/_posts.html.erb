@@ -8,7 +8,7 @@
       <%= ('<img %ssrc="data:image/jpg;base64,%s">' % [(alternate ? '' : 'class="alternate" '), Base64.encode64(post.image.filedata)]).html_safe %>
       <% alternate = !alternate %>
     <% end %>
-    <%= sanitize(post.formatted_body, tags: %w(p)) %>
+    <%= markdown(post.body) %>
     <% post.comments.each do |comment| %>
       <% comment_decorator = ::CommentDecorator.new(comment) %>
       <div class='comment'>
