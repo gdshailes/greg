@@ -1,11 +1,24 @@
-pre {
+code.inline {
+  color: rgb(196, 0, 0);
+  background: lighten($background, 10%);
+  border: 1px solid darken($background, 10%);
+  padding: 0.1em 0.3em;
+}
+
+pre.block-code {
   padding: 1em 1.5em;
   margin: 0 2em;
-  background:  lighten($background, 30%);
+  background:  lighten($background, 10%);
   border-radius: 6px;
   border: 2px solid;
   border-color: lighten($header_background, 20%);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
   color: gray;
   overflow-x: scroll;
+
+  &.ruby {
+
+  }
+
 }
+
