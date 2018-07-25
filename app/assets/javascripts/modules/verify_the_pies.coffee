@@ -156,6 +156,7 @@ class GregHome.VerifyThePies
     , 1250)
 
   end_shift: ->
+    clearTimeout(@timeout)
     @$play.addClass('hidden')
     @$results.removeClass('hidden')
     if @wrong >= 3
