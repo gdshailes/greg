@@ -11,6 +11,7 @@ class GregHome.VerifyThePies
     @$welcome = $('div#welcome')
     @$start = $('div#start')
     @$get_ready = $('div#get-ready')
+    @$too_slow = $('div#too-slow')
     @$play = $('div#play')
     @$new_best = $('div#new-best')
     @$game_buttons = $('div#game-buttons')
@@ -48,6 +49,7 @@ class GregHome.VerifyThePies
       , 3000)
 
     $('body').on 'click', 'div#game-buttons.enabled span ', (e) =>
+      clearTimeout(@timeout)
       @$game_buttons.removeClass('enabled')
       $el = $(e.currentTarget)
       @pie_quality = @ingredient_1[0] + @ingredient_2[0]
@@ -99,6 +101,7 @@ class GregHome.VerifyThePies
 
   next_pie: ->
     clearTimeout(@update)
+    @$too_slow.addClass('hidden')
     @$border.removeClass('red')
     @$border.removeClass('green')
     @$game_buttons.addClass('enabled')
@@ -134,6 +137,22 @@ class GregHome.VerifyThePies
     @$ingredient_2.html(@ingredient_2[1])
 
     @baked_at = @get_current_time()
+
+    _this = @
+    @timeout = setTimeout(->
+      _this.too_slow()
+    , 2500)
+
+  too_slow: ->
+    @wrong = @wrong + 1
+    @$border.addClass('red')
+    @$too_slow.removeClass('hidden')
+    @update_score(2)
+
+    _this = @
+    @update = setTimeout(->
+      _this.next_pie()
+    , 1250)
 
   end_shift: ->
     @$play.addClass('hidden')
