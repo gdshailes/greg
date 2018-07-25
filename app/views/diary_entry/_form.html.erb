@@ -2,7 +2,8 @@
 
 <%= f.input :title, label: 'Title' %>
 
-<div class='input'><label>Body</label>
+<div class='input'>
+  <label>Body</label>
   <%= md_simple_editor do %>
     <%= f.input :body, label: false %>
   <% end %>

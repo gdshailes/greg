@@ -11,7 +11,10 @@
 <div class='panel-body edit-post'>
   <%= form_for @post do |f| %>
     <%= f.text_field :title, class: 'input' %>
-    <%= f.text_area :body, class: 'input' %>
+    <%= md_editor do %>
+      <%= f.input :body, label: false, class: 'input' %>
+    <% end %>
+
     <div class='actions'>
       <%= link_to 'Delete Post', @post, method: :delete, data: { confirm: 'Are you sure you want to delete this post?'} , class: 'lefty' %>
       <%= link_to 'Cancel', ratrace_posts_url %>
