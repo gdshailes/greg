@@ -144,9 +144,10 @@ class GregHome.VerifyThePies
     , 2500)
 
   too_slow: ->
-    @wrong = @wrong + 1
-    @$border.addClass('red')
+    @$game_buttons.removeClass('enabled')
     @$too_slow.removeClass('hidden')
+    @$border.addClass('red')
+    @wrong = @wrong + 1
     @update_score(2)
 
     _this = @
