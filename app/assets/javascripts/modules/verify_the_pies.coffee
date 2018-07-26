@@ -24,6 +24,10 @@ class GregHome.VerifyThePies
     @$score_fails = $('div#score-fails')
     @$score_mean = $('div#score-mean')
     @$results = $('div#results')
+    @$results_end_reason = $('span#results-end-reason')
+    @$retry = $('div#retry')
+    @$win = $('div#win')
+    @target = 4
     @get_ingredients()
 
   restart: ->
@@ -49,27 +53,33 @@ class GregHome.VerifyThePies
       , 3000)
 
     $('body').on 'click', 'div#game-buttons.enabled span ', (e) =>
+      _this = @
       clearTimeout(@timeout)
       @$game_buttons.removeClass('enabled')
       $el = $(e.currentTarget)
       @pie_quality = @ingredient_1[0] + @ingredient_2[0]
       time = @get_current_time() - @baked_at
+
       if $el.data('pie-quality-guess') == @pie_quality
         @right = @right + 1
         @$border.addClass('green')
-
         if @best_time == 0
           @best_time = time
         else
           if time < @best_time
             @$new_best.removeClass('hidden')
             @best_time = time
+        if @right >= @target
+          setTimeout(->
+            _this.end_shift()
+          , 1250)
+          return
       else
         @wrong = @wrong + 1
         @$border.addClass('red')
+
       @update_score(time)
 
-      _this = @
       @update = setTimeout(->
         _this.next_pie()
       , 1250)
@@ -156,13 +166,20 @@ class GregHome.VerifyThePies
     , 1250)
 
   end_shift: ->
+    @$too_slow.addClass('hidden')
+    @$border.removeClass('red')
+    @$border.removeClass('green')
     clearTimeout(@timeout)
     @$play.addClass('hidden')
+
     @$results.removeClass('hidden')
-    if @wrong >= 3
-      $('span#results-end-reason').html('were fired')
-    else
-      $('span#results-end-reason').html('quit')
+    @$results_end_reason.html('quit')
+    @$results_end_reason.html('finished your shift') if @right >= @target
+    @$results_end_reason.html('were fired') if @wrong >= 3
+
+    @$retry.html('Rats.')
+    @$retry.html('Yay!') if @right >= @target
+
     $('span#results-total-time').html(parseFloat(@total_time()).toFixed(2))
     $('span#results-right').html(@right)
     $('span#results-best-time').html(parseFloat(@best_time).toFixed(2))
