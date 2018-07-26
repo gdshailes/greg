@@ -6,8 +6,8 @@ class GregHome.VerifyThePies
     @listen()
 
   init: ->
-    @target = 100
-    @max_failures = 3
+    @target = 30
+    @max_failures = 4
     @get_ingredients()
 
     @$border = $('body')
@@ -38,6 +38,8 @@ class GregHome.VerifyThePies
     @$results_best_pie = $('li#results-best-pie')
     @$best_pie = $('span#best-pie')
     @$results_end_reason = $('span#results-end-reason')
+    @$results_show_if_crap = $('li.show-if-crap')
+    @$results_hide_if_crap = $('li.hide-if-crap')
     @$win = $('li#win')
     @$retry = $('div#retry')
 
@@ -185,7 +187,14 @@ class GregHome.VerifyThePies
     @$results.removeClass('hidden')
     @$results_end_reason.html('quit')
     @$results_end_reason.html('were fired') if @fired
-    @$results_best_pie.removeClass('hidden') if @right > 0
+    if @right == 0
+      @$results_best_pie.addClass('hidden')
+      @$results_hide_if_crap.addClass('hidden')
+      @$results_show_if_crap.removeClass('hidden')
+    else
+      @$results_best_pie.removeClass('hidden')
+      @$results_hide_if_crap.removeClass('hidden')
+      @$results_show_if_crap.addClass('hidden')
 
     if @succeeded
       @$results_end_reason.html('finished your shift')
