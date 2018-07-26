@@ -6,8 +6,8 @@ class GregHome.VerifyThePies
     @listen()
 
   init: ->
-    @target = 4
-    @max_failures = 2
+    @target = 100
+    @max_failures = 3
     @get_ingredients()
 
     @$border = $('body')
