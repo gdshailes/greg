@@ -27,7 +27,7 @@ class GregHome.VerifyThePies
     @$results_end_reason = $('span#results-end-reason')
     @$retry = $('div#retry')
     @$win = $('div#win')
-    @target = 4
+    @target = 100
     @get_ingredients()
 
   restart: ->
