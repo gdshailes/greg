@@ -42,10 +42,14 @@ div {
     background: rgb(255, 255, 0);
     text-align: center;
     color: $black;
-    padding-top: 30px;
+    padding: 30px 15px 15px 15px;
     & span {
       color: $red;
     }
+  }
+  &#wrong-guess {
+    padding-top: 15px;
+    height: 150px;
   }
   &#play { color: $black; }
   &#pies { color: $red; }

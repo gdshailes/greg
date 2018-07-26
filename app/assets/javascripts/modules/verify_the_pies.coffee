@@ -142,10 +142,12 @@ class GregHome.VerifyThePies
         @$too_slow.removeClass('hidden')
       else
         if @pie_quality < quality_guess
-          @$bad_ingredient.html(@ingredient_2[1]) if @ingredient_2[0] == 0
-          @$bad_ingredient.html(@ingredient_1[1]) if @ingredient_1[0] == 0
+          if @pie_quality == 0
+            @$bad_ingredient.html(@ingredient_2[1] + ' or ' + @ingredient_1[1])
+          else
+            @$bad_ingredient.html(@ingredient_2[1]) if @ingredient_2[0] == 0
+            @$bad_ingredient.html(@ingredient_1[1]) if @ingredient_1[0] == 0
           @$wrong_guess.removeClass('hidden')
-
 
   update_score: (time) ->
     @$score_time.html(parseFloat(time).toFixed(2))
