@@ -6,15 +6,23 @@ class GregHome.VerifyThePies
     @listen()
 
   init: ->
+    @target = 4
+    @max_failures = 2
+    @get_ingredients()
+
     @$border = $('body')
     @$paper = $('div#paper')
+
     @$welcome = $('div#welcome')
     @$start = $('div#start')
+
     @$get_ready = $('div#get-ready')
-    @$too_slow = $('div#too-slow')
+
     @$play = $('div#play')
+    @$too_slow = $('div#too-slow')
     @$new_best = $('div#new-best')
     @$game_buttons = $('div#game-buttons')
+    @$pie_name = $('div#pie-name')
     @$ingredient_1 = $('span#ingredient_1')
     @$ingredient_2 = $('span#ingredient_2')
     @$score_time = $('div#score-time')
@@ -23,72 +31,37 @@ class GregHome.VerifyThePies
     @$score_best = $('div#score-best')
     @$score_fails = $('div#score-fails')
     @$score_mean = $('div#score-mean')
-    @$results = $('div#results')
-    @$results_end_reason = $('span#results-end-reason')
-    @$retry = $('div#retry')
-    @$win = $('div#win')
-    @target = 100
-    @get_ingredients()
 
-  restart: ->
-    @$border.removeClass('yellow')
-    @$border.removeClass('green')
-    @$border.removeClass('red')
-    @$paper.removeClass('yellow')
-    @$welcome.removeClass('hidden')
-    @$play.addClass('hidden')
-    @$results.addClass('hidden')
-    @init_score()
+    @$results = $('div#results')
+    @$results_best_pie = $('li#results-best-pie')
+    @$best_pie = $('span#best-pie')
+    @$results_end_reason = $('span#results-end-reason')
+    @$win = $('li#win')
+    @$retry = $('div#retry')
 
   listen: ->
     @$start.on 'click', (e) =>
-      @$border.addClass('yellow')
-      @$paper.addClass('yellow')
-      @$welcome.addClass('hidden')
-      @$get_ready.removeClass('hidden')
-
-      _this = @
-      @update = setTimeout(->
-        _this.start_shift()
-      , 3000)
+      @get_ready()
 
     $('body').on 'click', 'div#game-buttons.enabled span ', (e) =>
-      _this = @
-      clearTimeout(@timeout)
-      @$game_buttons.removeClass('enabled')
-      $el = $(e.currentTarget)
-      @pie_quality = @ingredient_1[0] + @ingredient_2[0]
-      time = @get_current_time() - @baked_at
-
-      if $el.data('pie-quality-guess') == @pie_quality
-        @right = @right + 1
-        @$border.addClass('green')
-        if @best_time == 0
-          @best_time = time
-        else
-          if time < @best_time
-            @$new_best.removeClass('hidden')
-            @best_time = time
-        if @right >= @target
-          setTimeout(->
-            _this.end_shift()
-          , 1250)
-          return
-      else
-        @wrong = @wrong + 1
-        @$border.addClass('red')
-
-      @update_score(time)
-
-      @update = setTimeout(->
-        _this.next_pie()
-      , 1250)
+      @identify_pie($(e.currentTarget).data('pie-quality-guess'))
 
     $('body').on 'click', 'div#stop', (e) =>
       @end_shift()
 
     $('body').on 'click', 'div#retry', (e) =>
       @restart()
+
+  get_ready: ->
+    _this = @
+    @$border.addClass('yellow')
+    @$paper.addClass('yellow')
+    @$welcome.addClass('hidden')
+    @$get_ready.removeClass('hidden')
+
+    @update = setTimeout(->
+      _this.start_shift()
+    , 2000)
 
   start_shift: ->
     @$get_ready.addClass('hidden')
@@ -109,18 +82,61 @@ class GregHome.VerifyThePies
     @$score_fails.html('')
     @$score_mean.html('')
 
-  next_pie: ->
-    clearTimeout(@update)
-    @$too_slow.addClass('hidden')
-    @$border.removeClass('red')
-    @$border.removeClass('green')
-    @$game_buttons.addClass('enabled')
+  bake_pie: ->
+    _this = @
 
-    if @wrong >= 3
-      @end_shift()
+    @ingredient_1 = @get_ingredient()
+    @ingredient_2 = @get_ingredient()
+
+    @$ingredient_1.html(@ingredient_1[1])
+    @$ingredient_2.html(@ingredient_2[1])
+
+    @baked_at = @get_current_time()
+
+    @timeout = setTimeout(->
+      _this.too_slow()
+    , 2500)
+
+  get_ingredient: ->
+    index = Math.floor(Math.random() * @ingredients.length)
+    @ingredients[index]
+
+  get_current_time: ->
+    (new Date()).getTime() / 1000
+
+  too_slow: ->
+    @identify_pie(-1)
+
+  identify_pie: (quality_guess) ->
+    _this = @
+    time = @get_current_time() - @baked_at
+    clearTimeout(@timeout)
+    @$game_buttons.removeClass('enabled')
+    @pie_quality = @ingredient_1[0] + @ingredient_2[0]
+
+    if quality_guess == @pie_quality
+      @correct_guess(time)
     else
-      @$new_best.addClass('hidden')
-      @bake_pie()
+      @incorrect_guess()
+      @$too_slow.removeClass('hidden') if quality_guess == -1
+
+    @update_score(time)
+
+    @update = setTimeout(->
+      _this.next_pie()
+    , 1250)
+
+  correct_guess: (time, pie) ->
+    @right += 1
+    @$border.addClass('green')
+    if @best_time == 0 || time < @best_time
+      @$new_best.removeClass('hidden')
+      @$best_pie.html(@$pie_name.text())
+      @best_time = time
+
+  incorrect_guess: ->
+      @wrong = @wrong + 1
+      @$border.addClass('red')
 
   update_score: (time) ->
     @$score_time.html(parseFloat(time).toFixed(2))
@@ -130,6 +146,57 @@ class GregHome.VerifyThePies
     @$score_fails.html(@wrong)
     @$score_mean.html(@mean_time())
 
+  next_pie: ->
+    clearTimeout(@update)
+    @$too_slow.addClass('hidden')
+    @$new_best.addClass('hidden')
+    @$border.removeClass('red')
+    @$border.removeClass('green')
+    @$game_buttons.addClass('enabled')
+
+    @fired = @wrong >= @max_failures
+    @succeeded = @right >= @target
+
+    if @fired || @succeeded
+      @end_shift()
+    else
+      @bake_pie()
+
+  end_shift: ->
+    @$too_slow.addClass('hidden')
+    @$border.removeClass('red')
+    @$border.removeClass('green')
+    clearTimeout(@timeout)
+    @$play.addClass('hidden')
+    @$retry.html('Rats.')
+    @$results.removeClass('hidden')
+    @$results_end_reason.html('quit')
+    @$results_end_reason.html('were fired') if @fired
+    @$results_best_pie.removeClass('hidden') if @right > 0
+
+    if @succeeded
+      @$results_end_reason.html('finished your shift')
+      @$win.removeClass('hidden')
+      @$retry.html('Yay!')
+
+    $('span#results-total-time').html(parseFloat(@total_time()).toFixed(2))
+    $('span#results-right').html(@right)
+    $('span#results-best-time').html(parseFloat(@best_time).toFixed(2))
+    $('span#results-mean').html(@mean_time())
+
+  restart: ->
+    @init_score()
+    @$paper.removeClass('yellow')
+    @$border.removeClass('yellow')
+    @$border.removeClass('red')
+    @$border.removeClass('green')
+
+    @$welcome.removeClass('hidden')
+
+    @$play.addClass('hidden')
+    @$results.addClass('hidden')
+    @$win.addClass('hidden')
+
   mean_time: ->
     if @right > 0
       parseFloat(@total_time() / @right).toFixed(6)
@@ -138,59 +205,6 @@ class GregHome.VerifyThePies
 
   total_time: ->
     @get_current_time() - @start_time
-
-  bake_pie: ->
-    @ingredient_1 = @get_random_ingredient()
-    @ingredient_2 = @get_random_ingredient()
-
-    @$ingredient_1.html(@ingredient_1[1])
-    @$ingredient_2.html(@ingredient_2[1])
-
-    @baked_at = @get_current_time()
-
-    _this = @
-    @timeout = setTimeout(->
-      _this.too_slow()
-    , 2500)
-
-  too_slow: ->
-    @$game_buttons.removeClass('enabled')
-    @$too_slow.removeClass('hidden')
-    @$border.addClass('red')
-    @wrong = @wrong + 1
-    @update_score(2)
-
-    _this = @
-    @update = setTimeout(->
-      _this.next_pie()
-    , 1250)
-
-  end_shift: ->
-    @$too_slow.addClass('hidden')
-    @$border.removeClass('red')
-    @$border.removeClass('green')
-    clearTimeout(@timeout)
-    @$play.addClass('hidden')
-
-    @$results.removeClass('hidden')
-    @$results_end_reason.html('quit')
-    @$results_end_reason.html('finished your shift') if @right >= @target
-    @$results_end_reason.html('were fired') if @wrong >= 3
-
-    @$retry.html('Rats.')
-    @$retry.html('Yay!') if @right >= @target
-
-    $('span#results-total-time').html(parseFloat(@total_time()).toFixed(2))
-    $('span#results-right').html(@right)
-    $('span#results-best-time').html(parseFloat(@best_time).toFixed(2))
-    $('span#results-mean').html(@mean_time())
-
-  get_current_time: ->
-    (new Date()).getTime() / 1000
-
-  get_random_ingredient: ->
-    index = Math.floor(Math.random() * @ingredients.length)
-    @ingredients[index]
 
   get_ingredients: ->
     _this = @

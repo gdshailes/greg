@@ -21,7 +21,7 @@
   <div id='play' class='hidden'>
     <div id='pies'>
       <div><%= image_tag 'pie.png' %></div>
-      <span id='ingredient_1'></span> AND <span id='ingredient_2'></span> PIE
+      <div id='pie-name'><span id='ingredient_1'></span> AND <span id='ingredient_2'></span> PIE</div>
     </div>
 
     <div id='game-buttons' class='enabled'>
@@ -63,11 +63,14 @@
   </div>
 
   <div id='results' class='hidden'>
-    <div>You <span id='results-end-reason'></span> after <span id='results-total-time'></span> seconds.</div>
-    <div>You correctly identified <span id='results-right'></span> pies.</div>
-    <div>Your quickest identification took <span id='results-best-time'></span> seconds.</div>
-    <div>Your average identification took <span id='results-mean'></span> seconds.</div>
-    <div id='win' class='hidden'>You really have too much time on your hands.</div>
+    <ul>
+      <li>You <span id='results-end-reason'></span> after <span id='results-total-time'></span> seconds.</li>
+      <li>You correctly identified <span id='results-right'></span> pies.</li>
+      <li>Your quickest identification took <span id='results-best-time'></span> seconds.</li>
+      <li>Your average pie identification time is <span id='results-mean'></span> seconds.</li>
+      <li id='results-best-pie' class='hidden'>Your mostly quickly identified pie was:<br><span id='best-pie'></span>.</li>
+      <li id='win' class='hidden'>You really have too much time on your hands.</li>
+    </ul>
     <div id='retry' class='button'></div>
   </div>
 
