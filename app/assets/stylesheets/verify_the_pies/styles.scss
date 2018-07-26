@@ -52,6 +52,12 @@ div {
     & div.button {
       line-height: 80px;
     }
+    & ul li {
+      text-align: left;
+      & span {
+        color: $red;
+      }
+    }
   }
   &#retry {
     margin-bottom: 0px;
