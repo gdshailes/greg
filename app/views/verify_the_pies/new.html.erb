@@ -14,6 +14,10 @@
     Get Ready!
   </div>
 
+  <div id='too-slow' class='hidden'>
+    Too Slow!
+  </div>
+
   <div id='play' class='hidden'>
     <div id='pies'>
       <div><%= image_tag 'pie.png' %></div>
@@ -63,7 +67,8 @@
     <div>You correctly identified <span id='results-right'></span> pies.</div>
     <div>Your quickest identification took <span id='results-best-time'></span> seconds.</div>
     <div>Your average identification took <span id='results-mean'></span> seconds.</div>
-    <div id='retry' class='button'>Rats.</div>
+    <div id='win' class='hidden'>You really have too much time on your hands.</div>
+    <div id='retry' class='button'></div>
   </div>
 
 </div>
