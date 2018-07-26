@@ -119,7 +119,7 @@ class GregHome.VerifyThePies
     if quality_guess == @pie_quality
       @correct_guess(time)
     else
-      @incorrect_guess(quality_guess == -1)
+      @incorrect_guess(quality_guess)
 
     @update_score(time)
 
@@ -135,15 +135,15 @@ class GregHome.VerifyThePies
       @$best_pie.html(@$pie_name.text())
       @best_time = time
 
-  incorrect_guess: (too_slow) ->
+  incorrect_guess: (quality_guess) ->
       @wrong = @wrong + 1
       @$border.addClass('red')
-      if too_slow
+      if quality_guess == -1
         @$too_slow.removeClass('hidden')
       else
-        if @pie_quality < 2
-          @$bad_ingredient.html(@ingredient_1[1]) if @ingredient_1[0] == 0
+        if @pie_quality < quality_guess
           @$bad_ingredient.html(@ingredient_2[1]) if @ingredient_2[0] == 0
+          @$bad_ingredient.html(@ingredient_1[1]) if @ingredient_1[0] == 0
           @$wrong_guess.removeClass('hidden')
 
 
