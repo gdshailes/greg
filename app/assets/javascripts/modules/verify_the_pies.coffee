@@ -21,6 +21,8 @@ class GregHome.VerifyThePies
     @$play = $('div#play')
     @$too_slow = $('div#too-slow')
     @$new_best = $('div#new-best')
+    @$wrong_guess = $('div#wrong-guess')
+    @$bad_ingredient = $('div#wrong-guess span')
     @$game_buttons = $('div#game-buttons')
     @$pie_name = $('div#pie-name')
     @$ingredient_1 = $('span#ingredient_1')
@@ -87,6 +89,7 @@ class GregHome.VerifyThePies
 
     @ingredient_1 = @get_ingredient()
     @ingredient_2 = @get_ingredient()
+    @pie_quality = @ingredient_1[0] + @ingredient_2[0]
 
     @$ingredient_1.html(@ingredient_1[1])
     @$ingredient_2.html(@ingredient_2[1])
@@ -112,13 +115,11 @@ class GregHome.VerifyThePies
     time = @get_current_time() - @baked_at
     clearTimeout(@timeout)
     @$game_buttons.removeClass('enabled')
-    @pie_quality = @ingredient_1[0] + @ingredient_2[0]
 
     if quality_guess == @pie_quality
       @correct_guess(time)
     else
-      @incorrect_guess()
-      @$too_slow.removeClass('hidden') if quality_guess == -1
+      @incorrect_guess(quality_guess == -1)
 
     @update_score(time)
 
@@ -126,7 +127,7 @@ class GregHome.VerifyThePies
       _this.next_pie()
     , 1250)
 
-  correct_guess: (time, pie) ->
+  correct_guess: (time) ->
     @right += 1
     @$border.addClass('green')
     if @best_time == 0 || time < @best_time
@@ -134,9 +135,17 @@ class GregHome.VerifyThePies
       @$best_pie.html(@$pie_name.text())
       @best_time = time
 
-  incorrect_guess: ->
+  incorrect_guess: (too_slow) ->
       @wrong = @wrong + 1
       @$border.addClass('red')
+      if too_slow
+        @$too_slow.removeClass('hidden')
+      else
+        if @pie_quality < 2
+          @$bad_ingredient.html(@ingredient_1[1]) if @ingredient_1[0] == 0
+          @$bad_ingredient.html(@ingredient_2[1]) if @ingredient_2[0] == 0
+          @$wrong_guess.removeClass('hidden')
+
 
   update_score: (time) ->
     @$score_time.html(parseFloat(time).toFixed(2))
@@ -149,6 +158,7 @@ class GregHome.VerifyThePies
   next_pie: ->
     clearTimeout(@update)
     @$too_slow.addClass('hidden')
+    @$wrong_guess.addClass('hidden')
     @$new_best.addClass('hidden')
     @$border.removeClass('red')
     @$border.removeClass('green')
@@ -164,6 +174,7 @@ class GregHome.VerifyThePies
 
   end_shift: ->
     @$too_slow.addClass('hidden')
+    @$wrong_guess.addClass('hidden')
     @$border.removeClass('red')
     @$border.removeClass('green')
     clearTimeout(@timeout)
