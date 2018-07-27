@@ -93,6 +93,9 @@ div.valigner div.QuickLinksPanel {
 
 div.googleSearch {
   text-align: center;
+  @media screen and (max-width: 620px) {
+    display: none;
+  }
 }
 
 div.center {
@@ -100,18 +103,12 @@ div.center {
   width: 100%;
 }
 
-div.googleSearch {
-  @media screen and (max-width: 620px) {
-    display: none;
-  }
-}
-
 input.googleSearch {
   height: 3em;
   color: transparent;
   text-shadow: 0 0 0 $text-box-ink;
-  background: none;
-  border: none;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   display: block;
   width:100%;
   font-size: 1.5em;
