@@ -1,4 +1,4 @@
-# To Do List
+# Greg's To Do List
 
 * Prevent direct pushes to Master
 * Tests! Write the tests that you should've written at the outset!
