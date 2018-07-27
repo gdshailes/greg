@@ -1,5 +1,6 @@
 # To Do List
 
+* Tests! Write the tests that you should've written at the outset!
 * Add some kind of reward in verify-the-pie if player finishes shift with no failures
 * Some kind of algorithm to make pies increasingly bizarre as game progresses...
 * Sort out markdown previews on ratrace and diary pages
