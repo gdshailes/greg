@@ -104,16 +104,17 @@ div.center {
 }
 
 input.googleSearch {
-  height: 3em;
+  box-sizing: border-box;
+  height: 1em;
   color: transparent;
   text-shadow: 0 0 0 $text-box-ink;
   background: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   display: block;
-  width:100%;
+  width: 100%;
   font-size: 1.5em;
-  padding: 0;
-  margin: 0;
+  padding: 1em 0;
+  margin-bottom: 0.3em;
   outline: none;
   text-indent: 0;
   text-align: center;
