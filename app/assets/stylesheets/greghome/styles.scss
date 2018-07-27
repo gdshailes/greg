@@ -67,6 +67,7 @@ a {
   }
   &:focus {
     outline: none;
+    background-color: rgba(0,0,0,0.2);
   }
 
 }
@@ -137,7 +138,7 @@ div.QuickLinksPanel {
   display: inline-block;
   background: rgba(0,0,0,0.3);
   border-radius: 12px;
-  li:hover a:after{
+  li a:hover:after{
     width: 100%;
   }
 }
