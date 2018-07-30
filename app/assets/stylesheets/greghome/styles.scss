@@ -108,8 +108,11 @@ input.googleSearch {
   height: 1em;
   color: transparent;
   text-shadow: 0 0 0 $text-box-ink;
-  background: rgba(0, 0, 0, 0.1);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
   display: block;
   width: 100%;
   font-size: 1.5em;
