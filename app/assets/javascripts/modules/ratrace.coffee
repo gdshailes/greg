@@ -28,7 +28,6 @@ class GregHome.Ratrace
 
     $(document).ajaxComplete (e) =>
       @loading_more = false
-      console.log 'ajaxComplete'
 
   intro_toggle: ->
     if @$intro.hasClass 'collapsed'
