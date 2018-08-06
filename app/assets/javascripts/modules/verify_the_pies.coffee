@@ -75,6 +75,7 @@ class GregHome.VerifyThePies
 
   init_score: ->
     @start_time = @get_current_time()
+    @reliability = 99
     @wrong = 0
     @right = 0
     @best_time = 0
@@ -89,9 +90,20 @@ class GregHome.VerifyThePies
   bake_pie: ->
     _this = @
 
-    @ingredient_1 = @get_ingredient()
-    @ingredient_2 = @get_ingredient()
-    @pie_quality = @ingredient_1[0] + @ingredient_2[0]
+    performance = (Math.floor(Math.random() * 100))
+    malfunction = performance > @reliability
+
+    if malfunction
+      @pie_quality = Math.floor(Math.random() * 2)
+    else
+      @pie_quality = 2
+
+    loop
+      @ingredient_1 = @get_ingredient()
+      @ingredient_2 = @get_ingredient()
+      break if @ingredient_1[0] + @ingredient_2[0] == @pie_quality
+
+    @reliability -= 5
 
     @$ingredient_1.html(@ingredient_1[1])
     @$ingredient_2.html(@ingredient_2[1])
