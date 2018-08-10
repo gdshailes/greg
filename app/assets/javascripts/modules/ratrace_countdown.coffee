@@ -17,8 +17,8 @@ class GregHome.RatraceCountdown
 
     seconds = dateRace - dateNow
 
-    weeks = Math.floor(seconds / 604800)
-    seconds = seconds - (weeks * 604800)
+    # weeks = Math.floor(seconds / 604800)
+    # seconds = seconds - (weeks * 604800)
 
     days = Math.floor(seconds / 86400)
     seconds = seconds - (days * 86400)
@@ -29,7 +29,7 @@ class GregHome.RatraceCountdown
     minutes = Math.floor(seconds / 60)
     seconds = Math.floor(seconds - (minutes * 60))
 
-    $('.countdown .weeks').text(weeks)
+    # $('.countdown .weeks').text(weeks)
     $('.countdown .days').text(days)
     $('.countdown .hours').text(hours)
     $('.countdown .minutes').text(minutes)
