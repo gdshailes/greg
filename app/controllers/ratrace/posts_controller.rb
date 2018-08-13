@@ -59,9 +59,9 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   def set_posts
     if params[:post_id]
-      @posts = Ratrace::Post.where('id < ?', params[:post_id]).limit(4)
+      @posts = Ratrace::Post.where('id < ?', params[:post_id]).limit(10)
     else
-      @posts = Ratrace::Post.all.limit(4)
+      @posts = Ratrace::Post.all.limit(10)
     end
   end
 
