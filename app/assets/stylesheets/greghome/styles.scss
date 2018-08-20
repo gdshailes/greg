@@ -10,7 +10,7 @@ body {
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   font-size: 21px;
   background-color: black;
-  background-image: asset-url('greghome-background.jpg');
+  background-image: url('/greghome-background.jpg');
   @media screen and (max-width: 620px) {
     background-image: none;
     background-color: $background_1;
@@ -67,7 +67,7 @@ a {
   }
   &:focus {
     outline: none;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.4);
   }
 
 }
@@ -108,7 +108,7 @@ input.googleSearch {
   height: 1em;
   color: transparent;
   text-shadow: 0 0 0 $text-box-ink;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.6);
   border-top: none;
   border-right: none;
   border-bottom: none;
@@ -137,7 +137,7 @@ div.QuickLinksPanel {
   padding: 12px;
   border: none;
   display: inline-block;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.6);
   border-radius: 12px;
   li a:hover:after{
     width: 100%;
@@ -178,6 +178,7 @@ div.countdown {
   text-align: center;
   font-size: 14px;
   color: silver;
+  background-color: rgba(0,0,0,0.5);
 }
 
 span.seconds, span.minutes, span.hours, span.days, span.weeks {
