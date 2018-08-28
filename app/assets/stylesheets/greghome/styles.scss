@@ -61,15 +61,14 @@ a {
   &:visited {
     color: $link_ink;
   }
-  &:hover, &:focus {
+  &:hover {
     text-decoration: none;
     color: $link_highlight_ink;
   }
   &:focus {
     outline: none;
-    background-color: rgba(0,0,0,0.4);
+    color: $link_highlight_ink;
   }
-
 }
 
 button.GoogleButton {
@@ -139,7 +138,7 @@ div.QuickLinksPanel {
   display: inline-block;
   background: rgba(0,0,0,0.6);
   border-radius: 12px;
-  li a:hover:after{
+  li a:hover:after, li a:focus:after{
     width: 100%;
   }
 }
