@@ -11,8 +11,8 @@
 <div class='panel-body edit-post'>
   <%= form_for @post do |f| %>
     <%= f.text_field :title, class: 'input' %>
-    <%= md_editor do %>
-      <%= f.input :body, label: false, class: 'input' %>
+    <%= md_simple_editor do %>
+      <%= f.text_area :body, label: false, class: 'input' %>
     <% end %>
 
     <div class='actions'>

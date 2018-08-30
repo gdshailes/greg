@@ -13,9 +13,9 @@ class Ratrace::PostsController < Ratrace::BaseController
     @post = Ratrace::Post.new(post_params)
     @post.user_id = current_user.id
 
-    unless params[:ratrace_post][:image].blank?
+    unless other_params[:image].blank?
       img = Image.new
-      img.uploaded_file params[:ratrace_post][:image], 1000, 3000
+      img.uploaded_file other_params[:image], 1000, 3000
       if img.filetype != "image/jpeg"
         head :unsupported_media_type
       else
@@ -24,15 +24,19 @@ class Ratrace::PostsController < Ratrace::BaseController
       end
     end
 
-    if @post.save && params[:post_to_facebook] == '1'
-      redirect_to Facebook.new(post_to_fb_url).fb_permissions_url
+    if @post.save
+      if other_params[:post_to_facebook] == '1'
+        redirect_to Facebook.new(post_to_fb_url).fb_permissions_url
+      else
+        redirect_to ratrace_posts_url
+      end
     end
   end
 
   def post_to_facebook
     access_token = Facebook.new(post_to_fb_url).oauth.get_access_token(params[:code])
     @graph = Koala::Facebook::API.new(access_token)
-    @graph.put_wall_post("There's a new update on our RatRace training progress! It's titled '#{@post.title}', and you can read and comment on it now at " + ratrace_url)
+    # @graph.put_wall_post("There's a new update on our RatRace training progress! It's titled '#{@post.title}', and you can read and comment on it now at " + ratrace_url)
     redirect_to ratrace_posts_url
   end
 
@@ -75,6 +79,10 @@ class Ratrace::PostsController < Ratrace::BaseController
 
   def post_params
     params.require(:ratrace_post).permit(:user_id, :title, :body)
+  end
+
+  def other_params
+    params.require(:ratrace_post).permit(:image, :post_to_facebook)
   end
 
   def post_to_fb_url
