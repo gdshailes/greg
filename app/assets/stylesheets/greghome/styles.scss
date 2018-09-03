@@ -11,7 +11,7 @@ body {
   font-size: 21px;
   background-color: black;
   background-image: url('/greghome-background.jpg');
-  @media screen and (max-width: 620px) {
+  @media screen and (max-width: $break_width) {
     background-image: none;
     background-color: $background_1;
   }
@@ -92,7 +92,7 @@ div.valigner div.QuickLinksPanel {
 
 div.googleSearch {
   text-align: center;
-  @media screen and (max-width: 620px) {
+  @media screen and (max-width: $break_width) {
     display: none;
   }
 }
@@ -167,7 +167,7 @@ li {
 
 }
 
-@media screen and (max-width: 620px) {
+@media screen and (max-width: $break_width) {
   div.QuickLinksPanel {
     width: 80%;
   }
