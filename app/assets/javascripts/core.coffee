@@ -10,3 +10,4 @@ jQuery ->
   new GregHome.BorisCam()         if $('body.boriscams').length
   new GregHome.VerifyThePies()    if $('body.verify_the_pies').length
   new GregHome.RatraceCountdown() if $('.countdown').length
+  new GregHome.Confirmation()

@@ -10,7 +10,7 @@
       <% comment_decorator = ::CommentDecorator.new(comment) %>
       <div class='comment'>
         <% if @current_user == comment.user %>
-          <%= link_to(ratrace_post_comment_path(@post, comment), method: :delete, class: 'delete-comment', data: {confirm: 'Delete your comment?'}) do %>
+          <%= link_to(ratrace_post_comment_path(@post, comment), method: :delete, class: 'delete-comment confirmation', data: { confirmation_message: 'Delete your comment?' }) do %>
             <i class="fa fa-close"></i>
           <% end %>
         <% end %>
