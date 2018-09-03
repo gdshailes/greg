@@ -11,7 +11,7 @@
 
 <div class="form-actions">
   <% if @bill %>
-    <%= link_to 'Delete Bill', finances_account_bill_path(@account, @bill), method: :delete, data: { confirm: 'Are you sure?' }, class: 'command-button' %>
+    <%= link_to 'Delete Bill', finances_account_bill_path(@account, @bill), method: :delete, data: { confirmation_message: 'Are you sure you want to remove this bill?' }, class: 'command-button confirmation' %>
   <% end %>
   <%= f.button :submit, 'Save Bill', class: "command-button" %>
 </div>
