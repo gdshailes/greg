@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
     factory :finances_account, class: "Finances::Account" do
       association :user
