@@ -15,6 +15,5 @@ module Greg
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.middleware.insert_before 0, 'BackgroundImageMiddleware'
   end
 end
