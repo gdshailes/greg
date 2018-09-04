@@ -22,7 +22,7 @@ body {
   text-align: center;
 }
 
-.countdown {
+.countdown, .finished, .under-way {
   padding: 0 15px;
 }
 
@@ -173,7 +173,7 @@ li {
   }
 }
 
-div.countdown {
+div.countdown, div.finished, div.under-way {
   text-align: center;
   font-size: 14px;
   color: silver;
@@ -227,4 +227,8 @@ div.denied-footer a, div.denied-footer a:visited {
 div.denied-footer a:hover {
   background-color: $link_paper;
   color: $link_ink;
+}
+
+.hidden {
+  display: none;
 }
