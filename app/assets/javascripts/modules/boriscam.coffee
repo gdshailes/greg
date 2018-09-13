@@ -26,7 +26,7 @@ class GregHome.BorisCam
       else
         if event.which == 39
           @stopStart() unless @stopped
-          @nextPic(@, true)
+          @nextPic(true)
 
     $('#stopstart').on 'click', (event) =>
       @stopStart()
@@ -39,11 +39,11 @@ class GregHome.BorisCam
     $('.next').on 'click', (event) =>
       @stopStart() unless @stopped
       event.preventDefault()
-      @nextPic(@, false)
+      @nextPic(false)
 
     $('#slideshow').on 'swipeleft', =>
       @stopStart() unless @stopped
-      @nextPic(@, false)
+      @nextPic(false)
 
     $('#slideshow').on 'swiperight', =>
       @stopStart() unless @stopped
