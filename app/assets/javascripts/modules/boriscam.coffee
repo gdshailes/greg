@@ -56,7 +56,7 @@ class GregHome.BorisCam
       clearInterval(@update)
     else
       $('#stopstart').text("Click to STOP slideshow")
-      @nextPic(@, false)
+      _this = @
       @update = setInterval(->
         _this.nextSlide(_this)
       , 3000)
@@ -82,5 +82,5 @@ class GregHome.BorisCam
     if noAnimation
       $('#carousel').css(move)
     else
-      $('#carousel').animate(move, 500)
+      $('#carousel').animate(move, 250)
     $('#caption').text('BorisCam - ' + @i + ' of ' + @pics)
