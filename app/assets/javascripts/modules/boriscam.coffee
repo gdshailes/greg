@@ -5,10 +5,13 @@ class GregHome.BorisCam
     @init()
 
   init: ->
+    _this = @
     @i = 1
     @pics = 20
     @stopped = false
-    @update = setInterval(@nextPic, 3000)
+    @update = setInterval(->
+      _this.nextSlide(_this)
+    , 3000)
 
     $('#caption').text('BorisCam - ' + @i + ' of ' + @pics)
     $('#carousel').css({width:'' + (@pics * 640)})
@@ -23,7 +26,7 @@ class GregHome.BorisCam
       else
         if event.which == 39
           @stopStart() unless @stopped
-          @nextPic(true)
+          @nextPic(@, true)
 
     $('#stopstart').on 'click', (event) =>
       @stopStart()
@@ -36,11 +39,11 @@ class GregHome.BorisCam
     $('.next').on 'click', (event) =>
       @stopStart() unless @stopped
       event.preventDefault()
-      @nextPic(false)
+      @nextPic(@, false)
 
     $('#slideshow').on 'swipeleft', =>
       @stopStart() unless @stopped
-      @nextPic(false)
+      @nextPic(@, false)
 
     $('#slideshow').on 'swiperight', =>
       @stopStart() unless @stopped
@@ -53,8 +56,15 @@ class GregHome.BorisCam
       clearInterval(@update)
     else
       $('#stopstart').text("Click to STOP slideshow")
-      @nextPic(false)
-      @update = setInterval(@nextPic, 3000)
+      @nextPic(@, false)
+      @update = setInterval(->
+        _this.nextSlide(_this)
+      , 3000)
+
+  nextSlide: (_this, noAnimation) ->
+    _this.i++
+    _this.i = 1 if _this.i > _this.pics
+    _this.moveCarousel(noAnimation)
 
   nextPic: (noAnimation) ->
     @i++
