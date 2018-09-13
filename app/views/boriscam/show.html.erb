@@ -1,0 +1,13 @@
+<div id="slideshow">
+  <div id="carousel">
+    <% @images.each do |image| %>
+      <div class='boris-pic'>
+        <%= ('<img max-width:640px; max-height:480px; src="data:image/jpg;base64,%s">' % Base64.encode64(image.filedata)).html_safe %>
+      </div>
+    <% end %>
+  </div>
+  <a href="#" class="navLink" id="prev"><%= image_tag("prev.png") %></a>
+  <a href="#" class="navLink next" id="next"><%= image_tag("next.png") %></a>
+</div>
+<div id='caption'></div>
+<div id='stopstart'>Click to STOP slideshow</div>

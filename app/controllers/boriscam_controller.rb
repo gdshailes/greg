@@ -1,6 +1,6 @@
 require 'fileutils'
 
-class BoriscamsController < ApplicationController
+class BoriscamController < ApplicationController
 
   def show
     @images = BorisCamImage.order(created_at: :desc).limit(20)
