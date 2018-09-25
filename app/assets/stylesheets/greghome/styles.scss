@@ -22,44 +22,35 @@ body {
   text-align: center;
 }
 
-.countdown, .finished, .under-way {
-  padding: 0 15px;
+nav {
+  height: 3rem;
+  background: $menu_background;
+  padding-left: 20px;
 }
 
-h1 {
+ul {
+  list-style: none;
   margin: 0;
-  padding: 5px 0 5px;
-  width: 100%;
-  font-size: 1em;
-  display: inline-block;
-  font-weight: bold;
-  color: $h1_ink;
-  border-bottom: 3px solid $h1_paper;
-  text-align: left;
+  padding-left: 0;
 }
 
-a {
-  text-align: left;
-  padding: 0;
-  color: $link_ink;
-  text-decoration: none;
-  display: inline;
-  font-size: 1em;
-  height: 25px;
+li {
+  background: $menu_background;;
+  color: $h1_ink;
+  float: left;
+  padding: 0.75rem;
   position: relative;
-  transition: color .4s;
-  &:after {
-    content: "";
-    border-bottom: 3px solid $h1_paper;
-    position: absolute;
-    bottom: 0;
-    width: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: width .4s;
-  }
+  height: 1.5rem;
+  transition: background 1s;
+}
+
+li a {
+  text-decoration: none;
+  color: $link_highlight_ink;
+  position: relative;
+  transition: color 1s;
   &:visited {
-    color: $link_ink;
+    color: $link_highlight_ink;
   }
   &:hover {
     text-decoration: none;
@@ -69,37 +60,66 @@ a {
     outline: none;
     color: $link_highlight_ink;
   }
+
 }
 
-button.GoogleButton {
-  width: 0;
-  margin: 0;
-  padding: 0;
-  height: 0;
-  border: none;
-  overflow: hidden;
+li:hover, li:focus-within {
+  background: $menu_highlight;
+  cursor: pointer;
+}
+
+li:focus-within a {
+  outline: none;
+}
+
+ul li ul {
+  background: $menu_background;
+  visibility: hidden;
+  opacity: 0;
+  min-width: 10em;
   position: absolute;
+  left: 0;
+  top: 2rem;
+  margin-top: 1rem;
+  text-align: left;
+  transition: opacity 0.3s;
+  box-shadow: 0px 8px 32px rgba(0,0,0,0.5);
+  z-index: 20;
 }
 
-div.valigner {
-  margin: auto;
-  display: inline-block;
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block;
 }
 
-div.valigner div.QuickLinksPanel {
-  vertical-align: top;
+ul li ul li {
+  clear: both;
+  width: 100%;
 }
 
-div.googleSearch {
+ul li ul li.break {
+  height: 1px;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: white;
+}
+
+ul li:hover > ul {
+  visibility: visible;
+  display: block;
+  opacity: 1;
+}
+
+form#f {
+  width: 100%;
   text-align: center;
   @media screen and (max-width: $break_width) {
     display: none;
   }
-}
-
-div.center {
-  text-align: center;
-  width: 100%;
 }
 
 input.googleSearch {
@@ -126,46 +146,16 @@ input.googleSearch {
   }
 }
 
-div.QuickLinks {
-  display: inline-block;
-  margin: 0 auto;
-}
-
-div.QuickLinksPanel {
-  margin: 0.5em;
-  padding: 12px;
-  border: none;
-  display: inline-block;
-  background: rgba(0,0,0,0.6);
-  border-radius: 12px;
-  li a:hover:after, li a:focus:after{
-    width: 100%;
-  }
-}
-
-ul {
-  list-style: none;
-  margin: 0 1em;
-  border-bottom: 3px solid $link-paper;
-  padding: 0;
-}
-
-li {
+button.GoogleButton {
+  width: 0;
   margin: 0;
-  padding: 5px 0;
-  display: block;
-  text-align: left;
-  color: $link_ink;
-
-  input {
-    width: 100%;
-    font-size: 1em;
-    &[type=submit] {
-      font-size:3em;
-    }
-  }
-
+  padding: 0;
+  height: 0;
+  border: none;
+  overflow: hidden;
+  position: absolute;
 }
+
 
 @media screen and (max-width: $break_width) {
   div.QuickLinksPanel {
