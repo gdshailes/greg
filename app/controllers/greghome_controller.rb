@@ -8,14 +8,13 @@ class GreghomeController < ApplicationController
   def denied; end
 
   def root
-    if is_admin?
-      render (is_greg? ? :greghome : :index)
+    if is_greg?
+      render :greghome
     else
-      redirect_to ratrace_url
+      render :index
     end
   end
 
-  def greghome
-  end
+  def greghome; end
 
 end
