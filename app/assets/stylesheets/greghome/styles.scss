@@ -48,6 +48,7 @@ li a {
   text-decoration: none;
   color: $link_highlight_ink;
   position: relative;
+  display: block;
   transition: color 1s;
   &:visited {
     color: $link_highlight_ink;
