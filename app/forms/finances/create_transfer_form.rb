@@ -1,8 +1,6 @@
 class Finances::CreateTransferForm
   include ActiveModel::Model
 
-  attr_accessor :transfer_date, :description, :to_account_id, :amount, :reconciled
-
   def initialize(from_account)
     @transfer_date = Date.current
     @description = 'New Transfer'
@@ -11,13 +9,11 @@ class Finances::CreateTransferForm
 
   def submit(params)
 
-    @params = params
-
-    @transfer_date = transfer_params[:transfer_date].to_date
-    @description = transfer_params[:description]
-    @to_account = Finances::Account.find(transfer_params[:to_account_id])
-    @amount = transfer_params[:amount].to_money
-    @reconciled = (transfer_params[:reconciled] == "1")
+    @transfer_date = params[:transfer_date].to_date
+    @description = params[:description]
+    @to_account = Finances::Account.find(params[:to_account_id])
+    @amount = params[:amount].to_money
+    @reconciled = (params[:reconciled] == "1")
 
     if valid?
       create_from_transaction
@@ -35,10 +31,6 @@ class Finances::CreateTransferForm
 
   private
 
-    def transfer_params
-      @params.permit(:transfer_date, :description, :from_account_id, :to_account_id, :amount, :reconciled)
-    end
-
     def valid?
       errors.add(:transfer_date, 'cannot be blank') if @transfer_date.nil?
       errors.add(:amount, 'must be positive') if @amount <= 0
@@ -55,6 +47,10 @@ class Finances::CreateTransferForm
         tx.reconciled = @reconciled
         if tx.valid?
           tx.save!
+          if @reconciled
+            @from_account.reconciled_balance -= @amount
+            @from_account.save!
+          end
         else
           promote_errors(tx.errors)
         end
@@ -69,6 +65,10 @@ class Finances::CreateTransferForm
         tx.reconciled = @reconciled
         if tx.valid?
           tx.save!
+          if @reconciled
+            @to_account.reconciled_balance += @amount
+            @to_account.save!
+          end
         else
           promote_errors(tx.errors)
         end
