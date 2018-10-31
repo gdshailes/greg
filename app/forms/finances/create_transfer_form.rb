@@ -1,6 +1,8 @@
 class Finances::CreateTransferForm
   include ActiveModel::Model
 
+  attr_accessor :transfer_date, :description, :to_account_id, :amount, :reconciled
+
   def initialize(from_account)
     @transfer_date = Date.current
     @description = 'New Transfer'
