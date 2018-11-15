@@ -2,8 +2,9 @@
 $width: 30%;
 $body_margin: 2em;
 $break_width: 700px;
-$mobile_header_height: 3em;
+$mobile_header_height: 2.5em;
 $footer_height: 2.3em;
+$mobile_footer_height: 2em;
 $base_font: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
 
 @import "font-awesome";
@@ -291,6 +292,7 @@ div.footer {
   vertical-align: middle;
   @media (max-width: $break_width) {
     margin-left: 0;
+    height: $mobile_footer_height;
   }
   &-text {
     height: 20px;
@@ -308,10 +310,12 @@ div.footer {
     bottom: 0;
     background-color: $menu_background;
     height: $footer_height;
+    @media (max-width: $break_width) {
+      height: $mobile_footer_height;
+    }
     & a {
       display: block;
       float: left;
-      height: 20px;
       padding: 7px 15px;
       text-decoration: none;
       transition: background-color 0.75s;
