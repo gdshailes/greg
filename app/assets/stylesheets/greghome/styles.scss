@@ -26,25 +26,39 @@ nav {
   height: 3rem;
   background: $menu_background;
   padding-left: 20px;
+  @media screen and (max-width: $break_width) {
+    padding-left: 0;
+  }
 }
 
 ul {
   list-style: none;
   margin: 0;
   padding-left: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
 }
 
 li {
   background: $menu_background;;
   color: $h1_ink;
   float: left;
+  position: relative;
+  @media screen and (min-width: $break_width) {
+    height: 1.5rem;
+    padding: 0.75rem;
+  }
+  transition: background 1s;
   @media screen and (max-width: $break_width) {
     float: none;
+    display: block;
+    margin: 0;
+    background: $menu_highlight;
+    text-align: left;
+    text-indent: 1em;
   }
-  padding: 0.75rem;
-  position: relative;
-  height: 1.5rem;
-  transition: background 1s;
 }
 
 li a {
@@ -89,6 +103,15 @@ ul li ul {
   transition: opacity 0.3s;
   box-shadow: 0px 8px 32px rgba(0,0,0,0.5);
   z-index: 20;
+  @media screen and (max-width: $break_width) {
+    box-shadow: none;
+    visibility: visible;
+    display: block;
+    opacity: 1;
+    position: relative;
+    top: 0;
+    margin-top: 0;
+  }
 }
 
 ul li:hover > ul,
@@ -103,6 +126,10 @@ ul li ul:focus {
 ul li ul li {
   clear: both;
   width: 100%;
+  background: $menu_background;
+  @media screen and (max-width: $break_width) {
+    text-indent: 2em;
+  }
 }
 
 ul li ul li.break {
@@ -229,4 +256,10 @@ div.denied-footer a:hover {
 
 .hidden {
   display: none;
+}
+
+.hide_on_mobile {
+  @media screen and (max-width: $break_width) {
+    display: none;
+  }
 }
