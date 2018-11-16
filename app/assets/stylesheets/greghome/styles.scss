@@ -38,6 +38,9 @@ li {
   background: $menu_background;;
   color: $h1_ink;
   float: left;
+  @media screen and (max-width: $break_width) {
+    float: none;
+  }
   padding: 0.75rem;
   position: relative;
   height: 1.5rem;
