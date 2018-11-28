@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <title>Make A Decision</title>
+    <%= favicon_link_tag 'favicon.png' %>
+    <meta name="viewport" content="initial-scale=1.5">
+    <%= stylesheet_link_tag 'decisions', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <%= javascript_include_tag :application %>
+  </head>
+
+  <body class='<%= params[:controller] %>'>
+    <%= yield %>
+  </body>
+</html>
