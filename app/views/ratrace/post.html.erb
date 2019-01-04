@@ -21,7 +21,7 @@
     <% end %>
     <div class='comment add'>
       <% if @current_user %>
-        <%= form_for :ratrace_post_comment, :url => ratrace_post_comments_path(@post) do |f| %>
+        <%= form_for :ratrace_post_comment, url: ratrace_post_comments_path(@post) do |f| %>
           <%= f.text_field :comment, placeholder: (@post.comments.any? ? 'Add your comment' : 'Be the first to comment!'), class: 'comment_box' %>
           <%= f.submit 'OK', class: 'tick-btn' %>
         <% end %>

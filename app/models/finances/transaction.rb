@@ -6,7 +6,7 @@
   scope :for_account, -> (account_id) { where(account_id: account_id) }
   scope :unreconciled, -> { where(reconciled: false) }
 
-  monetize :amount_pence, as: "amount"
+  monetize :amount_pence, as: :amount
 
   validates :transaction_date, presence: :true
   validates :description, presence: true

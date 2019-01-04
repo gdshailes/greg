@@ -4,7 +4,7 @@ class Finances::Bill < ApplicationRecord
 
   scope :for_account, -> (account_id) { where(account_id: account_id) }
 
-  monetize :amount_pence, as: "amount"
+  monetize :amount_pence, as: :amount
 
   validates :next_due_at, presence: true
   validates :description, presence: true
@@ -35,15 +35,15 @@ class Finances::Bill < ApplicationRecord
 
   private
 
-    def payment_transaction
-      Finances::Transaction.new(
-        account: account,
-        description: description,
-        amount_pence: amount_pence,
-        reconciled: false,
-        transaction_date: next_due_at,
-        bill_id: self.id
-      )
-    end
+  def payment_transaction
+    Finances::Transaction.new(
+      account: account,
+      description: description,
+      amount_pence: amount_pence,
+      reconciled: false,
+      transaction_date: next_due_at,
+      bill_id: self.id
+    )
+  end
 
 end

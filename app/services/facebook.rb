@@ -9,7 +9,7 @@ class Facebook
   end
 
   def fb_permissions_url
-    oauth.url_for_oauth_code(:permissions => "publish_actions")
+    oauth.url_for_oauth_code(permissions: 'publish_actions')
   end
 
   def oauth

@@ -14,8 +14,8 @@ module ApplicationHelper
 
   def markdown(text)
     if @markdown.nil?
-      options = {:hard_wrap => true}
-      extensions = { :fenced_code_blocks => true }
+      options = { hard_wrap: true }
+      extensions = { fenced_code_blocks:  true }
       renderer = DiaryHTMLRenderer.new(options)
       @markdown ||= Redcarpet::Markdown.new(renderer, extensions)
     end
