@@ -6,7 +6,7 @@ class Finances::BaseController < ApplicationController
 
   respond_to :html
 
-  layout "finances"
+  layout 'finances'
 
   private
 

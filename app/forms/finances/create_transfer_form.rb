@@ -5,7 +5,6 @@ class Finances::CreateTransferForm
 
   def initialize(from_account)
     @transfer_date = Date.current
-    @description = 'New Transfer'
     @from_account = from_account
   end
 
