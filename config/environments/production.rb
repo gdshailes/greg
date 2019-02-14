@@ -101,6 +101,6 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'shailes.herokuapp.com' }
 
-  # config.middleware.insert_before 0, ::BackgroundImageMiddleware
+  config.middleware.insert_before 0, ::BackgroundImageMiddleware
 
 end
