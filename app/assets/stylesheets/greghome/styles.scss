@@ -1,4 +1,4 @@
-html {
+ html {
   font-size: 100%;
 }
 
@@ -9,8 +9,8 @@ body {
   height: 100vh;
   font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
   font-size: 21px;
-  background-color: black;
-  background-image: url('/greghome-background.jpg');
+  background-color: $background_1;
+  /*background-image: url('/greghome-background.jpg');*/
   @media screen and (max-width: $break_width) {
     background-image: none;
     background-color: $background_1;
