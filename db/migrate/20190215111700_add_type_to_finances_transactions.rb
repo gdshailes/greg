@@ -1,0 +1,5 @@
+class AddTypeToFinancesTransactions < ActiveRecord::Migration[5.0]
+  def change
+    add_column :finances_transactions, :type, :string
+  end
+end

@@ -30,56 +30,58 @@ class Finances::CreateTransferForm
     end
   end
 
+
   private
 
-    def valid?
-      errors.add(:transfer_date, 'cannot be blank') if @transfer_date.nil?
-      errors.add(:amount, 'must be positive') if @amount <= 0
-      errors.add(:transfer_to, 'account must be selected') if @to_account.nil?
-      errors.add(:description, 'cannot be blank') if @description.blank?
-      errors.blank?
-    end
 
-    def create_from_transaction
-      @from_account.transactions.build do |tx|
-        tx.transaction_date = @transfer_date
-        tx.amount = @amount * -1
-        tx.description = @description
-        tx.reconciled = @reconciled
-        if tx.valid?
-          tx.save!
-          if @reconciled
-            @from_account.reconciled_balance -= @amount
-            @from_account.save!
-          end
-        else
-          promote_errors(tx.errors)
+  def valid?
+    errors.add(:transfer_date, 'cannot be blank') if @transfer_date.nil?
+    errors.add(:amount, 'must be positive') if @amount <= 0
+    errors.add(:transfer_to, 'account must be selected') if @to_account.nil?
+    errors.add(:description, 'cannot be blank') if @description.blank?
+    errors.blank?
+  end
+
+  def create_from_transaction
+    @from_account.transactions.build do |tx|
+      tx.transaction_date = @transfer_date
+      tx.amount = @amount * -1
+      tx.description = @description
+      if tx.valid?
+        tx.becomes!(Finances::Transaction::Reconciled) if @reconciled
+        tx.save!
+        if @reconciled
+          @from_account.reconciled_balance -= @amount
+          @from_account.save!
         end
+      else
+        promote_errors(tx.errors)
       end
     end
+  end
 
-    def create_to_transaction
-      @to_account.transactions.build do |tx|
-        tx.transaction_date = @transfer_date
-        tx.amount = @amount
-        tx.description = @description
-        tx.reconciled = @reconciled
-        if tx.valid?
-          tx.save!
-          if @reconciled
-            @to_account.reconciled_balance += @amount
-            @to_account.save!
-          end
-        else
-          promote_errors(tx.errors)
+  def create_to_transaction
+    @to_account.transactions.build do |tx|
+      tx.transaction_date = @transfer_date
+      tx.amount = @amount
+      tx.description = @description
+      if tx.valid?
+        tx.becomes!(Finances::Transaction::Reconciled) if @reconciled
+        tx.save!
+        if @reconciled
+          @to_account.reconciled_balance += @amount
+          @to_account.save!
         end
+      else
+        promote_errors(tx.errors)
       end
     end
+  end
 
-    def promote_errors(child_errors)
-      child_errors.each do |attribute, message|
-        errors.add(attribute, message)
-      end
+  def promote_errors(child_errors)
+    child_errors.each do |attribute, message|
+      errors.add(attribute, message)
     end
+  end
 
 end

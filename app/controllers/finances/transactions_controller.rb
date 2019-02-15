@@ -8,7 +8,7 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
   def new
-    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(transaction_date: Date.current))
+    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction::Basic.new(transaction_date: Date.current))
   end
 
   def edit
@@ -16,7 +16,7 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
   def create
-    @transaction_form = Finances::EditTransactionForm.new(@account.transactions.build)
+    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction::Basic.new(account: @account))
     if @transaction_form.submit(transaction_form_params)
       redirect_to finances_account_path @account
     else
@@ -34,7 +34,7 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
   def destroy
-    @account.update_attributes!(reconciled_balance: @transaction.amount * -1) if @transaction.reconciled
+    @account.update_attributes!(reconciled_balance: @transaction.amount * -1) if @transaction.reconciled?
     if @transaction.destroy
       redirect_to finances_account_path(@account)
     end
@@ -44,14 +44,16 @@ class Finances::TransactionsController < Finances::BaseController
     render csv: @account.transactions.order(:transaction_date)
   end
 
+
   private
 
-    def set_transaction
-      @transaction = @account.transactions.find(params[:id])
-    end
 
-    def transaction_form_params
-      params.require(:finances_edit_transaction_form).permit(:transaction_date, :description, :deposit, :amount, :reconciled, :bill_id)
-    end
+  def set_transaction
+    @transaction = @account.transactions.find(params[:id])
+  end
+
+  def transaction_form_params
+    params.require(:finances_edit_transaction_form).permit(:transaction_date, :description, :deposit, :amount, :reconciled, :bill_id)
+  end
 
 end

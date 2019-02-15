@@ -8,7 +8,9 @@ class Finances::BaseController < ApplicationController
 
   layout 'finances'
 
+
   private
+
 
   def set_accounts
     @accounts = Finances::Account.for_user(current_user).order(primary: :desc, name: :asc)

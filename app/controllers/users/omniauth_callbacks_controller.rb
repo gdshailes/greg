@@ -12,7 +12,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     redirect_to root_path
   end
 
+
   private
+
 
   def get_user_from_omniauth(provider)
     @user = User.from_omniauth(request.env["omniauth.auth"])

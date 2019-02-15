@@ -11,29 +11,29 @@ describe Finances::CreateTransferForm do
 
     context 'successful reconciled transfer' do
 
-      let(:params) { {
-        transfer_date:    Date.current.to_s,
-        description:      'transfer',
-        from_account_id:  source_account.id.to_s,
-        to_account_id:    destination_account.id.to_s,
-        amount:           '0.50',
-        reconciled:       '1'
-      } }
+      let(:params) do
+        { transfer_date:    Date.current.to_s,
+          description:      'transfer',
+          from_account_id:  source_account.id.to_s,
+          to_account_id:    destination_account.id.to_s,
+          amount:           '0.50',
+          reconciled:       '1' }
+      end
 
       it 'creates a transaction in the source account and destination accounts' do
         expect { subject.submit(params) }.to change(Finances::Transaction, :count).by(2)
 
-        expect(source_account.transactions.count).to be(1)
+        expect(source_account.transactions.reconciled.count).to eq(1)
 
-        source_account.transactions.first.tap do |tx|
+        source_account.transactions.reconciled.first.tap do |tx|
           expect(tx.amount_pence).to eq(-50)
           expect(tx.description).to eq('transfer')
           expect(tx.reconciled).to be(true)
         end
 
-        expect(destination_account.transactions.count).to be(1)
+        expect(destination_account.transactions.reconciled.count).to eq(1)
 
-        destination_account.transactions.first.tap do |tx|
+        destination_account.transactions.reconciled.first.tap do |tx|
           expect(tx.amount_pence).to eq(50)
           expect(tx.description).to eq('transfer')
           expect(tx.reconciled).to be(true)

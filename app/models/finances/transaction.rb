@@ -1,10 +1,12 @@
-  class Finances::Transaction < ApplicationRecord
+class Finances::Transaction < ApplicationRecord
 
   belongs_to :account
 
   default_scope -> { order(transaction_date: :asc, amount_pence: :desc) }
   scope :for_account, -> (account_id) { where(account_id: account_id) }
-  scope :unreconciled, -> { where(reconciled: false) }
+  scope :unreconciled, -> { where.not(type: 'Finances::Transaction::Reconciled') }
+  scope :reconciled, -> { where(type: 'Finances::Transaction::Reconciled') }
+  scope :basic, -> { where(type: 'Finances::Transaction::Basic') }
 
   monetize :amount_pence, as: :amount
 
@@ -16,6 +18,14 @@
 
   def bill_id=(bill_id)
     @bill_id = bill_id.to_i
+  end
+
+  def reconciled
+    reconciled?
+  end
+
+  def reconciled?
+    false
   end
 
   comma do

@@ -54,6 +54,7 @@ class Ratrace::PostsController < Ratrace::BaseController
     respond_with(@post)
   end
 
+
   private
 
 

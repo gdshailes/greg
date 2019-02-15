@@ -11,13 +11,13 @@ class Finances::AccountsController < Finances::BaseController
   def show
     @upcoming_bills = upcoming_bills(@account)
     @balance = (@account.opening_balance || 0)
-    @transactions = @account.transactions
     @include_reconciled = include_reconciled?
+    @transactions = @account.transactions
     unless @include_reconciled
       @balance += (@account.reconciled_balance || 0)
       @transactions = @transactions.unreconciled
     end
-    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(transaction_date: Date.current))
+    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction::Basic.new(transaction_date: Date.current))
     respond_with(@account)
   end
 
@@ -48,14 +48,16 @@ class Finances::AccountsController < Finances::BaseController
     respond_with(@account)
   end
 
+
   private
 
-    def include_reconciled?
-      params[:full]
-    end
 
-    def account_params
-      params.require(:finances_account).permit(:user_id, :name, :opening_balance, :reconciled_balance, :primary)
-    end
+  def include_reconciled?
+    params[:full]
+  end
+
+  def account_params
+    params.require(:finances_account).permit(:user_id, :name, :opening_balance, :reconciled_balance, :primary)
+  end
 
 end
