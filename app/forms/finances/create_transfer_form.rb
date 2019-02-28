@@ -14,7 +14,7 @@ class Finances::CreateTransferForm
     @description = params[:description]
     @to_account = Finances::Account.find(params[:to_account_id])
     @amount = params[:amount].to_money
-    @reconciled = (params[:reconciled] == "1")
+    @reconciled = (params[:reconciled] == '1')
 
     if valid?
       create_from_transaction
@@ -25,9 +25,7 @@ class Finances::CreateTransferForm
   end
 
   def to_accounts
-    Finances::Account.for_user(@from_account.user).where.not(id: @from_account.id).map do |account|
-      [account.name, account.id]
-    end
+    from_account.other_accounts
   end
 
 
@@ -47,8 +45,8 @@ class Finances::CreateTransferForm
       tx.transaction_date = @transfer_date
       tx.amount = @amount * -1
       tx.description = @description
+      tx.reconciled = @reconciled
       if tx.valid?
-        tx.becomes!(Finances::Transaction::Reconciled) if @reconciled
         tx.save!
         if @reconciled
           @from_account.reconciled_balance -= @amount
@@ -65,8 +63,8 @@ class Finances::CreateTransferForm
       tx.transaction_date = @transfer_date
       tx.amount = @amount
       tx.description = @description
+      tx.reconciled = @reconciled
       if tx.valid?
-        tx.becomes!(Finances::Transaction::Reconciled) if @reconciled
         tx.save!
         if @reconciled
           @to_account.reconciled_balance += @amount

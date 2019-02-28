@@ -38,7 +38,7 @@ class Finances::Bill < ApplicationRecord
 
 
   def payment_transaction
-    Finances::Transaction::Basic.new(
+    Finances::Transaction.new(
       account: account,
       description: description,
       amount_pence: amount_pence,

@@ -1,11 +1,11 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
-    get_user_from_omniauth "Facebook"
+    get_user_from_omniauth 'Facebook'
   end
 
   def google
-    get_user_from_omniauth "Google"
+    get_user_from_omniauth 'Google'
   end
 
   def failure
@@ -17,7 +17,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
 
   def get_user_from_omniauth(provider)
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+    @user = User.from_omniauth(request.env['omniauth.auth'])
     existing_user = User.find_by(email: @user.email)
     if existing_user
       @user = existing_user

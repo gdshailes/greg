@@ -4,15 +4,16 @@ class Finances::Transaction < ApplicationRecord
 
   default_scope -> { order(transaction_date: :asc, amount_pence: :desc) }
   scope :for_account, -> (account_id) { where(account_id: account_id) }
-  scope :unreconciled, -> { where.not(type: 'Finances::Transaction::Reconciled') }
-  scope :reconciled, -> { where(type: 'Finances::Transaction::Reconciled') }
-  scope :basic, -> { where(type: 'Finances::Transaction::Basic') }
+  scope :unreconciled, -> { where(reconciled: true) }
 
   monetize :amount_pence, as: :amount
 
   validates :transaction_date, presence: :true
   validates :description, presence: true
-  validates_numericality_of :amount
+  validates_numericality_of :amount, unless: :is_balance_payment?
+  validate :receiving_account_is_valid
+
+  has_one :to_account, class_name: 'Finances::Account'
 
   attr_reader :bill_id
 
@@ -20,12 +21,9 @@ class Finances::Transaction < ApplicationRecord
     @bill_id = bill_id.to_i
   end
 
-  def reconciled
-    reconciled?
-  end
-
-  def reconciled?
-    false
+  def amount
+    return Money.new(amount_pence) unless is_balance_payment?
+    Money.new(to_account.balance_pence)
   end
 
   comma do
@@ -35,6 +33,18 @@ class Finances::Transaction < ApplicationRecord
     transaction_date 'Date'
     description 'Description'
     amount 'Amount'
+  end
+
+
+  private
+
+
+  def is_balance_payment?
+    to_account.present?
+  end
+
+  def receiving_account_is_valid
+    errors.add(:to_account, 'cannot transfer to self') if to_account == self.account
   end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190215111900) do
+ActiveRecord::Schema.define(version: 20190228162457) do
 
   create_table "boris_cam_images", force: :cascade do |t|
     t.string   "filename"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20190215111900) do
     t.date     "next_due_at",                     null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.string   "type"
     t.index ["account_id"], name: "index_finances_bills_on_account_id"
   end
 
@@ -69,10 +70,11 @@ ActiveRecord::Schema.define(version: 20190215111900) do
     t.string   "description"
     t.integer  "amount_pence",     default: 0,     null: false
     t.string   "amount_currency",  default: "GBP", null: false
+    t.boolean  "reconciled"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.date     "transaction_date"
-    t.string   "type"
+    t.integer  "to_account_id"
     t.index ["account_id"], name: "index_finances_transactions_on_account_id"
   end
 

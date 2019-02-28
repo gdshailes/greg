@@ -1,10 +1,7 @@
 class Finances::Account < ApplicationRecord
 
   belongs_to :user
-  has_many :transactions, dependent: :destroy, class_name: '::Finances::Transaction'
-  # has_many :basic_transactions, dependent: :destroy, class_name: '::Finances::Transaction::Basic'
-  # has_many :reconciled_transactions, dependent: :destroy, class_name: '::Finances::Transaction::Reconciled'
-  # has_many :transfer_transactions, dependent: :destroy, class_name: '::Finances::Transaction::Transfer'
+  has_many :transactions, dependent: :destroy
   has_many :bills, dependent: :destroy
 
   scope :for_user, -> (user) { where(user: user) }
@@ -19,6 +16,12 @@ class Finances::Account < ApplicationRecord
     opening = (opening_balance_pence || 0)
     reconciled = (reconciled_balance_pence) || 0
     opening + reconciled + transaction_sum
+  end
+
+  def other_accounts
+    Finances::Account.for_user(self.user).where.not(id: self.id).map do |account|
+      [account.name, account.id]
+    end
   end
 
 end

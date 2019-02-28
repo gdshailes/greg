@@ -20,18 +20,18 @@ Devise.setup do |config|
   config.omniauth :openid_connect, {
     name: :google,
     discovery: true,
-    issuer: "https://accounts.google.com",
+    issuer: 'https://accounts.google.com',
     scope: [:openid, :email, :profile, :address],
     response_type: :code,
     send_nonce: false,
     client_auth_method: :banana,
     client_options: {
       port: 443,
-      scheme: "https",
-      host: "accounts.google.com",
+      scheme: 'https',
+      host: 'accounts.google.com',
       identifier: ENV['GOOGLE_CLIENT_ID'],
-      secret: ENV["GOOGLE_CLIENT_SECRET"],
-      redirect_uri: ENV["GOOGLE_LOGIN_CALLBACK_URL"],
+      secret: ENV['GOOGLE_CLIENT_SECRET'],
+      redirect_uri: ENV['GOOGLE_LOGIN_CALLBACK_URL'],
     }
   }
   # Configure the class responsible to send e-mails.
