@@ -3,7 +3,6 @@
 <h1>
   <span><%= @account.name %></span>Transactions
 </h1>
-
 <% if @transactions.any? || @upcoming_bills.any? %>
   <div class='transactions-table'>
 
@@ -24,7 +23,11 @@
     <% end %>
 
     <% @transactions.each do |transaction| %>
-      <% @balance += transaction.amount %>
+      <% if transaction.account_id == @account.id %>
+        <% @balance += transaction.amount %>
+      <% else %>
+        <% @balance -= transaction.amount %>
+      <% end %>
       <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "modal--link table-row#{transaction.reconciled ? ' reconciled' : ''}" do %>
         <span class="date"><%= transaction.transaction_date.strftime('%d/%m/%Y') %></span>
         <span class="description"><%= transaction.description %></span>

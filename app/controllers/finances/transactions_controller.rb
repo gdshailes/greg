@@ -34,7 +34,7 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
   def destroy
-    @account.update_attributes!(reconciled_balance: @transaction.amount * -1) if @transaction.reconciled?
+    @account.update_attributes!(reconciled_balance: @transaction.amount * -1) if @transaction.reconciled
     if @transaction.destroy
       redirect_to finances_account_path(@account)
     end
@@ -53,7 +53,7 @@ class Finances::TransactionsController < Finances::BaseController
   end
 
   def transaction_form_params
-    params.require(:finances_edit_transaction_form).permit(:transaction_date, :description, :deposit, :to_account, :amount, :reconciled, :bill_id)
+    params.require(:finances_edit_transaction_form).permit(:transaction_date, :description, :deposit, :to_account_id, :amount, :reconciled, :bill_id)
   end
 
 end

@@ -12,12 +12,18 @@ class Finances::AccountsController < Finances::BaseController
     @upcoming_bills = upcoming_bills(@account)
     @balance = (@account.opening_balance || 0)
     @include_reconciled = include_reconciled?
-    @transactions = @account.transactions
+    transactions = @account.transactions
+    incoming_transfers = @account.incoming_transfers
     unless @include_reconciled
       @balance += (@account.reconciled_balance || 0)
-      @transactions = @transactions.unreconciled
+      transactions = transactions.unreconciled
+      incoming_transfers = incoming_transfers.unreconciled
     end
-    @transaction_form = Finances::EditTransactionForm.new(Finances::Transaction.new(transaction_date: Date.current))
+    union = [transactions, incoming_transfers].map(&:to_sql).join(' UNION ALL ')
+    @transactions = Finances::Transaction.select("finances_transactions.*")
+      .from("(#{union}) AS finances_transactions")
+      .order("finances_transactions.transaction_date")
+    @transaction_form = Finances::EditTransactionForm.new
     respond_with(@account)
   end
 
@@ -27,8 +33,7 @@ class Finances::AccountsController < Finances::BaseController
     respond_with(@account)
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @account = Finances::Account.new(account_params)

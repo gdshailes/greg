@@ -8,6 +8,12 @@ FactoryBot.define do
       reconciled_balance_pence { Faker::Commerce.price }
       created_at { Time.current }
       updated_at { Time.current }
+
+      trait :negative_balance do
+        opening_balance_pence { Faker::Commerce.price * -1 }
+        reconciled_balance_pence { Faker::Commerce.price * -1 }
+      end
+
     end
 
 end

@@ -2,18 +2,18 @@ class Finances::Transaction < ApplicationRecord
 
   belongs_to :account
 
-  default_scope -> { order(transaction_date: :asc, amount_pence: :desc) }
   scope :for_account, -> (account_id) { where(account_id: account_id) }
-  scope :unreconciled, -> { where(reconciled: true) }
+  scope :unreconciled, -> { where(reconciled: false) }
+  scope :incoming_transfers, -> (to_account) { where(to_account: to_account) }
 
-  monetize :amount_pence, as: :amount
+  monetize :amount_pence, as: :amount, allow_nil: true
 
   validates :transaction_date, presence: :true
   validates :description, presence: true
   validates_numericality_of :amount, unless: :is_balance_payment?
   validate :receiving_account_is_valid
 
-  has_one :to_account, class_name: 'Finances::Account'
+  belongs_to :to_account, optional: true, class_name: 'Finances::Account'
 
   attr_reader :bill_id
 
@@ -21,9 +21,13 @@ class Finances::Transaction < ApplicationRecord
     @bill_id = bill_id.to_i
   end
 
-  def amount
-    return Money.new(amount_pence) unless is_balance_payment?
-    Money.new(to_account.balance_pence)
+  def to_account=(account_id)
+    super(Finances::Account.find(account_id.to_s)) unless account_id.blank?
+  end
+
+  def amount_pence
+    return super unless is_balance_payment?
+    return to_account.balance_pence
   end
 
   comma do
@@ -40,7 +44,7 @@ class Finances::Transaction < ApplicationRecord
 
 
   def is_balance_payment?
-    to_account.present?
+    to_account.present? && self.reconciled == false
   end
 
   def receiving_account_is_valid

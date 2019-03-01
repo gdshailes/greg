@@ -1,7 +1,7 @@
 class Finances::CreateTransferForm
   include ActiveModel::Model
 
-  attr_accessor :transfer_date, :description, :to_account_id, :amount, :reconciled
+  attr_accessor :from_account, :to_account, :transfer_date, :description, :to_account_id, :amount, :reconciled
 
   def initialize(from_account)
     @transfer_date = Date.current
@@ -33,24 +33,24 @@ class Finances::CreateTransferForm
 
 
   def valid?
-    errors.add(:transfer_date, 'cannot be blank') if @transfer_date.nil?
-    errors.add(:amount, 'must be positive') if @amount <= 0
-    errors.add(:transfer_to, 'account must be selected') if @to_account.nil?
-    errors.add(:description, 'cannot be blank') if @description.blank?
+    errors.add(:transfer_date, 'cannot be blank') if transfer_date.nil?
+    errors.add(:amount, 'must be positive') if amount <= 0
+    errors.add(:transfer_to, 'account must be selected') if to_account.nil?
+    errors.add(:description, 'cannot be blank') if description.blank?
     errors.blank?
   end
 
   def create_from_transaction
-    @from_account.transactions.build do |tx|
-      tx.transaction_date = @transfer_date
-      tx.amount = @amount * -1
-      tx.description = @description
-      tx.reconciled = @reconciled
+    from_account.transactions.build do |tx|
+      tx.transaction_date = transfer_date
+      tx.amount = amount * -1
+      tx.description = description
+      tx.reconciled = reconciled
       if tx.valid?
         tx.save!
-        if @reconciled
-          @from_account.reconciled_balance -= @amount
-          @from_account.save!
+        if reconciled
+          from_account.reconciled_balance -= amount
+          from_account.save!
         end
       else
         promote_errors(tx.errors)
@@ -59,16 +59,16 @@ class Finances::CreateTransferForm
   end
 
   def create_to_transaction
-    @to_account.transactions.build do |tx|
-      tx.transaction_date = @transfer_date
-      tx.amount = @amount
-      tx.description = @description
-      tx.reconciled = @reconciled
+    to_account.transactions.build do |tx|
+      tx.transaction_date = transfer_date
+      tx.amount = amount
+      tx.description = description
+      tx.reconciled = reconciled
       if tx.valid?
         tx.save!
-        if @reconciled
-          @to_account.reconciled_balance += @amount
-          @to_account.save!
+        if reconciled
+          to_account.reconciled_balance += amount
+          to_account.save!
         end
       else
         promote_errors(tx.errors)

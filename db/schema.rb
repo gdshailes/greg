@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228162457) do
+ActiveRecord::Schema.define(version: 20190301104330) do
 
   create_table "boris_cam_images", force: :cascade do |t|
     t.string   "filename"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20190228162457) do
   create_table "finances_transactions", force: :cascade do |t|
     t.integer  "account_id"
     t.string   "description"
-    t.integer  "amount_pence",     default: 0,     null: false
+    t.integer  "amount_pence",     default: 0
     t.string   "amount_currency",  default: "GBP", null: false
     t.boolean  "reconciled"
     t.datetime "created_at",                       null: false
