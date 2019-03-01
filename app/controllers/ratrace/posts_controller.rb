@@ -16,7 +16,7 @@ class Ratrace::PostsController < Ratrace::BaseController
     unless other_params[:image].blank?
       img = Image.new
       img.uploaded_file other_params[:image], 1000, 3000
-      if img.filetype != "image/jpeg"
+      if img.filetype != 'image/jpeg'
         head :unsupported_media_type
       else
         img.save!
@@ -36,7 +36,7 @@ class Ratrace::PostsController < Ratrace::BaseController
   def post_to_facebook
     access_token = Facebook.new(post_to_fb_url).oauth.get_access_token(params[:code])
     @graph = Koala::Facebook::API.new(access_token)
-    # @graph.put_wall_post("There's a new update on our RatRace training progress! It's titled '#{@post.title}', and you can read and comment on it now at " + ratrace_url)
+    # @graph.put_wall_post("There's a new update on our RatRace training progress! It's titled '#{@post.title}', and you can read and comment on it now at #{ratrace_url})
     redirect_to ratrace_posts_url
   end
 
@@ -53,6 +53,7 @@ class Ratrace::PostsController < Ratrace::BaseController
     @post.destroy
     respond_with(@post)
   end
+
 
   private
 

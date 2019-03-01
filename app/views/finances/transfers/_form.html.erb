@@ -4,7 +4,7 @@
 <div class="form-inputs">
   <%= f.input :transfer_date, as: :datepicker, autofocus: true %>
   <%= f.input :amount, as: :decimal %>
-  <%= f.input :to_account_id, label: "Transfer To", as: :select, collection: f.object.to_accounts, include_blank: false, wrapper: :input_select %>
+  <%= f.input :to_account_id, label: 'Transfer To', as: :select, collection: f.object.to_accounts, include_blank: false, wrapper: :input_select %>
   <%= f.input :description, placeholder: 'New Transfer' %>
   <%= f.input :reconciled, as: :boolean, wrapper: :input_checkbox %>
 </div>

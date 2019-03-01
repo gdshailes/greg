@@ -9,6 +9,6 @@
 * Nice styling for 'make a decision' page
 * Nicer styling for 'Log in' page
 * Change non-logged-in homepage to allow visitors to access
-  - Make A Descision
+  - Make A Decision
   - Verify The Pie
   - Rat Race page

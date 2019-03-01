@@ -9,7 +9,7 @@ class BoriscamController < ApplicationController
   def upload
     img = BorisCamImage.new
     img.uploaded_file params['datafile']
-    if img.filetype != "image/jpeg"
+    if img.filetype != 'image/jpeg'
       head :unsupported_media_type
     else
       img.save!

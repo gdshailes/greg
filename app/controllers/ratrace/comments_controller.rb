@@ -22,7 +22,9 @@ class Ratrace::CommentsController < Ratrace::BaseController
     end
   end
 
+
   private
+
 
   def set_post
     @post = Ratrace::Post.find(params[:post_id])

@@ -7,7 +7,7 @@ class RatraceMailer < ApplicationMailer
   end
 
   def test_email(to)
-    mail(to: to, subject: "Test email from Rails app")
+    mail(to: to, subject: 'Test email from Rails app')
   end
 
   def new_comment(comment:)

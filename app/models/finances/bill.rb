@@ -33,14 +33,15 @@ class Finances::Bill < ApplicationRecord
     tx
   end
 
+
   private
+
 
   def payment_transaction
     Finances::Transaction.new(
       account: account,
       description: description,
       amount_pence: amount_pence,
-      reconciled: false,
       transaction_date: next_due_at,
       bill_id: self.id
     )

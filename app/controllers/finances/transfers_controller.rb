@@ -16,18 +16,20 @@ class Finances::TransfersController < Finances::BaseController
 
   end
 
+
   private
 
-    def set_form
-      @create_transfer_form = Finances::CreateTransferForm.new(@account)
-    end
 
-    def set_account
-      @account = Finances::Account.find(params[:account_id])
-    end
+  def set_form
+    @create_transfer_form = Finances::CreateTransferForm.new(@account)
+  end
 
-    def transfer_params
-      params.require(:finances_create_transfer_form).permit(:transfer_date, :description, :from_account_id, :to_account_id, :amount, :reconciled)
-    end
+  def set_account
+    @account = Finances::Account.find(params[:account_id])
+  end
+
+  def transfer_params
+    params.require(:finances_create_transfer_form).permit(:transfer_date, :description, :from_account_id, :to_account_id, :amount, :reconciled)
+  end
 
 end

@@ -32,7 +32,9 @@ class Finances::EditBillForm
     @bill.amount > 0 ? true : false
   end
 
+
   private
+
 
   def bill_params
     @params.permit(:description, :amount, :frequency, :interval, :next_due_at)

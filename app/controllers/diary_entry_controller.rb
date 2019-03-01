@@ -46,7 +46,9 @@ class DiaryEntryController < ApplicationController
     redirect_to action: :index
   end
 
+
   private
+
 
   def diary_entry_params
     params.require(:diary_entry).permit(:title, :body)

@@ -1,14 +1,13 @@
 <%= f.error_notification %>
 
 <div class="form-inputs">
-  <%= f.input :transaction_date, as: :datepicker, autofocus: true %>
-  <%= f.input :amount, as: :decimal %>
-  <%= f.input :description, placeholder: 'New Transaction' %>
-  <%= f.input :deposit, as: :boolean, wrapper: :input_checkbox %>
-  <%= f.input :reconciled, as: :boolean, wrapper: :input_checkbox %>
-  <% if f.object.bill_id %>
-    <%= f.input :bill_id, as: :hidden %>
-  <% end %>
+  <%= f.input(:transaction_date, as: :datepicker, autofocus: true) %>
+  <%= f.input(:amount, as: :decimal) %>
+  <%= f.input(:to_account_id, label: 'Pay Balance Of', as: :select, collection: f.object.to_accounts, include_blank: true, wrapper: :input_select) %>
+  <%= f.input(:description, placeholder: 'New Transaction') %>
+  <%= f.input(:deposit, as: :boolean, wrapper: :input_checkbox) %>
+  <%= f.input(:reconciled, as: :boolean, wrapper: :input_checkbox) %>
+  <%= f.input(:bill_id, as: :hidden) if f.object.bill_id %>
 </div>
 
 <div class="form-actions">

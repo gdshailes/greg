@@ -42,12 +42,16 @@ class Finances::BillsController < Finances::BaseController
     render template: 'finances/transactions/new'
   end
 
-  private
-    def set_bill
-      @bill = @account.bills.find(params[:bill_id] || params[:id])
-    end
 
-    def bill_form_params
-      params.require(:finances_edit_bill_form).permit(:description, :deposit, :amount, :frequency, :interval, :next_due_at)
-    end
+  private
+
+
+  def set_bill
+    @bill = @account.bills.find(params[:bill_id] || params[:id])
+  end
+
+  def bill_form_params
+    params.require(:finances_edit_bill_form).permit(:description, :deposit, :amount, :frequency, :interval, :next_due_at)
+  end
+
 end

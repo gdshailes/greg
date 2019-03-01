@@ -4,6 +4,4 @@ class Ratrace::BaseController < ApplicationController
 
   layout 'ratrace'
 
-  private
-
 end
