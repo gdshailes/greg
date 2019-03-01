@@ -11,8 +11,8 @@ class Finances::EditTransactionForm
 
   def submit(params)
     @params = params
-    
-    reconciled_difference = get_reconciled_difference
+    set_reconciled_difference
+
     was_reconciled = transaction.reconciled
 
     transaction.assign_attributes(transaction_params)
@@ -21,19 +21,7 @@ class Finances::EditTransactionForm
     if transaction.valid?
       ActiveRecord::Base.transaction do
         Finances::Bill.find(transaction.bill_id).increment_next_due_at! if transaction.bill_id
-        unless reconciled_difference == 0
-          transaction.account.update_attributes!(reconciled_balance: (transaction.account.reconciled_balance || 0) + reconciled_difference)
-          if transaction.to_account
-            if was_reconciled == false
-              transaction.to_account.transactions.unreconciled.update_all(reconciled: transaction.reconciled)
-              transaction.to_account.update_attribute(:reconciled_balance, transaction.to_account.reconciled_balance - reconciled_difference)
-            else
-              if transaction.reconciled == false
-                transaction.to_account.update_attribute(:reconciled_balance, transaction.to_account.reconciled_balance - reconciled_difference)
-              end
-            end
-          end
-        end
+        update_reconciled_balances(was_reconciled) unless @reconciled_difference == 0
         transaction.save!
       end
       true
@@ -58,11 +46,10 @@ class Finances::EditTransactionForm
   private
 
 
-  def get_reconciled_difference
+  def set_reconciled_difference
     # Calculate reconciled balance adjustment for the account
-
     is_reconciled = transaction_params[:reconciled] == '1'
-    was_reconciled = transaction.reconciled?
+    was_reconciled = transaction.reconciled
 
     is_balance_payment = transaction_params[:to_account_id].present?
     was_balance_payment = transaction.to_account.present?
@@ -74,13 +61,27 @@ class Finances::EditTransactionForm
     end
     old_value = transaction.amount
 
-    return 0 unless is_reconciled || was_reconciled
+    if is_reconciled || was_reconciled
+      @reconciled_difference = is_reconciled ? new_value : 0
+      @reconciled_difference -= old_value if was_reconciled
+    else
+      @reconciled_difference = 0 
+    end
 
-    adjustment = is_reconciled ? new_value : 0
-    adjustment -= old_value if was_reconciled
+  end
 
-    return adjustment
+  def update_reconciled_balances(was_reconciled)
+    transaction.account.update_attributes!(reconciled_balance: (transaction.account.reconciled_balance || 0) + @reconciled_difference)
+    return unless transaction.to_account
+    if was_reconciled
+      transaction.to_account.transactions.unreconciled.update_all(reconciled: transaction.reconciled)
+      return unless transaction.reconciled
+    end
+    update_destination_account_reconciled_balance
+  end
 
+  def update_destination_account_reconciled_balance
+    transaction.to_account.update_attribute(:reconciled_balance, (transaction.to_account.reconciled_balance || 0) - @reconciled_difference)
   end
 
   def transaction_params
