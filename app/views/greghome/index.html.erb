@@ -4,7 +4,7 @@
       <ul>
         <% if current_user %>
           <% if current_user.is_greg? %>
-            <a href="/greghome"><li>Greghome</li></a>
+            <li><a href="/greghome">Greghome</a></li>
           <% elsif current_user.is_jo? %>
             <li><a href="/greghome/s382">Do not click me!</a></li>
           <% end %>
@@ -12,7 +12,7 @@
             <%= link_to 'Sign Out'.html_safe, destroy_user_session_path, method: 'DELETE' %>
           </li>
         <% else %>
-          <a href="/users/sign_in"><li>Sign In</li></a>
+          <li><a href="/users/sign_in">Sign In</a></li>
           <li><%= link_to 'Sign in with Facebook'.html_safe, user_facebook_omniauth_authorize_path %></li>
           <li><%= link_to 'Sign in with Google'.html_safe, user_google_omniauth_authorize_path %></li>
         <% end %>
