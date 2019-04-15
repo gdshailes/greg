@@ -86,10 +86,6 @@ li:hover, li:focus-within {
   cursor: pointer;
 }
 
-li:focus-within a {
-  outline: none;
-}
-
 ul li ul {
   background: $menu_background;
   visibility: hidden;
@@ -126,11 +122,20 @@ ul li ul:focus {
 ul li ul li {
   clear: both;
   width: 100%;
+  height: 3rem;
   background: $menu_background;
+  padding: 0;
+  margin: 0;
   @media screen and (max-width: $break_width) {
     text-indent: 2em;
   }
 }
+
+ul li ul li a {
+  outline: none;
+  padding: 0.7rem;
+}
+
 
 ul li ul li.break {
   height: 1px;
@@ -147,12 +152,11 @@ ul li:hover > ul {
 
 form#f {
   position: absolute;
-  top: 50%;
-  top: 50%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 75%;
-  text-align: center;
+  width: 80%;
+  text-align: left;
   @media screen and (max-width: $break_width) {
     display: none;
   }
@@ -161,8 +165,7 @@ form#f {
 input.googleSearch {
   box-sizing: border-box;
   height: 1em;
-  color: transparent;
-  text-shadow: 0 0 0 $text-box-ink;
+  color: $text-box-ink;
   background: rgba(0, 0, 0, 0.6);
   border-top: none;
   border-right: none;
@@ -174,11 +177,10 @@ input.googleSearch {
   padding: 1em 0;
   margin-bottom: 0.3em;
   outline: none;
-  text-indent: 0;
-  text-align: center;
+  text-indent: 1em;
   &::placeholder {
-    color: transparent;
-    text-shadow: 0 0 0 $link-ink;
+    color: $link-ink;
+    opacity: 0.2;
   }
 }
 
