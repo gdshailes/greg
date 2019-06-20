@@ -1,29 +1,38 @@
-$background: #F4DECB;
 
-$menu_background: #94618E;
-$menu_selected_background: #492741;
-$menu_highlight: #000000;
-$menu_new: #000000;
+$white:      #FFFFFF;
+$green:      #00887A;
+$pink:       #FFCCBC;
+$lightblue:  #D3E3FC;
+$blue:       #77A6F7;
+$black:      darken($blue, 50%);
 
-$header_background: #c48dbd;
-$header_color: #000000;
-$footer_background: #C48DBD;
-$footer_color: #000000;
 
-$button_background: #492741;
-$button_color: white;
+$background: lighten($lightblue, 50%);
 
-$warning_button_background: #94618E;
-$warning_button_color: white;
+$menu_background: $blue;
+$menu_selected_background: $green;
+$menu_highlight: $black;
+$menu_new: $black;
 
-$body_color: #000000;
-$rule_color: #94618E;
+$header_background: $blue;
+$header_color: $white;
+$footer_background: darken($blue, 25%);
+$footer_color: $white;
 
-$link_color: black;
-$link_highlight_color: white;
-$link_highlight_background: #492741;
+$button_background: $green;
+$button_color: $white;
 
-$form_background: #F4C7A1;
+$warning_button_background: $pink;
+$warning_button_color: $white;
+
+$body_color: $black;
+$rule_color: $blue;
+
+$link_color: $black;
+$link_highlight_color: $white;
+$link_highlight_background: $green;
+
+$form_background: $lightblue;
 
 $modal_background: $background;
 $modal_header: $menu_background;

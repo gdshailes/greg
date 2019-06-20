@@ -42,6 +42,12 @@ a {
       color: $rule_color;
     }
   }
+  &.menu-sub {
+    background-color: $menu_background !important;
+    &:hover {
+      background-color: $menu_highlight !important;
+    }
+  }
   &:visited {
     color: $link_color;
   }
