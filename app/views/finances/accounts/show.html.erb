@@ -23,26 +23,27 @@
     <% end %>
 
     <% @transactions.each do |transaction| %>
-      <% if transaction.account_id == @account.id %>
-        <% @balance += transaction.amount %>
+      <% tx = transaction[:transaction] %>
+      <% if transaction[:bill_id].nil? %>
+        <% if tx.account_id == @account.id %>
+          <% @balance += tx.amount %>
+        <% else %>
+          <% @balance -= tx.amount %>
+        <% end %>
+        <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "modal--link table-row#{tx.reconciled ? ' reconciled' : ''}" do %>
+          <span class="date"><%= tx.transaction_date.strftime('%d/%m/%Y') %></span>
+          <span class="description"><%= tx.description %></span>
+          <span class="amount<%= ' deposit' if tx.amount > 0 %>"><%= tx.amount.abs %></span>
+          <span class="balance"><%= @balance %></span>
+        <% end %>
       <% else %>
-        <% @balance -= transaction.amount %>
-      <% end %>
-      <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "modal--link table-row#{transaction.reconciled ? ' reconciled' : ''}" do %>
-        <span class="date"><%= transaction.transaction_date.strftime('%d/%m/%Y') %></span>
-        <span class="description"><%= transaction.description %></span>
-        <span class="amount<%= ' deposit' if transaction.amount > 0 %>"><%= transaction.amount.abs %></span>
-        <span class="balance"><%= @balance %></span>
-      <% end %>
-    <% end %>
-
-    <% @upcoming_bills.each do |bill| %>
-      <% @balance += bill[:transaction].amount %>
-      <%= link_to finances_account_bill_record_payment_path(@account, bill[:bill_id]), class: 'modal--link table-row upcoming-bill' do %>
-        <span class="date"><%= bill[:transaction].transaction_date.strftime('%d/%m/%Y') %></span>
-        <span class="description"><%= bill[:transaction].description %></span>
-        <span class="amount <%= 'deposit' if bill[:transaction].amount > 0 %>"><%= bill[:transaction].amount.abs %></span>
-        <span class="balance"><%= @balance %></span>
+        <% @balance += tx.amount %>
+        <%= link_to finances_account_bill_record_payment_path(@account, transaction[:bill_id]), class: 'modal--link table-row upcoming-bill' do %>
+          <span class="date"><%= tx.transaction_date.strftime('%d/%m/%Y') %></span>
+          <span class="description"><%= tx.description %></span>
+          <span class="amount <%= 'deposit' if tx.amount > 0 %>"><%= tx.amount.abs %></span>
+          <span class="balance"><%= @balance %></span>
+        <% end %>
       <% end %>
     <% end %>
 

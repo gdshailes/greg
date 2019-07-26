@@ -20,10 +20,14 @@ class Finances::AccountsController < Finances::BaseController
       incoming_transfers = incoming_transfers.unreconciled
     end
     union = [transactions, incoming_transfers].map(&:to_sql).join(' UNION ALL ')
-    @transactions = Finances::Transaction.select("finances_transactions.*")
+    transactions = Finances::Transaction.select("finances_transactions.*")
       .from("(#{union}) AS finances_transactions")
       .order("finances_transactions.transaction_date")
     @transaction_form = Finances::EditTransactionForm.new
+
+    @transactions = transactions.all.to_a.map{|transaction| {bill_id: nil, date: transaction.transaction_date, transaction: transaction} } + @upcoming_bills
+    @transactions.sort_by!{|tx|tx[:date]}
+
     respond_with(@account)
   end
 
