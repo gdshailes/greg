@@ -30,7 +30,7 @@
         <% else %>
           <% @balance -= tx.amount %>
         <% end %>
-        <%= link_to edit_finances_account_transaction_path(@account, transaction), class: "modal--link table-row#{tx.reconciled ? ' reconciled' : ''}" do %>
+        <%= link_to edit_finances_account_transaction_path(@account, tx), class: "modal--link table-row#{tx.reconciled ? ' reconciled' : ''}" do %>
           <span class="date"><%= tx.transaction_date.strftime('%d/%m/%Y') %></span>
           <span class="description"><%= tx.description %></span>
           <span class="amount<%= ' deposit' if tx.amount > 0 %>"><%= tx.amount.abs %></span>
