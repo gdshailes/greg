@@ -5,6 +5,7 @@ class Finances::Transaction < ApplicationRecord
   scope :for_account, -> (account_id) { where(account_id: account_id) }
   scope :unreconciled, -> { where(reconciled: false) }
   scope :incoming_transfers, -> (to_account) { where(to_account: to_account) }
+  scope :before_next_payday, -> { where('transaction_date < ?', Date.current.next_month.beginning_of_month) }
 
   monetize :amount_pence, as: :amount, allow_nil: true
 

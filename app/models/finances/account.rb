@@ -12,7 +12,7 @@ class Finances::Account < ApplicationRecord
   monetize :balance_pence, as: :balance
 
   def balance_pence
-    transaction_sum = transactions.unreconciled.map(&:amount_pence).inject(:+)
+    transaction_sum = transactions.unreconciled.before_next_payday.map(&:amount_pence).inject(:+)
     opening = (opening_balance_pence || 0)
     reconciled = (reconciled_balance_pence || 0)
     opening + reconciled + (transaction_sum || 0)
