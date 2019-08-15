@@ -2,13 +2,12 @@
 
 * Fix the vulnerable dependencies reported by Github
 * Tests! Write the tests that you should've written at the outset!
-* Add some kind of reward in verify-the-pie if player finishes shift with no failures
-* Some kind of algorithm to make pies increasingly bizarre as game progresses...
-* Sort out markdown previews on ratrace and diary pages
-* Handle transfers better in Finances
+* Sort out markdown previews on diary pages
+* Finances: 
+  - Handle transfers better: merge with the 'new transaction' page, just add a drop-down for 'transfer to'
+  - Add checkbox to transactions view, so you can mark multiple transactions as reconciled without having to edit each one
 * Nice styling for 'make a decision' page
 * Nicer styling for 'Log in' page
 * Change non-logged-in homepage to allow visitors to access
   - Make A Decision
   - Verify The Pie
-  - Rat Race page
