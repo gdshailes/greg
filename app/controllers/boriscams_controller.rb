@@ -1,12 +1,20 @@
 require 'fileutils'
 
-class BoriscamController < ApplicationController
+class BoriscamsController < ApplicationController
 
-  def show
+  def index
     @images = BorisCamImage.order(created_at: :desc).limit(20)
   end
 
-  def upload
+  def create
+    binding.pry
+  end
+
+  def new
+    binding.pry
+  end
+
+  def create
     img = BorisCamImage.new
     img.uploaded_file params['datafile']
     if img.filetype != 'image/jpeg'

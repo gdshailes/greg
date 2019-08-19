@@ -12,13 +12,12 @@ Rails.application.routes.draw do
   get 'finances', to: 'finances/accounts#index'
   get 'ratrace', to: 'ratrace#index'
   get 'verify_the_pie/ingredients', to: 'verify_the_pies#ingredients'
-  get 'boriscam', to: 'boriscam#show'
-  post 'boriscam/upload', to: 'boriscam#upload'
   get 'diary', to: 'diary/entries#index'
   
   resources :users, only: [:index]
   resource :decision, only: [:new]
   resource :verify_the_pie, only: [:new]
+  resources :boriscams, only: [:index, :new, :create]
 
   namespace :finances do
     resources :accounts do
@@ -27,7 +26,6 @@ Rails.application.routes.draw do
           get 'export', format: [:csv]
         end
       end
-
       resources :bills do
         get 'record_payment', to: 'bills#record_payment'
       end
@@ -39,8 +37,7 @@ Rails.application.routes.draw do
     get 'post_to_facebook', to: 'posts#post_to_facebook'
     resources :posts do
       get 'get_next', to: 'posts#get_next'
-      resources :comments do
-      end
+      resources :comments
     end
   end
 
