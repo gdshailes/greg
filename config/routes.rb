@@ -4,12 +4,21 @@ Rails.application.routes.draw do
 
   root to: 'greghome#root'
 
-  get 'users/index', to: 'users#index'
   get 'greghome', to: 'greghome#greghome'
   get 'greghome/index', to: 'greghome#index'
   get 'greghome/denied', to: 'greghome#denied'
   get 'greghome/s382', to: 'greghome#s382'
   get 'privacy', to: 'privacy#index'
+  get 'finances', to: 'finances/accounts#index'
+  get 'ratrace', to: 'ratrace#index'
+  get 'verify_the_pie/ingredients', to: 'verify_the_pies#ingredients'
+  get 'boriscam', to: 'boriscam#show'
+  post 'boriscam/upload', to: 'boriscam#upload'
+  get 'diary', to: 'diary/entries#index'
+  
+  resources :users, only: [:index]
+  resource :decision, only: [:new]
+  resource :verify_the_pie, only: [:new]
 
   namespace :finances do
     resources :accounts do
@@ -26,7 +35,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'ratrace', to: 'ratrace#index'
   namespace :ratrace do
     get 'post_to_facebook', to: 'posts#post_to_facebook'
     resources :posts do
@@ -36,13 +44,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :decision, only: [:new]
-  resource :verify_the_pie, only: [:new]
-  get 'verify_the_pie/ingredients', to: 'verify_the_pies#ingredients'
-  get 'boriscam', to: 'boriscam#show'
-  post 'boriscam/upload', to: 'boriscam#upload'
-
-  get 'diary', to: 'diary/entries#index'
   namespace :diary do
     resources :entries
   end
