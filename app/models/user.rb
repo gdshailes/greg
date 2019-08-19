@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook, :google]
 
   def diary_entries
-    DiaryEntry.where(user_id: self.id)
+    Diary::Entry.where(user_id: self.id)
   end
 
   def is_admin?

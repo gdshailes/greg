@@ -375,7 +375,7 @@ DEPENDENCIES
   letter_opener
   listen (~> 3.0.5)
   md_simple_editor
-  mini_magick
+  mini_magick (>= 4.9.4)
   money-rails
   omniauth-facebook
   omniauth_openid_connect

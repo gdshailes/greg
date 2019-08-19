@@ -1,16 +1,14 @@
-class DiaryEntryController < ApplicationController
+class Diary::EntriesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :get_diary_entries
-
-  include DiaryEntriesHelper
+  before_action :get_entries
 
   def index
     @latest = current_user.diary_entries.order(created_at: :desc).first
   end
 
   def new
-    @entry = DiaryEntry.new(created_at: Time.current, user_id: current_user.id)
+    @entry = Diary::Entry.new(created_at: Time.current, user_id: current_user.id)
   end
 
   def show
@@ -18,7 +16,7 @@ class DiaryEntryController < ApplicationController
   end
 
   def create
-    @entry = current_user.diary_entries.new(diary_entry_params)
+    @entry = current_user.diary_entries.new(entry_params)
     if @entry.valid? and @entry.save
       redirect_to action: :index
     else
@@ -32,7 +30,7 @@ class DiaryEntryController < ApplicationController
 
   def update
     @entry = current_user.diary_entries.find(params[:id])
-    @entry.update(diary_entry_params)
+    @entry.update(entry_params)
     if @entry.valid? and @entry.save
       redirect_to action: :index
     else
@@ -50,7 +48,11 @@ class DiaryEntryController < ApplicationController
   private
 
 
-  def diary_entry_params
+  def get_entries
+    @entries = current_user.diary_entries.all.order(created_at: :desc)
+  end
+
+  def entry_params
     params.require(:diary_entry).permit(:title, :body)
   end
 

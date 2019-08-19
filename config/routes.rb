@@ -41,6 +41,10 @@ Rails.application.routes.draw do
   get 'verify_the_pie/ingredients', to: 'verify_the_pies#ingredients'
   get 'boriscam', to: 'boriscam#show'
   post 'boriscam/upload', to: 'boriscam#upload'
-  resources :diary_entry
+
+  get 'diary', to: 'diary/entries#index'
+  namespace :diary do
+    resources :entries
+  end
 
 end
