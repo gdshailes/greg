@@ -254,9 +254,3 @@ div.denied-footer a:hover {
 .hidden {
   display: none;
 }
-
-.hide_on_mobile {
-  @media screen and (max-width: $break_width) {
-    display: none;
-  }
-}
