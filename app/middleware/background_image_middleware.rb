@@ -1,5 +1,5 @@
 class BackgroundImageMiddleware
-  def initialize(app, count = 5)
+  def initialize(app, count = 8)
     @app = app
     @count = count
   end
