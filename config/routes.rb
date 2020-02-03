@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   get 'ratrace', to: 'ratrace#index'
   get 'verify_the_pie/ingredients', to: 'verify_the_pies#ingredients'
   get 'diary', to: 'diary/entries#index'
-  
+  get 'device', to: 'device#index'
+
   resources :users, only: [:index]
   resource :decision, only: [:new]
   resource :verify_the_pie, only: [:new]
