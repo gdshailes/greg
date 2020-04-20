@@ -6,7 +6,7 @@ window.onload = function() {
   menuToggler.call();
 
   if(body_classes.contains('greghome')) {
-    homePage.call();
+    new GregHome.HomePage();
   }
   if(body_classes.contains('ratrace')) {
     new GregHome.Ratrace();
