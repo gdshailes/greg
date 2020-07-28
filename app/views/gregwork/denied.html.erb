@@ -1,0 +1,12 @@
+<nav>
+  <ul>
+    <li>
+      Sign In
+      <ul>
+        <li><a href="/users/sign_in">Sign In</a></li>
+        <li><%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %></li>
+        <li><%= link_to "Sign in with Google", user_google_omniauth_authorize_path %></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
