@@ -1,0 +1,256 @@
+ html {
+  font-size: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  font-family: "Avenir", "Gill Sans", "Helvetica", "Arial", sans-serif;
+  background-color: $background_1;
+  background-image: url('/greghome-background.jpg');
+  @media screen and (max-width: $break_width) {
+    background-image: none;
+    background-color: $background_1;
+  }
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 1800px;
+  text-align: center;
+}
+
+nav {
+  min-height: 2rem;
+  background: $menu_background;
+  padding-left: 1em;
+  @media screen and (max-width: $break_width) {
+    padding-left: 0;
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  padding-inline-end: 0;
+}
+
+li {
+  min-height: 2rem;
+  float: left;
+  position: relative;
+  @media screen and (min-width: $break_width) {
+    vertical-align: text-bottom;
+    height: 100%;
+  }
+  @media screen and (max-width: $break_width) {
+    float: none;
+    display: block;
+    margin: 0;
+    background: $menu_highlight;
+    text-align: left;
+    text-indent: 1em;
+  }
+}
+
+li a {
+  background: $menu_background;
+  text-decoration: none;
+  color: $link_highlight_ink;
+  display: block;
+  transition: color 1s, background 1s;
+  height: 100%;
+  padding: 0.3em 1em;
+  box-sizing: content-box;
+  &:visited {
+    color: $link_highlight_ink;
+  }
+  &:hover, &:focus {
+    text-decoration: none;
+    outline: none;
+    color: $link_highlight_ink;
+    background: $menu_highlight;
+    cursor: pointer;
+  }
+
+}
+
+
+ul li ul {
+  background: $menu_background;
+  visibility: hidden;
+  opacity: 0;
+  min-width: 10em;
+  position: absolute;
+  left: 0;
+  top: 2em;
+  text-align: left;
+  transition: opacity 0.3s;
+  box-shadow: 0px 8px 32px rgba(0,0,0,0.5);
+  z-index: 20;
+  @media screen and (max-width: $break_width) {
+    box-shadow: none;
+    visibility: visible;
+    display: block;
+    opacity: 1;
+    position: relative;
+    top: 0;
+    margin-top: 0;
+  }
+}
+
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+ul li ul li {
+  clear: both;
+  width: 100%;
+  background: $menu_background;
+  padding: 0;
+  margin: 0;
+  @media screen and (max-width: $break_width) {
+    text-indent: 2em;
+  }
+}
+
+ul li ul li a {
+  white-space: nowrap;
+  outline: none;
+  padding: 0.3em 1em;
+}
+
+
+ul li ul li.break {
+  height: 1px;
+  min-height: 1px;
+  background: white;
+  width: 80%;
+  margin: 0.4em 10%;
+}
+
+ul li:hover > ul {
+  visibility: visible;
+  display: block;
+  opacity: 1;
+}
+
+form#f {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  text-align: left;
+  @media screen and (max-width: $break_width) {
+    display: none;
+  }
+}
+
+input.googleSearch {
+  box-sizing: border-box;
+  height: 1em;
+  color: $text-box-ink;
+  background: rgba(0, 0, 0, 0.6);
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+  display: block;
+  width: 100%;
+  font-size: 1.5em;
+  padding: 1em 0;
+  margin-bottom: 0.3em;
+  outline: none;
+  text-indent: 1em;
+  &::placeholder {
+    color: $link-ink;
+    opacity: 0.2;
+  }
+}
+
+button.GoogleButton {
+  width: 0;
+  margin: 0;
+  padding: 0;
+  height: 0;
+  border: none;
+  overflow: hidden;
+}
+
+
+@media screen and (max-width: $break_width) {
+  div.QuickLinksPanel {
+    width: 80%;
+  }
+}
+
+div.countdown, div.finished, div.under-way {
+  text-align: center;
+  font-size: 14px;
+  color: silver;
+  background-color: rgba(0,0,0,0.5);
+}
+
+span.seconds, span.minutes, span.hours, span.days, span.weeks {
+  color: white;
+  font-weight: bold;
+}
+
+div.denied, div.run-away {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+div.denied {
+  background-image: image-url("go-away-now.jpg");
+}
+
+div.run-away {
+  background-image: image-url("382.png");
+}
+
+div.denied-footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  color: silver;
+  font-size: 0.8em;
+  vertical-align: middle;
+}
+
+div.denied-footer a, div.denied-footer a:visited {
+  margin: 0;
+  padding: 20px;
+  display: inline;
+  background-color: $h1_paper;
+  color: $h1_ink;
+}
+
+div.denied-footer a:hover {
+  background-color: $link_paper;
+  color: $link_ink;
+}
+
+.hidden {
+  display: none;
+}
