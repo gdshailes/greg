@@ -70,7 +70,7 @@ li a {
   &:visited {
     color: $link_highlight_ink;
   }
-  &:hover, &:focus {
+  &:hover {
     text-decoration: none;
     outline: none;
     color: $link_highlight_ink;
@@ -105,9 +105,7 @@ ul li ul {
 }
 
 ul li:hover > ul,
-ul li:focus-within > ul,
-ul li ul:hover,
-ul li ul:focus {
+ul li ul:hover {
   visibility: visible;
   opacity: 1;
   display: block;
