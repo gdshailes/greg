@@ -38,38 +38,20 @@ ul {
 
 li {
   padding: 12px;
-  box-shadow: 12px 12px 12px rgba(0,0,0,0.5);
-  
+  box-shadow: 6px 6px 12px 6px rgba(0,0,0,0.5);
+
   h1 {
     text-decoration: underline;
     font-size: 2.3rem;
     font-weight: unset;
   }
 
-  &:nth-of-type(1) {
-    transform: rotate(1deg);
-    background-color: #f1f170;
-  }
-  &:nth-of-type(2) {
-    transform: rotate(-2deg);
-    background-color: #f18ef0;
-  }
-  &:nth-of-type(3) {
-    transform: rotate(3deg);
-    background-color: #6abb6a;
-  }
-  &:nth-of-type(4) {
-    transform: rotate(-1deg);
-    background-color: #6aabbb;
-  }
-  &:nth-of-type(5) {
-    transform: rotate(-4deg);
-    background-color: #f1f170;
-  }
-  &:nth-of-type(6) {
-    transform: rotate(-2deg);
-    background-color: #f18ef0;
-  }
+  <% (1..6).each do |n| %>
+    &:nth-of-type(<%= n %>) {
+      transform: <%= ['rotate(1deg)', 'rotate(-2deg)', 'rotate(3deg)', 'rotate(-1deg)', 'rotate(-4deg)', 'rotate(-2deg)'].sample %>;
+      background-color: <%= case n when 1 then '#f1f170' when 2 then '#f18ef0' when 3 then '#6abb6a' when 4 then '#6aabbb' else 'silver' end %>;
+    }
+  <% end %>
 }
 
 li a {
@@ -78,9 +60,14 @@ li a {
   color: black;
   border-radius: 15px;
   padding: 10px;
-  transition: background-color 1s;
+  transition: background-color 0.75s, box-shadow 0.75s, border-color 0.75s;
+  border-right: 2px solid rgba(255,255,255,0);
+  border-bottom: 2px solid rgba(255,255,255,0);
   &:hover {
-    background-color: rgba(0,0,0,0.2)
+    background-color: rgba(0,0,0,0.1);
+    box-shadow: inset 4px 4px 5px 5px rgba(0,0,0,0.3);
+    border-right: 2px solid rgba(255,255,255,0.5);
+    border-bottom: 2px solid rgba(255,255,255,0.5);
   }
 }
 
