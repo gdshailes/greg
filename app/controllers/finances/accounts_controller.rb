@@ -53,10 +53,10 @@ class Finances::AccountsController < Finances::BaseController
   end
 
   def destroy
-    # binding.pry
-    # if @account.destroy
+    binding.pry
+    if @account.destroy
       redirect_to finances_accounts_path
-    # end
+    end
   end
 
 

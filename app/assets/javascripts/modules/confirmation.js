@@ -10,7 +10,6 @@ confirmation = function() {
     $confirmation_link.on('click', showConfirmation);
     $confirm_background.on('click', hideConfirmation);
     $confirm_close.on('click', hideConfirmation);
-    $confirm_button.on('click', function(e){ alert(e);} );
   };
 
   function hideConfirmation(e) {
@@ -20,9 +19,10 @@ confirmation = function() {
   function showConfirmation(e)
   {
     e.preventDefault();
+    e.stopPropagation();
     link = $(e.currentTarget);
     $confirm_message.html(link.data('confirmation-message'));
-    $confirm_button.attr('href', link.attr('data-href'));
+    $confirm_button.attr('href', link.attr('href'));
     $confirm_button.attr('target', link.attr('target'));
     $confirm_button.attr('data-method', link.attr('data-method'));
     $('div.confirm').removeClass('hidden');
