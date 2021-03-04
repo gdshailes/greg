@@ -6,7 +6,7 @@ class Finances::EditTransactionForm
   delegate :description, :reconciled, :transaction_date, :bill_id, :errors, :to_account, :to_account_id, to: :transaction
 
   def initialize(transaction = nil)
-    @transaction = transaction || Finances::Transaction.new(transaction_date: Date.current)
+    @transaction = transaction || Finances::Transaction.new(transaction_date: Date.current, amount: nil)
   end
 
   def submit(params)
@@ -31,10 +31,12 @@ class Finances::EditTransactionForm
   end
 
   def amount
+    return nil if transaction.amount.nil?
     transaction.amount.abs
   end
 
   def deposit
+    return false if transaction.amount.nil?
     transaction.amount > 0
   end
 

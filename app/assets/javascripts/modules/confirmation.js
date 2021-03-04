@@ -13,7 +13,7 @@ confirmation = function() {
   };
 
   function hideConfirmation(e) {
-    $('div.confirm').addClass('hidden');
+    $('div.confirm').removeClass('active');
   };
 
   function showConfirmation(e)
@@ -25,6 +25,6 @@ confirmation = function() {
     $confirm_button.attr('href', link.attr('href'));
     $confirm_button.attr('target', link.attr('target'));
     $confirm_button.attr('data-method', link.attr('data-method'));
-    $('div.confirm').removeClass('hidden');
+    $('div.confirm').addClass('active');
   };
 };

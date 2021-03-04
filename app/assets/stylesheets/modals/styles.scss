@@ -41,9 +41,13 @@ div.modal, div.confirm {
   position: fixed;
   top: 0; bottom: 0;
   left: 0; right: 0;
+  transition: opacity 0.3s;
+  opacity: 0;
+  pointer-events: none;
 
   &--background {
     background-color: rgba(0,0,0,0.3);
+    backdrop-filter: blur(3px);
     position: absolute;
     top: 0; bottom: 0;
     left: 0; right: 0;
@@ -55,11 +59,14 @@ div.modal, div.confirm {
 
     position: absolute;
     background-color: $modal_background;
+
     box-shadow: 0px 8px 32px rgba(0,0,0,0.5);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 240px;
+    border-radius: 8px;
+    overflow: hidden;
     @media (max-width: $break_width) {
       width: 90%;
     }
@@ -68,7 +75,7 @@ div.modal, div.confirm {
       display: block;
       height: 6px;
       background-color: $modal_header;
-      content: ' '
+      content: ' ';
     }
   }
   &--close {
@@ -83,8 +90,9 @@ div.modal, div.confirm {
       font-size: 30px;
     }
   }
+ &.active {
+    opacity: 1;
+    pointer-events: unset;
+  }
 }
 
-.hidden {
-  display: none;
-}
