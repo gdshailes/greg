@@ -7,14 +7,6 @@ class BoriscamsController < ApplicationController
   end
 
   def create
-    binding.pry
-  end
-
-  def new
-    binding.pry
-  end
-
-  def create
     img = BorisCamImage.new
     img.uploaded_file params['datafile']
     if img.filetype != 'image/jpeg'
